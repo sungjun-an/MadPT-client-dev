@@ -62,6 +62,15 @@ class MainPageFragment : Fragment() {
             binding.kcalText.text = sum
         }
 
+        if (user.user_weight != 0.0){
+            val userWeight = user.user_weight.toString() + "Kg"
+            binding.plusButtonWeight.visibility = View.INVISIBLE
+            binding.userWeight.visibility = View.VISIBLE
+            binding.userWeight.text = userWeight
+        }
+
+
+
 
 
         binding.goalButton.setOnClickListener() {
@@ -69,7 +78,10 @@ class MainPageFragment : Fragment() {
         }
 
         binding.plusButtonWeight.setOnClickListener(){
-
+            mainActivity!!.showMessageDialog()
+        }
+        binding.userWeight.setOnClickListener(){
+            mainActivity!!.showMessageDialog()
         }
 
 

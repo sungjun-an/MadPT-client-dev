@@ -3137,6 +3137,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id user_weight
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3266,7 +3267,6 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_excercise
 layout fragment_goal_set_page
-layout fragment_main
 layout fragment_main_page
 layout fragment_more
 layout fragment_social

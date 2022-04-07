@@ -78,6 +78,9 @@ public final class FragmentMainPageBinding implements ViewBinding {
   @NonNull
   public final TextView textView2;
 
+  @NonNull
+  public final Button userWeight;
+
   private FragmentMainPageBinding(@NonNull ConstraintLayout rootView, @NonNull TextView Diner,
       @NonNull TextView Lunch, @NonNull ScrollView ScrollView1, @NonNull TextView Snack,
       @NonNull ArcProgress arcProgress, @NonNull TextView breakfast,
@@ -85,7 +88,7 @@ public final class FragmentMainPageBinding implements ViewBinding {
       @NonNull Button goalButton, @NonNull TextView goalDistance, @NonNull TextView kcalText,
       @NonNull TextView mainPageToday, @NonNull TextView moveKcal, @NonNull TextView moveKcalInt,
       @NonNull ImageButton plusButtonBreakfast, @NonNull ImageButton plusButtonWeight,
-      @NonNull TextView textView2) {
+      @NonNull TextView textView2, @NonNull Button userWeight) {
     this.rootView = rootView;
     this.Diner = Diner;
     this.Lunch = Lunch;
@@ -105,6 +108,7 @@ public final class FragmentMainPageBinding implements ViewBinding {
     this.plusButtonBreakfast = plusButtonBreakfast;
     this.plusButtonWeight = plusButtonWeight;
     this.textView2 = textView2;
+    this.userWeight = userWeight;
   }
 
   @Override
@@ -242,10 +246,16 @@ public final class FragmentMainPageBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.user_weight;
+      Button userWeight = ViewBindings.findChildViewById(rootView, id);
+      if (userWeight == null) {
+        break missingId;
+      }
+
       return new FragmentMainPageBinding((ConstraintLayout) rootView, Diner, Lunch, ScrollView1,
           Snack, arcProgress, breakfast, breakfastFrame, eatKcal, eatKcalInt, goalButton,
           goalDistance, kcalText, mainPageToday, moveKcal, moveKcalInt, plusButtonBreakfast,
-          plusButtonWeight, textView2);
+          plusButtonWeight, textView2, userWeight);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.example.madpt.main.MainFragment
+import com.example.madpt.main.GoalSetPageFragment
+import com.example.madpt.main.MainPageFragment
+import com.example.madpt.main.PutWeightDialog
 import com.example.madpt.more.MoreFragment
 import com.example.madpt.social.SocialFragment
 import com.example.madpt.statistics.StatisticsFragment
@@ -22,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction().replace(R.id.fl_container, MainFragment(), "main").commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fl_container, MainPageFragment(), "main").commit()
 
         binding.bnvMain.setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.main -> {
-                        changeFragment(MainFragment(),"main")
+                        changeFragment(MainPageFragment(),"main")
                     }
                     R.id.statistics -> {
                         changeFragment(StatisticsFragment(),"statistics")
@@ -72,6 +74,22 @@ class MainActivity : AppCompatActivity() {
         super.onBackPressed()
         val bnv = findViewById<View>(R.id.bnv_main) as BottomNavigationView
         updateBottomMenu(bnv)
+    }
+    fun setFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+            .add(R.id.fl_container, MainPageFragment())
+        transaction.commit()
+    }
+
+    fun changeGoalSettingFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.fl_container, GoalSetPageFragment())
+        transaction.commit()
+    }
+
+    private fun showMessageDialog(){
+        val customDialog = PutWeightDialog(finishApp = {finish()})
+        customDialog.show(supportFragmentManager, "PutWeightDialog")
     }
 
 }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sjan/AndroidStudioProjects/peetea-client-dev/MADPT/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v29/values-v29.xml",
+            "outputFile": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v29\\values-v29.xml",
             "map": [
                 {
-                    "source": "/home/sjan/AndroidStudioProjects/peetea-client-dev/MADPT/app/src/main/res/values-v29/themes.xml",
+                    "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\values-v29\\themes.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",

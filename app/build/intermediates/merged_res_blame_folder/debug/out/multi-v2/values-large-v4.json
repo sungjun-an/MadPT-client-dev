@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sjan/AndroidStudioProjects/peetea-client-dev/MADPT/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml",
+            "outputFile": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-large-v4\\values-large-v4.xml",
             "map": [
                 {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/5423c65485a974611bfb437c61e9a2e1/transformed/material-1.5.0/res/values-large-v4/values-large-v4.xml",
+                    "source": "C:\\Users\\dksj9\\.gradle\\caches\\transforms-3\\f24c44404471258041633103262f9700\\transformed\\material-1.5.0\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,10",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/d2be0a07ac682004ffbddd9c163a1cf7/transformed/appcompat-1.4.1/res/values-large-v4/values-large-v4.xml",
+                    "source": "C:\\Users\\dksj9\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-large-v4\\values-large-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

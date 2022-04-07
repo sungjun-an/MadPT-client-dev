@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroungblack"
+    tools:context=".main.GoalSetPageFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/mainPageToday"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="7"
+                android:fontFamily="@font/bold"
+                android:text="My Goal"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2.5"
+                android:layout_marginTop="10dp"
+                android:text="저장"
+                android:textStyle="bold"
+                android:id="@+id/goal_save_button"></Button>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="18"
+            android:orientation="horizontal"
+            android:weightSum="20">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="18"
+                android:orientation="vertical"
+                android:weightSum="20">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:text="목표 몸무게"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"></TextView>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <EditText
+                            android:id="@+id/goal_weight"
+                            android:layout_width="250dp"
+                            android:layout_height="50dp"
+                            android:hint="목표 몸무게를 입력해주세요"
+                            android:textColor="@color/white"
+                            android:textColorHighlight="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Kg"
+                            android:textColor="@color/white"
+                            android:textSize="27sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:text="목표 하루 제한칼로리"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <EditText
+                            android:id="@+id/goal_eatkcal"
+                            android:layout_width="250dp"
+                            android:layout_height="50dp"
+                            android:hint="목표 칼로리를 입력해주세요"
+                            android:textColor="@color/white"
+                            android:textColorHighlight="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Kcal"
+                            android:textColor="@color/white"
+                            android:textSize="27sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:text="목표 활동량"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"></TextView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+
+                        <EditText
+                            android:id="@+id/goal_movekcal"
+                            android:layout_width="250dp"
+                            android:layout_height="50dp"
+                            android:hint="목표 활동량을 입력해주세요"
+                            android:textColor="@color/white"
+                            android:textColorHighlight="@color/white"
+                            android:textColorHint="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="italic" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Kcal"
+                            android:textColor="@color/white"
+                            android:textSize="27sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</FrameLayout>

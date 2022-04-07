@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_marginStart="30dp"
+            android:id="@+id/image1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/trainingTitle"
+            android:layout_marginStart="20dp"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:gravity="center"
+            android:text="SETS"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="-"
+            android:id="@+id/btn_set_minus"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+
+
+        <EditText
+            android:id="@+id/editTextSets"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:ems="10"
+            android:enabled="true"
+            android:inputType="numberSigned" />
+
+        <Button
+            android:text="+"
+            android:id="@+id/btn_set_plus"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="REPS"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="-"
+            android:id="@+id/btn_rep_minus"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"/>
+
+
+        <EditText
+            android:id="@+id/editTextReps"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:enabled="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="numberSigned" />
+
+        <Button
+            android:text="+"
+            android:id="@+id/btn_rep_plus"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:text="취소"
+            android:id="@+id/btn_no"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:text="확인"
+            android:id="@+id/btn_ok"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

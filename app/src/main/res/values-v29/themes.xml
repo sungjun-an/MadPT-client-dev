@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="numberPickerCustom">
+        <item name="android:textSize">30sp</item>
+        <item name="android:editTextColor">@color/black</item>
+        <item name="android:selectionDividerHeight">2sp</item>
+    </style>
+</resources>

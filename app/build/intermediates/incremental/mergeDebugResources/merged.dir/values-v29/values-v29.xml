@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kakao_app_key">8868a1ec07819c91311bc2fa17e5f527</string>
+    <string name="kakao_native_key">kakao8868a1ec07819c91311bc2fa17e5f527</string>
+    <style name="numberPickerCustom">
+        <item name="android:textSize">30sp</item>
+        <item name="android:editTextColor">@color/black</item>
+        <item name="android:selectionDividerHeight">2sp</item>
+    </style>
+</resources>

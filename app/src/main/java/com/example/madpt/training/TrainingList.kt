@@ -32,7 +32,9 @@ class TrainingList(private val context: Context, private val dataList:ArrayList<
 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
         viewholder.cancelTrain.setOnClickListener {
+                dataList.removeAt(i)
 
+                notifyDataSetChanged()
         }
         viewholder.bind(dataList[i])
     }

@@ -52,12 +52,6 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
-
-        binding.button.setOnClickListener {
-            val intent = Intent(requireContext(), MainActivity::class.java)// 액티비티 이만 병경하셈
-            intent.putExtra("trainList", trainList)
-            startActivity(intent)
-        }
         // Inflate the layout for this fragment
         return binding.root
     }

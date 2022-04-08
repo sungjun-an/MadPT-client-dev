@@ -14,7 +14,7 @@ import com.example.madpt.R
 
 class TrainingAdapter(private val context: Context, listener: OnRecyclerClickListener) : RecyclerView.Adapter<TrainingAdapter.ViewHolder> (){
 
-    private val titles = arrayOf("SQUAT", "PUSH UP")
+    private val titles = arrayOf("PUSH UP", "SQUAT")
     private val images = intArrayOf(R.drawable.pushup,
     R.drawable.standing)
     private var onClickListen = listener

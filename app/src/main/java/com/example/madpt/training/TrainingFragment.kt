@@ -24,15 +24,19 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove{
 
     private var trainList = arrayListOf<testmodel>()
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
-        Toast.makeText(context,"${set}   ${rep}   ${itemTitle}",Toast.LENGTH_LONG).show()
         trainList.add(testmodel(itemTitle,image,set,rep))
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
     }
+
+    override fun OnRemoveClick(position: Int) {
+        trainList.removeAt(position)
+    }
+
     private var _binding: FragmentExcerciseBinding? = null
     private val binding get() = _binding!!
     // TODO: Rename and change types of parameters
@@ -62,8 +66,8 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
+        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
         binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        binding.trainListRecyclerView.adapter = TrainingList(requireContext(), trainList)
     }
 
     companion object {

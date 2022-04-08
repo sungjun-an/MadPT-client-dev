@@ -2726,6 +2726,7 @@ id btn_routinLoading
 id btn_routineStore
 id btn_set_minus
 id btn_set_plus
+id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3003,6 +3004,7 @@ id ratio
 id rectangles
 id recycler_view
 id relativeLayout
+id removeTrain
 id reverseSawtooth
 id right
 id rightToLeft

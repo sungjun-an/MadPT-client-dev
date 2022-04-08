@@ -4,8 +4,9 @@ package com.example.madpt.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -17,19 +18,24 @@ import java.lang.String;
 
 public final class SelectedTrainListBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final ImageView listImage;
 
-  private SelectedTrainListBinding(@NonNull LinearLayout rootView, @NonNull ImageView listImage) {
+  @NonNull
+  public final Button removeTrain;
+
+  private SelectedTrainListBinding(@NonNull FrameLayout rootView, @NonNull ImageView listImage,
+      @NonNull Button removeTrain) {
     this.rootView = rootView;
     this.listImage = listImage;
+    this.removeTrain = removeTrain;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -60,7 +66,13 @@ public final class SelectedTrainListBinding implements ViewBinding {
         break missingId;
       }
 
-      return new SelectedTrainListBinding((LinearLayout) rootView, listImage);
+      id = R.id.removeTrain;
+      Button removeTrain = ViewBindings.findChildViewById(rootView, id);
+      if (removeTrain == null) {
+        break missingId;
+      }
+
+      return new SelectedTrainListBinding((FrameLayout) rootView, listImage, removeTrain);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

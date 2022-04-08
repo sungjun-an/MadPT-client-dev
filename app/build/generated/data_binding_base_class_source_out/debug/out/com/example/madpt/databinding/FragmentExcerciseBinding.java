@@ -30,18 +30,22 @@ public final class FragmentExcerciseBinding implements ViewBinding {
   public final Button btnRoutineStore;
 
   @NonNull
+  public final Button button;
+
+  @NonNull
   public final RecyclerView recyclerView;
 
   @NonNull
   public final RecyclerView trainListRecyclerView;
 
   private FragmentExcerciseBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnBreakTime,
-      @NonNull Button btnRoutinLoading, @NonNull Button btnRoutineStore,
+      @NonNull Button btnRoutinLoading, @NonNull Button btnRoutineStore, @NonNull Button button,
       @NonNull RecyclerView recyclerView, @NonNull RecyclerView trainListRecyclerView) {
     this.rootView = rootView;
     this.btnBreakTime = btnBreakTime;
     this.btnRoutinLoading = btnRoutinLoading;
     this.btnRoutineStore = btnRoutineStore;
+    this.button = button;
     this.recyclerView = recyclerView;
     this.trainListRecyclerView = trainListRecyclerView;
   }
@@ -91,6 +95,12 @@ public final class FragmentExcerciseBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.button;
+      Button button = ViewBindings.findChildViewById(rootView, id);
+      if (button == null) {
+        break missingId;
+      }
+
       id = R.id.recycler_view;
       RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
       if (recyclerView == null) {
@@ -104,7 +114,7 @@ public final class FragmentExcerciseBinding implements ViewBinding {
       }
 
       return new FragmentExcerciseBinding((ConstraintLayout) rootView, btnBreakTime,
-          btnRoutinLoading, btnRoutineStore, recyclerView, trainListRecyclerView);
+          btnRoutinLoading, btnRoutineStore, button, recyclerView, trainListRecyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

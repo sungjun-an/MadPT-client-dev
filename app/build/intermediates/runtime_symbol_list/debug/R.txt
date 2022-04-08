@@ -2725,6 +2725,7 @@ int id btn_routinLoading 0x7f0a007a
 int id btn_routineStore 0x7f0a007b
 int id btn_set_minus 0x7f0a007c
 int id btn_set_plus 0x7f0a007d
+int id button 0x7f0a022c
 int id buttonPanel 0x7f0a007e
 int id cache_measures 0x7f0a007f
 int id callMeasure 0x7f0a0080
@@ -3002,6 +3003,7 @@ int id ratio 0x7f0a018f
 int id rectangles 0x7f0a0190
 int id recycler_view 0x7f0a0191
 int id relativeLayout 0x7f0a0192
+int id removeTrain 0x7f0a022d
 int id reverseSawtooth 0x7f0a0193
 int id right 0x7f0a0194
 int id rightToLeft 0x7f0a0195

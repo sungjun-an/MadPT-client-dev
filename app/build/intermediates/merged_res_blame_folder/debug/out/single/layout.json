@@ -1,58 +1,58 @@
 [
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\training_list.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\training_list.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_social.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_social.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_login.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\activity_login.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_excercise.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_excercise.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_main.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_main.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_statistics.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_statistics.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\set_dialog.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\set_dialog.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_excercise.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_excercise.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_goal_set_page.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_goal_set_page.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_statistics.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_statistics.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/set_dialog.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/set_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_main.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_start_profile.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\activity_start_profile.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main_page.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_main_page.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\put_weight_dialog.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\put_weight_dialog.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/put_weight_dialog.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/put_weight_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_more.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_more.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_start_profile.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/activity_start_profile.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\selected_train_list.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\selected_train_list.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/selected_train_list.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/selected_train_list.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_main_page.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_main_page.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/training_list.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/training_list.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_social.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_social.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_more.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_more.xml"
     },
     {
-        "merged": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_goal_set_page.xml",
-        "source": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\src\\main\\res\\layout\\fragment_goal_set_page.xml"
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/activity_login.xml"
     }
 ]

@@ -12,6 +12,9 @@
         <entry key="..\:/Users/dksj9/AndroidStudioProjects/Git/MadPT-client-dev/app/src/main/res/layout/fragment_goal_set_page.xml" value="0.6559139784946236" />
         <entry key="..\:/Users/dksj9/AndroidStudioProjects/Git/MadPT-client-dev/app/src/main/res/layout/fragment_main_page.xml" value="0.1" />
         <entry key="..\:/Users/dksj9/AndroidStudioProjects/Git/MadPT-client-dev/app/src/main/res/layout/put_weight_dialog.xml" value="0.1890625" />
+        <entry key="app/src/main/res/layout/fragment_excercise.xml" value="0.333786231884058" />
+        <entry key="app/src/main/res/layout/selected_train_list.xml" value="0.333786231884058" />
+        <entry key="app/src/main/res/layout/training_list.xml" value="0.333786231884058" />
       </map>
     </option>
   </component>

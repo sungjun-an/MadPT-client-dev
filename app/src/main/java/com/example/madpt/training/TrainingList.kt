@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
@@ -11,10 +12,12 @@ import com.example.madpt.testmodel
 
 class TrainingList(private val context: Context, private val dataList:ArrayList<testmodel>): RecyclerView.Adapter<TrainingList.ViewHolder>() {
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val train_image = itemView.findViewById<ImageView>(R.id.list_image)
+
+        private val trainImage = itemView.findViewById<ImageView>(R.id.list_image)
+        val cancelTrain = itemView.findViewById(R.id.button) as Button
 
         fun bind(data: testmodel){
-            train_image.setImageResource(data.images)
+            trainImage.setImageResource(data.images)
         }
     }
 
@@ -28,6 +31,9 @@ class TrainingList(private val context: Context, private val dataList:ArrayList<
     }
 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
+        viewholder.cancelTrain.setOnClickListener {
+
+        }
         viewholder.bind(dataList[i])
     }
 

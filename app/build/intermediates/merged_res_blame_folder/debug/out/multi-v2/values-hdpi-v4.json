@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dksj9\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "/home/sjan/.gradle/caches/transforms-3/a3fb063a790701b1bd5192a4e0da0133/transformed/appcompat-1.4.1/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

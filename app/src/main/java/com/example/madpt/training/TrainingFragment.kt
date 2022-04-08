@@ -1,13 +1,16 @@
 package com.example.madpt.training
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
 
@@ -50,6 +53,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
     ): View? {
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
 
+        binding.button.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)// 액티비티 이만 병경하셈
+            intent.putExtra("trainList", trainList)
+            startActivity(intent)
+        }
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -60,7 +68,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
-        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
         binding.trainListRecyclerView.adapter = TrainingList(requireContext(), trainList)
     }
 

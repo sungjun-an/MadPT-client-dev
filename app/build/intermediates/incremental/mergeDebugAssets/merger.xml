@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Android\RealGit\MadPT-client-dev\app\src\main\assets"/><source path="C:\Android\RealGit\MadPT-client-dev\app\build\intermediates\shader_assets\debug\out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="C:\Android\RealGit\MadPT-client-dev\app\src\debug\assets"/></dataSet></merger>
+=======
+<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/assets"/><source path="/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/shader_assets/debug/out"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/debug/assets"/></dataSet></merger>
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9

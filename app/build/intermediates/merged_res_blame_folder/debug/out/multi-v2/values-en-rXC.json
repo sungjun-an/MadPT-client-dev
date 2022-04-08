@@ -1,10 +1,34 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rXC\\values-en-rXC.xml",
             "map": [
                 {
                     "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-en-rXC\\values-en-rXC.xml",
+=======
+            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en-rXC/values-en-rXC.xml",
+            "map": [
+                {
+                    "source": "/home/sjan/.gradle/caches/transforms-3/2a4f9169821d9878eb52e8c7fa02d351/transformed/browser-1.3.0/res/values-en-rXC/values-en-rXC.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,255,454,665",
+                        "endColumns": "199,198,210,201",
+                        "endOffsets": "250,449,660,862"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "5528,5728,5927,6138",
+                        "endColumns": "199,198,210,201",
+                        "endOffsets": "5723,5922,6133,6335"
+                    }
+                },
+                {
+                    "source": "/home/sjan/.gradle/caches/transforms-3/a3fb063a790701b1bd5192a4e0da0133/transformed/appcompat-1.4.1/res/values-en-rXC/values-en-rXC.xml",
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +45,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\08dd100f661960900efe1c9b6badd4be\\transformed\\core-1.7.0\\res\\values-en-rXC\\values-en-rXC.xml",
+=======
+                    "source": "/home/sjan/.gradle/caches/transforms-3/08dd100f661960900efe1c9b6badd4be/transformed/core-1.7.0/res/values-en-rXC/values-en-rXC.xml",
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -36,6 +64,7 @@
                         "endColumns": "203",
                         "endOffsets": "6725"
                     }
+<<<<<<< HEAD
                 },
                 {
                     "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\2a4f9169821d9878eb52e8c7fa02d351\\transformed\\browser-1.3.0\\res\\values-en-rXC\\values-en-rXC.xml",
@@ -53,6 +82,8 @@
                         "endColumns": "199,198,210,201",
                         "endOffsets": "5723,5922,6133,6335"
                     }
+=======
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                 }
             ]
         }

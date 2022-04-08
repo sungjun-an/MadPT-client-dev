@@ -25,4 +25,4 @@ local.properties
 .externalNativeBuild
 .cxx
 local.properties
-
+.idea/

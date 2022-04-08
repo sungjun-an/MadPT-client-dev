@@ -1,6 +1,7 @@
 {
     "logs": [
         {
+<<<<<<< HEAD
             "outputFile": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w600dp-v13\\values-w600dp-v13.xml",
             "map": [
                 {
@@ -9,6 +10,19 @@
                         "startLines": "-1",
                         "startColumns": "-1",
                         "startOffsets": "-1"
+=======
+            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w600dp-v13/values-w600dp-v13.xml",
+            "map": [
+                {
+                    "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/values-w600dp/attrs.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "16",
+                        "endColumns": "24",
+                        "endOffsets": "853"
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     },
                     "to": {
                         "startLines": "2",
@@ -19,11 +33,21 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\src\\main\\res\\values-w600dp\\attrs.xml",
                     "from": {
                         "startLines": "-1",
                         "startColumns": "-1",
                         "startOffsets": "-1"
+=======
+                    "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/values-w600dp/dimens.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "57",
+                        "endOffsets": "69"
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     },
                     "to": {
                         "startLines": "3",

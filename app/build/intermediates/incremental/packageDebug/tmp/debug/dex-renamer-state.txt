@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Fri Apr 08 21:45:23 KST 2022
+=======
+#Fri Apr 08 23:29:06 KST 2022
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
 path.4=2/classes.dex
 path.3=14/classes.dex
 path.2=10/classes.dex
@@ -9,16 +13,25 @@ path.7=8/classes.dex
 path.6=4/classes.dex
 path.5=3/classes.dex
 path.0=classes.dex
+<<<<<<< HEAD
 base.4=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
 base.3=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
 base.2=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
 base.1=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.0=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+=======
+base.4=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex
+base.3=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+base.2=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex
+base.1=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.0=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
 renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
 renamed.7=classes8.dex
+<<<<<<< HEAD
 base.8=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
 renamed.6=classes7.dex
 base.7=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
@@ -26,3 +39,12 @@ renamed.5=classes6.dex
 base.6=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
 renamed.4=classes5.dex
 base.5=C\:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex
+=======
+base.8=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex
+renamed.6=classes7.dex
+base.7=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex
+renamed.5=classes6.dex
+base.6=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex
+renamed.4=classes5.dex
+base.5=/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex
+>>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9

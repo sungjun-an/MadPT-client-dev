@@ -6,182 +6,212 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="26"
-8-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml
+8-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="31" />
-9-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml
+9-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:5:5-67
-11-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:5:22-64
-12
-13    <queries>
-13-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:9:5-22:15
-14        <package android:name="com.kakao.talk" />
-14-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:10:9-50
-14-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:10:18-47
-15        <package android:name="com.kakao.talk.alpha" />
-15-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:11:9-56
-15-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:11:18-53
-16        <package android:name="com.kakao.talk.sandbox" />
-16-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:12:9-58
-16-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:12:18-55
-17        <package android:name="com.kakao.onetalk" />
-17-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:13:9-53
-17-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:13:18-50
-18
-19        <intent>
-19-->[com.kakao.sdk:v2-common:2.9.0] /home/sjan/.gradle/caches/transforms-3/3ed247684e52798fa67b0cda4b3a967d/transformed/jetified-v2-common-2.9.0/AndroidManifest.xml:15:9-21:18
-20            <action android:name="android.intent.action.VIEW" />
-20-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:22:17-69
-20-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:22:25-66
-21
-22            <category android:name="android.intent.category.BROWSABLE" />
-22-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:25:17-78
-22-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:25:27-75
-23
-24            <data android:scheme="https" />
-24-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:28:17-30:65
-24-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:30:21-62
-25        </intent>
-26    </queries>
-27
-28    <application
-28-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:7:5-49:19
-29        android:name="com.example.madpt.login.MyApplication"
-29-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:8:9-44
-30        android:allowBackup="true"
-30-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:9:9-35
-31        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-31-->[androidx.core:core:1.7.0] /home/sjan/.gradle/caches/transforms-3/08dd100f661960900efe1c9b6badd4be/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
-32        android:debuggable="true"
-33        android:extractNativeLibs="false"
-34        android:icon="@mipmap/ic_launcher"
-34-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:10:9-43
-35        android:label="@string/app_name"
-35-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:11:9-41
-36        android:roundIcon="@mipmap/ic_launcher_round"
-36-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:12:9-54
-37        android:supportsRtl="true"
-37-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:13:9-35
-38        android:testOnly="true"
-39        android:theme="@style/Theme.MADPT" >
-39-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:14:9-43
-40        <activity
-40-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:15:9-17:40
-41            android:name="com.example.madpt.profile.StartProfile"
-41-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:16:13-49
-42            android:exported="false" />
-42-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:17:13-37
-43        <activity
-43-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:18:9-32:20
-44            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-44-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:19:13-70
-45            android:exported="true"
-45-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:20:13-36
-46            android:launchMode="singleTask"
-46-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:17:13-44
-47            android:theme="@style/TransparentCompat" >
-47-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:18:13-53
-48            <intent-filter>
-48-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:21:13-31:29
-49                <action android:name="android.intent.action.VIEW" />
-49-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:22:17-69
-49-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:22:25-66
-50
-51                <category android:name="android.intent.category.DEFAULT" />
-51-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:24:17-76
-51-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:24:27-73
-52                <category android:name="android.intent.category.BROWSABLE" />
-52-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:25:17-78
-52-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:25:27-75
-53
-54                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
-55                <data
-55-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:28:17-30:65
-56                    android:host="oauth"
-56-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:29:21-41
-57                    android:scheme="@string/kakao_native_key" />
-57-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:30:21-62
-58            </intent-filter>
-59        </activity>
-60        <activity
-60-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:33:9-42:20
-61            android:name="com.example.madpt.splash.SplashActivity"
-61-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:34:13-50
-62            android:exported="true"
-62-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:35:13-36
-63            android:theme="@style/SplashTheme" >
-63-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:36:13-47
-64            <intent-filter>
-64-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:37:13-41:29
-65                <action android:name="android.intent.action.MAIN" />
-65-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:38:17-69
-65-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:38:25-66
-66
-67                <category android:name="android.intent.category.LAUNCHER" />
-67-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:40:17-77
-67-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:40:27-74
-68            </intent-filter>
-69        </activity>
-70        <activity
-70-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:43:9-45:39
-71            android:name="com.example.madpt.MainActivity"
-71-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:44:13-41
-72            android:exported="true" />
-72-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:45:13-36
-73        <activity
-73-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:46:9-48:39
-74            android:name="com.example.madpt.login.LoginActivity"
-74-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:47:13-48
-75            android:exported="true" />
-75-->/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/AndroidManifest.xml:48:13-36
-76        <activity
-76-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:10:9-14:56
-77            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
-77-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:11:13-67
-78            android:exported="false"
-78-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:12:13-37
-79            android:launchMode="singleTask"
-79-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:13:13-44
-80            android:theme="@style/TransparentCompat" />
-80-->[com.kakao.sdk:v2-auth:2.9.0] /home/sjan/.gradle/caches/transforms-3/852a9dc1f798527aae21c2778532c9d5/transformed/jetified-v2-auth-2.9.0/AndroidManifest.xml:14:13-53
-81        <activity
-81-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:12:9-19:20
-82            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
-82-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:13:13-86
-83            android:configChanges="orientation|screenSize"
-83-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:14:13-59
-84            android:exported="false"
-84-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:15:13-37
-85            android:label="@string/com_kakao_login_button"
-85-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:16:13-59
-86            android:launchMode="singleTop"
-86-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:17:13-43
-87            android:windowSoftInputMode="adjustResize" >
-87-->[com.kakao.sdk:auth:1.30.3] /home/sjan/.gradle/caches/transforms-3/7e8223dbd380e317d16518dd181ebaaf/transformed/jetified-auth-1.30.3/AndroidManifest.xml:18:13-55
-88        </activity>
-89
-90        <provider
-90-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-91            android:name="androidx.startup.InitializationProvider"
-91-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
-92            android:authorities="com.example.madpt.androidx-startup"
-92-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
-93            android:exported="false" >
-93-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
-94            <meta-data
-94-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
-95                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-95-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
-96                android:value="androidx.startup" />
-96-->[androidx.emoji2:emoji2:1.0.0] /home/sjan/.gradle/caches/transforms-3/fa07d64a323c82fb5bb499f909e79817/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
-97            <meta-data
-97-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sjan/.gradle/caches/transforms-3/8290d7a476d44552e26bd4a6313ce50c/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
-98                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-98-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sjan/.gradle/caches/transforms-3/8290d7a476d44552e26bd4a6313ce50c/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
-99                android:value="androidx.startup" />
-99-->[androidx.lifecycle:lifecycle-process:2.4.0] /home/sjan/.gradle/caches/transforms-3/8290d7a476d44552e26bd4a6313ce50c/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
-100        </provider>
-101    </application>
-102
-103</manifest>
+11-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:5:5-67
+11-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:6:5-65
+12-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:6:22-62
+13
+14    <uses-feature
+14-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:8:5-10:35
+15        android:name="android.hardware.camera"
+15-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:9:9-47
+16        android:required="true" />
+16-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:10:9-32
+17
+18    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+18-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:12:5-81
+18-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:12:22-78
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:13:5-80
+19-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:13:22-77
+20
+21    <uses-feature
+21-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:8:5-10:35
+22        android:name="android.hardware.camera"
+22-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:9:9-47
+23        android:required="true" />
+23-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:10:9-32
+24
+25    <queries>
+25-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:9:5-22:15
+26        <package android:name="com.kakao.talk" />
+26-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:10:9-50
+26-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:10:18-47
+27        <package android:name="com.kakao.talk.alpha" />
+27-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:11:9-56
+27-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:11:18-53
+28        <package android:name="com.kakao.talk.sandbox" />
+28-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:12:9-58
+28-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:12:18-55
+29        <package android:name="com.kakao.onetalk" />
+29-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:13:9-53
+29-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:13:18-50
+30
+31        <intent>
+31-->[com.kakao.sdk:v2-common:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\3ed247684e52798fa67b0cda4b3a967d\transformed\jetified-v2-common-2.9.0\AndroidManifest.xml:15:9-21:18
+32            <action android:name="android.intent.action.VIEW" />
+32-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:37:17-69
+32-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:37:25-66
+33
+34            <category android:name="android.intent.category.BROWSABLE" />
+34-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:40:17-78
+34-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:40:27-75
+35
+36            <data android:scheme="https" />
+36-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:43:17-45:65
+36-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:45:21-62
+37        </intent>
+38    </queries>
+39
+40    <application
+40-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:19:5-64:19
+41        android:name="com.example.madpt.login.MyApplication"
+41-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:20:9-44
+42        android:allowBackup="true"
+42-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:21:9-35
+43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+43-->[androidx.core:core:1.7.0] C:\Users\moon\.gradle\caches\transforms-3\08dd100f661960900efe1c9b6badd4be\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+44        android:debuggable="true"
+45        android:extractNativeLibs="false"
+46        android:icon="@mipmap/ic_launcher"
+46-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:22:9-43
+47        android:label="@string/app_name"
+47-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:23:9-41
+48        android:roundIcon="@mipmap/ic_launcher_round"
+48-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:24:9-54
+49        android:supportsRtl="true"
+49-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:25:9-35
+50        android:testOnly="true"
+51        android:theme="@style/Theme.MADPT" >
+51-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:26:9-43
+52        <activity
+52-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:27:9-29:40
+53            android:name="com.example.madpt.training.trainingCamera.TrainingAiCameraActivity"
+53-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:28:13-77
+54            android:exported="false" />
+54-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:29:13-37
+55        <activity
+55-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:30:9-32:40
+56            android:name="com.example.madpt.profile.StartProfile"
+56-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:31:13-49
+57            android:exported="false" />
+57-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:32:13-37
+58        <activity
+58-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:33:9-47:20
+59            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+59-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:34:13-70
+60            android:exported="true"
+60-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:35:13-36
+61            android:launchMode="singleTask"
+61-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:17:13-44
+62            android:theme="@style/TransparentCompat" >
+62-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:18:13-53
+63            <intent-filter>
+63-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:36:13-46:29
+64                <action android:name="android.intent.action.VIEW" />
+64-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:37:17-69
+64-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:37:25-66
+65
+66                <category android:name="android.intent.category.DEFAULT" />
+66-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:39:17-76
+66-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:39:27-73
+67                <category android:name="android.intent.category.BROWSABLE" />
+67-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:40:17-78
+67-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:40:27-75
+68
+69                <!-- Redirect URI: "kakao{NATIVE_APP_KEY}://oauth“ -->
+70                <data
+70-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:43:17-45:65
+71                    android:host="oauth"
+71-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:44:21-41
+72                    android:scheme="@string/kakao_native_key" />
+72-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:45:21-62
+73            </intent-filter>
+74        </activity>
+75        <activity
+75-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:48:9-57:20
+76            android:name="com.example.madpt.splash.SplashActivity"
+76-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:49:13-50
+77            android:exported="true"
+77-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:50:13-36
+78            android:theme="@style/SplashTheme" >
+78-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:51:13-47
+79            <intent-filter>
+79-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:52:13-56:29
+80                <action android:name="android.intent.action.MAIN" />
+80-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:53:17-69
+80-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:53:25-66
+81
+82                <category android:name="android.intent.category.LAUNCHER" />
+82-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:55:17-77
+82-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:55:27-74
+83            </intent-filter>
+84        </activity>
+85        <activity
+85-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:58:9-60:39
+86            android:name="com.example.madpt.MainActivity"
+86-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:59:13-41
+87            android:exported="true" />
+87-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:60:13-36
+88        <activity
+88-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:61:9-63:39
+89            android:name="com.example.madpt.login.LoginActivity"
+89-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:62:13-48
+90            android:exported="true" />
+90-->C:\Users\moon\AndroidStudioProjects\MadPT-client-dev\app\src\main\AndroidManifest.xml:63:13-36
+91        <activity
+91-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:10:9-14:56
+92            android:name="com.kakao.sdk.auth.TalkAuthCodeActivity"
+92-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:11:13-67
+93            android:exported="false"
+93-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:12:13-37
+94            android:launchMode="singleTask"
+94-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:13:13-44
+95            android:theme="@style/TransparentCompat" />
+95-->[com.kakao.sdk:v2-auth:2.9.0] C:\Users\moon\.gradle\caches\transforms-3\852a9dc1f798527aae21c2778532c9d5\transformed\jetified-v2-auth-2.9.0\AndroidManifest.xml:14:13-53
+96        <activity
+96-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:12:9-19:20
+97            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+97-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:13:13-86
+98            android:configChanges="orientation|screenSize"
+98-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:14:13-59
+99            android:exported="false"
+99-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:15:13-37
+100            android:label="@string/com_kakao_login_button"
+100-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:16:13-59
+101            android:launchMode="singleTop"
+101-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:17:13-43
+102            android:windowSoftInputMode="adjustResize" >
+102-->[com.kakao.sdk:auth:1.30.3] C:\Users\moon\.gradle\caches\transforms-3\7e8223dbd380e317d16518dd181ebaaf\transformed\jetified-auth-1.30.3\AndroidManifest.xml:18:13-55
+103        </activity>
+104
+105        <provider
+105-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+106            android:name="androidx.startup.InitializationProvider"
+106-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+107            android:authorities="com.example.madpt.androidx-startup"
+107-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+108            android:exported="false" >
+108-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+109            <meta-data
+109-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+110                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+110-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+111                android:value="androidx.startup" />
+111-->[androidx.emoji2:emoji2:1.0.0] C:\Users\moon\.gradle\caches\transforms-3\fa07d64a323c82fb5bb499f909e79817\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+112            <meta-data
+112-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\moon\.gradle\caches\transforms-3\8290d7a476d44552e26bd4a6313ce50c\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+113                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+113-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\moon\.gradle\caches\transforms-3\8290d7a476d44552e26bd4a6313ce50c\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
+114                android:value="androidx.startup" />
+114-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\moon\.gradle\caches\transforms-3\8290d7a476d44552e26bd4a6313ce50c\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+115        </provider>
+116    </application>
+117
+118</manifest>

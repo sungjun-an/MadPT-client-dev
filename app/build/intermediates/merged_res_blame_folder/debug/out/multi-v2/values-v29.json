@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v29/values-v29.xml",
+            "outputFile": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v29\\values-v29.xml",
             "map": [
                 {
-                    "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/values-v29/themes.xml",
+                    "source": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\src\\main\\res\\values-v29\\themes.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -14,29 +14,12 @@
                         "endOffsets": "285"
                     },
                     "to": {
-                        "startLines": "4",
+                        "startLines": "2",
                         "startColumns": "4",
-                        "startOffsets": "213",
-                        "endLines": "8",
+                        "startOffsets": "55",
+                        "endLines": "6",
                         "endColumns": "12",
-                        "endOffsets": "435"
-                    }
-                },
-                {
-                    "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/values-v29/kakao_api_key.xml",
-                    "from": {
-                        "startLines": "1,2",
-                        "startColumns": "4,4",
-                        "startOffsets": "16,91",
-                        "endColumns": "74,82",
-                        "endOffsets": "86,169"
-                    },
-                    "to": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,130",
-                        "endColumns": "74,82",
-                        "endOffsets": "125,208"
+                        "endOffsets": "277"
                     }
                 }
             ]

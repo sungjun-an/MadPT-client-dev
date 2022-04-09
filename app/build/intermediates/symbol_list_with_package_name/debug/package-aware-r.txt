@@ -64,6 +64,9 @@ animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
 array com_kakao_accounts_array
+array tfe_pe_device_name
+array tfe_pe_models_array
+array tfe_pe_tracker_array
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -2588,6 +2591,7 @@ drawable plus_button
 drawable pushup
 drawable round_layout_background
 drawable round_layout_meal
+drawable rounded_edge
 drawable selector_login_button
 drawable splash_background
 drawable standing
@@ -2705,6 +2709,7 @@ id bestChoice
 id blocking
 id bnv_main
 id bottom
+id bottom_sheet
 id bounce
 id bounceBoth
 id bounceEnd
@@ -2716,6 +2721,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btn_Camera
 id btn_add
 id btn_breakTime
 id btn_no
@@ -2726,7 +2732,6 @@ id btn_routinLoading
 id btn_routineStore
 id btn_set_minus
 id btn_set_plus
-id button
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3056,6 +3061,9 @@ id spacer
 id special_effects_controller_view_tag
 id spline
 id split_action_bar
+id spnDevice
+id spnModel
+id spnTracker
 id spread
 id spread_inside
 id spring
@@ -3078,6 +3086,8 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id surfaceView
+id swPoseClassification
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3118,6 +3128,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
+id toolbar
 id top
 id topPanel
 id touch_outside
@@ -3134,11 +3145,18 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvClassificationValue1
+id tvClassificationValue2
+id tvClassificationValue3
+id tvFps
+id tvScore
 id unchecked
 id uniform
 id unlabeled
 id up
 id useLogo
+id vClassificationOption
+id vTrackerOption
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3248,6 +3266,8 @@ layout activity_login
 layout activity_main
 layout activity_start_profile
 layout activity_talk_auth_code
+layout activity_training_ai_camera
+layout bottom_sheet_layout
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -3395,6 +3415,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string action_sign_in
 string action_sign_in_short
+string androidx_camera_default_config_provider
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -3541,6 +3562,16 @@ string prompt_email
 string prompt_password
 string search_menu_title
 string status_bar_notification_info_overflow
+string tfe_pe_app_name
+string tfe_pe_gpu_error
+string tfe_pe_request_permission
+string tfe_pe_tv_classification_value
+string tfe_pe_tv_device
+string tfe_pe_tv_fps
+string tfe_pe_tv_model
+string tfe_pe_tv_pose_classification
+string tfe_pe_tv_score
+string tfe_pe_tv_tracking
 string title_activity_login
 string title_for_ssl_warning
 string welcome

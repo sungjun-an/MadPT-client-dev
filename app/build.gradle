@@ -32,7 +32,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+    viewBinding {
+        enabled = true
+    }
+
 }
+
+apply from:"download.gradle"
 
 dependencies {
     implementation group: 'com.kakao.sdk', name: 'usermgmt', version: '1.30.3'
@@ -48,8 +54,15 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.github.lzyzsd:circleprogress:1.1.0'
 
+    implementation 'org.tensorflow:tensorflow-lite:2.5.0'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.5.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.3.0'
+
     implementation "androidx.fragment:fragment-ktx:1.3.6"
+    implementation 'androidx.camera:camera-core:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "com.google.truth:truth:1.1.3"
+
 }

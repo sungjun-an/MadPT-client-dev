@@ -24,13 +24,13 @@ public final class FragmentExcerciseBinding implements ViewBinding {
   public final Button btnBreakTime;
 
   @NonNull
+  public final Button btnCamera;
+
+  @NonNull
   public final Button btnRoutinLoading;
 
   @NonNull
   public final Button btnRoutineStore;
-
-  @NonNull
-  public final Button button;
 
   @NonNull
   public final RecyclerView recyclerView;
@@ -39,13 +39,13 @@ public final class FragmentExcerciseBinding implements ViewBinding {
   public final RecyclerView trainListRecyclerView;
 
   private FragmentExcerciseBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnBreakTime,
-      @NonNull Button btnRoutinLoading, @NonNull Button btnRoutineStore, @NonNull Button button,
+      @NonNull Button btnCamera, @NonNull Button btnRoutinLoading, @NonNull Button btnRoutineStore,
       @NonNull RecyclerView recyclerView, @NonNull RecyclerView trainListRecyclerView) {
     this.rootView = rootView;
     this.btnBreakTime = btnBreakTime;
+    this.btnCamera = btnCamera;
     this.btnRoutinLoading = btnRoutinLoading;
     this.btnRoutineStore = btnRoutineStore;
-    this.button = button;
     this.recyclerView = recyclerView;
     this.trainListRecyclerView = trainListRecyclerView;
   }
@@ -83,6 +83,12 @@ public final class FragmentExcerciseBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_Camera;
+      Button btnCamera = ViewBindings.findChildViewById(rootView, id);
+      if (btnCamera == null) {
+        break missingId;
+      }
+
       id = R.id.btn_routinLoading;
       Button btnRoutinLoading = ViewBindings.findChildViewById(rootView, id);
       if (btnRoutinLoading == null) {
@@ -92,12 +98,6 @@ public final class FragmentExcerciseBinding implements ViewBinding {
       id = R.id.btn_routineStore;
       Button btnRoutineStore = ViewBindings.findChildViewById(rootView, id);
       if (btnRoutineStore == null) {
-        break missingId;
-      }
-
-      id = R.id.button;
-      Button button = ViewBindings.findChildViewById(rootView, id);
-      if (button == null) {
         break missingId;
       }
 
@@ -113,8 +113,8 @@ public final class FragmentExcerciseBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentExcerciseBinding((ConstraintLayout) rootView, btnBreakTime,
-          btnRoutinLoading, btnRoutineStore, button, recyclerView, trainListRecyclerView);
+      return new FragmentExcerciseBinding((ConstraintLayout) rootView, btnBreakTime, btnCamera,
+          btnRoutinLoading, btnRoutineStore, recyclerView, trainListRecyclerView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

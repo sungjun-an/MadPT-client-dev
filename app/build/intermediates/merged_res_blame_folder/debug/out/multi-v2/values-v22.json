@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
+            "outputFile": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
             "map": [
                 {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/a3fb063a790701b1bd5192a4e0da0133/transformed/appcompat-1.4.1/res/values-v22/values-v22.xml",
+                    "source": "C:\\Users\\moon\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-v22\\values-v22.xml",
                     "from": {
                         "startLines": "2,3,4,9",
                         "startColumns": "4,4,4,4",

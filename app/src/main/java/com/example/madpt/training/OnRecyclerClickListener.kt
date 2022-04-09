@@ -7,3 +7,7 @@ interface OnRecyclerClickListener {
 interface OnRemove{
     fun OnRemoveClick(position: Int)
 }
+
+interface SetBreakTime{
+    fun SetBreak(time: Int)
+}

@@ -140,6 +140,10 @@
         "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/drawable-v24/half_round_progressbar.xml"
     },
     {
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/merged_res/debug/layout_break_time_set_dialog.xml.flat",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/break_time_set_dialog.xml"
+    },
+    {
         "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
     },

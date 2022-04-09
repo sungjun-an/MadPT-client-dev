@@ -2708,6 +2708,7 @@ int id bounce 0x7f0a0069
 int id bounceBoth 0x7f0a006a
 int id bounceEnd 0x7f0a006b
 int id bounceStart 0x7f0a006c
+int id breakTime 0x7f0a022e
 int id breakfast 0x7f0a006d
 int id breakfast_frame 0x7f0a006e
 int id browser_actions_header_text 0x7f0a006f
@@ -2717,8 +2718,10 @@ int id browser_actions_menu_items 0x7f0a0072
 int id browser_actions_menu_view 0x7f0a0073
 int id btn_add 0x7f0a0074
 int id btn_breakTime 0x7f0a0075
+int id btn_minus 0x7f0a022f
 int id btn_no 0x7f0a0076
 int id btn_ok 0x7f0a0077
+int id btn_plus 0x7f0a0230
 int id btn_rep_minus 0x7f0a0078
 int id btn_rep_plus 0x7f0a0079
 int id btn_routinLoading 0x7f0a007a
@@ -2729,6 +2732,7 @@ int id button 0x7f0a022c
 int id buttonPanel 0x7f0a007e
 int id cache_measures 0x7f0a007f
 int id callMeasure 0x7f0a0080
+int id cancel 0x7f0a0231
 int id cancel_action 0x7f0a0081
 int id cancel_button 0x7f0a0082
 int id cancel_get_weihgt_button 0x7f0a0083
@@ -2756,6 +2760,7 @@ int id clockwise 0x7f0a0098
 int id closest 0x7f0a0099
 int id collapseActionView 0x7f0a009a
 int id compress 0x7f0a009b
+int id confirm 0x7f0a0232
 int id confirm_button 0x7f0a009c
 int id constraint 0x7f0a009d
 int id container 0x7f0a009e
@@ -3102,6 +3107,7 @@ int id textSpacerNoButtons 0x7f0a01f1
 int id textSpacerNoTitle 0x7f0a01f2
 int id textStart 0x7f0a01f3
 int id textTop 0x7f0a01f4
+int id textView 0x7f0a0233
 int id textView2 0x7f0a01f5
 int id text_input_end_icon 0x7f0a01f6
 int id text_input_error_icon 0x7f0a01f7
@@ -3247,6 +3253,7 @@ int layout activity_login 0x7f0d001d
 int layout activity_main 0x7f0d001e
 int layout activity_start_profile 0x7f0d001f
 int layout activity_talk_auth_code 0x7f0d0020
+int layout break_time_set_dialog 0x7f0d0091
 int layout browser_actions_context_menu_page 0x7f0d0021
 int layout browser_actions_context_menu_row 0x7f0d0022
 int layout custom_dialog 0x7f0d0023

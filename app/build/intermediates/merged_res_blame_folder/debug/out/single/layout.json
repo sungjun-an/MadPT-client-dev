@@ -12,6 +12,10 @@
         "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/fragment_statistics.xml"
     },
     {
+        "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/break_time_set_dialog.xml",
+        "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/break_time_set_dialog.xml"
+    },
+    {
         "merged": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
         "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/layout/activity_main.xml"
     },

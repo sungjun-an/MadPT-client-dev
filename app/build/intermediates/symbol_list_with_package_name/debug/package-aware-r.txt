@@ -2709,6 +2709,7 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id breakTime
 id breakfast
 id breakfast_frame
 id browser_actions_header_text
@@ -2718,8 +2719,10 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btn_add
 id btn_breakTime
+id btn_minus
 id btn_no
 id btn_ok
+id btn_plus
 id btn_rep_minus
 id btn_rep_plus
 id btn_routinLoading
@@ -2730,6 +2733,7 @@ id button
 id buttonPanel
 id cache_measures
 id callMeasure
+id cancel
 id cancel_action
 id cancel_button
 id cancel_get_weihgt_button
@@ -2757,6 +2761,7 @@ id clockwise
 id closest
 id collapseActionView
 id compress
+id confirm
 id confirm_button
 id constraint
 id container
@@ -3103,6 +3108,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textView
 id textView2
 id text_input_end_icon
 id text_input_error_icon
@@ -3248,6 +3254,7 @@ layout activity_login
 layout activity_main
 layout activity_start_profile
 layout activity_talk_auth_code
+layout break_time_set_dialog
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog

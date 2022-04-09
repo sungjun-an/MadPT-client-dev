@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
@@ -23,15 +25,19 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove{
 
     private var trainList = arrayListOf<testmodel>()
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
-        Toast.makeText(context,"${set}   ${rep}   ${itemTitle}",Toast.LENGTH_LONG).show()
         trainList.add(testmodel(itemTitle,image,set,rep))
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
     }
+
+    override fun OnRemoveClick(position: Int) {
+        trainList.removeAt(position)
+    }
+
     private var _binding: FragmentExcerciseBinding? = null
     private val binding get() = _binding!!
     // TODO: Rename and change types of parameters
@@ -51,8 +57,8 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
-
         // Inflate the layout for this fragment
+
         binding.btnCamera.setOnClickListener {
             val intent = Intent(requireContext(), TrainingAiCameraActivity::class.java)// 액티비티 이만 병경하셈
             intent.putExtra("trainList", trainList)
@@ -68,8 +74,8 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
-        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.trainListRecyclerView.adapter = TrainingList(requireContext(), trainList)
+        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
+        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
     }
 
     companion object {

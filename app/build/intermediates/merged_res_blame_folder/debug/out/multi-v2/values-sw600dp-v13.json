@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\dksj9\\AndroidStudioProjects\\Git\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "outputFile": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dksj9\\.gradle\\caches\\transforms-3\\f24c44404471258041633103262f9700\\transformed\\material-1.5.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\f24c44404471258041633103262f9700\\transformed\\material-1.5.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dksj9\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

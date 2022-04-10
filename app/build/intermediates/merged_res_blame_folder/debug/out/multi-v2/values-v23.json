@@ -1,47 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
             "outputFile": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
                     "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\f24c44404471258041633103262f9700\\transformed\\material-1.5.0\\res\\values-v23\\values-v23.xml",
-=======
-            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
-            "map": [
-                {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/c963e6c0abb609830ae4bb7e0da0b1e0/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "200"
-                    },
-                    "to": {
-                        "startLines": "50",
-                        "startColumns": "4",
-                        "startOffsets": "3524",
-                        "endLines": "52",
-                        "endColumns": "12",
-                        "endOffsets": "3669"
-                    }
-                },
-                {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/a3fb063a790701b1bd5192a4e0da0133/transformed/appcompat-1.4.1/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1371,2267,2386,2513,2735,2959,3074,3181,3294",
-                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
-                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1366,2262,2381,2508,2730,2954,3069,3176,3289,3519"
-                    }
-                },
-                {
-                    "source": "/home/sjan/.gradle/caches/transforms-3/f24c44404471258041633103262f9700/transformed/material-1.5.0/res/values-v23/values-v23.xml",
->>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     "from": {
                         "startLines": "2,5,8,13,17,20,23,26,31,34,38",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -58,7 +21,6 @@
                         "endColumns": "10,10,10,10,10,10,10,10,10,10,10",
                         "endOffsets": "3885,4095,4415,4652,4859,5066,5269,5601,5803,6068,6341"
                     }
-<<<<<<< HEAD
                 },
                 {
                     "source": "C:\\Users\\김성환\\.gradle\\caches\\transforms-3\\a3fb063a790701b1bd5192a4e0da0133\\transformed\\appcompat-1.4.1\\res\\values-v23\\values-v23.xml",
@@ -89,8 +51,6 @@
                         "endColumns": "12",
                         "endOffsets": "3669"
                     }
-=======
->>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                 }
             ]
         }

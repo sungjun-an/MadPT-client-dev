@@ -1,23 +1,16 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
             "outputFile": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w1240dp-v13\\values-w1240dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\src\\main\\res\\values-w1240dp\\dimens.xml",
-=======
-            "outputFile": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w1240dp-v13/values-w1240dp-v13.xml",
-            "map": [
-                {
-                    "source": "/home/sjan/AndroidStudioProjects/MadPT-client-dev/app/src/main/res/values-w1240dp/dimens.xml",
->>>>>>> 7b5d7919c53de68a180cb3e02e54ac1fe58f60e9
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",
-                        "startOffsets": "16",
+                        "startOffsets": "17",
                         "endColumns": "58",
-                        "endOffsets": "70"
+                        "endOffsets": "71"
                     },
                     "to": {
                         "startLines": "2",

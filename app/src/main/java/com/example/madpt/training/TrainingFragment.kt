@@ -1,13 +1,14 @@
 package com.example.madpt.training
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
 
@@ -21,15 +22,25 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime{
 
     private var trainList = arrayListOf<testmodel>()
+    private var breakTime = 0
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
-        Toast.makeText(context,"${set}   ${rep}   ${itemTitle}",Toast.LENGTH_LONG).show()
         trainList.add(testmodel(itemTitle,image,set,rep))
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
     }
+
+    override fun OnRemoveClick(position: Int) {
+        trainList.removeAt(position)
+    }
+
+    override fun SetBreak(time: Int) {
+        Toast.makeText(context,"${time}",Toast.LENGTH_LONG).show()
+        breakTime = time
+    }
+
     private var _binding: FragmentExcerciseBinding? = null
     private val binding get() = _binding!!
     // TODO: Rename and change types of parameters
@@ -50,6 +61,10 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
     ): View? {
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
 
+        binding.btnBreakTime.setOnClickListener {
+            val dialog = BreakTimeSetDialog(requireContext(), this)
+            dialog.showDialog()
+        }
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -60,8 +75,8 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener{
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
-        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.trainListRecyclerView.adapter = TrainingList(requireContext(), trainList)
+        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
+        binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
     }
 
     companion object {

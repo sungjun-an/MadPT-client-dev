@@ -20,6 +20,10 @@
         "source": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\layout_break_time_set_dialog.xml.flat",
+        "source": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\src\\main\\res\\layout\\break_time_set_dialog.xml"
+    },
+    {
         "merged": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Android\\RealGit\\MadPT-client-dev\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.webp"
     },

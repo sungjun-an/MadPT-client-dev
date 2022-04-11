@@ -3,6 +3,7 @@
 /local.properties
 */.idea/*
 *.idea/*
+app/build/
 .DS_Store
 MADPT/build
 /captures

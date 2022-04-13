@@ -1,19 +1,26 @@
 package com.example.madpt.splash
 
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Base64
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
 import com.example.madpt.login.LoginActivity
 import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class SplashActivity :AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {

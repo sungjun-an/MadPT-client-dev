@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/maker_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="성환 식품"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/food_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="제육 볶음" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/default_kcal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="120" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Kcal" />
+</LinearLayout>

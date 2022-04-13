@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
+import com.example.madpt.diet.DietPageActivity
 import com.example.madpt.login.LoginActivity
 import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient

@@ -2,7 +2,9 @@ package com.example.madpt.diet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.madpt.R
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import com.example.madpt.*
 import com.example.madpt.databinding.ActivityDietPageBinding
 
 class DietPageActivity : AppCompatActivity() {
@@ -13,6 +15,12 @@ class DietPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDietPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sampleFoodList()
+        sampleAddFoodList()
+
+        val foodListAdapter = FoodListViewAdapter(this, AddFoodList)
+        binding.listview1.adapter = foodListAdapter
 
 
     }

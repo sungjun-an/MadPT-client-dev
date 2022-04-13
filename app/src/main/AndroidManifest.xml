@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADPT">
         <activity
+            android:name=".diet.DietPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".profile.StartProfile"
             android:exported="false" />
         <activity

@@ -62,6 +62,24 @@ class MainPageFragment : Fragment() {
             binding.kcalText.text = sum
         }
 
+        if (user.user_weight != 0.0){
+            val userWeight = user.user_weight.toString() + "Kg"
+            binding.plusButtonWeight.visibility = View.INVISIBLE
+            binding.userWeight.visibility = View.VISIBLE
+            binding.userWeight.text = userWeight
+        }
+        //유저 몸무게 있을 시 몸무게 출력
+
+        if ((user.user_Goal_weight != 0) && (user.user_weight !=0.0)){
+            val userGoalWeightRemain = (user.user_Goal_weight!!.toDouble()-user.user_weight!!.toDouble()).toString() + "kg"
+            binding.postGoalDistance.visibility = View.INVISIBLE
+            binding.goalDistance.visibility = View.VISIBLE
+            binding.goalDistance.text = userGoalWeightRemain
+        }
+        //목표 몸무게 있을시 목표몸무게 - 유저몸무게 출력
+
+
+
 
 
         binding.goalButton.setOnClickListener() {
@@ -69,7 +87,10 @@ class MainPageFragment : Fragment() {
         }
 
         binding.plusButtonWeight.setOnClickListener(){
-
+            mainActivity!!.showMessageDialog()
+        }
+        binding.userWeight.setOnClickListener(){
+            mainActivity!!.showMessageDialog()
         }
 
 

@@ -1,8 +1,12 @@
 package com.example.madpt
 
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.databinding.ActivityMainBinding
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -14,6 +18,8 @@ import com.example.madpt.social.SocialFragment
 import com.example.madpt.statistics.StatisticsFragment
 import com.example.madpt.training.TrainingFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class MainActivity : AppCompatActivity() {
 
@@ -87,9 +93,10 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    private fun showMessageDialog(){
+    fun showMessageDialog(){
         val customDialog = PutWeightDialog(finishApp = {finish()})
         customDialog.show(supportFragmentManager, "PutWeightDialog")
     }
+
 
 }

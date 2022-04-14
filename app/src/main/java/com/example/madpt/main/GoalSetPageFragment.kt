@@ -40,13 +40,10 @@ class GoalSetPageFragment : Fragment() {
 
         binding.goalSaveButton.setOnClickListener {
             try {
-
-
                 user.eat_kcal = binding.goalEatkcal.text.toString().toInt()
                 user.move_kcal = binding.goalMovekcal.text.toString().toInt()
                 user.user_Goal_weight = binding.goalWeight.text.toString().toInt()
                 mainActivity!!.setFragment()
-
             } catch (e: NumberFormatException) {
                 Toast.makeText(requireActivity(), "정수만 입력해주시기 바랍니다.", Toast.LENGTH_LONG).show()
             }

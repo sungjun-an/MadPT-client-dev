@@ -9,8 +9,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
@@ -25,9 +23,10 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime{
 
     private var trainList = arrayListOf<testmodel>()
+    private var breakTime = 0
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))
@@ -36,6 +35,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove{
 
     override fun OnRemoveClick(position: Int) {
         trainList.removeAt(position)
+    }
+
+    override fun SetBreak(time: Int) {
+        Toast.makeText(context,"${time}",Toast.LENGTH_LONG).show()
+        breakTime = time
     }
 
     private var _binding: FragmentExcerciseBinding? = null
@@ -57,6 +61,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove{
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
+
+        binding.btnBreakTime.setOnClickListener {
+            val dialog = BreakTimeSetDialog(requireContext(), this)
+            dialog.showDialog()
+        }
         // Inflate the layout for this fragment
 
         binding.btnCamera.setOnClickListener {

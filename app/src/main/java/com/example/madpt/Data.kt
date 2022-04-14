@@ -20,7 +20,7 @@ data class User(
     var user_height : Double
 )
 
-var user = User(user_id = 1, 1, 2, 90.0, 70, 180.2)
+var user = User(user_id = 1, 1, 2, 0.0, 0, 180.2)
 val dietType = arrayListOf<AddDiet>()
 val dietType1 = AddDiet(
     user_id = 1,
@@ -29,6 +29,6 @@ val dietType1 = AddDiet(
     timestape = 1,
     type = 0,
     unit = "인분",
-    weight = 12,
+    weight = 9,
     kcal = 0
 )

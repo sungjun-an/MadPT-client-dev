@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
+import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +67,13 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             dialog.showDialog()
         }
         // Inflate the layout for this fragment
+
+        binding.btnCamera.setOnClickListener {
+            val intent = Intent(requireContext(), TrainingAiCameraActivity::class.java)// 액티비티 이만 병경하셈
+            intent.putExtra("trainList", trainList)
+            startActivity(intent)
+        }
+
         return binding.root
     }
 

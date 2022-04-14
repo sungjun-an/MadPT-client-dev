@@ -1,2 +1,0 @@
-com/example/madpt/test/BuildConfig.java
- com.example.madpt.test.BuildConfig

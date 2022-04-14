@@ -3123,6 +3123,7 @@ int id textinput_placeholder 0x7f0a0204
 int id textinput_prefix_text 0x7f0a0205
 int id textinput_suffix_text 0x7f0a0206
 int id time 0x7f0a0207
+int id timer 0x7f0a023c
 int id title 0x7f0a0208
 int id titleDividerNoCustom 0x7f0a0209
 int id title_template 0x7f0a020a

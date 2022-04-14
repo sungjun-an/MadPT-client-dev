@@ -113,6 +113,8 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             )
         )
 
+        Log.d("%s", listOf(person).toString())
+
         return listOf(person)
     }
 

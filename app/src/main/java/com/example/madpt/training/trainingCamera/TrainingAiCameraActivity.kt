@@ -58,6 +58,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     /** Default device is CPU */
     private var device = Device.CPU
 
+    private lateinit var Timer: TextView // test for timer
     private lateinit var tvScore: TextView
     private lateinit var tvFPS: TextView
     private lateinit var spnDevice: Spinner
@@ -136,6 +137,8 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         setContentView(R.layout.activity_training_ai_camera)
         // keep screen on while app is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        Timer = findViewById(R.id.timer)
+        // test for timer
         tvScore = findViewById(R.id.tvScore)
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)

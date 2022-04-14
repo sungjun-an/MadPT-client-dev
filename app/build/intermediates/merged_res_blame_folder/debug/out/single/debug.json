@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\layout_put_weight_dialog.xml.flat",
         "source": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\src\\main\\res\\layout\\put_weight_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\moon\\AndroidStudioProjects\\MadPT-client-dev\\app\\build\\intermediates\\merged_res\\debug\\drawable_splash_background.xml.flat",

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -24,12 +25,16 @@ public final class ActivityTrainingAiCameraBinding implements ViewBinding {
   public final SurfaceView surfaceView;
 
   @NonNull
+  public final TextView timer;
+
+  @NonNull
   public final Toolbar toolbar;
 
   private ActivityTrainingAiCameraBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull SurfaceView surfaceView, @NonNull Toolbar toolbar) {
+      @NonNull SurfaceView surfaceView, @NonNull TextView timer, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.surfaceView = surfaceView;
+    this.timer = timer;
     this.toolbar = toolbar;
   }
 
@@ -66,13 +71,19 @@ public final class ActivityTrainingAiCameraBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.timer;
+      TextView timer = ViewBindings.findChildViewById(rootView, id);
+      if (timer == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
 
-      return new ActivityTrainingAiCameraBinding((CoordinatorLayout) rootView, surfaceView,
+      return new ActivityTrainingAiCameraBinding((CoordinatorLayout) rootView, surfaceView, timer,
           toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);

@@ -39,7 +39,6 @@ fun sampleAddFoodList(){
             temp_food_maker = FoodList[i].maker_name
         }
         else {temp_food_maker = "["+FoodList[i].maker_name+"]"}
-
     AddFoodList.add(AddFoodData(food_id = FoodList[i].food_id, food_name = FoodList[i].food_name, maker_name = temp_food_maker, default_kcal = FoodList[i].default_kcal.toInt()))}
 }
 

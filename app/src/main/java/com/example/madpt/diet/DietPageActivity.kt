@@ -22,6 +22,5 @@ class DietPageActivity : AppCompatActivity() {
         val foodListAdapter = FoodListViewAdapter(this, AddFoodList)
         binding.listview1.adapter = foodListAdapter
 
-
     }
 }

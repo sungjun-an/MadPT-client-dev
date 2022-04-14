@@ -2,6 +2,7 @@ package com.example.madpt.main
 
 import android.app.ProgressDialog.show
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentMainPageBinding
+import com.example.madpt.diet.DietPageActivity
 import com.example.madpt.dietType
 import com.example.madpt.dietType1
 import com.example.madpt.user
@@ -94,6 +96,10 @@ class MainPageFragment : Fragment() {
         }
 
 
+        binding.plusButtonBreakfast.setOnClickListener(){
+            val intent = Intent(context,DietPageActivity::class.java)
+            startActivity(intent)
+        }//DietPageActicity로의 화면전환
 
 
         return binding.root

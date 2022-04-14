@@ -24,7 +24,6 @@ class FoodListViewAdapter(
 
     override fun getItemId(position: Int): Long = position.toLong()
 
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding = AddFoodListviewBinding.inflate(LayoutInflater.from(context))
 

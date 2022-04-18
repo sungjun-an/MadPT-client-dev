@@ -2,15 +2,19 @@ package com.example.madpt.profile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.ActivityStartProfileBinding
 import com.example.madpt.login.LoginActivity
+import com.example.madpt.testmodel
 
 class StartProfile : AppCompatActivity() {
 
     private lateinit var binding: ActivityStartProfileBinding
 
+    @SuppressWarnings("unchecked")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStartProfileBinding.inflate(layoutInflater)

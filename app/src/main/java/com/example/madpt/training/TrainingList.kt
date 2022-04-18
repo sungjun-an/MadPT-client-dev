@@ -1,6 +1,5 @@
 package com.example.madpt.training
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,14 +11,12 @@ import com.example.madpt.testmodel
 import java.util.*
 import kotlin.collections.ArrayList
 
-class TrainingList(private val dataList:ArrayList<testmodel>, listen:OnRemove): RecyclerView.Adapter<TrainingList.ViewHolder>() {
+class TrainingList(private val dataList:ArrayList<testmodel>, listen:OnRemove):
+    RecyclerView.Adapter<TrainingList.ViewHolder>(), Swaping {
 
     private var onRemoveClickListen = listen
 
-    fun swapData(fromPos: Int, toPos: Int){
-        Collections.swap(dataList, fromPos, toPos)
-        notifyItemMoved(fromPos, toPos)
-    }
+
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -43,13 +40,17 @@ class TrainingList(private val dataList:ArrayList<testmodel>, listen:OnRemove): 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
         viewholder.cancelTrain.setOnClickListener {
             onRemoveClickListen.OnRemoveClick(i)
-
             notifyDataSetChanged()
         }
         viewholder.bind(dataList[i])
     }
-
     override fun getItemCount(): Int {
         return dataList.size
+    }
+
+    override fun swapData(fromPos: Int, toPos: Int) {
+        Collections.swap(dataList,fromPos, toPos)
+
+        notifyItemMoved(fromPos, toPos)
     }
 }

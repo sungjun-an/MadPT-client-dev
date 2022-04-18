@@ -1,5 +1,8 @@
 package com.example.madpt
 
+import com.google.gson.annotations.SerializedName
+import java.util.*
+
 data class AddDiet(
     val timestape: Int,
     val user_id: Int,

@@ -1,17 +1,20 @@
 package com.example.madpt.training
 
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,19 +26,21 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping {
 
     private var trainList = arrayListOf<testmodel>()
     private var breakTime = 0
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))
+        Toast.makeText(context,"${itemTitle}, $image, $set, $rep",Toast.LENGTH_LONG).show()
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun OnRemoveClick(position: Int) {
         trainList.removeAt(position)
     }
+
 
     override fun SetBreak(time: Int) {
         Toast.makeText(context,"${time}",Toast.LENGTH_LONG).show()
@@ -66,6 +71,10 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             val dialog = BreakTimeSetDialog(requireContext(), this)
             dialog.showDialog()
         }
+        binding.btnRoutineStore.setOnClickListener {
+            val dialog = StoreTrain(requireContext(), trainList, breakTime)
+            dialog.showDialog()
+        }
         // Inflate the layout for this fragment
 
         binding.btnCamera.setOnClickListener {
@@ -83,8 +92,16 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
-        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
         binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
+        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
+
+        val recyclerViewAdapter = TrainingList(trainList, this)
+        binding.trainListRecyclerView.adapter = recyclerViewAdapter
+
+        val swipeHelperCallback = SwipeHelperCallback(recyclerViewAdapter)
+        ItemTouchHelper(swipeHelperCallback).attachToRecyclerView(binding.trainListRecyclerView)
+
+        binding.trainListRecyclerView.addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL))
     }
 
     companion object {
@@ -105,5 +122,10 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun swapData(fromPos: Int, toPos: Int) {
+        Collections.swap(trainList, fromPos, toPos)
+        binding.trainListRecyclerView.adapter?.notifyItemMoved(fromPos, toPos)
     }
 }

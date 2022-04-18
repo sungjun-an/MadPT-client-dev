@@ -1,5 +1,7 @@
 package com.example.madpt
 
+import java.io.Serializable
+
 data class FoodData(
     val food_name: String,
     val food_id : Int,
@@ -9,7 +11,9 @@ data class FoodData(
     val default_carbohydrate : Double,
     val default_protein : Double,
     val default_fat : Double
-)
+): Serializable{
+
+}
 
 data class AddFoodData(
     val food_name: String,
@@ -30,7 +34,12 @@ fun sampleFoodList(){
     FoodList.add(FoodData("비빔냉면", 6, "", 300.0,200.0,10.0,100.0,40.0))
 }
 
+
+
+
+
 val AddFoodList = ArrayList<AddFoodData>()
+
 
 fun sampleAddFoodList(){
     var temp_food_maker : String?

@@ -1,5 +1,7 @@
 package com.example.madpt.diet
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -21,6 +23,11 @@ class DietPageActivity : AppCompatActivity() {
 
         val foodListAdapter = FoodListViewAdapter(this, AddFoodList)
         binding.listview1.adapter = foodListAdapter
+
+        binding.foodSearchIntentButton.setOnClickListener(){
+            val intent = Intent(this,DietSearchActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

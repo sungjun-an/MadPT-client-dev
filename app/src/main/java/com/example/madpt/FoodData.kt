@@ -1,6 +1,7 @@
 package com.example.madpt
 
 import java.io.Serializable
+import android.content.Intent
 
 data class FoodData(
     var food_name: String,
@@ -47,22 +48,10 @@ fun sampleFoodList(){
     FoodList.add(FoodData("비빔냉면", 6, "", 300.0,200.0,10.0,100.0,40.0))
 }
 
+val AddFoodList = ArrayList<ModifyFoodData>()
 
 
 
-
-val AddFoodList = ArrayList<AddFoodData>()
-
-
-fun sampleAddFoodList(){
-    var temp_food_maker : String?
-    for(i in 0..5){
-        if(FoodList[i].maker_name.equals("")){
-            temp_food_maker = FoodList[i].maker_name
-        }
-        else {temp_food_maker = "["+FoodList[i].maker_name+"]"}
-    AddFoodList.add(AddFoodData(food_id = FoodList[i].food_id, food_name = FoodList[i].food_name, maker_name = temp_food_maker, default_kcal = FoodList[i].default_kcal.toInt()))}
-}
 
 
 

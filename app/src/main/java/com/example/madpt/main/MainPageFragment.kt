@@ -98,6 +98,7 @@ class MainPageFragment : Fragment() {
 
         binding.plusButtonBreakfast.setOnClickListener(){
             val intent = Intent(context,DietPageActivity::class.java)
+            intent.putExtra("diet_type","Breakfast")
             startActivity(intent)
         }//DietPageActicity로의 화면전환
 

@@ -3,15 +3,28 @@ package com.example.madpt
 import java.io.Serializable
 
 data class FoodData(
-    val food_name: String,
+    var food_name: String,
     val food_id : Int,
     val maker_name : String?,
     val default_weight : Double,
-    val default_kcal : Double,
-    val default_carbohydrate : Double,
-    val default_protein : Double,
-    val default_fat : Double
+    var default_kcal : Double,
+    var default_carbohydrate : Double,
+    var default_protein : Double,
+    var default_fat : Double
 ): Serializable{
+
+}
+
+data class ModifyFoodData(
+    var food_name : String,
+    val food_id: Int,
+    val maker_name: String?,
+    var weight : Double,
+    var kcal : Double,
+
+    var unit : String,
+    var count : Int
+) : Serializable{
 
 }
 

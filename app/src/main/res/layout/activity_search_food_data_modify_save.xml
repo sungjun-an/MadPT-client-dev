@@ -80,7 +80,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="1회 제공량 : "
                 android:textColor="@color/white"
                 android:textSize="13dp" />
@@ -159,7 +159,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <NumberPicker
+                    <EditText
+                        android:id="@+id/modify_unit"
                         android:layout_width="0dp"
                         android:layout_height="37dp"
                         android:layout_gravity="center"
@@ -167,7 +168,7 @@
                         android:background="@color/white"
                         android:gravity="center"
                         android:text="개"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="25dp" />
 
 

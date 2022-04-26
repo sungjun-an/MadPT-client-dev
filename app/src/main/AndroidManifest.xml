@@ -12,13 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MADPT">
-
-        <activity
-            android:name=".diet.SearchFoodDataModifySaveActivity"
-            android:exported="false" />
-        //주석추가
         <activity
             android:name=".diet.DietSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".diet.SearchFoodDataModifySaveActivity"
             android:exported="false" />
         <activity
             android:name=".diet.DietPageActivity"

@@ -6,15 +6,17 @@ import android.util.Log
 import com.example.madpt.databinding.ActivitySearchFoodDataModifySaveBinding
 import com.example.madpt.*
 
+
 class SearchFoodDataModifySaveActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchFoodDataModifySaveBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchFoodDataModifySaveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val room = intent.getSerializableExtra("roomInfo") as FoodData
+        var room = intent.getSerializableExtra("roomInfo") as FoodData
         Log.d("확인", "여기까지3")
 
         binding.modifyFoodName.setText(room.food_name)
@@ -24,6 +26,11 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
         binding.modifyFoodCount.setText("1")
         binding.modifyFoodGram.setText(room.default_weight.toString())
         binding.oneTimeText.text = room.default_weight.toString()
+
+        binding.foodModifySaveButton.setOnClickListener() {
+            val SaveFoodData = ModifyFoodData(food_id = room.food_id, food_name = binding.modifyFoodName.getText().toString(), maker_name = room.maker_name, weight = binding.modifyFoodGram.getText().toString().toDouble(), kcal = binding.modifyFoodKcal.getText().toString().toDouble(), unit = binding.modifyUnit.getText().toString(), count = binding.modifyFoodCount.toString().toInt())
+
+        }
 
     }
 }

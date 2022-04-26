@@ -30,11 +30,9 @@ class DietSearchActivity : AppCompatActivity() {
         setupEvents()
 
         binding.foodSearchListview.setOnItemClickListener{parent,view,position,id ->
-            Log.d("확인", "여기까지1")
             val clickedRoom = food_search_result_list[position]
             val mIntent = Intent(this,SearchFoodDataModifySaveActivity::class.java)
             mIntent.putExtra("roomInfo",clickedRoom)
-            Log.d("확인", "여기까지")
             startActivity(mIntent)
         }
 

@@ -21,12 +21,14 @@ import android.graphics.Bitmap
 import android.graphics.PointF
 import android.os.SystemClock
 import android.util.Log
+import com.example.madpt.testmodel
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
 import com.example.madpt.training.trainingCamera.data.BodyPart
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.KeyPoint
 import com.example.madpt.training.trainingCamera.data.Person
+import com.example.madpt.training.trainingCamera.algorithm.MadPT
 import org.tensorflow.lite.gpu.GpuDelegate
 import org.tensorflow.lite.support.common.FileUtil
 import org.tensorflow.lite.support.common.ops.NormalizeOp
@@ -36,7 +38,8 @@ import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import kotlin.math.exp
 
-class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?) :
+class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?,
+              private var madpt: MadPT, private var trainingList : ArrayList<testmodel>):
     PoseDetector {
 
     companion object {
@@ -46,9 +49,11 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         private const val TAG = "Posenet"
         private const val MODEL_FILENAME = "posenet.tflite"
 
-        fun create(context: Context, device: Device): PoseNet {
+        fun create(context: Context, device: Device, trainingList: ArrayList<testmodel>): PoseNet {
             val options = Interpreter.Options()
             var gpuDelegate: GpuDelegate? = null
+            var madpt: MadPT = MadPT();
+            val training_List : ArrayList<testmodel> = trainingList
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -66,7 +71,9 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
                         MODEL_FILENAME
                     ), options
                 ),
-                gpuDelegate
+                gpuDelegate,
+                madpt,
+                training_List
             )
         }
     }
@@ -113,9 +120,13 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             )
         )
 
-        Log.d("%s", listOf(person).toString())
+        println(madpt.excrcise_finder(trainingList[0], listOf(person)))
 
         return listOf(person)
+    }
+
+    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+        TODO("Not yet implemented")
     }
 
     /**

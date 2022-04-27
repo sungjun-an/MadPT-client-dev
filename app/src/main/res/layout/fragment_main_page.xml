@@ -476,13 +476,13 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:id="@+id/Diner"
+                            android:id="@+id/Dinner"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="13"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
-                            android:text="Diner"
+                            android:text="Dinner"
                             android:textColor="@color/white"
                             android:textSize="24sp"></TextView>
 

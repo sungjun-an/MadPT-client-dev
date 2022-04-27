@@ -2,17 +2,16 @@ package com.example.madpt.main
 
 import android.app.ProgressDialog.show
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.madpt.MainActivity
+import com.example.madpt.*
 import com.example.madpt.databinding.FragmentMainPageBinding
-import com.example.madpt.dietType
-import com.example.madpt.dietType1
-import com.example.madpt.user
+import com.example.madpt.diet.DietPageActivity
 
 class MainPageFragment : Fragment() {
 
@@ -34,26 +33,26 @@ class MainPageFragment : Fragment() {
 
         _binding = FragmentMainPageBinding.inflate(inflater, container, false)
 
-
-
-        dietType.add(dietType1)
-
         var sumKcalBreakfast: Int = 0
         var sumKcalLunch: Int = 0
         var sumKcalDinner: Int = 0
         var sumKcalSnack: Int = 0
 
-        for (x in 0 until 1) {
-            if (dietType[x].user_id == user.user_id) {
+        for (x in userDietData.indices) {
+            for(y in userDietData[x].diet_list.indices){
+                Log.d("확인", "hi"+userDietData[x].diet_type)
+            }}
 
-                when (dietType[x].type) {
-                    0 -> sumKcalBreakfast = dietType[x].kcal + sumKcalBreakfast
-                    1 -> sumKcalLunch = dietType[x].kcal + sumKcalLunch
-                    2 -> sumKcalDinner = dietType[x].kcal + sumKcalDinner
-                    3 -> sumKcalSnack = dietType[x].kcal + sumKcalSnack
+        for (x in userDietData.indices) {
+            for(y in userDietData[x].diet_list.indices)
+                when (userDietData[x].diet_type) {
+                    "Breakfast" -> sumKcalBreakfast += userDietData[x].diet_list[y].toString().toInt()
+                    "Lunch" -> sumKcalLunch += userDietData[x].diet_list[y].toString().toInt()
+                    "Dinner" -> sumKcalDinner += userDietData[x].diet_list[y].toString().toInt()
+                    "Snack" -> sumKcalSnack += userDietData[x].diet_list[y].toString().toInt()
+
                 }
             }
-        }
 
         if (sumKcalBreakfast != 0) {
             val sum: String = sumKcalBreakfast.toString() + " kcal"
@@ -94,6 +93,15 @@ class MainPageFragment : Fragment() {
         }
 
 
+        binding.plusButtonBreakfast.setOnClickListener(){
+            val intent = Intent(context,DietPageActivity::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("diet_Type","Breakfast")
+            intent.putExtra("diet_type","Breakfast")
+            intent.putExtra("myBundle",bundle)
+            startActivity(intent)
+        }//DietPageActicity로의 화면전환
 
 
         return binding.root

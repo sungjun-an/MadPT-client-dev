@@ -32,6 +32,8 @@ import android.os.HandlerThread
 import android.util.Log
 import android.view.Surface
 import android.view.SurfaceView
+import com.example.madpt.testmodel
+import com.example.madpt.training.TrainingList
 import kotlinx.coroutines.suspendCancellableCoroutine
 import com.example.madpt.training.trainingCamera.VisualizationUtils
 import com.example.madpt.training.trainingCamera.YuvToRgbConverter
@@ -41,17 +43,20 @@ import com.example.madpt.training.trainingCamera.ml.PoseClassifier
 import com.example.madpt.training.trainingCamera.ml.PoseDetector
 import com.example.madpt.training.trainingCamera.ml.TrackerType
 import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.timer
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 class CameraSource(
     private val surfaceView: SurfaceView,
-    private val listener: CameraSourceListener? = null
-) {
+    private val listener: CameraSourceListener? = null,
+    private var trainingList : ArrayList<testmodel>
+    ) {
 
     companion object {
-        private const val PREVIEW_WIDTH = 640
-        private const val PREVIEW_HEIGHT = 480
+        private const val PREVIEW_WIDTH = 1280
+        private const val PREVIEW_HEIGHT = 720
 
         /** Threshold for confidence score. */
         private const val MIN_CONFIDENCE = .2f
@@ -67,6 +72,15 @@ class CameraSource(
 
     /** Frame count that have been processed so far in an one second interval to calculate FPS. */
     private var fpsTimer: Timer? = null
+    private var excrciseTimer: Timer? = null
+    private var currentReps: Int = 0
+    private var currentSets: Int = 0
+    private var currentFeedback: Int = 0
+    private var currentExcrcise: String = ""
+    private var nextExcrcise: String = ""
+    private var time = 0
+    private var min = 0
+    private var sec = 0
     private var frameProcessedInOneSecondInterval = 0
     private var framesPerSecond = 0
 
@@ -177,6 +191,10 @@ class CameraSource(
         }
     }
 
+    fun prepareTrainer(){
+        startTimer()
+    }
+
     fun setDetector(detector: PoseDetector) {
         synchronized(lock) {
             if (this.detector != null) {
@@ -221,6 +239,17 @@ class CameraSource(
         )
     }
 
+    fun startTimer() {
+        excrciseTimer = Timer()
+        excrciseTimer = timer(period = 1000){
+            time++
+            min = time / 60
+            sec = time % 60
+
+            listener?.onTimerListener(min, sec)
+        }
+    }
+
     fun close() {
         session?.close()
         session = null
@@ -237,16 +266,26 @@ class CameraSource(
         fpsTimer = null
         frameProcessedInOneSecondInterval = 0
         framesPerSecond = 0
+        excrciseTimer?.cancel()
+        excrciseTimer = null
     }
 
     // process image
     private fun processImage(bitmap: Bitmap) {
         val persons = mutableListOf<Person>()
         var classificationResult: List<Pair<String, Float>>? = null
+        var dataList: ArrayList<Int>
 
         synchronized(lock) {
             detector?.estimatePoses(bitmap)?.let {
                 persons.addAll(it)
+                dataList = detector?.doExcrcise(persons)!!
+                if (dataList[0] == -1){
+                    println("종료")
+                }
+                else{
+                    showExcrciseView(dataList)
+                }
 
                 // if the model only returns one item, allow running the Pose classifier.
                 if (persons.isNotEmpty()) {
@@ -267,6 +306,31 @@ class CameraSource(
             listener?.onDetectedInfo(persons[0].score, classificationResult)
         }
         visualize(persons, bitmap)
+    }
+
+    private fun showExcrciseView(dataList: ArrayList<Int>) {
+        currentExcrcise = trainingList[0].titles
+        nextExcrcise = trainingList[0].titles
+        currentReps = dataList[0]
+        currentSets = dataList[1]
+        currentFeedback = dataList[2]
+
+        if(currentFeedback == 0){
+            listener?.onExcrciseFeedbackListener("Bad")
+        }
+        else if(currentFeedback == 1){
+            listener?.onExcrciseFeedbackListener("Good")
+        }
+        else if(currentFeedback == 2){
+            listener?.onExcrciseFeedbackListener("Great")
+        }
+        else if(currentFeedback == 3){
+            listener?.onExcrciseFeedbackListener("Excellent")
+        }
+
+        listener?.onExcrciseCountListener(currentReps, currentSets)
+        listener?.onExcrciseListener(currentExcrcise, nextExcrcise)
+
     }
 
     private fun visualize(persons: List<Person>, bitmap: Bitmap) {
@@ -321,7 +385,10 @@ class CameraSource(
 
     interface CameraSourceListener {
         fun onFPSListener(fps: Int)
-
+        fun onTimerListener(min: Int, sec: Int)
+        fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String)
+        fun onExcrciseCountListener(currentReps: Int, currentSets: Int)
+        fun onExcrciseFeedbackListener(currentFeedback: String)
         fun onDetectedInfo(personScore: Float?, poseLabels: List<Pair<String, Float>>?)
     }
 }

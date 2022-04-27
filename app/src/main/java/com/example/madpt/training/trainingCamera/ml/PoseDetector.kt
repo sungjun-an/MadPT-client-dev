@@ -22,6 +22,6 @@ import com.example.madpt.training.trainingCamera.data.Person
 interface PoseDetector : AutoCloseable {
 
     fun estimatePoses(bitmap: Bitmap): List<Person>
-
+    fun doExcrcise(person: List<Person>): ArrayList<Int>
     fun lastInferenceTimeNanos(): Long
 }

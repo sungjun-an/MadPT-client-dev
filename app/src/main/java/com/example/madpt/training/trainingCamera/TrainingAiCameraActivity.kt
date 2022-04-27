@@ -27,17 +27,20 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.madpt.R
+import com.example.madpt.testmodel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.ml.*
+import kotlin.collections.ArrayList
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -58,7 +61,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     /** Default device is CPU */
     private var device = Device.CPU
 
+    private var trainingList = ArrayList<testmodel>()
     private lateinit var Timer: TextView // test for timer
+    private lateinit var Sets: TextView // test for sets
+    private lateinit var Reps: TextView // test for laps
+    private lateinit var Feedback: TextView // test for laps
+    private lateinit var currentExcrcise_view: TextView
+    private lateinit var nextExcrcise_view: TextView
     private lateinit var tvScore: TextView
     private lateinit var tvFPS: TextView
     private lateinit var spnDevice: Spinner
@@ -137,8 +146,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         setContentView(R.layout.activity_training_ai_camera)
         // keep screen on while app is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-        Timer = findViewById(R.id.timer)
-        // test for timer
+        trainingList = intent.getParcelableArrayListExtra<testmodel>("trainList") as ArrayList<testmodel>
+        Timer = findViewById(R.id.timer)  // test for timer
+        Sets = findViewById(R.id.sets) // test for sets
+        Reps = findViewById(R.id.reps) // test for reps
+        Feedback = findViewById(R.id.feedback) // test for reps
+        currentExcrcise_view = findViewById(R.id.currentExcrcise)
+        nextExcrcise_view = findViewById(R.id.nextExcrcise)
         tvScore = findViewById(R.id.tvScore)
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)
@@ -194,6 +208,28 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             tvFPS.text = getString(R.string.tfe_pe_tv_fps, fps)
                         }
 
+                        override fun onTimerListener(min: Int, sec: Int){
+                            Timer.text = getString(R.string.tfe_pe_timer, min, sec)
+                            Timer.setTextSize(Dimension.SP, 30.0F)
+                        }
+
+                        override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){
+                            currentExcrcise_view.text = getString(
+                                R.string.tfe_pe_currentExcrcise, currentExcrcise)
+                            nextExcrcise_view.text = getString(
+                                R.string.tfe_pe_nextExcrcise, nextExcrcise)
+                        }
+
+                        override fun onExcrciseCountListener(currentReps: Int, currentSets: Int) {
+                            Reps.text = getString(R.string.tfe_pe_currentReps, currentReps)
+                            Sets.text = getString(
+                                R.string.tfe_pe_currentSets, currentSets, trainingList[0].sets)
+                        }
+
+                        override fun onExcrciseFeedbackListener(currentFeedback: String){
+                            Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                        }
+
                         override fun onDetectedInfo(
                             personScore: Float?,
                             poseLabels: List<Pair<String, Float>>?
@@ -215,8 +251,9 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
-                    }).apply {
+                    }, trainingList).apply {
                         prepareCamera()
+                        prepareTrainer()
                     }
                 isPoseClassifier()
                 lifecycleScope.launch(Dispatchers.Main) {
@@ -310,14 +347,14 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
-                MoveNet.create(this, device, ModelType.Lightning)
+                MoveNet.create(this, device, ModelType.Lightning, trainingList)
             }
             1 -> {
                 // MoveNet Thunder (SinglePose)
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
-                MoveNet.create(this, device, ModelType.Thunder)
+                MoveNet.create(this, device, ModelType.Thunder, trainingList)
             }
             2 -> {
                 // MoveNet (Lightning) MultiPose
@@ -339,7 +376,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
-                PoseNet.create(this, device)
+                PoseNet.create(this, device, trainingList)
             }
             else -> {
                 null

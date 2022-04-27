@@ -14,6 +14,16 @@
     <string name="tfe_pe_app_name">TFL Pose Estimation</string>
     <string name="tfe_pe_request_permission">This app needs camera permission.</string>
     <string name="tfe_pe_tv_score">Score: %.2f</string>
+
+    <string name="tfe_pe_timer">%d : %d</string>
+    <string name="tfe_pe_currentExcrcise">%s</string>
+    <string name="tfe_pe_nextExcrcise">Next: %s</string>
+    <string name="tfe_pe_currentReps">%d</string>
+    <string name="tfe_pe_currentSets">Sets: %d / %d</string>
+    <string name="tfe_pe_Feedback">%s</string>
+
+
+
     <string name="tfe_pe_tv_model">Model: </string>
     <string name="tfe_pe_tv_fps">Fps: %d</string>
     <string name="tfe_pe_tv_device">Device: </string>

@@ -16,17 +16,20 @@ class DietPageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDietPageBinding
 
+
+    var userData : UserData? = null
     var dataSumKcal : Int = 0
     var sumSimpleKcal : Int = 0
     var allSumKcal : Int = 0
-    val dietType : String = intent.getStringExtra("diet_type")!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        val dietType : Bundle = intent.getBundleExtra("myBundle")!!
 
         super.onCreate(savedInstanceState)
         binding = ActivityDietPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         sampleFoodList()
         simpleButton()
@@ -46,7 +49,7 @@ class DietPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.dietSaveButton.setOnClickListener(){
-            userDietData.add(UserData(Date = LocalDateTime.now(), diet_type = dietType, simple_total_kcal = sumSimpleKcal, diet_list = AddFoodList))
+            userDietData.add(UserData(Date = LocalDateTime.now(), diet_type = dietType.getString("diet_Type","") ,simple_total_kcal = sumSimpleKcal, diet_list = AddFoodList))
             val bundle = Bundle()
             bundle.putInt("SumKcal",allSumKcal)
 
@@ -56,6 +59,19 @@ class DietPageActivity : AppCompatActivity() {
             transaction.add(R.id.fl_container,MainPageFragment)
             transaction.commit()
         }
+    }
+
+    override fun onRestart() {
+        dataSumKcal = 0
+        for(i in AddFoodList.indices){
+            dataSumKcal += AddFoodList[i].kcal.toInt()
+        }
+        allSumKcal = dataSumKcal+sumSimpleKcal
+        binding.sumKcal.setText(allSumKcal.toString())
+
+        val foodListAdapter = FoodListViewAdapter(this, AddFoodList)
+        binding.listview1.adapter = foodListAdapter
+        super.onRestart()
     }
 
 

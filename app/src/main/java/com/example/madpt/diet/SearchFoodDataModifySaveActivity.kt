@@ -45,8 +45,7 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
                 count = binding.modifyFoodCount.getText().toString().toInt()
             )
             AddFoodList.add(SaveFoodData)
-            val dataIntent = Intent(this,DietPageActivity::class.java)
-            startActivity(dataIntent)
+            finish()
         }
 
         binding.modifyFoodGram.addTextChangedListener(object : TextWatcher {

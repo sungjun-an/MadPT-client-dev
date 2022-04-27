@@ -14,10 +14,12 @@
         android:theme="@style/Theme.MADPT">
         <activity
             android:name=".diet.DietSearchActivity"
-            android:exported="false" />
+            android:exported="false"
+           />
         <activity
             android:name=".diet.SearchFoodDataModifySaveActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".diet.DietPageActivity"
             android:exported="false" />

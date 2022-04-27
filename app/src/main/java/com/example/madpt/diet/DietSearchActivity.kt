@@ -34,6 +34,7 @@ class DietSearchActivity : AppCompatActivity() {
             val mIntent = Intent(this,SearchFoodDataModifySaveActivity::class.java)
             mIntent.putExtra("roomInfo",clickedRoom)
             startActivity(mIntent)
+            finish()
         }
 
 

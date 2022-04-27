@@ -19,6 +19,9 @@ package com.example.madpt.training.trainingCamera.ml
 import android.content.Context
 import android.graphics.*
 import android.os.SystemClock
+import android.widget.Toast
+import com.example.madpt.testmodel
+import com.example.madpt.training.trainingCamera.algorithm.MadPT
 import com.example.madpt.training.trainingCamera.data.*
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
@@ -29,16 +32,19 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.concurrent.timer
 
 enum class ModelType {
     Lightning,
     Thunder
 }
 
-class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?) :
+class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?,
+              private var madpt: MadPT, private var trainingList : ArrayList<testmodel>) :
     PoseDetector {
 
     companion object {
@@ -55,9 +61,12 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         private const val THUNDER_FILENAME = "movenet_thunder.tflite"
 
         // allow specifying model type.
-        fun create(context: Context, device: Device, modelType: ModelType): MoveNet {
+        fun create(context: Context, device: Device, modelType: ModelType,
+                   trainingList: ArrayList<testmodel>): MoveNet {
             val options = Interpreter.Options()
             var gpuDelegate: GpuDelegate? = null
+            var madpt: MadPT = MadPT();
+            val training_List : ArrayList<testmodel> = trainingList
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -76,13 +85,16 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
                         else THUNDER_FILENAME
                     ), options
                 ),
-                gpuDelegate
+                gpuDelegate,
+                madpt,
+                training_List
             )
         }
 
         // default to lightning.
-        fun create(context: Context, device: Device): MoveNet =
-            create(context, device, ModelType.Lightning)
+        fun create(context: Context, device: Device, trainingList: ArrayList<testmodel>): MoveNet {
+            return create(context, device, ModelType.Lightning, trainingList)
+        }
     }
 
     private var cropRegion: RectF? = null
@@ -166,6 +178,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         }
         lastInferenceTimeNanos =
             SystemClock.elapsedRealtimeNanos() - inferenceStartTimeNanos
+
         return listOf(Person(keyPoints = keyPoints, score = totalScore / numKeyPoints))
     }
 
@@ -191,6 +204,8 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         }.build()
         val tensorImage = TensorImage(DataType.UINT8)
         tensorImage.load(bitmap)
+        //println(tensorImage.width)
+        //println(tensorImage.height)
         return imageProcessor.process(tensorImage)
     }
 
@@ -350,4 +365,77 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             maxBodyXRange
         )
     }
+
+    fun initExcrcise(person: List<Person>): Boolean{
+        var flag: Boolean = false
+        var time: Int = 0
+
+        if(flag){
+            timer(period = 1000){
+                time++
+                val sec = time
+
+                for(i in 0..person[0].keyPoints.size){
+                    flag = person[0].keyPoints[i].score > 0.7
+                }
+
+                if (sec >= 5 && flag){
+                    cancel()
+                }
+                else{
+                    initExcrcise(person)
+                }
+            }
+        }
+
+        return true
+    }
+    private var currentReps = 0
+    private var currentSets = 0
+    private var repsFlag = false
+
+    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+
+        initExcrcise(person)
+
+        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
+        var currentDataList: ArrayList<Int> = ArrayList()
+        val currentFeedback = dataList[2]
+        currentReps = dataList[0]
+
+        if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
+            if(currentReps != trainingList[0].reps){
+                repsFlag = false
+            }
+
+            if(repsFlag){
+                println("운동 안하는 중")
+                // 여기서 시간 재면 될듯
+            }
+            else{
+                currentSets += 1
+                if(currentReps == trainingList[0].reps){
+                    repsFlag = true
+                }
+            }
+        }
+
+        if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
+            trainingList.removeAt(0)
+            currentSets = 0
+            repsFlag = false
+            //currentReps = 0
+        }
+        else if(trainingList.isEmpty()){
+            currentDataList.add(0, -1)
+            return currentDataList
+        }
+
+        currentDataList.add(0, currentReps)
+        currentDataList.add(1, currentSets)
+        currentDataList.add(2, currentFeedback)
+
+        return currentDataList
+    }
+
 }

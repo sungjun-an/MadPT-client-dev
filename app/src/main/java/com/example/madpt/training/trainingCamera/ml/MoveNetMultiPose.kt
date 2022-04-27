@@ -290,6 +290,10 @@ class MoveNetMultiPose(
         return processedPerson
     }
 
+    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+        TODO("Not yet implemented")
+    }
+
     override fun lastInferenceTimeNanos(): Long = lastInferenceTimeNanos
 
     /**

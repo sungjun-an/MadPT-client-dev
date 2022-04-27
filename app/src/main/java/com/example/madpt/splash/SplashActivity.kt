@@ -10,7 +10,11 @@ import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
+import com.example.madpt.diet.DietPageActivity
+import com.example.madpt.diet.DietSearchActivity
+import com.example.madpt.diet.SearchFoodDataModifySaveActivity
 import com.example.madpt.login.LoginActivity
+import com.example.madpt.main.MainPageFragment
 import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient
 import java.security.MessageDigest

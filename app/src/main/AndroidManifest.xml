@@ -29,6 +29,17 @@
             android:name=".training.trainingCamera.TrainingAiCameraActivity"
             android:exported="false" />
         <activity
+            android:name=".diet.DietSearchActivity"
+            android:exported="false"
+           />
+        <activity
+            android:name=".diet.SearchFoodDataModifySaveActivity"
+            android:exported="false"
+            />
+        <activity
+            android:name=".diet.DietPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".profile.StartProfile"
             android:exported="false" />
         <activity

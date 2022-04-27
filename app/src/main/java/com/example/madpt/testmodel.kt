@@ -1,7 +1,7 @@
 package com.example.madpt
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+
 
 @kotlinx.parcelize.Parcelize
 data class testmodel(

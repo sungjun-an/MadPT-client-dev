@@ -1,5 +1,7 @@
 package com.example.madpt.training
 
+import android.view.View
+import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
 import java.util.*
 
@@ -19,6 +21,10 @@ interface Swaping{
     fun swapData(fromPos: Int, toPos:Int)
 }
 
-interface Store{
-    fun store(trainList:ArrayList<testmodel>, breakTime:Int, title:String)
+interface StoreTraining{
+    fun storeTrain(breakTime: Int, trainTitle: String, trainList:ArrayList<testmodel>)
+}
+
+interface OnItemClickListener {
+    fun onClick(loadItem: storeTraining)
 }

@@ -10,17 +10,21 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
+import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
 
-class StoreTrain(context: Context, private val dataList:ArrayList<testmodel>, breakTime: Int): Store {
+class StoreTrain(context: Context, breakTime: Int, listen: StoreTraining){
 
     private val context = context
     private val dialog = Dialog(context)
-    private val trainList = dataList
     private val breakTime = breakTime
+    private val listen = listen
 
     @SuppressLint("SetTextI18n")
-    fun showDialog(){
+    fun showDialog(dataList:ArrayList<testmodel>){
+
+        val trainList = arrayListOf<testmodel>()
+        trainList.addAll(dataList)
 
         dialog.setContentView(R.layout.fragment_store_train)
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
@@ -29,7 +33,7 @@ class StoreTrain(context: Context, private val dataList:ArrayList<testmodel>, br
         dialog.findViewById<RecyclerView>(R.id.trainListRecycle)
             .layoutManager = LinearLayoutManager(context)
         dialog.findViewById<RecyclerView>(R.id.trainListRecycle)
-            .adapter = StoreRecyclerAdapter( trainList)
+            .adapter = StoreRecyclerAdapter(trainList)
         dialog.show()
 
         val title = dialog.findViewById<EditText>(R.id.routineTitle)
@@ -38,14 +42,11 @@ class StoreTrain(context: Context, private val dataList:ArrayList<testmodel>, br
 
         dialog.findViewById<TextView>(R.id.breakTimeSet).text = "$breakTime 초"
         yes.setOnClickListener {
-
+            listen.storeTrain(breakTime,title.text.toString(),trainList)
+            dialog.dismiss()
         }
         no.setOnClickListener {
             dialog.dismiss()
         }
-    }
-
-    override fun store(trainList: ArrayList<testmodel>, breakTime: Int, title: String) {
-        TODO("Not yet implemented")
     }
 }

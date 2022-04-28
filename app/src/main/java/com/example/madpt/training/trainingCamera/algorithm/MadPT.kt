@@ -87,15 +87,15 @@ class MadPT {
                 println("up")
                 count[0] = count[0] + 1
                 println(count[0])
-                if(max_score[0] < 10){
+                if(max_score[0] < 20){
                     println("bad")
                     currentFeedback = 0
                 }
-                else if(max_score[0] < 20){
+                else if(max_score[0] < 30){
                     println("good")
                     currentFeedback = 1
                 }
-                else if(max_score[0] < 30){
+                else if(max_score[0] < 35){
                     println("great")
                     currentFeedback = 2
                 }
@@ -148,15 +148,15 @@ class MadPT {
                 println("up")
                 count[1] = count[1] + 1
 
-                if(max_score[1] < 10){
+                if(max_score[1] < 20){
                     println("bad")
                     currentFeedback = 0
                 }
-                else if(max_score[1] < 20){
+                else if(max_score[1] < 30){
                     println("good")
                     currentFeedback = 1
                 }
-                else if(max_score[1] < 30){
+                else if(max_score[1] < 35){
                     println("great")
                     currentFeedback = 2
                 }

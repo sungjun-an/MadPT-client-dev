@@ -65,11 +65,12 @@
 
     <TextView
         android:id="@+id/feedback"
-        android:layout_width="160dp"
-        android:layout_height="60dp"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
         app:layout_anchor="@+id/surfaceView"
         android:textAlignment="center"
         android:gravity="center"
+        android:textSize="330dp"
         app:layout_anchorGravity="center" />
 
     <include layout="@layout/bottom_sheet_layout"/>

@@ -1,4 +1,6 @@
 package com.example.madpt.training.trainingCamera.data
 
-class trainingData {
+class TrainingData {
+    var excrciseCount: Int = 0
+    var excrciseScore : Int = 0
 }

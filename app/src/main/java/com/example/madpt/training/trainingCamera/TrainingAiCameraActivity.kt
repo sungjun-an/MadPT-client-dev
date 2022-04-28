@@ -19,6 +19,7 @@ package com.example.madpt.training.trainingCamera
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Process
@@ -30,6 +31,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -170,6 +172,12 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         swClassification.setOnCheckedChangeListener(setClassificationListener)
         if (!isCameraPermissionGranted()) {
             requestPermission()
+        }
+
+        if(trainingList.isEmpty()){
+            val intent = Intent(this, TrainingResultActivity::class.java)
+            //intent.putParcelableArrayListExtra("trainList", trainList)
+            startActivity(intent)
         }
     }
 

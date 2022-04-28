@@ -19,7 +19,6 @@ package com.example.madpt.training.trainingCamera.ml
 import android.content.Context
 import android.graphics.*
 import android.os.SystemClock
-import android.widget.Toast
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.algorithm.MadPT
 import com.example.madpt.training.trainingCamera.data.*
@@ -59,6 +58,8 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         // TFLite file names.
         private const val LIGHTNING_FILENAME = "movenet_lightning.tflite"
         private const val THUNDER_FILENAME = "movenet_thunder.tflite"
+        private var trainingNameList: ArrayList<testmodel> = ArrayList()
+        private var trainingDataList: ArrayList<TrainingData> = ArrayList()
 
         // allow specifying model type.
         fun create(context: Context, device: Device, modelType: ModelType,
@@ -67,6 +68,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             var gpuDelegate: GpuDelegate? = null
             var madpt: MadPT = MadPT();
             val training_List : ArrayList<testmodel> = trainingList
+            trainingNameList = training_List
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -367,8 +369,8 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     }
 
     fun initExcrcise(person: List<Person>): Boolean{
-        var flag: Boolean = false
-        var time: Int = 0
+        var flag = false
+        var time = 0
 
         if(flag){
             timer(period = 1000){
@@ -398,10 +400,19 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
 
         initExcrcise(person)
 
+        var currentTrainingData = TrainingData()
+
         var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
         var currentDataList: ArrayList<Int> = ArrayList()
         val currentFeedback = dataList[2]
         currentReps = dataList[0]
+
+        currentTrainingData.excrciseCount = currentReps
+        currentTrainingData.excrciseScore = dataList[1]
+
+        trainingDataList.add(currentTrainingData)
+        println(trainingDataList.size)
+        println(trainingDataList)
 
         if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
             if(currentReps != trainingList[0].reps){

@@ -1,6 +1,7 @@
 package com.example.madpt.API.food
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.ArrayList
 
 data class Get_Food(
@@ -15,6 +16,11 @@ data class food_list(
     val food_id: Int,
     @SerializedName("maker_name")
     val maker_name: String,
+    @SerializedName("food_data")
+    val food_data: foodData
+): Serializable
+
+data class foodData(
     @SerializedName("default_weight")
     val defaultWeight: Double,
     @SerializedName("default_kcal")

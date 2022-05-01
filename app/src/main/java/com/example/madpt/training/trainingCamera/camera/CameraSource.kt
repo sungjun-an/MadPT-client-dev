@@ -34,10 +34,12 @@ import android.view.Surface
 import android.view.SurfaceView
 import com.example.madpt.testmodel
 import com.example.madpt.training.TrainingList
+import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
 import kotlinx.coroutines.suspendCancellableCoroutine
 import com.example.madpt.training.trainingCamera.VisualizationUtils
 import com.example.madpt.training.trainingCamera.YuvToRgbConverter
 import com.example.madpt.training.trainingCamera.data.Person
+import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.MoveNetMultiPose
 import com.example.madpt.training.trainingCamera.ml.PoseClassifier
 import com.example.madpt.training.trainingCamera.ml.PoseDetector
@@ -257,17 +259,6 @@ class CameraSource(
         camera = null
         imageReader?.close()
         imageReader = null
-        stopImageReaderThread()
-        detector?.close()
-        detector = null
-        classifier?.close()
-        classifier = null
-        fpsTimer?.cancel()
-        fpsTimer = null
-        frameProcessedInOneSecondInterval = 0
-        framesPerSecond = 0
-        excrciseTimer?.cancel()
-        excrciseTimer = null
     }
 
     // process image
@@ -280,8 +271,10 @@ class CameraSource(
             detector?.estimatePoses(bitmap)?.let {
                 persons.addAll(it)
                 dataList = detector?.doExcrcise(persons)!!
-                if (dataList[0] == -1){
-                    println("종료")
+                if (dataList.isEmpty()){
+                    println("운동 종료")
+                    val trainingDataList = detector?.getTrainingData()!!
+                    finishExcrcise(trainingDataList)
                 }
                 else{
                     showExcrciseView(dataList)
@@ -306,6 +299,11 @@ class CameraSource(
             listener?.onDetectedInfo(persons[0].score, classificationResult)
         }
         visualize(persons, bitmap)
+    }
+
+    private fun finishExcrcise(trainingDataList: ArrayList<TrainingData>){
+        println("finish Excrcise")
+        listener?.onExcrciseFinishListener(trainingDataList)
     }
 
     private fun showExcrciseView(dataList: ArrayList<Int>) {
@@ -389,6 +387,7 @@ class CameraSource(
         fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String)
         fun onExcrciseCountListener(currentReps: Int, currentSets: Int)
         fun onExcrciseFeedbackListener(currentFeedback: String)
+        fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>)
         fun onDetectedInfo(personScore: Float?, poseLabels: List<Pair<String, Float>>?)
     }
 }

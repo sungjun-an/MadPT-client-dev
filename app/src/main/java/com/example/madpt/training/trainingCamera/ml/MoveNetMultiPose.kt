@@ -21,12 +21,9 @@ import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.SystemClock
+import com.example.madpt.training.trainingCamera.data.*
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
-import com.example.madpt.training.trainingCamera.data.BodyPart
-import com.example.madpt.training.trainingCamera.data.Device
-import com.example.madpt.training.trainingCamera.data.KeyPoint
-import com.example.madpt.training.trainingCamera.data.Person
 import com.example.madpt.training.trainingCamera.tracker.AbstractTracker
 import com.example.madpt.training.trainingCamera.tracker.BoundingBoxTracker
 import com.example.madpt.training.trainingCamera.tracker.KeyPointsTracker
@@ -295,6 +292,9 @@ class MoveNetMultiPose(
     }
 
     override fun lastInferenceTimeNanos(): Long = lastInferenceTimeNanos
+    override fun getTrainingData(): ArrayList<TrainingData> {
+        TODO("Not yet implemented")
+    }
 
     /**
      * Close all resources when not in use.

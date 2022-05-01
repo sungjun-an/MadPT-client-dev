@@ -58,8 +58,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         // TFLite file names.
         private const val LIGHTNING_FILENAME = "movenet_lightning.tflite"
         private const val THUNDER_FILENAME = "movenet_thunder.tflite"
-        private var trainingNameList: ArrayList<testmodel> = ArrayList()
-        private var trainingDataList: ArrayList<TrainingData> = ArrayList()
 
         // allow specifying model type.
         fun create(context: Context, device: Device, modelType: ModelType,
@@ -68,7 +66,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             var gpuDelegate: GpuDelegate? = null
             var madpt: MadPT = MadPT();
             val training_List : ArrayList<testmodel> = trainingList
-            trainingNameList = training_List
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -368,6 +365,12 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         )
     }
 
+    private var trainingDataList: ArrayList<TrainingData> = ArrayList()
+
+    override fun getTrainingData(): ArrayList<TrainingData>{
+        return trainingDataList
+    }
+
     fun initExcrcise(person: List<Person>): Boolean{
         var flag = false
         var time = 0
@@ -398,21 +401,14 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
 
     override fun doExcrcise(person: List<Person>): ArrayList<Int> {
 
-        initExcrcise(person)
-
-        var currentTrainingData = TrainingData()
+        //initExcrcise(person)
 
         var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
         var currentDataList: ArrayList<Int> = ArrayList()
         val currentFeedback = dataList[2]
         currentReps = dataList[0]
 
-        currentTrainingData.excrciseCount = currentReps
-        currentTrainingData.excrciseScore = dataList[1]
-
-        trainingDataList.add(currentTrainingData)
-        println(trainingDataList.size)
-        println(trainingDataList)
+        trainingDataList = madpt.trainingDataList
 
         if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
             if(currentReps != trainingList[0].reps){
@@ -425,6 +421,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             }
             else{
                 currentSets += 1
+                println("sets: $currentSets")
                 if(currentReps == trainingList[0].reps){
                     repsFlag = true
                 }
@@ -436,10 +433,10 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             currentSets = 0
             repsFlag = false
             //currentReps = 0
-        }
-        else if(trainingList.isEmpty()){
-            currentDataList.add(0, -1)
-            return currentDataList
+
+            if(trainingList.isEmpty()){
+                return currentDataList
+            }
         }
 
         currentDataList.add(0, currentReps)

@@ -5,6 +5,7 @@ import androidx.core.graphics.minus
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.data.KeyPoint
 import com.example.madpt.training.trainingCamera.data.Person
+import com.example.madpt.training.trainingCamera.data.TrainingData
 import kotlin.math.*
 
 class MadPT {
@@ -15,6 +16,7 @@ class MadPT {
     var init_size: MutableList<Int>
     var dataList: ArrayList<Int> = ArrayList()
     var feedbacks: List<Int>
+    var trainingDataList: ArrayList<TrainingData> = ArrayList()
 
     init {
         this.state = 0
@@ -59,6 +61,7 @@ class MadPT {
     }
 
     fun push_up(person: List<Person>): ArrayList<Int> {
+        var trainingData = TrainingData()
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
         side = if ((body_parts[5].score + body_parts[7].score + body_parts[9].score) >
@@ -86,7 +89,7 @@ class MadPT {
                 state = 0
                 println("up")
                 count[0] = count[0] + 1
-                println(count[0])
+
                 if(max_score[0] < 20){
                     println("bad")
                     currentFeedback = 0
@@ -103,6 +106,11 @@ class MadPT {
                     println("excellent!!")
                     currentFeedback = 3
                 }
+
+                trainingData.excrciseName = 0
+                trainingData.excrciseCount = count[0]
+                trainingData.excrciseScore = max_score[0].toInt()
+                trainingDataList.add(trainingData)
                 max_score[0] = 0.0
             }
 
@@ -121,6 +129,7 @@ class MadPT {
     }
 
     fun squat(person: List<Person>): ArrayList<Int> {
+        var trainingData = TrainingData()
         var body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
         side = if ((body_parts[11].score + body_parts[13].score + body_parts[15].score) >
@@ -164,6 +173,11 @@ class MadPT {
                     println("excellent!!")
                     currentFeedback = 3
                 }
+
+                trainingData.excrciseName = 1
+                trainingData.excrciseCount = count[1]
+                trainingData.excrciseScore = max_score[1].toInt()
+                trainingDataList.add(trainingData)
                 max_score[1] = 0.0
             }
 
@@ -182,6 +196,7 @@ class MadPT {
     }
 
     fun lunge(person: List<Person>): ArrayList<Int>{
+        var trainingData = TrainingData()
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
 
@@ -233,6 +248,7 @@ class MadPT {
     }
 
     fun shoulder_press(person: List<Person>): ArrayList<Int>{
+        var trainingData = TrainingData()
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
 
@@ -256,6 +272,11 @@ class MadPT {
             state = 0
             println("up")
             count[3] += 1
+
+            trainingData.excrciseName = 3
+            trainingData.excrciseCount = count[3]
+            trainingData.excrciseScore = max_score[3].toInt()
+            trainingDataList.add(trainingData)
         }
 
         dataList.add(0, count[3])

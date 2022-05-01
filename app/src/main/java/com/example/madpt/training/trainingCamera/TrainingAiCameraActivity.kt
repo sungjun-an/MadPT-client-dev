@@ -31,7 +31,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -41,7 +40,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
+import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import java.util.Collections.addAll
 import kotlin.collections.ArrayList
 
 class TrainingAiCameraActivity : AppCompatActivity() {
@@ -64,6 +65,8 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var device = Device.CPU
 
     private var trainingList = ArrayList<testmodel>()
+    private var trainingDataList: ArrayList<TrainingData> = ArrayList()
+    private val staticTrainingList = arrayListOf<testmodel>()
     private lateinit var Timer: TextView // test for timer
     private lateinit var Sets: TextView // test for sets
     private lateinit var Reps: TextView // test for laps
@@ -149,6 +152,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         // keep screen on while app is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         trainingList = intent.getParcelableArrayListExtra<testmodel>("trainList") as ArrayList<testmodel>
+        staticTrainingList.addAll(trainingList)
         Timer = findViewById(R.id.timer)  // test for timer
         Sets = findViewById(R.id.sets) // test for sets
         Reps = findViewById(R.id.reps) // test for reps
@@ -172,12 +176,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         swClassification.setOnCheckedChangeListener(setClassificationListener)
         if (!isCameraPermissionGranted()) {
             requestPermission()
-        }
-
-        if(trainingList.isEmpty()){
-            val intent = Intent(this, TrainingResultActivity::class.java)
-            //intent.putParcelableArrayListExtra("trainList", trainList)
-            startActivity(intent)
         }
     }
 
@@ -238,6 +236,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
                         }
 
+                        override fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>){
+                            println("finish listener in")
+                            this@TrainingAiCameraActivity.trainingDataList = trainingDataList
+                            cameraSource?.close()
+                            openResultPage()
+                        }
+
                         override fun onDetectedInfo(
                             personScore: Float?,
                             poseLabels: List<Pair<String, Float>>?
@@ -269,6 +274,16 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
+        }
+    }
+
+    private fun openResultPage(){
+        println("open result in")
+        if(trainingList.isEmpty()){
+            val intent = Intent(this, TrainingResultActivity::class.java)
+            intent.putParcelableArrayListExtra("trainingDataList", trainingDataList)
+            intent.putParcelableArrayListExtra("trainingList", staticTrainingList)
+            startActivity(intent)
         }
     }
 

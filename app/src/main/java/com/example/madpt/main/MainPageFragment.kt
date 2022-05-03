@@ -50,15 +50,35 @@ class MainPageFragment : Fragment() {
                     "Lunch" -> sumKcalLunch += userDietData[x].diet_list[y].toString().toInt()
                     "Dinner" -> sumKcalDinner += userDietData[x].diet_list[y].toString().toInt()
                     "Snack" -> sumKcalSnack += userDietData[x].diet_list[y].toString().toInt()
-
                 }
             }
 
         if (sumKcalBreakfast != 0) {
             val sum: String = sumKcalBreakfast.toString() + " kcal"
             binding.plusButtonBreakfast.visibility = View.INVISIBLE
-            binding.kcalText.visibility = View.VISIBLE
-            binding.kcalText.text = sum
+            binding.breakfastKcalText.visibility = View.VISIBLE
+            binding.breakfastKcalText.text = sum
+        }
+
+        if (sumKcalLunch != 0) {
+            val sum: String = sumKcalLunch.toString() + " kcal"
+            binding.plusButtonLunch.visibility = View.INVISIBLE
+            binding.lunchKcalText.visibility = View.VISIBLE
+            binding.lunchKcalText.text = sum
+        }
+
+        if (sumKcalDinner != 0) {
+            val sum: String = sumKcalDinner.toString() + " kcal"
+            binding.plusButtonDinner.visibility = View.INVISIBLE
+            binding.dinnerKcalText.visibility = View.VISIBLE
+            binding.dinnerKcalText.text = sum
+        }
+
+        if (sumKcalDinner != 0) {
+            val sum: String = sumKcalDinner.toString() + " kcal"
+            binding.plusButtonSnack.visibility = View.INVISIBLE
+            binding.snackKcalText.visibility = View.VISIBLE
+            binding.snackKcalText.text = sum
         }
 
         if (user.user_weight != 0.0){
@@ -88,6 +108,7 @@ class MainPageFragment : Fragment() {
         binding.plusButtonWeight.setOnClickListener(){
             mainActivity!!.showMessageDialog()
         }
+
         binding.userWeight.setOnClickListener(){
             mainActivity!!.showMessageDialog()
         }
@@ -101,8 +122,37 @@ class MainPageFragment : Fragment() {
             intent.putExtra("diet_type","Breakfast")
             intent.putExtra("myBundle",bundle)
             startActivity(intent)
-        }//DietPageActicity로의 화면전환
+        }
 
+        binding.plusButtonLunch.setOnClickListener(){
+            val intent = Intent(context,DietPageActivity::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("diet_Type","Lunch")
+            intent.putExtra("diet_type","Lunch")
+            intent.putExtra("myBundle",bundle)
+            startActivity(intent)
+        }
+
+        binding.plusButtonDinner.setOnClickListener(){
+            val intent = Intent(context,DietPageActivity::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("diet_Type","Dinner")
+            intent.putExtra("diet_type","Dinner")
+            intent.putExtra("myBundle",bundle)
+            startActivity(intent)
+        }
+
+        binding.plusButtonSnack.setOnClickListener(){
+            val intent = Intent(context,DietPageActivity::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("diet_Type","Snack")
+            intent.putExtra("diet_type","Snack")
+            intent.putExtra("myBundle",bundle)
+            startActivity(intent)
+        }
 
         return binding.root
     }

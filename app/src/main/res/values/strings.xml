@@ -23,7 +23,6 @@
     <string name="tfe_pe_Feedback">%s</string>
 
 
-
     <string name="tfe_pe_tv_model">Model: </string>
     <string name="tfe_pe_tv_fps">Fps: %d</string>
     <string name="tfe_pe_tv_device">Device: </string>

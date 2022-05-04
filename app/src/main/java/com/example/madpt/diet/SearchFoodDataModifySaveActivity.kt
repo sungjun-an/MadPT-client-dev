@@ -9,6 +9,7 @@ import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import com.example.madpt.databinding.ActivitySearchFoodDataModifySaveBinding
 import com.example.madpt.*
+import com.example.madpt.API.food.food_list
 import org.w3c.dom.Text
 import java.lang.Math.round
 import java.lang.NumberFormatException
@@ -23,20 +24,21 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
         binding = ActivitySearchFoodDataModifySaveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var room = intent.getSerializableExtra("roomInfo") as FoodData
+        var room = intent.getSerializableExtra("roomInfo") as food_list
 
         binding.modifyFoodName.setText(room.food_name)
-        binding.modifyCar.setText(room.default_kcal.toString())
-        binding.modifyFat.setText(room.default_fat.toString())
-        binding.modifyProtein.setText(room.default_fat.toString())
+        binding.modifyCar.setText(room.food_data.defaultKcal.toString())
+        binding.modifyFat.setText(room.food_data.defaultFat.toString())
+        binding.modifyProtein.setText(room.food_data.defaultProtein.toString())
         binding.modifyFoodCount.setText("1")
-        binding.modifyFoodGram.setText(room.default_weight.toString())
-        binding.oneTimeText.text = room.default_weight.toString()
+        binding.modifyFoodGram.setText(room.food_data.defaultWeight.toString())
+        binding.oneTimeText.text = room.food_data.defaultWeight.toString()
         binding.modifyUnit.setText("개")
 
         binding.foodModifySaveButton.setOnClickListener() {
             val SaveFoodData = ModifyFoodData(
-                food_id = room.food_id,
+//                food_id = room.food_id,
+                food_id = 1,
                 food_name = binding.modifyFoodName.getText().toString(),
                 maker_name = room.maker_name,
                 weight = binding.modifyFoodGram.getText().toString().toDouble(),
@@ -49,11 +51,11 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
         }
 
         binding.modifyFoodGram.addTextChangedListener(object : TextWatcher {
-            val initFoodGram : Double = room.default_weight
-            val initFoodKcal : Double = room.default_kcal
-            val initFoodCar : Double = room.default_carbohydrate
-            val initFoodProtein : Double = room.default_protein
-            val initFoodFat : Double = room.default_fat
+            val initFoodGram : Double = room.food_data.defaultWeight
+            val initFoodKcal : Double = room.food_data.defaultKcal
+            val initFoodCar : Double = room.food_data.defaultCarbohydrate
+            val initFoodProtein : Double = room.food_data.defaultProtein
+            val initFoodFat : Double = room.food_data.defaultFat
 
             var inputFoodGram: Double? = 0.0
             var perFoodGram : Double? = 0.0

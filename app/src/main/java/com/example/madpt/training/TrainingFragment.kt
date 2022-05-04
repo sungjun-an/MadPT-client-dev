@@ -1,8 +1,10 @@
 package com.example.madpt.training
 
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +13,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.madpt.R
 import com.example.madpt.databinding.FragmentExcerciseBinding
+import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.TrainingAiCameraActivity
 import java.io.Serializable
 import java.util.*
+import kotlin.collections.HashMap
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,14 +33,19 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ExcerciseFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping {
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, StoreTraining, OnItemClickListener{
 
     private var trainList = arrayListOf<testmodel>()
     private var breakTime = 0
+    private var storeTrainList= arrayListOf<storeTraining>()
+
+    override fun storeTrain(breakTime: Int, trainTitle: String, trainset: ArrayList<testmodel>) {
+        storeTrainList.add(storeTraining(trainTitle, breakTime, trainset))
+        Log.d("YMC","$storeTrainList")
+    }
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))
-        Toast.makeText(context,"${itemTitle}, $image, $set, $rep",Toast.LENGTH_LONG).show()
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
     }
 
@@ -43,9 +53,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         trainList.removeAt(position)
     }
 
-
     override fun SetBreak(time: Int) {
-        Toast.makeText(context,"${time}",Toast.LENGTH_LONG).show()
         breakTime = time
     }
 
@@ -74,8 +82,8 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             dialog.showDialog()
         }
         binding.btnRoutineStore.setOnClickListener {
-            val dialog = StoreTrain(requireContext(), trainList, breakTime)
-            dialog.showDialog()
+            val dialog = StoreTrain(requireContext(), breakTime, this)
+            dialog.showDialog(trainList)
         }
         // Inflate the layout for this fragment
 
@@ -89,6 +97,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
                 intent.putParcelableArrayListExtra("trainList", trainList)
                 startActivity(intent)
             }
+        }
+
+        binding.btnRoutinLoading.setOnClickListener {
+            val dialog = LodingTrainList(requireContext(), storeTrainList, this)
+            dialog.showDialog()
         }
 
         return binding.root
@@ -135,5 +148,13 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
     override fun swapData(fromPos: Int, toPos: Int) {
         Collections.swap(trainList, fromPos, toPos)
         binding.trainListRecyclerView.adapter?.notifyItemMoved(fromPos, toPos)
+    }
+
+    override fun onClick(loadItem: storeTraining) {
+        breakTime = loadItem.breakTime
+        trainList.clear()
+        trainList.addAll(loadItem.trainset)
+        binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
+        Log.d("YMC", "${loadItem.trainset}")
     }
 }

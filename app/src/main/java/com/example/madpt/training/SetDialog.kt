@@ -15,10 +15,6 @@ class SetDialog(context: Context, s: String, i: Int) {
     private val dialog = Dialog(context)
     private lateinit var onClickListener: OnDialogClickListener
 
-    fun setOnClickListener(listener: OnDialogClickListener){
-        onClickListener = listener
-    }
-
     fun showDialog(){
         dialog.setContentView(R.layout.set_dialog)
         dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT)
@@ -67,6 +63,10 @@ class SetDialog(context: Context, s: String, i: Int) {
             dialog.dismiss()
         }
 
+    }
+
+    fun setOnClickListener(listener: OnDialogClickListener){
+        onClickListener = listener
     }
 
     interface OnDialogClickListener {

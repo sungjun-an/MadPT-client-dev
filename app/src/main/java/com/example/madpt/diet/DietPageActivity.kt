@@ -33,6 +33,7 @@ class DietPageActivity : AppCompatActivity() {
 
         sampleFoodList()
         simpleButton()
+
         val MainPageFragment = MainPageFragment()
 
         for(i in AddFoodList.indices){
@@ -48,6 +49,12 @@ class DietPageActivity : AppCompatActivity() {
             val intent = Intent(this,DietSearchActivity::class.java)
             startActivity(intent)
         }
+
+        binding.customFoodIntentButton.setOnClickListener(){
+            val intent = Intent(this,CustomFoodDataModifySaveActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.dietSaveButton.setOnClickListener(){
             userDietData.add(UserData(Date = LocalDateTime.now(), diet_type = dietType.getString("diet_Type","") ,simple_total_kcal = sumSimpleKcal, diet_list = AddFoodList))
             val bundle = Bundle()

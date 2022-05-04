@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -13,14 +14,17 @@
         android:gravity="center"
         android:text="@string/result"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@color/white"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fixedTrainListRecyclerView"
         android:layout_width="286dp"
         android:layout_height="70dp"
+        android:layout_margin="10dp"
         android:layout_gravity="center"
         android:orientation="horizontal"
+        android:background="@drawable/round_layout_meal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <FrameLayout
@@ -36,6 +40,7 @@
                 android:id="@+id/resultChart"
                 android:layout_margin="@dimen/activity_horizontal_margin"
                 android:layout_width="match_parent"
+                android:background="@drawable/round_layout_background"
                 android:layout_height="200dp" />
         </LinearLayout>
 

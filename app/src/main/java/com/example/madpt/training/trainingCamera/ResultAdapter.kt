@@ -1,24 +1,22 @@
 package com.example.madpt.training.trainingCamera
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
+import com.example.madpt.databinding.ActivitySingleExcrciseChartBinding
 import com.example.madpt.testmodel
-import com.example.madpt.training.OnRecyclerClickListener
-import com.example.madpt.training.SetDialog
-import com.example.madpt.training.TrainingAdapter
 import com.example.madpt.training.trainingCamera.data.TrainingData
 
-class ResultAdapter(private val trainingList:ArrayList<testmodel>, onTrainingResultClickLisner: onTrainingResultClickLisner) :
+
+class ResultAdapter(private val trainingList:ArrayList<testmodel>,
+                    private val singleExcrciseData: ArrayList<TrainingData>,
+                    onTrainingResultClickLisner: onTrainingResultClickLisner) :
     RecyclerView.Adapter<ResultAdapter.ViewHolder> (){
 
+    private val clickLisner = onTrainingResultClickLisner
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val result_training_Image =
@@ -39,8 +37,11 @@ class ResultAdapter(private val trainingList:ArrayList<testmodel>, onTrainingRes
     }
 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
-        viewholder.result_training_Image.setOnClickListener{
-            println("누름")
+
+        for(k in 0 until singleExcrciseData.size){
+            viewholder.result_training_Image.setOnClickListener{
+                clickLisner.viewSingleChart(singleExcrciseData[i])
+            }
         }
         viewholder.bind(trainingList[i])
     }

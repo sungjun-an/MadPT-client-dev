@@ -1,7 +1,7 @@
 package com.example.madpt.training.trainingCamera
 
-interface onTrainingResultClickLisner {
-    fun onClick(){
+import com.example.madpt.training.trainingCamera.data.TrainingData
 
-    }
+interface onTrainingResultClickLisner {
+    fun viewSingleChart(singleExerciseData: TrainingData)
 }

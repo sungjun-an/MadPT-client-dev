@@ -308,7 +308,14 @@ class CameraSource(
 
     private fun showExcrciseView(dataList: ArrayList<Int>) {
         currentExcrcise = trainingList[0].titles
-        nextExcrcise = trainingList[0].titles
+
+        if(trainingList.size != 1){
+            nextExcrcise = trainingList[1].titles
+        }
+        else{
+            nextExcrcise = "Empty"
+        }
+
         currentReps = dataList[0]
         currentSets = dataList[1]
         currentFeedback = dataList[2]

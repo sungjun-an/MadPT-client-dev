@@ -148,15 +148,15 @@ class MadPT {
     }
 
     fun squat(person: List<Person>): ArrayList<Int> {
-        var trainingData = TrainingData()
-        var body_parts: List<KeyPoint> = person[0].keyPoints
+        val trainingData = TrainingData()
+        val body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
         side = if ((body_parts[11].score + body_parts[13].score + body_parts[15].score) >
             (body_parts[12].score + body_parts[14].score + body_parts[16].score)) "left"
         else "right"
 
-        var observe_point: List<Int> = if (side == "left") listOf(11, 13, 15) else listOf(12, 14, 16)
-        var arm_angle : Double = calculate_angle(
+        val observe_point: List<Int> = if (side == "left") listOf(11, 13, 15) else listOf(12, 14, 16)
+        val arm_angle : Double = calculate_angle(
             body_parts[observe_point[0]].coordinate,
             body_parts[observe_point[1]].coordinate,
             body_parts[observe_point[2]].coordinate

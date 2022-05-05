@@ -198,6 +198,10 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         TODO("Not yet implemented")
     }
 
+    override fun getExcrciseTimeList(): ArrayList<Long> {
+        TODO("Not yet implemented")
+    }
+
     override fun close() {
         gpuDelegate?.close()
         interpreter.close()

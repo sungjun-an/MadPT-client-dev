@@ -104,7 +104,7 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         val finalGradeList = getTotalGrade()
         showGradeIcon(finalGradeList)
 
-        setChartOptions(chartLineData, flag)
+        setChartOptions(chartLineData, flag, excrcise_chart)
     }
 
     private fun getTotalGrade(): ArrayList<String>{
@@ -194,10 +194,12 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         }
     }
 
-    private fun setChartOptions(chartLineData: LineData, flag: String){
+    private fun setChartOptions(chartLineData: LineData,
+                                flag: String,
+                                excrciseChart: ArrayList<Entry>){
         val resultChart = binding.resultChart
         val resultChartLegend = binding.resultChart.legend
-        val totalReps = chartDataList.size
+        val totalReps = excrciseChart.size
 
         val xAxis = resultChart.xAxis
         val yAxisLeft = resultChart.axisLeft
@@ -259,7 +261,6 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
                 position = XAxis.XAxisPosition.BOTTOM
                 isGranularityEnabled = true
                 granularity = 1f
-                labelCount = totalReps
                 axisMinimum = 1f
                 axisMaximum = totalReps.toFloat()
                 valueFormatter = object: ValueFormatter(){
@@ -317,7 +318,7 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         val chartLineData = LineData(excrciseChartDataset)
         val flag = "single"
 
-        setChartOptions(chartLineData, flag)
+        setChartOptions(chartLineData, flag, single_excrcise_chart)
     }
 
     override fun viewSingleReview(chartDataList: ArrayList<TrainingData>, i: Int) {

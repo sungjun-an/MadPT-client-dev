@@ -80,6 +80,7 @@ class CameraSource(
     private var currentFeedback: Int = 0
     private var currentExcrcise: String = ""
     private var nextExcrcise: String = ""
+    private var excrciseTimeList: ArrayList<Long> = ArrayList()
     private var time = 0
     private var min = 0
     private var sec = 0
@@ -275,6 +276,11 @@ class CameraSource(
                 dataList = detector?.doExcrcise(persons)!!
                 if (dataList.isEmpty()){
                     println("운동 종료")
+                    excrciseTimeList = detector?.getExcrciseTimeList()!!
+                    for(i in 0 until excrciseTimeList.size){
+                        val excrciseTimeTemp = excrciseTimeList[i]
+                        println("$i : $excrciseTimeTemp")
+                    }
                     val trainingDataList = detector?.getTrainingData()!!
                     finishExcrcise(trainingDataList)
                 }

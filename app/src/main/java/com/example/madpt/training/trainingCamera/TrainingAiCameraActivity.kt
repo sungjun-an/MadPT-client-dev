@@ -17,6 +17,7 @@ limitations under the License.
 package com.example.madpt.training.trainingCamera
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
@@ -42,6 +43,9 @@ import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
 import java.util.Collections.addAll
 import kotlin.collections.ArrayList
 
@@ -370,6 +374,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
+                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+                val date = Date()
+                val tz = TimeZone.getTimeZone("Asia/Seoul")
+                excrciseStartTime.timeZone = tz
+                val time = excrciseStartTime.format(date)
+                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
+                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
                 MoveNet.create(this, device, ModelType.Lightning, trainingList)
             }
             1 -> {
@@ -377,6 +388,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
+                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+                val date = Date()
+                val tz = TimeZone.getTimeZone("Asia/Seoul")
+                excrciseStartTime.timeZone = tz
+                val time = excrciseStartTime.format(date)
+                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
+                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
                 MoveNet.create(this, device, ModelType.Thunder, trainingList)
             }
             2 -> {

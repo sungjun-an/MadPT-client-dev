@@ -296,6 +296,10 @@ class MoveNetMultiPose(
         TODO("Not yet implemented")
     }
 
+    override fun getExcrciseTimeList(): ArrayList<Long> {
+        TODO("Not yet implemented")
+    }
+
     /**
      * Close all resources when not in use.
      */

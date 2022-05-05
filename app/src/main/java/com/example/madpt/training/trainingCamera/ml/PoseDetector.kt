@@ -26,4 +26,6 @@ interface PoseDetector : AutoCloseable {
     fun doExcrcise(person: List<Person>): ArrayList<Int>
     fun lastInferenceTimeNanos(): Long
     fun getTrainingData(): ArrayList<TrainingData>
+    fun getExcrciseTimeList(): ArrayList<Long>
+
 }

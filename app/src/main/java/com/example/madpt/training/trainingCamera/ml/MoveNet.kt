@@ -31,6 +31,8 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
@@ -43,7 +45,9 @@ enum class ModelType {
 }
 
 class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?,
-              private var madpt: MadPT, private var trainingList : ArrayList<testmodel>) :
+              private var madpt: MadPT,
+              private var trainingList : ArrayList<testmodel>,
+              private var excrciseTimeList: ArrayList<Long>) :
     PoseDetector {
 
     companion object {
@@ -66,6 +70,9 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             var gpuDelegate: GpuDelegate? = null
             var madpt: MadPT = MadPT();
             val training_List : ArrayList<testmodel> = trainingList
+            val excrciseTimeList: ArrayList<Long> = ArrayList()
+            excrciseTimeList.add(0, training_List[0].excrciseStartTime)
+
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -86,7 +93,8 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
                 ),
                 gpuDelegate,
                 madpt,
-                training_List
+                training_List,
+                excrciseTimeList
             )
         }
 
@@ -95,7 +103,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             return create(context, device, ModelType.Lightning, trainingList)
         }
     }
-
     private var cropRegion: RectF? = null
     private var lastInferenceTimeNanos: Long = -1
     private val inputWidth = interpreter.getInputTensor(0).shape()[1]
@@ -399,6 +406,21 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentSets = 0
     private var repsFlag = false
 
+    fun cal_timeStamp(): Long{
+        val saveTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+        val date = Date()
+        val tz = TimeZone.getTimeZone("Asia/Seoul")
+        saveTime.timeZone = tz
+        val time = saveTime.format(date)
+        val saveTimeStamp = saveTime.parse(time).time
+
+        return saveTimeStamp
+    }
+
+    fun cal2doNotExcrcise(): Long {
+        return 0L
+    }
+
     override fun doExcrcise(person: List<Person>): ArrayList<Int> {
 
         //initExcrcise(person)
@@ -429,8 +451,16 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             }
         }
 
+        var excrciseEndTime = 0L
+
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
             madpt.init_excrcise_count(trainingList[0])
+            excrciseEndTime = cal_timeStamp()
+            excrciseTimeList.add(excrciseEndTime)
+            if(trainingList.size != 1){
+                val excrciseStartTime = cal_timeStamp()
+                excrciseTimeList.add(excrciseStartTime)
+            }
             trainingList.removeAt(0)
             currentSets = 0
             repsFlag = false
@@ -446,6 +476,10 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         currentDataList.add(2, currentFeedback)
 
         return currentDataList
+    }
+
+    override fun getExcrciseTimeList(): ArrayList<Long> {
+        return excrciseTimeList
     }
 
 }

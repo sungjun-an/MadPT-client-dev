@@ -31,5 +31,5 @@ data class foodData(
     val defaultProtein: Double,
     @SerializedName("default_Fat")
     val defaultFat: Double
-)
+): Serializable
 

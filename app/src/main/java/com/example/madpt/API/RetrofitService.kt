@@ -12,10 +12,10 @@ import java.sql.Timestamp
 
 interface RetrofitService {
     @GET("food/food-list")
-    fun getdata(@Query("food_name")name: String): Call<Get_Food>
+    fun getdata(@Query("food_name")name: String): Call<Get_Food>//완성
     
-    @POST("diet/daily-diet")
-    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<String>
+    @POST("diet")
+    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>
 
     @POST("record/result")
     fun postTrainResult(@Header("member_id") id: Long, @Body params: Train_result): Call<String>

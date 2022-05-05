@@ -5,7 +5,7 @@ import java.sql.Timestamp
 
 data class daily_diet(
     @SerializedName("date")
-    val date : Timestamp,
+    val date : Long,
     @SerializedName("diet_type")
     val diet_type : String,
     @SerializedName("simple_total_kcal")
@@ -19,6 +19,8 @@ data class diet_list(
     val food_id : Long,
     @SerializedName("food_name")
     val food_name : String,
+    @SerializedName("diet_kcal")
+    val diet_kcal : Double,
     @SerializedName("weight")
     val weight : Int,
     @SerializedName("count")
@@ -26,5 +28,5 @@ data class diet_list(
     @SerializedName("unit")
     val unit : String,
     @SerializedName("is_custom")
-    val is_custom : Boolean
+    val is_custom : Boolean = false
 )

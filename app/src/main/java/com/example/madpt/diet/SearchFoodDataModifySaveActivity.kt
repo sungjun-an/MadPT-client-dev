@@ -27,9 +27,10 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
         var room = intent.getSerializableExtra("roomInfo") as food_list
 
         binding.modifyFoodName.setText(room.food_name)
-        binding.modifyCar.setText(room.food_data.defaultKcal.toString())
-        binding.modifyFat.setText(room.food_data.defaultFat.toString())
-        binding.modifyProtein.setText(room.food_data.defaultProtein.toString())
+        binding.modifyFoodKcal.text = room.food_data.defaultKcal.toString()
+        binding.modifyCar.text = room.food_data.defaultCarbohydrate.toString()
+        binding.modifyFat.text = room.food_data.defaultFat.toString()
+        binding.modifyProtein.text = room.food_data.defaultProtein.toString()
         binding.modifyFoodCount.setText("1")
         binding.modifyFoodGram.setText(room.food_data.defaultWeight.toString())
         binding.oneTimeText.text = room.food_data.defaultWeight.toString()

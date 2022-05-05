@@ -13,12 +13,12 @@ import com.example.madpt.R
 import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
 
-class StoreTrain(context: Context, breakTime: Int, listen: StoreTraining){
+class StoreTrain(context: Context, breakTime: Int, listenStore: StoreTraining){
 
     private val context = context
     private val dialog = Dialog(context)
     private val breakTime = breakTime
-    private val listen = listen
+    private val listen = listenStore
 
     @SuppressLint("SetTextI18n")
     fun showDialog(dataList:ArrayList<testmodel>){

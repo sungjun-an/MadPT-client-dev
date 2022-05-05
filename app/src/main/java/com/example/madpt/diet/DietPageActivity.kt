@@ -111,7 +111,7 @@ class DietPageActivity : AppCompatActivity() {
             binding.sumKcal.setText(allSumKcal.toString())
         }
         binding.simpleMinus50Kcal.setOnClickListener(){
-            sumSimpleKcal -= 30
+            sumSimpleKcal -= 50
             allSumKcal = dataSumKcal+sumSimpleKcal
             binding.sumKcal.setText(allSumKcal.toString())
         }

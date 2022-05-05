@@ -12,11 +12,9 @@ import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient
 
 class SplashActivity :AppCompatActivity() {
-
     companion object {
         var userId: Long = 0
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
@@ -33,6 +31,7 @@ class SplashActivity :AppCompatActivity() {
                                     "\n성별: ${user.kakaoAccount?.gender}"
                         )
                         userId = user.id!!
+                    }
                         Handler(Looper.getMainLooper()).postDelayed({
                             val intent = Intent(this, StartProfile::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -40,6 +39,7 @@ class SplashActivity :AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }, 1500)
+                }
                     } else if (tokenInfo != null) {
                         Handler(Looper.getMainLooper()).postDelayed({
                             val intent = Intent(this, MainActivity::class.java)
@@ -52,5 +52,3 @@ class SplashActivity :AppCompatActivity() {
                 }
             }
         }
-    }
-}

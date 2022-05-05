@@ -4,19 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
-import com.example.madpt.databinding.ActivitySingleExcrciseChartBinding
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.data.TrainingData
 
 
 class ResultAdapter(private val trainingList:ArrayList<testmodel>,
-                    private val singleExcrciseData: ArrayList<TrainingData>,
+                    private val chartDataList: ArrayList<TrainingData>,
                     onTrainingResultClickLisner: onTrainingResultClickLisner) :
     RecyclerView.Adapter<ResultAdapter.ViewHolder> (){
 
-    private val clickLisner = onTrainingResultClickLisner
+    private val clickListener = onTrainingResultClickLisner
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         val result_training_Image =
@@ -37,11 +37,9 @@ class ResultAdapter(private val trainingList:ArrayList<testmodel>,
     }
 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
-
-        for(k in 0 until singleExcrciseData.size){
-            viewholder.result_training_Image.setOnClickListener{
-                clickLisner.viewSingleChart(singleExcrciseData[i])
-            }
+        viewholder.result_training_Image.setOnClickListener{
+            clickListener.viewSingleChart(chartDataList, i)
+            clickListener.viewSingleReview(chartDataList, i)
         }
         viewholder.bind(trainingList[i])
     }

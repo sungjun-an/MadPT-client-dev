@@ -259,6 +259,8 @@ class CameraSource(
         camera = null
         imageReader?.close()
         imageReader = null
+        detector?.close()
+        detector = null
     }
 
     // process image

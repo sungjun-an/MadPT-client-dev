@@ -408,9 +408,10 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         val currentFeedback = dataList[2]
         currentReps = dataList[0]
 
+        val totalReps = trainingList[0].reps * trainingList[0].sets
         trainingDataList = madpt.trainingDataList
 
-        if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
+        if(currentReps != 0 && currentReps % trainingList[0].reps == 0 && currentReps == totalReps){
             if(currentReps != trainingList[0].reps){
                 repsFlag = false
             }
@@ -429,6 +430,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         }
 
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
+            madpt.init_excrcise_count(trainingList[0])
             trainingList.removeAt(0)
             currentSets = 0
             repsFlag = false

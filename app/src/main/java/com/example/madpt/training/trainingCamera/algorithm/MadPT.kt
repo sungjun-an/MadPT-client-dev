@@ -44,18 +44,37 @@ class MadPT {
         return sqrt((p1.x - p2.x).pow(2) + (p1.y - p2.y).pow(2))
     }
 
+    fun init_excrcise_count(excrcise: testmodel){
+        when(excrcise.titles){
+            "PUSH UP" -> {
+                count[0] = 0
+            }
+            "SQUAT" -> {
+                count[1] = 0
+            }
+            "LUNGE" -> {
+                count[2] = 0
+            }
+            "SHOULDER PRESS" -> {
+                count[3] = 0
+            }
+        }
+    }
+
     fun excrcise_finder(excrcise: testmodel, person: List<Person>): ArrayList<Int>{
-        if (excrcise.titles == "PUSH UP"){
-            dataList = push_up(person)
-        }
-        else if (excrcise.titles == "SQUAT"){
-            dataList = squat(person)
-        }
-        else if (excrcise.titles == "LUNGE"){
-            dataList = lunge(person)
-        }
-        else if (excrcise.titles == "SHOULDER PRESS") {
-            dataList = shoulder_press(person)
+        when (excrcise.titles) {
+            "PUSH UP" -> {
+                dataList = push_up(person)
+            }
+            "SQUAT" -> {
+                dataList = squat(person)
+            }
+            "LUNGE" -> {
+                dataList = lunge(person)
+            }
+            "SHOULDER PRESS" -> {
+                dataList = shoulder_press(person)
+            }
         }
         return dataList
     }
@@ -65,8 +84,8 @@ class MadPT {
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var currentFeedback = -1
         side = if ((body_parts[5].score + body_parts[7].score + body_parts[9].score) >
-                   (body_parts[6].score + body_parts[8].score + body_parts[10].score)) "left"
-               else "right"
+            (body_parts[6].score + body_parts[8].score + body_parts[10].score)) "left"
+        else "right"
 
         val observe_point: List<Int> = if (side == "left") listOf(5, 7, 9) else listOf(6, 8, 10)
         val arm_angle : Double = calculate_angle(

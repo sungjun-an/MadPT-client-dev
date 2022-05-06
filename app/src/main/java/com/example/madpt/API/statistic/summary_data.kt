@@ -1,5 +1,6 @@
 package com.example.madpt.API.statistic
 
+import com.example.madpt.API.goal.Goal
 import com.google.gson.annotations.SerializedName
 
 data class SummaryData(
@@ -15,13 +16,4 @@ data class SummaryData(
     val snackKcal: Double,
     @SerializedName("goal")
     val goal: Goal
-)
-
-data class Goal(
-    @SerializedName("diet_kcal")
-    val goalDietKcal: Double,
-    @SerializedName("exercise_kcal")
-    val goalExerciseKcal: Double,
-    @SerializedName("member_weight")
-    val goalMemberWeight: Double
 )

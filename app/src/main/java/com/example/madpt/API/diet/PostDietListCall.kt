@@ -37,6 +37,5 @@ class PostDietListCall(context: Context) {
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }
         })
-
     }
 }

@@ -19,11 +19,19 @@ class SplashActivity :AppCompatActivity() {
         super.onCreate(savedInstanceState)
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent(this, StartProfile::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                    finish()
+                }, 1500)
+            } else if (tokenInfo != null) {
                 UserApiClient.instance.me { user, error ->
                     if (error != null) {
                         Log.e("YMC", "사용자 정보 요청 실패", error)
                     } else if (user != null) {
-                        Log.i(
+                        Log.d(
                             "YMC", "사용자 정보 요청 성공" +
                                     "\n회원번호: ${user.id}" +
                                     "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
@@ -32,23 +40,15 @@ class SplashActivity :AppCompatActivity() {
                         )
                         userId = user.id!!
                     }
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            val intent = Intent(this, StartProfile::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
-                            finish()
-                        }, 1500)
-                }
-                    } else if (tokenInfo != null) {
-                        Handler(Looper.getMainLooper()).postDelayed({
-                            val intent = Intent(this, MainActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                            startActivity(intent)
-                            finish()
-                        }, 1500)
-                    }
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                        finish()
+                    }, 1500)
                 }
             }
         }
+    }
+}

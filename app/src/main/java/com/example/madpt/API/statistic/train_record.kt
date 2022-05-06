@@ -9,12 +9,14 @@ data class TrainRecord(
 )
 
 data class TrainRecordList(
-    @SerializedName("exercise_id")
-    val exercise_id: Int,
+    @SerializedName("exercise_name")
+    val exercise_name: String,
     @SerializedName("start_time")
-    val start_time: Timestamp,
-    @SerializedName("score")
-    val score:Int,
-    @SerializedName("count")
-    val count:Int
+    val start_time: Long,
+    @SerializedName("sets")
+    val sets: Int,
+    @SerializedName("reps")
+    val reps: Int,
+    @SerializedName("kcal")
+    val kcal: Double
 )

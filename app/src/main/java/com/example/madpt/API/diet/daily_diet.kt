@@ -22,7 +22,7 @@ data class diet_list(
     @SerializedName("diet_kcal")
     val diet_kcal : Double,
     @SerializedName("weight")
-    val weight : Int,
+    val weight : Double,
     @SerializedName("count")
     val count : Int,
     @SerializedName("unit")

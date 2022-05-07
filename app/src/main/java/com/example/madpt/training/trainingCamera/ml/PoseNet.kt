@@ -24,11 +24,8 @@ import android.util.Log
 import com.example.madpt.testmodel
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.Interpreter
-import com.example.madpt.training.trainingCamera.data.BodyPart
-import com.example.madpt.training.trainingCamera.data.Device
-import com.example.madpt.training.trainingCamera.data.KeyPoint
-import com.example.madpt.training.trainingCamera.data.Person
 import com.example.madpt.training.trainingCamera.algorithm.MadPT
+import com.example.madpt.training.trainingCamera.data.*
 import org.tensorflow.lite.gpu.GpuDelegate
 import org.tensorflow.lite.support.common.FileUtil
 import org.tensorflow.lite.support.common.ops.NormalizeOp
@@ -197,6 +194,13 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     }
 
     override fun lastInferenceTimeNanos(): Long = lastInferenceTimeNanos
+    override fun getTrainingData(): ArrayList<TrainingData> {
+        TODO("Not yet implemented")
+    }
+
+    override fun getExcrciseTimeList(): ArrayList<Long> {
+        TODO("Not yet implemented")
+    }
 
     override fun close() {
         gpuDelegate?.close()

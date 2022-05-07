@@ -33,11 +33,11 @@ import android.util.Log
 import android.view.Surface
 import android.view.SurfaceView
 import com.example.madpt.testmodel
-import com.example.madpt.training.TrainingList
 import kotlinx.coroutines.suspendCancellableCoroutine
 import com.example.madpt.training.trainingCamera.VisualizationUtils
 import com.example.madpt.training.trainingCamera.YuvToRgbConverter
 import com.example.madpt.training.trainingCamera.data.Person
+import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.MoveNetMultiPose
 import com.example.madpt.training.trainingCamera.ml.PoseClassifier
 import com.example.madpt.training.trainingCamera.ml.PoseDetector
@@ -78,11 +78,16 @@ class CameraSource(
     private var currentFeedback: Int = 0
     private var currentExcrcise: String = ""
     private var nextExcrcise: String = ""
+    private var excrciseTimeList: ArrayList<Long> = ArrayList()
     private var time = 0
     private var min = 0
     private var sec = 0
+    private var time_break = 15
+    private var breakTimer = Timer()
+    private var currentExcrciseDataList: ArrayList<Int> = ArrayList()
     private var frameProcessedInOneSecondInterval = 0
     private var framesPerSecond = 0
+    private var flag2 = true
 
     /** Detects, characterizes, and connects to a CameraDevice (used for all camera operations) */
     private val cameraManager: CameraManager by lazy {
@@ -257,17 +262,8 @@ class CameraSource(
         camera = null
         imageReader?.close()
         imageReader = null
-        stopImageReaderThread()
         detector?.close()
         detector = null
-        classifier?.close()
-        classifier = null
-        fpsTimer?.cancel()
-        fpsTimer = null
-        frameProcessedInOneSecondInterval = 0
-        framesPerSecond = 0
-        excrciseTimer?.cancel()
-        excrciseTimer = null
     }
 
     // process image
@@ -280,8 +276,15 @@ class CameraSource(
             detector?.estimatePoses(bitmap)?.let {
                 persons.addAll(it)
                 dataList = detector?.doExcrcise(persons)!!
-                if (dataList[0] == -1){
-                    println("종료")
+                if (dataList.isEmpty()){
+                    println("운동 종료")
+                    excrciseTimeList = detector?.getExcrciseTimeList()!!
+                    for(i in 0 until excrciseTimeList.size){
+                        val excrciseTimeTemp = excrciseTimeList[i]
+                        println("$i : $excrciseTimeTemp")
+                    }
+                    val trainingDataList = detector?.getTrainingData()!!
+                    finishExcrcise(trainingDataList)
                 }
                 else{
                     showExcrciseView(dataList)
@@ -308,9 +311,43 @@ class CameraSource(
         visualize(persons, bitmap)
     }
 
+    private fun finishExcrcise(trainingDataList: ArrayList<TrainingData>){
+        println("finish Excrcise")
+        listener?.onExcrciseFinishListener(trainingDataList)
+    }
+
     private fun showExcrciseView(dataList: ArrayList<Int>) {
         currentExcrcise = trainingList[0].titles
-        nextExcrcise = trainingList[0].titles
+        currentSets = dataList[1]
+        currentReps = dataList[0]
+
+        if(currentSets >= 0 && currentReps % trainingList[0].reps == 0 && currentReps != 0 && flag2){
+            flag2 = false
+            breakTimer = Timer()
+            breakTimer = timer(period = 1000) {
+                time_break--
+
+                if (time_break == 0){
+                    breakTimer.cancel()
+                    time_break = 15
+                    listener?.onExcrciseBreakTimeListner(false, time_break % 60)
+                }
+                else{
+                    listener?.onExcrciseBreakTimeListner(true, time_break % 60)
+                }
+            }
+        }
+        else if(currentReps % trainingList[0].reps != 0 ||
+            (trainingList[0].reps == 1 && currentReps != 0)){
+            flag2 = true
+        }
+
+        nextExcrcise = if(trainingList.size != 1){
+            trainingList[1].titles
+        } else{
+            "Empty"
+        }
+
         currentReps = dataList[0]
         currentSets = dataList[1]
         currentFeedback = dataList[2]
@@ -389,6 +426,8 @@ class CameraSource(
         fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String)
         fun onExcrciseCountListener(currentReps: Int, currentSets: Int)
         fun onExcrciseFeedbackListener(currentFeedback: String)
+        fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>)
+        fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int)
         fun onDetectedInfo(personScore: Float?, poseLabels: List<Pair<String, Float>>?)
     }
 }

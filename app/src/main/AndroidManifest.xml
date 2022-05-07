@@ -25,6 +25,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADPT">
         <activity
+            android:name=".training.trainingCamera.TrainingResultActivity"
             android:name=".diet.CustomFoodDataModifySaveActivity"
             android:exported="false" />
         <activity

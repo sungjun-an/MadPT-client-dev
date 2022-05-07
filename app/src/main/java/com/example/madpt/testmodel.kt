@@ -2,6 +2,7 @@ package com.example.madpt
 
 import android.os.Parcelable
 
+
 @kotlinx.parcelize.Parcelize
 data class testmodel(
     var titles: String,
@@ -12,3 +13,10 @@ data class testmodel(
     var excrciseEndTime: Long = 0,
     var realExcrciseTime: Int = 0
 ) :Parcelable
+
+
+data class storeTraining(
+    var routineTitle: String,
+    var breakTime: Int,
+    var trainset: ArrayList<testmodel>,
+)

@@ -17,7 +17,6 @@ limitations under the License.
 package com.example.madpt.training.trainingCamera
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
@@ -44,10 +43,9 @@ import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.*
-import java.util.Collections.addAll
 import kotlin.collections.ArrayList
+import kotlin.concurrent.timer
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -79,6 +77,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var nextExcrcise_view: TextView
     private lateinit var tvScore: TextView
     private lateinit var tvFPS: TextView
+    private lateinit var breakTime: TextView
     private lateinit var spnDevice: Spinner
     private lateinit var spnModel: Spinner
     private lateinit var spnTracker: Spinner
@@ -90,6 +89,8 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var vClassificationOption: View
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
+    private lateinit var breakTimer: Timer
+    private var time = 0
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -164,6 +165,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         currentExcrcise_view = findViewById(R.id.currentExcrcise)
         nextExcrcise_view = findViewById(R.id.nextExcrcise)
         tvScore = findViewById(R.id.tvScore)
+        breakTime = findViewById(R.id.showBreakTime)
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)
         spnDevice = findViewById(R.id.spnDevice)
@@ -238,6 +240,19 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onExcrciseFeedbackListener(currentFeedback: String){
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                        }
+
+                        override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
+                            runOnUiThread{
+                                if(flag){
+                                    breakTime.visibility = View.VISIBLE
+                                    breakTime.text = getString(R.string.break_time_timer,
+                                            sec.toString())
+                                }
+                                else{
+                                    breakTime.visibility = View.INVISIBLE
+                                }
+                            }
                         }
 
                         override fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>){

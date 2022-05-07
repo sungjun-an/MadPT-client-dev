@@ -405,6 +405,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentReps = 0
     private var currentSets = 0
     private var repsFlag = false
+    private val breakTime = 10000L
 
     fun cal_timeStamp(): Long{
         val saveTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)

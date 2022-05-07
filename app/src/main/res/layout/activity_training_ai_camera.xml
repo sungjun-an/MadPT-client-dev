@@ -94,6 +94,18 @@
         android:textSize="20sp"
         app:layout_anchorGravity="right"/>
 
+    <TextView
+        android:id="@+id/showBreakTime"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="@string/break_time_timer"
+        android:visibility="invisible"
+        android:textSize="20sp"
+        app:layout_anchor="@+id/surfaceView"
+        app:layout_anchorGravity="center" />
+
     <include layout="@layout/bottom_sheet_layout"/>
 
     <TextView

@@ -10,9 +10,6 @@ import com.example.madpt.R
 
 class SocialFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

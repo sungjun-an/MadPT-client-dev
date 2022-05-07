@@ -13,7 +13,7 @@ data class food_list(
     @SerializedName("food_name")
     val food_name: String,
     @SerializedName("food_id")
-    val food_id: Int,
+    val food_id: Long,
     @SerializedName("maker_name")
     val maker_name: String,
     @SerializedName("food_data")
@@ -25,11 +25,11 @@ data class foodData(
     val defaultWeight: Double,
     @SerializedName("default_kcal")
     val defaultKcal: Double,
-    @SerializedName("default_Carbohydrate")
+    @SerializedName("default_carbohydrate")
     val defaultCarbohydrate: Double,
-    @SerializedName("default_Protein")
+    @SerializedName("default_protein")
     val defaultProtein: Double,
-    @SerializedName("default_Fat")
+    @SerializedName("default_fat")
     val defaultFat: Double
 ): Serializable
 

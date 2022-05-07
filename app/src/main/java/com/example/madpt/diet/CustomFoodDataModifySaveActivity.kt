@@ -2,7 +2,9 @@ package com.example.madpt.diet
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.madpt.AddFoodList
+import com.example.madpt.API.diet.AddFoodList
+import com.example.madpt.API.diet.diet_list
+
 import com.example.madpt.ModifyFoodData
 import com.example.madpt.databinding.ActivityCustomFoodDataModifySaveBinding
 import com.example.madpt.databinding.ActivityDietPageBinding
@@ -18,15 +20,15 @@ class CustomFoodDataModifySaveActivity : AppCompatActivity() {
 
 
         binding.foodModifySaveButton.setOnClickListener() {
-            val SaveFoodData = ModifyFoodData(
+            val SaveFoodData = diet_list(
 //              food_id = room.food_id,
                 food_id = -1,
                 food_name = binding.modifyFoodName.getText().toString(),
-                maker_name = "",
                 weight = binding.modifyFoodGram.getText().toString().toDouble(),
-                kcal = binding.modifyFoodKcal.getText().toString().toDouble(),
+                diet_kcal = binding.modifyFoodKcal.getText().toString().toDouble(),
                 unit = binding.modifyUnit.getText().toString(),
-                count = binding.modifyFoodCount.getText().toString().toInt()
+                count = binding.modifyFoodCount.getText().toString().toInt(),
+                is_custom = true
             )
             AddFoodList.add(SaveFoodData)
             finish()

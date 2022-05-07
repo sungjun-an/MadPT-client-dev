@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.example.madpt.API.diet.diet_list
 import com.example.madpt.AddFoodData
 import com.example.madpt.ModifyFoodData
 
@@ -14,14 +15,14 @@ import com.example.madpt.databinding.AddFoodListviewBinding
 
 class FoodListViewAdapter(
     private val context: Context,
-    private val listViewAddFoodList: ArrayList<ModifyFoodData>
+    private val listViewAddFoodList: ArrayList<diet_list>
 ) : BaseAdapter() {
 
     override fun getCount(): Int {
         return listViewAddFoodList.size
     }
 
-    override fun getItem(position: Int): ModifyFoodData = listViewAddFoodList[position]
+    override fun getItem(position: Int): diet_list = listViewAddFoodList[position]
 
     override fun getItemId(position: Int): Long = position.toLong()
 
@@ -36,9 +37,9 @@ class FoodListViewAdapter(
         }
         else{tempMakerName = "["+show.maker_name!!+"]"}*/
 
-        binding.makerName.text = show.maker_name
+
         binding.foodName.text = show.food_name
-        binding.defaultKcal.text = show.kcal.toString()
+        binding.defaultKcal.text = show.diet_kcal.toString()
 
         return binding.root
     }

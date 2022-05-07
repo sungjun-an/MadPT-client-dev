@@ -47,6 +47,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlin.properties.Delegates
 
 class CameraSource(
     private val surfaceView: SurfaceView,
@@ -316,10 +317,20 @@ class CameraSource(
         listener?.onExcrciseFinishListener(trainingDataList)
     }
 
+    private var flag3 = true
+    private var pastReps = -1
+    private var pastSets = -1
+
     private fun showExcrciseView(dataList: ArrayList<Int>) {
         currentExcrcise = trainingList[0].titles
         currentSets = dataList[1]
         currentReps = dataList[0]
+
+        if(currentSets >= 0 && currentReps % trainingList[0].reps == 0 && currentReps != 0 && flag3){
+            flag3 = false
+            pastReps = currentReps
+            pastSets = currentSets
+        }
 
         if(currentSets >= 0 && currentReps % trainingList[0].reps == 0 && currentReps != 0 && flag2){
             flag2 = false
@@ -330,15 +341,23 @@ class CameraSource(
                 if (time_break == 0){
                     breakTimer.cancel()
                     time_break = 15
+                    flag3 = true
                     listener?.onExcrciseBreakTimeListner(false, time_break % 60)
                 }
                 else{
+                    if(pastReps < currentReps){
+                        println("reps in")
+                        dataList[0] = pastReps
+                    }
+                    if(pastSets < currentSets){
+                        println("sets in")
+                        dataList[1] = pastSets
+                    }
                     listener?.onExcrciseBreakTimeListner(true, time_break % 60)
                 }
             }
         }
-        else if(currentReps % trainingList[0].reps != 0 ||
-            (trainingList[0].reps == 1 && currentReps != 0)){
+        else if(currentReps % trainingList[0].reps != 0 && trainingList[0].reps != 1){
             flag2 = true
         }
 

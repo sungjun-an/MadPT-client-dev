@@ -22,6 +22,7 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
     private lateinit var binding : ActivityTrainingResultBinding
     private var chartDataList = ArrayList<TrainingData>()
     private var trainingList = ArrayList<testmodel>()
+    private var excrciseTimeList = ArrayList<Long>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
 
         trainingList = intent.getParcelableArrayListExtra<testmodel>(
             "trainingList") as ArrayList<testmodel>
+        excrciseTimeList = intent.getSerializableExtra("excrciseTimeList") as ArrayList<Long>
 
         Log.d("training list", trainingList.toString())
 
@@ -54,7 +56,24 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
             binding.AverageListRecyclerView.layoutManager = LinearLayoutManager(this).also {
                 it.orientation = LinearLayoutManager.VERTICAL }
         }
+        processsExcrciseTimeData()
         showMainChart()
+    }
+
+    private fun processsExcrciseTimeData(){
+        for(i in 0 until trainingList.size){
+            trainingList[i].excrciseStartTime = excrciseTimeList[i*2]
+            trainingList[i].excrciseEndTime = excrciseTimeList[i*2 + 1]
+
+            val startTime = excrciseTimeList[i*2]
+            val endTime = excrciseTimeList[i*2 + 1]
+            val set = trainingList[i].sets
+            var calculatedBreakTime = set * 5000
+
+            trainingList[i].realExcrciseTime = (endTime - startTime - calculatedBreakTime).toInt()
+        }
+
+        println("final training list: $trainingList")
     }
 
     private fun showMainChart(){

@@ -405,6 +405,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentReps = 0
     private var currentSets = 0
     private var repsFlag = false
+    private var setsFlag = false
     private val breakTime = 10000L
 
     fun cal_timeStamp(): Long{
@@ -423,9 +424,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     }
 
     override fun doExcrcise(person: List<Person>): ArrayList<Int> {
-
         //initExcrcise(person)
-
         var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
         var currentDataList: ArrayList<Int> = ArrayList()
         val currentFeedback = dataList[2]
@@ -434,12 +433,16 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         val totalReps = trainingList[0].reps * trainingList[0].sets
         trainingDataList = madpt.trainingDataList
 
-        if(currentReps != 0 && currentReps % trainingList[0].reps == 0 && currentReps == totalReps){
+        if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
             if(currentReps != trainingList[0].reps){
-                repsFlag = false
+                setsFlag = false
             }
 
-            if(repsFlag){
+            if(currentReps > trainingList[0].reps && currentReps < totalReps && repsFlag){
+                setsFlag = true
+            }
+
+            if(setsFlag){
                 println("운동 안하는 중")
                 // 여기서 시간 재면 될듯
             }
@@ -447,14 +450,21 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
                 currentSets += 1
                 println("sets: $currentSets")
                 if(currentReps == trainingList[0].reps){
+                    setsFlag = true
+                }
+                else{
                     repsFlag = true
                 }
             }
+        }
+        else{
+            repsFlag = false
         }
 
         var excrciseEndTime = 0L
 
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
+            print("set end")
             madpt.init_excrcise_count(trainingList[0])
             excrciseEndTime = cal_timeStamp()
             excrciseTimeList.add(excrciseEndTime)
@@ -464,7 +474,7 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             }
             trainingList.removeAt(0)
             currentSets = 0
-            repsFlag = false
+            setsFlag = false
             //currentReps = 0
 
             if(trainingList.isEmpty()){

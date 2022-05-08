@@ -36,16 +36,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.madpt.R
 import com.example.madpt.testmodel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.concurrent.timer
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -69,6 +67,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var trainingList = ArrayList<testmodel>()
     private var trainingDataList: ArrayList<TrainingData> = ArrayList()
     private val staticTrainingList = arrayListOf<testmodel>()
+    private var excrciseTimeList = ArrayList<Long>()
     private lateinit var Timer: TextView // test for timer
     private lateinit var Sets: TextView // test for sets
     private lateinit var Reps: TextView // test for laps
@@ -255,9 +254,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
-                        override fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>){
+                        override fun onExcrciseFinishListener(
+                            trainingDataList: ArrayList<TrainingData>,
+                            excrciseTimeList: ArrayList<Long>
+                        ){
                             println("finish listener in")
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
+                            this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
                             cameraSource?.close()
                             openResultPage()
                         }
@@ -302,6 +305,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             val intent = Intent(this, TrainingResultActivity::class.java)
             intent.putParcelableArrayListExtra("trainingDataList", trainingDataList)
             intent.putParcelableArrayListExtra("trainingList", staticTrainingList)
+            intent.putExtra("excrciseTimeList", excrciseTimeList)
             startActivity(intent)
         }
     }

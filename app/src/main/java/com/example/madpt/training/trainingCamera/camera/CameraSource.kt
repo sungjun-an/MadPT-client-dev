@@ -47,7 +47,6 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-import kotlin.properties.Delegates
 
 class CameraSource(
     private val surfaceView: SurfaceView,
@@ -83,12 +82,11 @@ class CameraSource(
     private var time = 0
     private var min = 0
     private var sec = 0
-    private var time_break = 15
+    private var time_break = 5
     private var breakTimer = Timer()
     private var currentExcrciseDataList: ArrayList<Int> = ArrayList()
     private var frameProcessedInOneSecondInterval = 0
     private var framesPerSecond = 0
-    private var flag2 = true
 
     /** Detects, characterizes, and connects to a CameraDevice (used for all camera operations) */
     private val cameraManager: CameraManager by lazy {
@@ -267,6 +265,9 @@ class CameraSource(
         detector = null
     }
 
+    private var breakTimeFlag = false
+    private var timeFlag = true
+
     // process image
     private fun processImage(bitmap: Bitmap) {
         val persons = mutableListOf<Person>()
@@ -274,27 +275,39 @@ class CameraSource(
         var dataList: ArrayList<Int>
 
         synchronized(lock) {
-            detector?.estimatePoses(bitmap)?.let {
-                persons.addAll(it)
-                dataList = detector?.doExcrcise(persons)!!
-                if (dataList.isEmpty()){
-                    println("운동 종료")
-                    excrciseTimeList = detector?.getExcrciseTimeList()!!
-                    for(i in 0 until excrciseTimeList.size){
-                        val excrciseTimeTemp = excrciseTimeList[i]
-                        println("$i : $excrciseTimeTemp")
-                    }
-                    val trainingDataList = detector?.getTrainingData()!!
-                    finishExcrcise(trainingDataList)
+            if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && breakTimeFlag){
+                if(timeFlag){
+                    timeFlag = false
+                    showBreakTimeView()
                 }
                 else{
-                    showExcrciseView(dataList)
+                    println("운동 중")
                 }
+            }
+            else{
+                detector?.estimatePoses(bitmap)?.let {
+                    persons.addAll(it)
+                    dataList = detector?.doExcrcise(persons)!!
+                    if (dataList.isEmpty()){
+                        println("운동 종료")
+                        excrciseTimeList = detector?.getExcrciseTimeList()!!
+                        for(i in 0 until excrciseTimeList.size){
+                            val excrciseTimeTemp = excrciseTimeList[i]
+                            println("$i : $excrciseTimeTemp")
+                        }
+                        val trainingDataList = detector?.getTrainingData()!!
+                        println(trainingDataList)
+                        finishExcrcise(trainingDataList, excrciseTimeList)
+                    }
+                    else{
+                        showExcrciseView(dataList)
+                    }
 
-                // if the model only returns one item, allow running the Pose classifier.
-                if (persons.isNotEmpty()) {
-                    classifier?.run {
-                        classificationResult = classify(persons[0])
+                    // if the model only returns one item, allow running the Pose classifier.
+                    if (persons.isNotEmpty()) {
+                        classifier?.run {
+                            classificationResult = classify(persons[0])
+                        }
                     }
                 }
             }
@@ -312,60 +325,38 @@ class CameraSource(
         visualize(persons, bitmap)
     }
 
-    private fun finishExcrcise(trainingDataList: ArrayList<TrainingData>){
+    private fun finishExcrcise(trainingDataList: ArrayList<TrainingData>,
+                               excrciseTimeList: ArrayList<Long>){
         println("finish Excrcise")
-        listener?.onExcrciseFinishListener(trainingDataList)
+        listener?.onExcrciseFinishListener(trainingDataList, excrciseTimeList)
     }
 
-    private var flag3 = true
-    private var pastReps = -1
-    private var pastSets = -1
+    private fun showBreakTimeView(){
+        breakTimer = Timer()
+        breakTimer = timer(period = 1000) {
+            time_break--
+
+            if (time_break == 0){
+                breakTimer.cancel()
+                time_break = 5
+                breakTimeFlag = false
+                println("breakTimeFlag: $breakTimeFlag")
+                listener?.onExcrciseBreakTimeListner(false, time_break % 60)
+            }
+            else{
+                listener?.onExcrciseBreakTimeListner(true, time_break % 60)
+            }
+        }
+    }
 
     private fun showExcrciseView(dataList: ArrayList<Int>) {
         currentExcrcise = trainingList[0].titles
-        currentSets = dataList[1]
-        currentReps = dataList[0]
-
-        if(currentSets >= 0 && currentReps % trainingList[0].reps == 0 && currentReps != 0 && flag3){
-            flag3 = false
-            pastReps = currentReps
-            pastSets = currentSets
-        }
-
-        if(currentSets >= 0 && currentReps % trainingList[0].reps == 0 && currentReps != 0 && flag2){
-            flag2 = false
-            breakTimer = Timer()
-            breakTimer = timer(period = 1000) {
-                time_break--
-
-                if (time_break == 0){
-                    breakTimer.cancel()
-                    time_break = 15
-                    flag3 = true
-                    listener?.onExcrciseBreakTimeListner(false, time_break % 60)
-                }
-                else{
-                    if(pastReps < currentReps){
-                        println("reps in")
-                        dataList[0] = pastReps
-                    }
-                    if(pastSets < currentSets){
-                        println("sets in")
-                        dataList[1] = pastSets
-                    }
-                    listener?.onExcrciseBreakTimeListner(true, time_break % 60)
-                }
-            }
-        }
-        else if(currentReps % trainingList[0].reps != 0 && trainingList[0].reps != 1){
-            flag2 = true
-        }
-
         nextExcrcise = if(trainingList.size != 1){
             trainingList[1].titles
         } else{
             "Empty"
         }
+
 
         currentReps = dataList[0]
         currentSets = dataList[1]
@@ -386,6 +377,15 @@ class CameraSource(
 
         listener?.onExcrciseCountListener(currentReps, currentSets)
         listener?.onExcrciseListener(currentExcrcise, nextExcrcise)
+
+        if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && timeFlag){
+            breakTimeFlag = true
+        }
+        else if(currentReps % trainingList[0].reps != 0){
+            println("in -> $currentReps")
+            timeFlag = true
+        }
+
 
     }
 
@@ -445,7 +445,10 @@ class CameraSource(
         fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String)
         fun onExcrciseCountListener(currentReps: Int, currentSets: Int)
         fun onExcrciseFeedbackListener(currentFeedback: String)
-        fun onExcrciseFinishListener(trainingDataList: ArrayList<TrainingData>)
+        fun onExcrciseFinishListener(
+            trainingDataList: ArrayList<TrainingData>,
+            excrciseTimeList: ArrayList<Long>
+        )
         fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int)
         fun onDetectedInfo(personScore: Float?, poseLabels: List<Pair<String, Float>>?)
     }

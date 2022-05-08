@@ -116,41 +116,25 @@ class MainPageFragment : Fragment() {
 
         binding.plusButtonBreakfast.setOnClickListener(){
             val intent = Intent(context,DietPageActivity::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("diet_Type","Breakfast")
             intent.putExtra("diet_type","Breakfast")
-            intent.putExtra("myBundle",bundle)
             startActivity(intent)
         }
 
         binding.plusButtonLunch.setOnClickListener(){
             val intent = Intent(context,DietPageActivity::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("diet_Type","Lunch")
             intent.putExtra("diet_type","Lunch")
-            intent.putExtra("myBundle",bundle)
             startActivity(intent)
         }
 
         binding.plusButtonDinner.setOnClickListener(){
             val intent = Intent(context,DietPageActivity::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("diet_Type","Dinner")
             intent.putExtra("diet_type","Dinner")
-            intent.putExtra("myBundle",bundle)
             startActivity(intent)
         }
 
         binding.plusButtonSnack.setOnClickListener(){
             val intent = Intent(context,DietPageActivity::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("diet_Type","Snack")
             intent.putExtra("diet_type","Snack")
-            intent.putExtra("myBundle",bundle)
             startActivity(intent)
         }
 

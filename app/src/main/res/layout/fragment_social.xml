@@ -3,12 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".social.SocialFragment">
+    tools:context=".social.SocialFragment"
+    android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="소셜 페이지" />
+        android:weightSum="40"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_weight="10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Social"
+                android:textColor="@color/white"
+                android:gravity="bottom|left"
+                android:textSize="50dp"
+                android:layout_marginLeft="10dp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/plus_button_friend"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:padding="0dp"
+                android:src="@drawable/plus_button"
+                android:visibility="visible" />
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/date_this_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2022년 5월 1주차"
+            android:textColor="@color/white"
+            android:gravity="right"
+            android:textSize="20dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
 </FrameLayout>

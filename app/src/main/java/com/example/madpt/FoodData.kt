@@ -2,6 +2,7 @@ package com.example.madpt
 
 import java.io.Serializable
 import android.content.Intent
+import com.example.madpt.API.diet.diet_list
 
 data class FoodData(
     var food_name: String,
@@ -48,7 +49,7 @@ fun sampleFoodList(){
     FoodList.add(FoodData("비빔냉면", 6, "", 300.0,200.0,10.0,100.0,40.0))
 }
 
-val AddFoodList = ArrayList<ModifyFoodData>()
+
 
 
 

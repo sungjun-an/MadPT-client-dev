@@ -3,6 +3,8 @@ package com.example.madpt.API.diet
 import com.google.gson.annotations.SerializedName
 import java.sql.Timestamp
 
+val AddFoodList = ArrayList<diet_list>()
+
 data class daily_diet(
     @SerializedName("date")
     val date : Long,

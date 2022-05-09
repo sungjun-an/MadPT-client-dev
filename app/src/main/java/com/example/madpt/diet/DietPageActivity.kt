@@ -8,6 +8,9 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import com.example.madpt.*
+import com.example.madpt.API.diet.AddFoodList
+import com.example.madpt.API.diet.PostDietListCall
+import com.example.madpt.API.diet.daily_diet
 import com.example.madpt.databinding.ActivityDietPageBinding
 import com.example.madpt.main.MainPageFragment
 import java.time.LocalDateTime
@@ -24,12 +27,12 @@ class DietPageActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val dietType : Bundle = intent.getBundleExtra("myBundle")!!
+
 
         super.onCreate(savedInstanceState)
         binding = ActivityDietPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val dietType = intent.getStringExtra("diet_type")
 
         sampleFoodList()
         simpleButton()
@@ -37,7 +40,7 @@ class DietPageActivity : AppCompatActivity() {
         val MainPageFragment = MainPageFragment()
 
         for(i in AddFoodList.indices){
-            dataSumKcal += AddFoodList[i].kcal.toInt()
+            dataSumKcal += AddFoodList[i].diet_kcal.toInt()
         }
         allSumKcal = dataSumKcal+sumSimpleKcal
         binding.sumKcal.setText(allSumKcal.toString())
@@ -56,22 +59,17 @@ class DietPageActivity : AppCompatActivity() {
         }
 
         binding.dietSaveButton.setOnClickListener(){
-            userDietData.add(UserData(Date = LocalDateTime.now(), diet_type = dietType.getString("diet_Type","") ,simple_total_kcal = sumSimpleKcal, diet_list = AddFoodList))
-            val bundle = Bundle()
-            bundle.putInt("SumKcal",allSumKcal)
 
-            MainPageFragment.arguments = bundle
+            val saveDiet = daily_diet(date = System.currentTimeMillis(), diet_type = dietType!!,simple_total_kcal = sumSimpleKcal.toDouble(), diet_list = AddFoodList)
+            PostDietListCall(this).PostDiet(saveDiet)
 
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.add(R.id.fl_container,MainPageFragment)
-            transaction.commit()
         }
     }
 
     override fun onRestart() {
         dataSumKcal = 0
         for(i in AddFoodList.indices){
-            dataSumKcal += AddFoodList[i].kcal.toInt()
+            dataSumKcal += AddFoodList[i].diet_kcal.toInt()
         }
         allSumKcal = dataSumKcal+sumSimpleKcal
         binding.sumKcal.setText(allSumKcal.toString())
@@ -126,4 +124,9 @@ class DietPageActivity : AppCompatActivity() {
             binding.sumKcal.setText(allSumKcal.toString())
         }
     }
+
+    fun transMainFragment(){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.fl_container,MainPageFragment())
+        transaction.commit()}
 }

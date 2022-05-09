@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="30dp"
+    android:layout_height="40dp"
     android:orientation="horizontal">
 
-    <TextView
-        android:gravity="center"
-        android:id="@+id/maker_name"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="성환 식품"
-        android:visibility="visible" />
+
 
     <TextView
         android:gravity="center"
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="5dp"
         android:text="제육 볶음" />
 
     <View

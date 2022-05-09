@@ -9,6 +9,8 @@ import android.util.Log
 import androidx.core.widget.addTextChangedListener
 import com.example.madpt.databinding.ActivitySearchFoodDataModifySaveBinding
 import com.example.madpt.*
+import com.example.madpt.API.diet.AddFoodList
+import com.example.madpt.API.diet.diet_list
 import com.example.madpt.API.food.food_list
 import org.w3c.dom.Text
 import java.lang.Math.round
@@ -37,15 +39,14 @@ class SearchFoodDataModifySaveActivity : AppCompatActivity() {
         binding.modifyUnit.setText("개")
 
         binding.foodModifySaveButton.setOnClickListener() {
-            val SaveFoodData = ModifyFoodData(
-//                food_id = room.food_id,
-                food_id = 1,
-                food_name = binding.modifyFoodName.getText().toString(),
-                maker_name = room.maker_name,
+            val SaveFoodData = diet_list(
+                food_id = room.food_id,
+                food_name = room.food_name,
+                diet_kcal = binding.modifyFoodKcal.getText().toString().toDouble(),
                 weight = binding.modifyFoodGram.getText().toString().toDouble(),
-                kcal = binding.modifyFoodKcal.getText().toString().toDouble(),
                 unit = binding.modifyUnit.getText().toString(),
                 count = binding.modifyFoodCount.getText().toString().toInt()
+
             )
             AddFoodList.add(SaveFoodData)
             finish()

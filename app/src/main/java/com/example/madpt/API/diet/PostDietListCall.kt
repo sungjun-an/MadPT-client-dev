@@ -23,7 +23,7 @@ class PostDietListCall(context: Context)  {
 
         val dialog = LoadingDialog(context)
         dialog.showDialog()
-        val dietPageActivity = DietPageActivity()
+        val dietPageActivity = (context as DietPageActivity)
 
         RetrofitClass.service.postDailyDiet(userId,dailyDiet).enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
@@ -31,7 +31,7 @@ class PostDietListCall(context: Context)  {
                     // 정상적으로 통신이 성고된 경우
                     dialog.loadingDismiss()
                     Log.d("YMC1", "onResponse 성공: $response");
-                    dietPageActivity!!.transMainFragment()
+                    dietPageActivity.transMainFragment()
 
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)

@@ -23,6 +23,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Process
+import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
@@ -31,6 +32,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +42,10 @@ import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
+import com.kakao.sdk.newtoneapi.TextToSpeechClient
+import com.kakao.sdk.newtoneapi.TextToSpeechListener
+import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -179,9 +185,15 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         initSpinner()
         spnModel.setSelection(modelPos)
         swClassification.setOnCheckedChangeListener(setClassificationListener)
+        TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
         if (!isCameraPermissionGranted()) {
             requestPermission()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TextToSpeechManager.getInstance().finalizeLibrary()
     }
 
     override fun onStart() {
@@ -262,6 +274,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
                             this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
                             cameraSource?.close()
+                            onDestroy()
                             openResultPage()
                         }
 
@@ -296,7 +309,60 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
+            startKakaoTTS()
         }
+    }
+
+    private val TAG = "Kakao"
+    private lateinit var ttsClient : TextToSpeechClient
+    private val NETWORK_STATE_CODE = 0
+
+    private fun startKakaoTTS(){
+        val permission_network = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE)
+        ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
+        if(permission_network != PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "Permission to recode denied")
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), NETWORK_STATE_CODE)
+        } else {
+
+            //음성인식과 음성합성 두개의 초기화 코드를 다 넣어 줘야 에러가 없다.(뭐 이래)
+            SpeechRecognizerManager.getInstance().initializeLibrary(this)
+            TextToSpeechManager.getInstance().initializeLibrary(this)
+
+            //버튼 클릭
+            ttsClient = TextToSpeechClient.Builder()
+                .setSpeechMode(TextToSpeechClient.NEWTONE_TALK_1)     // 음성합성방식
+                .setSpeechSpeed(1.0)            // 발음 속도(0.5~4.0)
+                .setSpeechVoice(TextToSpeechClient.VOICE_WOMAN_READ_CALM)  //TTS 음색 모드 설정(여성 차분한 낭독체)
+                .setListener(object : TextToSpeechListener {
+                    //아래 두개의 메소드만 구현해 주면 된다. 음성합성이 종료될 때 호출된다.
+                    override fun onFinished() {
+                        val intSentSize = ttsClient.getSentDataSize()      //세션 중에 전송한 데이터 사이즈
+                        val intRecvSize = ttsClient.getReceivedDataSize()  //세션 중에 전송받은 데이터 사이즈
+
+                        val strInacctiveText = "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
+
+                        Log.i(TAG, strInacctiveText)
+                    }
+
+                    override fun onError(code: Int, message: String?) {
+                        Log.d(TAG, code.toString())
+                    }
+                })
+                .build()
+
+            val strText = Feedback.text.toString()
+            println(strText)
+            ttsClient.play(strText)
+        }
+    }
+
+    fun onFinished() { //음성합성이 종료될 때 호출된다.
+        val intSentSize = ttsClient!!.sentDataSize //세션 중에 전송한 데이터 사이즈
+        val intRecvSize = ttsClient!!.receivedDataSize //세션 중에 전송받은 데이터 사이즈
+        val strInacctiveText =
+            "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
+        Log.i(TAG, strInacctiveText)
     }
 
     private fun openResultPage(){

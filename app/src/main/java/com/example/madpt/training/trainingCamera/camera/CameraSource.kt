@@ -139,6 +139,8 @@ class CameraSource(
             }
         }, imageReaderHandler)
 
+        println(imageReader)
+
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))
             val cameraRequest = camera?.createCaptureRequest(

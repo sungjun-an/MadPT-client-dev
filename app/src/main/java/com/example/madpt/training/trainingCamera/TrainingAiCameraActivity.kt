@@ -21,8 +21,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.SurfaceView
 import android.view.View
@@ -92,6 +94,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var tvClassificationValue3: TextView
     private lateinit var swClassification: SwitchCompat
     private lateinit var vClassificationOption: View
+    private var tts: TextToSpeech? = null
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private lateinit var breakTimer: Timer
@@ -251,6 +254,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onExcrciseFeedbackListener(currentFeedback: String){
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                            ttsSpeak(Feedback.text.toString())
                         }
 
                         override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
@@ -309,60 +313,25 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
-            startKakaoTTS()
+            startGoogleTTS()
         }
     }
 
-    private val TAG = "Kakao"
-    private lateinit var ttsClient : TextToSpeechClient
-    private val NETWORK_STATE_CODE = 0
+    private fun startGoogleTTS() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+            Toast.makeText(this, "SDK version is low", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-    private fun startKakaoTTS(){
-        val permission_network = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE)
-        ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)
-        if(permission_network != PackageManager.PERMISSION_GRANTED) {
-            Log.d(TAG, "Permission to recode denied")
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), NETWORK_STATE_CODE)
-        } else {
-
-            //음성인식과 음성합성 두개의 초기화 코드를 다 넣어 줘야 에러가 없다.(뭐 이래)
-            SpeechRecognizerManager.getInstance().initializeLibrary(this)
-            TextToSpeechManager.getInstance().initializeLibrary(this)
-
-            //버튼 클릭
-            ttsClient = TextToSpeechClient.Builder()
-                .setSpeechMode(TextToSpeechClient.NEWTONE_TALK_1)     // 음성합성방식
-                .setSpeechSpeed(1.0)            // 발음 속도(0.5~4.0)
-                .setSpeechVoice(TextToSpeechClient.VOICE_WOMAN_READ_CALM)  //TTS 음색 모드 설정(여성 차분한 낭독체)
-                .setListener(object : TextToSpeechListener {
-                    //아래 두개의 메소드만 구현해 주면 된다. 음성합성이 종료될 때 호출된다.
-                    override fun onFinished() {
-                        val intSentSize = ttsClient.getSentDataSize()      //세션 중에 전송한 데이터 사이즈
-                        val intRecvSize = ttsClient.getReceivedDataSize()  //세션 중에 전송받은 데이터 사이즈
-
-                        val strInacctiveText = "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
-
-                        Log.i(TAG, strInacctiveText)
-                    }
-
-                    override fun onError(code: Int, message: String?) {
-                        Log.d(TAG, code.toString())
-                    }
-                })
-                .build()
-
-            val strText = Feedback.text.toString()
-            println(strText)
-            ttsClient.play(strText)
+        tts = TextToSpeech(this){
+            if(it == TextToSpeech.SUCCESS){
+                val result = tts?.setLanguage(Locale.KOREAN)
+            }
         }
     }
 
-    fun onFinished() { //음성합성이 종료될 때 호출된다.
-        val intSentSize = ttsClient!!.sentDataSize //세션 중에 전송한 데이터 사이즈
-        val intRecvSize = ttsClient!!.receivedDataSize //세션 중에 전송받은 데이터 사이즈
-        val strInacctiveText =
-            "handleFinished() SentSize : $intSentSize  RecvSize : $intRecvSize"
-        Log.i(TAG, strInacctiveText)
+    private fun ttsSpeak(strTTS: String){
+        tts?.speak(strTTS, TextToSpeech.QUEUE_ADD, null, null)
     }
 
     private fun openResultPage(){

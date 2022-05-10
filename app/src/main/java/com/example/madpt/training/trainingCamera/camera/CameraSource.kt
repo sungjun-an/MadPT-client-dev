@@ -18,14 +18,12 @@ package com.example.madpt.training.trainingCamera.camera
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.ImageFormat
-import android.graphics.Matrix
-import android.graphics.Rect
+import android.graphics.*
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
+import android.hardware.camera2.params.StreamConfigurationMap
 import android.media.ImageReader
 import android.os.Handler
 import android.os.HandlerThread
@@ -185,6 +183,12 @@ class CameraSource(
     fun prepareCamera() {
         for (cameraId in cameraManager.cameraIdList) {
             val characteristics = cameraManager.getCameraCharacteristics(cameraId)
+
+            val info = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+            println(info)
+
+            //val mPreviewSize= info.getOutputSizes(SurfaceTexture.class)[0]
+
 
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)

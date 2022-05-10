@@ -28,7 +28,7 @@ interface RetrofitService {
     fun postLogin(@Header("member_id")id: Long): Call<String>//완성
 
     @POST("goal")
-    fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료
+    fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료, 테스트 성공
 
     @POST("routine")
     fun postTrainRoutine(@Header("member_id")id: Long, @Body params: PostTrainRoutine): Call<PostResponse>//명세 완료

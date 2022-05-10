@@ -24,11 +24,11 @@ class PostDietListCall(context: Context) {
                 if (response.isSuccessful) {
                     // 정상적으로 통신이 성고된 경우
                     dialog.loadingDismiss()
-                    Log.d("YMC", "onResponse 성공: $response");
+                    Log.d("YMC", "onResponse 성공: ${response.body()}");
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     dialog.loadingDismiss()
-                    Log.d("YMC", "onResponse 실패")
+                    Log.d("YMC", "onResponse 실패: ${response},${response.body()}")
                 }
             }
 

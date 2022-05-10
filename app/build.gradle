@@ -55,20 +55,23 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.github.lzyzsd:circleprogress:1.1.0'
     implementation 'com.github.mancj:MaterialSearchBar:0.7.1'
+
+    //gif 사용
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
-
+    //AI
     implementation 'org.tensorflow:tensorflow-lite:2.5.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.5.0'
     implementation 'org.tensorflow:tensorflow-lite-support:0.3.0'
-    
+
+    //통신
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 
-    implementation "androidx.fragment:fragment-ktx:1.3.6"
+    //카메라
     implementation 'androidx.camera:camera-core:1.0.0'
 
     testImplementation 'junit:junit:4.+'

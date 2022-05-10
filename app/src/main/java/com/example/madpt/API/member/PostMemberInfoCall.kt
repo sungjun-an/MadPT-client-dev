@@ -22,7 +22,6 @@ class PostMemberInfoCall(context: Context) {
                     Log.d("YMC", "PostMember 실패")
                 }
             }
-
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }

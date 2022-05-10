@@ -19,6 +19,7 @@ package com.example.madpt.training.trainingCamera
 import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Process
@@ -35,12 +36,14 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.madpt.R
 import com.example.madpt.testmodel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
+import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
-import kotlin.collections.ArrayList
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -62,6 +65,9 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var device = Device.CPU
 
     private var trainingList = ArrayList<testmodel>()
+    private var trainingDataList: ArrayList<TrainingData> = ArrayList()
+    private val staticTrainingList = arrayListOf<testmodel>()
+    private var excrciseTimeList = ArrayList<Long>()
     private lateinit var Timer: TextView // test for timer
     private lateinit var Sets: TextView // test for sets
     private lateinit var Reps: TextView // test for laps
@@ -70,6 +76,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var nextExcrcise_view: TextView
     private lateinit var tvScore: TextView
     private lateinit var tvFPS: TextView
+    private lateinit var breakTime: TextView
     private lateinit var spnDevice: Spinner
     private lateinit var spnModel: Spinner
     private lateinit var spnTracker: Spinner
@@ -81,6 +88,8 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var vClassificationOption: View
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
+    private lateinit var breakTimer: Timer
+    private var time = 0
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -147,6 +156,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         // keep screen on while app is running
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         trainingList = intent.getParcelableArrayListExtra<testmodel>("trainList") as ArrayList<testmodel>
+        staticTrainingList.addAll(trainingList)
         Timer = findViewById(R.id.timer)  // test for timer
         Sets = findViewById(R.id.sets) // test for sets
         Reps = findViewById(R.id.reps) // test for reps
@@ -154,6 +164,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         currentExcrcise_view = findViewById(R.id.currentExcrcise)
         nextExcrcise_view = findViewById(R.id.nextExcrcise)
         tvScore = findViewById(R.id.tvScore)
+        breakTime = findViewById(R.id.showBreakTime)
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)
         spnDevice = findViewById(R.id.spnDevice)
@@ -230,6 +241,30 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
                         }
 
+                        override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
+                            runOnUiThread{
+                                if(flag){
+                                    breakTime.visibility = View.VISIBLE
+                                    breakTime.text = getString(R.string.break_time_timer,
+                                            sec.toString())
+                                }
+                                else{
+                                    breakTime.visibility = View.INVISIBLE
+                                }
+                            }
+                        }
+
+                        override fun onExcrciseFinishListener(
+                            trainingDataList: ArrayList<TrainingData>,
+                            excrciseTimeList: ArrayList<Long>
+                        ){
+                            println("finish listener in")
+                            this@TrainingAiCameraActivity.trainingDataList = trainingDataList
+                            this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
+                            cameraSource?.close()
+                            openResultPage()
+                        }
+
                         override fun onDetectedInfo(
                             personScore: Float?,
                             poseLabels: List<Pair<String, Float>>?
@@ -261,6 +296,17 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
+        }
+    }
+
+    private fun openResultPage(){
+        println("open result in")
+        if(trainingList.isEmpty()){
+            val intent = Intent(this, TrainingResultActivity::class.java)
+            intent.putParcelableArrayListExtra("trainingDataList", trainingDataList)
+            intent.putParcelableArrayListExtra("trainingList", staticTrainingList)
+            intent.putExtra("excrciseTimeList", excrciseTimeList)
+            startActivity(intent)
         }
     }
 
@@ -347,6 +393,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
+                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+                val date = Date()
+                val tz = TimeZone.getTimeZone("Asia/Seoul")
+                excrciseStartTime.timeZone = tz
+                val time = excrciseStartTime.format(date)
+                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
+                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
                 MoveNet.create(this, device, ModelType.Lightning, trainingList)
             }
             1 -> {
@@ -354,6 +407,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
+                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+                val date = Date()
+                val tz = TimeZone.getTimeZone("Asia/Seoul")
+                excrciseStartTime.timeZone = tz
+                val time = excrciseStartTime.format(date)
+                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
+                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
                 MoveNet.create(this, device, ModelType.Thunder, trainingList)
             }
             2 -> {

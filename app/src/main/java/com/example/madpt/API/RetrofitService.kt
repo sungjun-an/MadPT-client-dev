@@ -19,7 +19,7 @@ interface RetrofitService {
     fun getdata(@Query("food_name")name: String): Call<Get_Food>//완성
     
     @POST("diet")
-    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//명세 완료
+    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//완성
 
     @POST("member/sign-up")
     fun postMember(@Header("member_id") id:Long, @Body params: MemberInfo): Call<PostResponse>//완성

@@ -10,5 +10,6 @@
     <color name="backgroungblack">#000</color>
     <color name="maincolor">#B667F1</color>
     <color name="meal_input">#5e5e5e</color>
+    <color name="point_color">#70E8E5</color>
 
 </resources>

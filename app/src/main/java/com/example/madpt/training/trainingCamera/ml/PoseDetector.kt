@@ -18,10 +18,14 @@ package com.example.madpt.training.trainingCamera.ml
 
 import android.graphics.Bitmap
 import com.example.madpt.training.trainingCamera.data.Person
+import com.example.madpt.training.trainingCamera.data.TrainingData
 
 interface PoseDetector : AutoCloseable {
 
     fun estimatePoses(bitmap: Bitmap): List<Person>
     fun doExcrcise(person: List<Person>): ArrayList<Int>
     fun lastInferenceTimeNanos(): Long
+    fun getTrainingData(): ArrayList<TrainingData>
+    fun getExcrciseTimeList(): ArrayList<Long>
+
 }

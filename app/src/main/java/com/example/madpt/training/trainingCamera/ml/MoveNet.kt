@@ -19,7 +19,6 @@ package com.example.madpt.training.trainingCamera.ml
 import android.content.Context
 import android.graphics.*
 import android.os.SystemClock
-import android.widget.Toast
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.algorithm.MadPT
 import com.example.madpt.training.trainingCamera.data.*
@@ -32,6 +31,8 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.abs
 import kotlin.math.max
@@ -44,7 +45,9 @@ enum class ModelType {
 }
 
 class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: GpuDelegate?,
-              private var madpt: MadPT, private var trainingList : ArrayList<testmodel>) :
+              private var madpt: MadPT,
+              private var trainingList : ArrayList<testmodel>,
+              private var excrciseTimeList: ArrayList<Long>) :
     PoseDetector {
 
     companion object {
@@ -67,6 +70,9 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             var gpuDelegate: GpuDelegate? = null
             var madpt: MadPT = MadPT();
             val training_List : ArrayList<testmodel> = trainingList
+            val excrciseTimeList: ArrayList<Long> = ArrayList()
+            excrciseTimeList.add(0, training_List[0].excrciseStartTime)
+
             options.setNumThreads(CPU_NUM_THREADS)
             when (device) {
                 Device.CPU -> {
@@ -87,7 +93,8 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
                 ),
                 gpuDelegate,
                 madpt,
-                training_List
+                training_List,
+                excrciseTimeList
             )
         }
 
@@ -96,7 +103,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             return create(context, device, ModelType.Lightning, trainingList)
         }
     }
-
     private var cropRegion: RectF? = null
     private var lastInferenceTimeNanos: Long = -1
     private val inputWidth = interpreter.getInputTensor(0).shape()[1]
@@ -366,9 +372,15 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         )
     }
 
+    private var trainingDataList: ArrayList<TrainingData> = ArrayList()
+
+    override fun getTrainingData(): ArrayList<TrainingData>{
+        return trainingDataList
+    }
+
     fun initExcrcise(person: List<Person>): Boolean{
-        var flag: Boolean = false
-        var time: Int = 0
+        var flag = false
+        var time = 0
 
         if(flag){
             timer(period = 1000){
@@ -393,42 +405,81 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentReps = 0
     private var currentSets = 0
     private var repsFlag = false
+    private var setsFlag = false
+    private val breakTime = 10000L
+
+    fun cal_timeStamp(): Long{
+        val saveTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
+        val date = Date()
+        val tz = TimeZone.getTimeZone("Asia/Seoul")
+        saveTime.timeZone = tz
+        val time = saveTime.format(date)
+        val saveTimeStamp = saveTime.parse(time).time
+
+        return saveTimeStamp
+    }
+
+    fun cal2doNotExcrcise(): Long {
+        return 0L
+    }
 
     override fun doExcrcise(person: List<Person>): ArrayList<Int> {
-
-        initExcrcise(person)
-
+        //initExcrcise(person)
         var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
         var currentDataList: ArrayList<Int> = ArrayList()
         val currentFeedback = dataList[2]
         currentReps = dataList[0]
 
+        val totalReps = trainingList[0].reps * trainingList[0].sets
+        trainingDataList = madpt.trainingDataList
+
         if(currentReps != 0 && currentReps % trainingList[0].reps == 0){
             if(currentReps != trainingList[0].reps){
-                repsFlag = false
+                setsFlag = false
             }
 
-            if(repsFlag){
+            if(currentReps > trainingList[0].reps && currentReps < totalReps && repsFlag){
+                setsFlag = true
+            }
+
+            if(setsFlag){
                 println("운동 안하는 중")
                 // 여기서 시간 재면 될듯
             }
             else{
                 currentSets += 1
+                println("sets: $currentSets")
                 if(currentReps == trainingList[0].reps){
+                    setsFlag = true
+                }
+                else{
                     repsFlag = true
                 }
             }
         }
+        else{
+            repsFlag = false
+        }
+
+        var excrciseEndTime = 0L
 
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
+            print("set end")
+            madpt.init_excrcise_count(trainingList[0])
+            excrciseEndTime = cal_timeStamp()
+            excrciseTimeList.add(excrciseEndTime)
+            if(trainingList.size != 1){
+                val excrciseStartTime = cal_timeStamp()
+                excrciseTimeList.add(excrciseStartTime)
+            }
             trainingList.removeAt(0)
             currentSets = 0
-            repsFlag = false
+            setsFlag = false
             //currentReps = 0
-        }
-        else if(trainingList.isEmpty()){
-            currentDataList.add(0, -1)
-            return currentDataList
+
+            if(trainingList.isEmpty()){
+                return currentDataList
+            }
         }
 
         currentDataList.add(0, currentReps)
@@ -436,6 +487,10 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         currentDataList.add(2, currentFeedback)
 
         return currentDataList
+    }
+
+    override fun getExcrciseTimeList(): ArrayList<Long> {
+        return excrciseTimeList
     }
 
 }

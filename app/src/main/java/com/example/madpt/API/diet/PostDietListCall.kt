@@ -15,7 +15,10 @@ import retrofit2.Response
 import com.example.madpt.*
 import com.example.madpt.diet.DietPageActivity
 
-class PostDietListCall(context: Context)   {
+
+
+class PostDietListCall(context: Context)  {
+
 
     private val context = context
 
@@ -24,7 +27,6 @@ class PostDietListCall(context: Context)   {
         val dialog = LoadingDialog(context)
         dialog.showDialog()
         val dietPageActivity = (context as DietPageActivity)
-
 
         RetrofitClass.service.postDailyDiet(userId,dailyDiet).enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
@@ -48,6 +50,5 @@ class PostDietListCall(context: Context)   {
                 Log.d("YMC1", "onFailure 에러: " + t.message.toString());
             }
         })
-
     }
 }

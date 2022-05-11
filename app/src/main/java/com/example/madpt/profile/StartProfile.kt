@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.ActivityStartProfileBinding
 import com.example.madpt.login.LoginActivity
+import com.example.madpt.splash.SplashActivity
 import com.example.madpt.testmodel
 
 class StartProfile : AppCompatActivity() {
@@ -35,8 +36,13 @@ class StartProfile : AppCompatActivity() {
         binding.IntegerWeight.value = 50
         binding.DecimalWeight.value = 0
 
+
         binding.checkButton.setOnClickListener{
+            val height: Double = binding.IntegerStature.value.toDouble() + binding.DecimalStature.value/100
+            val weight: Double = binding.IntegerWeight.value.toDouble() + binding.DecimalWeight.value/100
             val intent = Intent(this, LoginActivity::class.java)
+            intent.putExtra("weight", weight)
+            intent.putExtra("height", height)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)

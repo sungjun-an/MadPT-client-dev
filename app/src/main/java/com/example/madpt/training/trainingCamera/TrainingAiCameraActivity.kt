@@ -97,8 +97,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var tts: TextToSpeech? = null
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
-    private lateinit var breakTimer: Timer
-    private var time = 0
+    private var breakTimeInt = 0
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -186,6 +185,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         swClassification = findViewById(R.id.swPoseClassification)
         vClassificationOption = findViewById(R.id.vClassificationOption)
         initSpinner()
+        breakTimeInt = intent.getIntExtra("breakTimeInt", 15)
         spnModel.setSelection(modelPos)
         swClassification.setOnCheckedChangeListener(setClassificationListener)
         TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
@@ -193,12 +193,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             requestPermission()
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        TextToSpeechManager.getInstance().finalizeLibrary()
-    }
-
     override fun onStart() {
         super.onStart()
         openCamera()
@@ -278,7 +272,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
                             this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
                             cameraSource?.close()
-                            onDestroy()
                             openResultPage()
                         }
 
@@ -305,7 +298,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                     }, trainingList).apply {
                         prepareCamera()
-                        prepareTrainer()
+                        prepareTrainer(breakTimeInt)
                     }
                 isPoseClassifier()
                 lifecycleScope.launch(Dispatchers.Main) {

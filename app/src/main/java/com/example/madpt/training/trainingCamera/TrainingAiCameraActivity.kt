@@ -21,8 +21,11 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
@@ -31,6 +34,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -40,6 +44,10 @@ import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
+import com.kakao.sdk.newtoneapi.TextToSpeechClient
+import com.kakao.sdk.newtoneapi.TextToSpeechListener
+import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -86,6 +94,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var tvClassificationValue3: TextView
     private lateinit var swClassification: SwitchCompat
     private lateinit var vClassificationOption: View
+    private var tts: TextToSpeech? = null
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private lateinit var breakTimer: Timer
@@ -179,9 +188,15 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         initSpinner()
         spnModel.setSelection(modelPos)
         swClassification.setOnCheckedChangeListener(setClassificationListener)
+        TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
         if (!isCameraPermissionGranted()) {
             requestPermission()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TextToSpeechManager.getInstance().finalizeLibrary()
     }
 
     override fun onStart() {
@@ -239,6 +254,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onExcrciseFeedbackListener(currentFeedback: String){
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                            ttsSpeak(Feedback.text.toString())
                         }
 
                         override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
@@ -262,6 +278,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
                             this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
                             cameraSource?.close()
+                            onDestroy()
                             openResultPage()
                         }
 
@@ -296,7 +313,25 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
+            startGoogleTTS()
         }
+    }
+
+    private fun startGoogleTTS() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+            Toast.makeText(this, "SDK version is low", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        tts = TextToSpeech(this){
+            if(it == TextToSpeech.SUCCESS){
+                val result = tts?.setLanguage(Locale.KOREAN)
+            }
+        }
+    }
+
+    private fun ttsSpeak(strTTS: String){
+        tts?.speak(strTTS, TextToSpeech.QUEUE_ADD, null, null)
     }
 
     private fun openResultPage(){

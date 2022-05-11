@@ -12,6 +12,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
@@ -26,6 +30,8 @@
         android:theme="@style/Theme.MADPT">
         <activity
             android:name=".training.trainingCamera.TrainingResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".diet.CustomFoodDataModifySaveActivity"
             android:exported="false" />
         <activity
@@ -74,6 +80,11 @@
         <activity
             android:name=".login.LoginActivity"
             android:exported="true" />
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
     </application>
 
 </manifest>

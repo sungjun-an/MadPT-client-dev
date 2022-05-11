@@ -80,6 +80,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             }
             else{
                 intent.putParcelableArrayListExtra("trainList", trainList)
+                intent.putExtra("breakTimeInt", breakTime)
                 startActivity(intent)
             }
         }

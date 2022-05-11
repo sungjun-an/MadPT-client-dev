@@ -11,7 +11,5 @@ data class MonthDataDateBy(
     @SerializedName("daily_diet_kcal")
     val dailyDietKcal: Double,
     @SerializedName("daily_exercise_kcal")
-    val dailyExerciseKcal: Double,
-    @SerializedName("daily_member_weight")
-    val dailyMemberWeight: Double
+    val dailyExerciseKcal: Double
 )

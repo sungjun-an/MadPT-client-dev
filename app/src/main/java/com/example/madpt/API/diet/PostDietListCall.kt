@@ -37,6 +37,7 @@ class PostDietListCall(context: Context)  {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     dialog.loadingDismiss()
                     Log.d("YMC1", "onResponse 실패")
+                    Log.d("YMC", "onResponse 성공: ${response.body()}");
                 }
             }
 
@@ -45,6 +46,5 @@ class PostDietListCall(context: Context)  {
                 Log.d("YMC1", "onFailure 에러: " + t.message.toString());
             }
         })
-
     }
 }

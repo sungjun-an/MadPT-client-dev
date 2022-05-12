@@ -140,6 +140,7 @@ class CameraSource(
         println(imageReader)
         println(imageBitmap)
 
+
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))
             val cameraRequest = camera?.createCaptureRequest(
@@ -202,8 +203,18 @@ class CameraSource(
         }
     }
 
-    fun prepareTrainer(){
+    fun prepareTrainer(breakTimeInt: Int){
         startTimer()
+        getBreakTimeInt(breakTimeInt)
+    }
+
+    fun getBreakTimeInt(breakTimeInt: Int){
+        if(breakTimeInt == 0){
+            time_break = 15
+        }
+        else{
+            time_break = breakTimeInt
+        }
     }
 
     fun setDetector(detector: PoseDetector) {
@@ -370,7 +381,7 @@ class CameraSource(
         currentFeedback = dataList[2]
 
         if(currentFeedback == 0){
-            listener?.onExcrciseFeedbackListener("Bad")
+            listener?.onExcrciseFeedbackListener("허리 펴")
         }
         else if(currentFeedback == 1){
             listener?.onExcrciseFeedbackListener("Good")

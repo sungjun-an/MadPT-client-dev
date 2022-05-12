@@ -34,6 +34,7 @@ class PostDietListCall(context: Context)  {
                     // 정상적으로 통신이 성고된 경우
 
                     Log.d("YMC1", "onResponse 성공: $response");
+
                     dietPageActivity!!.transMainFragment()
                     dialog.loadingDismiss()
 

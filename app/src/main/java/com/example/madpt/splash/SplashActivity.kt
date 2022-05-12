@@ -62,3 +62,4 @@ class SplashActivity :AppCompatActivity() {
 
 
         }
+

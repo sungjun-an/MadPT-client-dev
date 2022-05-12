@@ -50,7 +50,7 @@ class CameraSource(
     private val surfaceView: SurfaceView,
     private val listener: CameraSourceListener? = null,
     private var trainingList : ArrayList<testmodel>
-    ) {
+) {
 
     companion object {
         private const val PREVIEW_WIDTH = 1280
@@ -138,6 +138,8 @@ class CameraSource(
         }, imageReaderHandler)
 
         println(imageReader)
+        println(imageBitmap)
+
 
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))

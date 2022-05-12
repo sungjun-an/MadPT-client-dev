@@ -40,7 +40,7 @@ class SplashActivity :AppCompatActivity() {
                         userId = user.id!!
                     }
                         Handler(Looper.getMainLooper()).postDelayed({
-                            val intent = Intent(this, MainActivity::class.java)
+                            val intent = Intent(this, StartProfile::class.java)
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
@@ -62,3 +62,4 @@ class SplashActivity :AppCompatActivity() {
 
 
         }
+

@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 import java.sql.Timestamp
 
 data class Train_result(
+    @SerializedName("breaktime")
+    val breaktime: Int,
     @SerializedName("records")
     val result: ArrayList<Records>
 )
@@ -15,8 +17,10 @@ data class Records(
     val startTime:Timestamp,
     @SerializedName("end_time")
     val endTime:Timestamp,
-    @SerializedName("score")
-    val score: Int,
-    @SerializedName("count")
-    val count: Int
+    @SerializedName("reps")
+    val reps: Int,
+    @SerializedName("sets")
+    val sets: Int,
+    @SerializedName("avg_score")
+    val avg_score: Double,
 )

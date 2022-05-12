@@ -7,6 +7,7 @@ data class TrainingData (
     var excrciseName: Int = -1,
     var excrciseCount: Int = -1,
     var excrciseScore : Int = -1,
+    var exerciseScoreList: ArrayList<Int> =  ArrayList()
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),

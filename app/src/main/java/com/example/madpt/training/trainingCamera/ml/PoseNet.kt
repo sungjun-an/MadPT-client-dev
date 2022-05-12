@@ -122,7 +122,7 @@ class PoseNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         return listOf(person)
     }
 
-    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+    override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>,ArrayList<Int>> {
         TODO("Not yet implemented")
     }
 

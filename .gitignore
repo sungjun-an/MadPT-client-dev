@@ -11,6 +11,7 @@ MADPT/build
 .cxx
 local.properties
 /app/src/main/res/values/kakao_api_key.xml
+app/src/main/res/values/kakao_app_key.xml
 *.iml
 .gradle
 /local.properties

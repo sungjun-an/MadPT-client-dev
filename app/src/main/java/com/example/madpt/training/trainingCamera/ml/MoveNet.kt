@@ -423,11 +423,16 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         return 0L
     }
 
-    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+    override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>, ArrayList<Int>> {
         //initExcrcise(person)
-        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
+//        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
+        var p: Pair<ArrayList<Int>, ArrayList<Int>> = madpt.excrcise_finder(trainingList[0], person)
+
+        var dataList: ArrayList<Int> = p.component1()
+        var feedbackList: ArrayList<Int> = p.component2()
+
         var currentDataList: ArrayList<Int> = ArrayList()
-        val currentFeedback = dataList[2]
+//        val currentFeedback = dataList[2]
         currentReps = dataList[0]
 
         val totalReps = trainingList[0].reps * trainingList[0].sets
@@ -478,15 +483,15 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
             //currentReps = 0
 
             if(trainingList.isEmpty()){
-                return currentDataList
+                return Pair(currentDataList, currentDataList)
             }
         }
 
         currentDataList.add(0, currentReps)
         currentDataList.add(1, currentSets)
-        currentDataList.add(2, currentFeedback)
+//        currentDataList.add(2, currentFeedback)
 
-        return currentDataList
+        return Pair(currentDataList,feedbackList)
     }
 
     override fun getExcrciseTimeList(): ArrayList<Long> {

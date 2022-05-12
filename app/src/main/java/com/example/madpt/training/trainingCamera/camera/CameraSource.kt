@@ -80,7 +80,8 @@ class CameraSource(
     private var time = 0
     private var min = 0
     private var sec = 0
-    private var time_break = 5
+    private var time_break = 15
+    private var tick = 0
     private var breakTimer = Timer()
     private var currentExcrciseDataList: ArrayList<Int> = ArrayList()
     private var frameProcessedInOneSecondInterval = 0
@@ -211,9 +212,11 @@ class CameraSource(
     fun getBreakTimeInt(breakTimeInt: Int){
         if(breakTimeInt == 0){
             time_break = 15
+            tick = 15
         }
         else{
             time_break = breakTimeInt
+            tick = breakTimeInt
         }
     }
 
@@ -356,7 +359,7 @@ class CameraSource(
 
             if (time_break == 0){
                 breakTimer.cancel()
-                time_break = 5
+                time_break = tick
                 breakTimeFlag = false
                 println("breakTimeFlag: $breakTimeFlag")
                 listener?.onExcrciseBreakTimeListner(false, time_break % 60)
@@ -381,7 +384,7 @@ class CameraSource(
         currentFeedback = dataList[2]
 
         if(currentFeedback == 0){
-            listener?.onExcrciseFeedbackListener("허리 펴")
+            listener?.onExcrciseFeedbackListener("Bad")
         }
         else if(currentFeedback == 1){
             listener?.onExcrciseFeedbackListener("Good")

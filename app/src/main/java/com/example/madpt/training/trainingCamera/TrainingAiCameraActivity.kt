@@ -39,14 +39,12 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.madpt.R
+import com.example.madpt.loading.LoadingDialog
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
-import com.kakao.sdk.newtoneapi.SpeechRecognizerManager
-import com.kakao.sdk.newtoneapi.TextToSpeechClient
-import com.kakao.sdk.newtoneapi.TextToSpeechListener
 import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -98,6 +96,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private var breakTimeInt = 0
+    private lateinit var dialog: LoadingDialog
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -271,7 +270,12 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             println("finish listener in")
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
                             this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
+                            runOnUiThread{
+                                dialog = LoadingDialog(this@TrainingAiCameraActivity)
+                                dialog.showDialog()
+                            }
                             cameraSource?.close()
+                            dialog.loadingDismiss()
                             openResultPage()
                         }
 

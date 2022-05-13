@@ -7,6 +7,6 @@ data class PostResponse(
     val success: Int,
     @SerializedName("error")
     val errorMessage: Int,
-    @SerializedName("results")
-    val results: ArrayList<String>
+    @SerializedName("result")
+    val result: String
 )

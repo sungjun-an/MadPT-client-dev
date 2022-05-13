@@ -25,7 +25,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.speech.tts.TextToSpeech
-import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
@@ -34,7 +33,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
@@ -87,6 +85,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var spnModel: Spinner
     private lateinit var spnTracker: Spinner
     private lateinit var vTrackerOption: View
+    private lateinit var framechecker: TextView
     private lateinit var tvClassificationValue1: TextView
     private lateinit var tvClassificationValue2: TextView
     private lateinit var tvClassificationValue3: TextView
@@ -175,6 +174,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)
         spnDevice = findViewById(R.id.spnDevice)
+        framechecker = findViewById(R.id.checkFrame)
         spnTracker = findViewById(R.id.spnTracker)
         vTrackerOption = findViewById(R.id.vTrackerOption)
         surfaceView = findViewById(R.id.surfaceView)
@@ -260,6 +260,15 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                                 else{
                                     breakTime.visibility = View.INVISIBLE
                                 }
+                            }
+                        }
+
+                        override fun onFrameCheckListener(flag: Boolean) {
+                            if(flag){
+                                framechecker.visibility = View.VISIBLE
+                            }
+                            else{
+                                framechecker.visibility = View.INVISIBLE
                             }
                         }
 

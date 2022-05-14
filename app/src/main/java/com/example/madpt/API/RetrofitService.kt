@@ -21,6 +21,7 @@ interface RetrofitService {
     @POST("diet")
     fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//완성
 
+
     @POST("member/sign-up")
     fun postMember(@Header("member_id") id:Long, @Body params: MemberInfo): Call<PostResponse>//완성
 

@@ -19,7 +19,8 @@ interface RetrofitService {
     fun getdata(@Query("food_name")name: String): Call<Get_Food>//완성
     
     @POST("diet")
-    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//명세 완료
+    fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//완성
+
 
     @POST("member/sign-up")
     fun postMember(@Header("member_id") id:Long, @Body params: MemberInfo): Call<PostResponse>//완성
@@ -28,7 +29,7 @@ interface RetrofitService {
     fun postLogin(@Header("member_id")id: Long): Call<String>//완성
 
     @POST("goal")
-    fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료, 테스트 성공
+    fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료
 
     @POST("routine")
     fun postTrainRoutine(@Header("member_id")id: Long, @Body params: PostTrainRoutine): Call<PostResponse>//명세 완료

@@ -2,11 +2,11 @@ package com.example.madpt.API.statistic
 
 import com.google.gson.annotations.SerializedName
 
+
 data class DailyDietStatistic(
     @SerializedName("daily_diet_list")
     val dailyDietList: ArrayList<DailyDietList>
 )
-
 data class DailyDietList(
     @SerializedName("diet_type")
     val diet_type: String,

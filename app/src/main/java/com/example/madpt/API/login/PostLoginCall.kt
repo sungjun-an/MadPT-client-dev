@@ -21,7 +21,6 @@ class PostLoginCall() {
                         Toast.makeText(context, "로그인 되었습니다.", Toast.LENGTH_LONG).show()
                         Log.d("YMC", "PostLogin 성공: ${response.body()}")
                     } else{
-//                        Log.d("YMC", "PostLogin 성공: ${response.body()}")
                         PostMemberInfoCall(context).PostMember(memberInfo)
                     }
                 } else {

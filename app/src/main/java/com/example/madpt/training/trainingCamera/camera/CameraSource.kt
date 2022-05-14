@@ -18,14 +18,12 @@ package com.example.madpt.training.trainingCamera.camera
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.ImageFormat
-import android.graphics.Matrix
-import android.graphics.Rect
+import android.graphics.*
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CameraCharacteristics
 import android.hardware.camera2.CameraDevice
 import android.hardware.camera2.CameraManager
+import android.hardware.camera2.params.StreamConfigurationMap
 import android.media.ImageReader
 import android.os.Handler
 import android.os.HandlerThread
@@ -52,7 +50,7 @@ class CameraSource(
     private val surfaceView: SurfaceView,
     private val listener: CameraSourceListener? = null,
     private var trainingList : ArrayList<testmodel>
-    ) {
+) {
 
     companion object {
         private const val PREVIEW_WIDTH = 1280
@@ -82,7 +80,8 @@ class CameraSource(
     private var time = 0
     private var min = 0
     private var sec = 0
-    private var time_break = 5
+    private var time_break = 15
+    private var tick = 0
     private var breakTimer = Timer()
     private var currentExcrciseDataList: ArrayList<Int> = ArrayList()
     private var frameProcessedInOneSecondInterval = 0
@@ -139,6 +138,10 @@ class CameraSource(
             }
         }, imageReaderHandler)
 
+        println(imageReader)
+        println(imageBitmap)
+
+
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))
             val cameraRequest = camera?.createCaptureRequest(
@@ -184,6 +187,12 @@ class CameraSource(
         for (cameraId in cameraManager.cameraIdList) {
             val characteristics = cameraManager.getCameraCharacteristics(cameraId)
 
+            val info = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)
+            println(info)
+
+            //val mPreviewSize= info.getOutputSizes(SurfaceTexture.class)[0]
+
+
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
             if (cameraDirection != null &&
@@ -195,8 +204,20 @@ class CameraSource(
         }
     }
 
-    fun prepareTrainer(){
+    fun prepareTrainer(breakTimeInt: Int){
         startTimer()
+        getBreakTimeInt(breakTimeInt)
+    }
+
+    fun getBreakTimeInt(breakTimeInt: Int){
+        if(breakTimeInt == 0){
+            time_break = 15
+            tick = 15
+        }
+        else{
+            time_break = breakTimeInt
+            tick = breakTimeInt
+        }
     }
 
     fun setDetector(detector: PoseDetector) {
@@ -338,7 +359,7 @@ class CameraSource(
 
             if (time_break == 0){
                 breakTimer.cancel()
-                time_break = 5
+                time_break = tick
                 breakTimeFlag = false
                 println("breakTimeFlag: $breakTimeFlag")
                 listener?.onExcrciseBreakTimeListner(false, time_break % 60)

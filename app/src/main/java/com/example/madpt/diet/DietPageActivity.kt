@@ -19,7 +19,6 @@ class DietPageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDietPageBinding
 
-
     var userData : UserData? = null
     var dataSumKcal : Int = 0
     var sumSimpleKcal : Int = 0

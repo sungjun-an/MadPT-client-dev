@@ -137,10 +137,6 @@ class CameraSource(
             }
         }, imageReaderHandler)
 
-        println(imageReader)
-        println(imageBitmap)
-
-
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))
             val cameraRequest = camera?.createCaptureRequest(
@@ -295,28 +291,29 @@ class CameraSource(
         var dataList: ArrayList<Int>
         var flag = true
 
-        for(i in 0..persons[0].keyPoints.size){
-            flag = persons[0].keyPoints[i].score > 0.7
-        }
-
         synchronized(lock) {
-            if(!flag){
-                listener?.onFrameCheckListener(flag)
-            }
-            else{
-                listener?.onFrameCheckListener(flag)
-                if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && breakTimeFlag){
-                    if(timeFlag){
-                        timeFlag = false
-                        showBreakTimeView()
-                    }
-                    else{
-                        println("운동 중")
-                    }
+            if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && breakTimeFlag){
+                if(timeFlag){
+                    timeFlag = false
+                    showBreakTimeView()
                 }
                 else{
-                    detector?.estimatePoses(bitmap)?.let {
-                        persons.addAll(it)
+                    println("운동 중")
+                }
+            }
+            else{
+                detector?.estimatePoses(bitmap)?.let {
+                    persons.addAll(it)
+
+                    for(i in 0 until persons[0].keyPoints.size){
+                        flag = persons[0].keyPoints[i].score > 0.6
+                    }
+
+                    if(!flag){
+                        listener?.onFrameCheckListener(!flag)
+                    }
+                    else{
+                        listener?.onFrameCheckListener(flag)
                         dataList = detector?.doExcrcise(persons)!!
                         if (dataList.isEmpty()){
                             println("운동 종료")
@@ -334,10 +331,10 @@ class CameraSource(
                         }
 
                         // if the model only returns one item, allow running the Pose classifier.
-                        if (persons.isNotEmpty()) {
-                            classifier?.run {
-                                classificationResult = classify(persons[0])
-                            }
+                    }
+                    if (persons.isNotEmpty()) {
+                        classifier?.run {
+                            classificationResult = classify(persons[0])
                         }
                     }
                 }

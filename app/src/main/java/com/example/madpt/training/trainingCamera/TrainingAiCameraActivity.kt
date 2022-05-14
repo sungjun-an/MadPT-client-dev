@@ -229,7 +229,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onTimerListener(min: Int, sec: Int){
                             Timer.text = getString(R.string.tfe_pe_timer, min, sec)
-                            Timer.setTextSize(Dimension.SP, 30.0F)
+                            //Timer.setTextSize(Dimension.SP, 30.0F)
                         }
 
                         override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){
@@ -264,11 +264,13 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                         }
 
                         override fun onFrameCheckListener(flag: Boolean) {
-                            if(flag){
-                                framechecker.visibility = View.VISIBLE
-                            }
-                            else{
-                                framechecker.visibility = View.INVISIBLE
+                            runOnUiThread{
+                                if(flag){
+                                    framechecker.visibility = View.VISIBLE
+                                }
+                                else{
+                                    framechecker.visibility = View.INVISIBLE
+                                }
                             }
                         }
 

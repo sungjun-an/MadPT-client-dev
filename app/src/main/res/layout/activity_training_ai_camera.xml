@@ -108,13 +108,13 @@
 
     <TextView
         android:id="@+id/checkFrame"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center"
         android:textAlignment="center"
         android:text="카메라 frame안으로 들어와 주세요!!"
         android:visibility="invisible"
-        android:textSize="12sp"
+        android:textSize="25sp"
         app:layout_anchor="@+id/surfaceView"
         app:layout_anchorGravity="center" />
 
@@ -125,6 +125,7 @@
         android:layout_width="108dp"
         android:layout_height="46dp"
         android:gravity="center"
+        android:textSize="30sp"
         android:textAlignment="center"
         app:layout_anchor="@+id/linearLayout"
         app:layout_anchorGravity="center" />

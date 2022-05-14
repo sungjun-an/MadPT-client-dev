@@ -10,17 +10,16 @@ import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.madpt.MainActivity
-import com.example.madpt.login.LoginActivity
 import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-import java.util.Base64.getEncoder
 
 class SplashActivity :AppCompatActivity() {
     companion object {
         var userId: Long = 0
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

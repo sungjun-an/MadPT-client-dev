@@ -25,7 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADPT">
         <activity
+            android:name=".statistics.calendar.CalendarStartActivity"
+            android:exported="false" />
+        <activity
             android:name=".training.trainingCamera.TrainingResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".diet.CustomFoodDataModifySaveActivity"
             android:exported="false" />
         <activity

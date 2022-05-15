@@ -1,11 +1,13 @@
 package com.example.madpt.splash
 
+
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.ContactsContract
 import android.util.Base64
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +15,7 @@ import com.example.madpt.MainActivity
 import com.example.madpt.login.LoginActivity
 import com.example.madpt.profile.StartProfile
 import com.kakao.sdk.user.UserApiClient
+import java.net.URL
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import java.util.Base64.getEncoder
@@ -20,6 +23,7 @@ import java.util.Base64.getEncoder
 class SplashActivity :AppCompatActivity() {
     companion object {
         var userId: Long = 0
+        var userProfile : String = ""
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +42,7 @@ class SplashActivity :AppCompatActivity() {
                                     "\n성별: ${user.kakaoAccount?.gender}"
                         )
                         userId = user.id!!
+                        userProfile = user.kakaoAccount?.profile?.thumbnailImageUrl!!
                     }
                         Handler(Looper.getMainLooper()).postDelayed({
                             val intent = Intent(this, StartProfile::class.java)

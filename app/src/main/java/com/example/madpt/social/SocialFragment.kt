@@ -33,10 +33,8 @@ class SocialFragment : Fragment() {
         var year = calendar.get(Calendar.YEAR).toString()
         val month = ((calendar.get(Calendar.MONTH))+1).toString()
         var week = calendar.get(Calendar.WEEK_OF_MONTH).toString()
-        Log.d("날짜","${month}")
 
         var thisWeek = year + "년 " + month + "월 " + week + "주차"
-
 
         binding.dateThisWeek.text = thisWeek
         binding.recyclerView.layoutManager = LinearLayoutManager(context)

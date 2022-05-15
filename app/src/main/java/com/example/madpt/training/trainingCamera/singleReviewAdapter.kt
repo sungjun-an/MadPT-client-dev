@@ -105,13 +105,13 @@ class singleReviewAdapter(private val trainingList: ArrayList<testmodel>,
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,
         i: Int
-    ): singleReviewAdapter.ViewHolder {
+    ): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.show_review_list, viewGroup, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(viewholder: singleReviewAdapter.ViewHolder, i: Int) {
+    override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
         viewholder.Bind(trainingList[excrciseIndex])
     }
 

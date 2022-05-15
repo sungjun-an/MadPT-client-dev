@@ -62,7 +62,8 @@ class DietSearchActivity : AppCompatActivity(), GetFoodList {
 //                    )
 //                }
 //            }
-
+            val foodListAdapter = FoodSearchListViewAdapter(this, food_search_result_list)
+            binding.foodSearchListview.adapter = foodListAdapter
         }
     }
 

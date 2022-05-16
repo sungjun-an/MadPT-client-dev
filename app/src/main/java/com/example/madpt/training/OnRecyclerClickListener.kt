@@ -1,6 +1,7 @@
 package com.example.madpt.training
 
 import android.view.View
+import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
 import java.util.*
@@ -26,5 +27,5 @@ interface StoreTraining{
 }
 
 interface OnItemClickListener {
-    fun onClick(loadItem: storeTraining)
+    fun onClick(loadItem: PostTrainRoutine)
 }

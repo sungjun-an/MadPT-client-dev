@@ -8,6 +8,8 @@ data class MonthData(
 )
 
 data class MonthDataDateBy(
+    @SerializedName("date")
+    val date: Int,
     @SerializedName("daily_diet_kcal")
     val dailyDietKcal: Double,
     @SerializedName("daily_exercise_kcal")

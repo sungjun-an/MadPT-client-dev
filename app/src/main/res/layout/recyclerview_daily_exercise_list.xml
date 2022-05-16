@@ -2,9 +2,12 @@
 <androidx.cardview.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardBackgroundColor="@color/backgroungblack">
+    card_view:cardBackgroundColor="@color/backgroungblack"
+    android:layout_margin="5dp"
+    app:cardElevation="3dp" >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,6 +24,7 @@
                 android:id="@+id/exercise_image"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:paddingTop="5dp"
                 android:layout_marginLeft="5dp"/>
             <TextView
                 android:id="@+id/exercise_title_text"
@@ -29,6 +33,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:textSize="25dp"
+                android:textColor="@color/white"
                 android:text="스쿼트 " />
             <TextView
                 android:id="@+id/exercise_rep_text"
@@ -37,18 +42,21 @@
                 android:gravity="center"
                 android:fontFamily="@font/bold"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text="10" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="15dp"
+                android:textColor="@color/white"
                 android:text=" reps"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text=" X "/>
             <TextView
                 android:id="@+id/exercise_set_text"
@@ -57,12 +65,14 @@
                 android:gravity="center"
                 android:fontFamily="@font/bold"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text="10"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:textSize="20dp"
+                android:textSize="15dp"
+                android:textColor="@color/white"
                 android:text=" sets"/>
 
         </LinearLayout>
@@ -82,6 +92,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text="총 "/>
             <TextView
                 android:id="@+id/exercise_kcal_text"
@@ -89,12 +100,14 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text="0"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:text=" Kcal"/>
         </LinearLayout>
     </LinearLayout>

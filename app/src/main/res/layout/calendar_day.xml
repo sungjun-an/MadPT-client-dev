@@ -43,11 +43,11 @@
 
         <TextView
             android:id="@+id/calendarDietText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="4dp"
-            android:gravity="center"
+            android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="38dp"
             android:textColor="@color/calendar_text_grey"
@@ -56,11 +56,11 @@
 
         <TextView
             android:id="@+id/calendarExerciseText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="4dp"
-            android:gravity="center"
+            android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="14dp"
             android:textColor="@color/calendar_text_grey"

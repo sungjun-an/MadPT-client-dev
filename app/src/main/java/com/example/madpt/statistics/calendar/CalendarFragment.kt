@@ -37,8 +37,8 @@ class CalendarFragment : Fragment() {
 
     private var selectedDate: LocalDate? = null
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
-    private val monthData = generateMonth().groupBy{ it.targetDate.toLocalDate() }
     private lateinit var binding: FragmentCalendarBinding
+    private val monthData = generateMonth().groupBy{ it.targetDate.toLocalDate() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

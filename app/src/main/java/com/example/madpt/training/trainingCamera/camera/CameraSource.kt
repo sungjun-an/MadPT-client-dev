@@ -313,7 +313,7 @@ class CameraSource(
                         listener?.onFrameCheckListener(!flag)
                     }
                     else{
-                        listener?.onFrameCheckListener(flag)
+                        listener?.onFrameCheckListener(!flag)
                         dataList = detector?.doExcrcise(persons)!!
                         if (dataList.isEmpty()){
                             println("운동 종료")

@@ -10,10 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.madpt.*
+import com.example.madpt.API.food.GetSummaryData
+import com.example.madpt.API.statistic.GetSummaryDataCall
+import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.databinding.FragmentMainPageBinding
 import com.example.madpt.diet.DietPageActivity
 
-class MainPageFragment : Fragment() {
+class MainPageFragment : Fragment(),GetSummaryData {
 
 
     private var _binding: FragmentMainPageBinding? = null
@@ -37,6 +40,9 @@ class MainPageFragment : Fragment() {
         var sumKcalLunch: Int = 0
         var sumKcalDinner: Int = 0
         var sumKcalSnack: Int = 0
+
+        GetSummaryDataCall(this,requireContext()).getSummaryData()
+
 
         for (x in userDietData.indices) {
             for(y in userDietData[x].diet_list.indices){
@@ -139,5 +145,9 @@ class MainPageFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun getSummaryDataList(summaryData: SummaryData) {
+
     }
 }

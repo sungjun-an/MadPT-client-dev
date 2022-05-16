@@ -19,10 +19,9 @@ class PostMemberInfoCall(context: Context) {
                     Log.d("YMC", "onResponse 성공: ${response.body()}");
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
-                    Log.d("YMC", "PostMember 실패")
+                    Log.d("YMC", "PostMember 실패 ${response}")
                 }
             }
-
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }

@@ -13,7 +13,6 @@ import retrofit2.Response
 
 class PostLoginCall() {
     fun Postlogin(context: Context, memberInfo: MemberInfo) {
-        Log.d("YMC", "${SplashActivity.userId}")
         RetrofitClass.service.postLogin(SplashActivity.userId).enqueue(object :
             Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {

@@ -30,11 +30,11 @@ class MoreFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        _binding = FragmentMoreBinding.inflate(inflater, container, false)
         Glide.with(this).load(userProfile).into(binding.profileImage);
 
 
-        _binding = FragmentMoreBinding.inflate(inflater, container, false)
+
 
         return binding.root
     }

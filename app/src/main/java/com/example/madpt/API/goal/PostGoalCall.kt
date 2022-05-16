@@ -14,6 +14,7 @@ import retrofit2.Response
 class PostGoalCall(context: Context) {
 
     private val context = context
+
     var mainActivity: MainActivity? = null
 
     fun postGoalCall(goal: Goal){
@@ -26,7 +27,6 @@ class PostGoalCall(context: Context) {
                 override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
                     if (response.isSuccessful) {
                         // 정상적으로 통신이 성고된 경우
-
                         Log.d("YMC", "onResponse 성공: $response");
                         mainActivity!!.setFragment()
                         dialog.loadingDismiss()

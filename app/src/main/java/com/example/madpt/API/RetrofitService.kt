@@ -21,6 +21,7 @@ interface RetrofitService {
     @POST("diet")
     fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//완성
 
+
     @POST("member/sign-up")
     fun postMember(@Header("member_id") id:Long, @Body params: MemberInfo): Call<PostResponse>//완성
 
@@ -42,7 +43,7 @@ interface RetrofitService {
     @GET("statistic/calender")
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("month") month: Int): Call<MonthData>//명세 완료
 
-    @GET("statistic/day")
+    @GET("statistic/day-summary")
     fun getSummaryData(@Header("member_id") id: Long, @Query("timestamp") timestamp: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")

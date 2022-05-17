@@ -36,6 +36,9 @@ import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
+import com.example.madpt.API.trainresult.PostTrainResultCall
+import com.example.madpt.API.trainresult.Records
+import com.example.madpt.API.trainresult.Train_result
 import com.example.madpt.R
 import com.example.madpt.loading.LoadingDialog
 import com.example.madpt.testmodel
@@ -46,8 +49,10 @@ import com.example.madpt.training.trainingCamera.ml.*
 import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.http.POST
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -95,6 +100,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private var breakTimeInt = 0
+    private val exerciseId = mapOf<String, Long>("PUSH UP" to 1, "SQUAT" to 2, "LUNGE" to 3, "DUMBBELL" to 4)
     private lateinit var dialog: LoadingDialog
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -287,6 +293,16 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                             cameraSource?.close()
                             dialog.loadingDismiss()
+                            println("final testmodel: $staticTrainingList")
+                            println("final training: $trainingDataList")
+                            println("final TimeData: $excrciseTimeList")
+                            var train_results: Train_result = setTrainResult(staticTrainingList,
+                                                           trainingDataList,
+                                                           excrciseTimeList)
+                            runOnUiThread{
+                                PostTrainResultCall(
+                                    this@TrainingAiCameraActivity).PostTrainResult(train_results)
+                            }
                             openResultPage()
                         }
 
@@ -323,6 +339,39 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             createPoseEstimator()
             startGoogleTTS()
         }
+    }
+
+    private fun setTrainResult(staticTrainingList: ArrayList<testmodel>,
+                               trainingDataList: ArrayList<TrainingData>,
+                               excrciseTimeList: ArrayList<Long>): Train_result {
+        var scoreForIndex = 0
+        var postResult: Train_result = Train_result(0, ArrayList())
+
+        for(i in 0 until staticTrainingList.size){
+            val excrcise = exerciseId[staticTrainingList[i].titles]
+            val startTime = excrciseTimeList[2*i]
+            val endTime = excrciseTimeList[2*i+1]
+            val realTime = endTime - startTime - breakTimeInt * staticTrainingList[i].sets
+            val reps = staticTrainingList[i].reps
+            val sets = staticTrainingList[i].sets
+            var avg_score: Double = 0.0
+            var score_sum = 0.0
+            val totalReps = staticTrainingList[i].reps * staticTrainingList[i].sets
+
+            scoreForIndex += staticTrainingList[i].reps * staticTrainingList[i].sets
+
+            for(j in 0 until scoreForIndex){
+               val avg = trainingDataList[j].exerciseScoreList.average()
+               score_sum += avg
+               avg_score = score_sum / totalReps
+            }
+
+            postResult.result.add(Records(excrcise!!.toLong(), startTime, endTime, realTime.toInt(),
+                                          reps, sets, avg_score))
+        }
+        postResult.breaktime = breakTimeInt
+
+        return postResult
     }
 
     private fun startGoogleTTS() {

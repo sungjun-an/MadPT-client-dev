@@ -439,7 +439,6 @@ class MadPT {
             left_score = 0
         }
 
-
         if (this.score[2][0] < down_score)
             this.score[2][0] = down_score
 

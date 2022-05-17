@@ -193,7 +193,7 @@ class CameraSource(
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
             if (cameraDirection != null &&
-                cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+                cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
             ) {
                 continue
             }
@@ -291,6 +291,7 @@ class CameraSource(
         val persons = mutableListOf<Person>()
         var classificationResult: List<Pair<String, Float>>? = null
         var dataList: ArrayList<Int>
+        var flag = true
 
         var feedback: ArrayList<Int>
         var p1: Pair<ArrayList<Int>, ArrayList<Int>>
@@ -310,27 +311,18 @@ class CameraSource(
                 detector?.estimatePoses(bitmap)?.let {
                     persons.addAll(it)
 
-                    p1 = detector?.doExcrcise(persons)!!
-                    dataList = p1.component1()
-                    feedback = p1.component2()
-                    if (dataList.isEmpty()){
-                        println("운동 종료")
-                        excrciseTimeList = detector?.getExcrciseTimeList()!!
-                        for(i in 0 until excrciseTimeList.size){
-                            val excrciseTimeTemp = excrciseTimeList[i]
-                            println("$i : $excrciseTimeTemp")
-                        }
-                        val trainingDataList = detector?.getTrainingData()!!
-                        println(trainingDataList)
-                        finishExcrcise(trainingDataList, excrciseTimeList)
+                    for(i in 0 until persons[0].keyPoints.size){
+                        flag = persons[0].keyPoints[i].score > 0.01
                     }
-                    else{
-                        showExcrciseView(dataList, feedback)
 
+                    if(!flag){
+                        listener?.onFrameCheckListener(!flag)
                     }
                     else{
                         listener?.onFrameCheckListener(!flag)
-                        dataList = detector?.doExcrcise(persons)!!
+                        p1 = detector?.doExcrcise(persons)!!
+                        dataList = p1.component1()
+                        feedback = p1.component2()
                         if (dataList.isEmpty()){
                             println("운동 종료")
                             excrciseTimeList = detector?.getExcrciseTimeList()!!
@@ -343,7 +335,7 @@ class CameraSource(
                             finishExcrcise(trainingDataList, excrciseTimeList)
                         }
                         else{
-                            showExcrciseView(dataList)
+                            showExcrciseView(dataList, feedback)
                         }
 
                         // if the model only returns one item, allow running the Pose classifier.

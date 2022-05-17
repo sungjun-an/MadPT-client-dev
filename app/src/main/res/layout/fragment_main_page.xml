@@ -280,7 +280,8 @@
                                         android:fontFamily="@font/bold"
                                         android:gravity="center"
                                         android:text="목표를 입력해주세요"
-                                        android:textColor="@color/white" />
+                                        android:textColor="@color/white"
+                                        android:visibility="visible"/>
                                 </FrameLayout>
 
                                 <Space

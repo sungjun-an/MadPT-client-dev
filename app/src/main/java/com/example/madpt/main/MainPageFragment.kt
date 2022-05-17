@@ -16,7 +16,7 @@ import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.databinding.FragmentMainPageBinding
 import com.example.madpt.diet.DietPageActivity
 
-class MainPageFragment : Fragment(),GetSummaryData {
+class MainPageFragment : Fragment(), GetSummaryData {
 
 
     private var _binding: FragmentMainPageBinding? = null
@@ -36,118 +36,100 @@ class MainPageFragment : Fragment(),GetSummaryData {
 
         _binding = FragmentMainPageBinding.inflate(inflater, container, false)
 
-        var sumKcalBreakfast: Int = 0
-        var sumKcalLunch: Int = 0
-        var sumKcalDinner: Int = 0
-        var sumKcalSnack: Int = 0
-
-        GetSummaryDataCall(this,requireContext()).getSummaryData()
-
-
-        for (x in userDietData.indices) {
-            for(y in userDietData[x].diet_list.indices){
-                Log.d("확인", "hi"+userDietData[x].diet_type)
-            }}
-
-        for (x in userDietData.indices) {
-            for(y in userDietData[x].diet_list.indices)
-                when (userDietData[x].diet_type) {
-                    "Breakfast" -> sumKcalBreakfast += userDietData[x].diet_list[y].toString().toInt()
-                    "Lunch" -> sumKcalLunch += userDietData[x].diet_list[y].toString().toInt()
-                    "Dinner" -> sumKcalDinner += userDietData[x].diet_list[y].toString().toInt()
-                    "Snack" -> sumKcalSnack += userDietData[x].diet_list[y].toString().toInt()
-                }
-            }
-
-        if (sumKcalBreakfast != 0) {
-            val sum: String = sumKcalBreakfast.toString() + " kcal"
-            binding.plusButtonBreakfast.visibility = View.INVISIBLE
-            binding.breakfastKcalText.visibility = View.VISIBLE
-            binding.breakfastKcalText.text = sum
-        }
-
-        if (sumKcalLunch != 0) {
-            val sum: String = sumKcalLunch.toString() + " kcal"
-            binding.plusButtonLunch.visibility = View.INVISIBLE
-            binding.lunchKcalText.visibility = View.VISIBLE
-            binding.lunchKcalText.text = sum
-        }
-
-        if (sumKcalDinner != 0) {
-            val sum: String = sumKcalDinner.toString() + " kcal"
-            binding.plusButtonDinner.visibility = View.INVISIBLE
-            binding.dinnerKcalText.visibility = View.VISIBLE
-            binding.dinnerKcalText.text = sum
-        }
-
-        if (sumKcalDinner != 0) {
-            val sum: String = sumKcalDinner.toString() + " kcal"
-            binding.plusButtonSnack.visibility = View.INVISIBLE
-            binding.snackKcalText.visibility = View.VISIBLE
-            binding.snackKcalText.text = sum
-        }
-
-        if (user.user_weight != 0.0){
-            val userWeight = user.user_weight.toString() + "Kg"
-            binding.plusButtonWeight.visibility = View.INVISIBLE
-            binding.userWeight.visibility = View.VISIBLE
-            binding.userWeight.text = userWeight
-        }
-        //유저 몸무게 있을 시 몸무게 출력
-
-        if ((user.user_Goal_weight != 0) && (user.user_weight !=0.0)){
-            val userGoalWeightRemain = (user.user_Goal_weight!!.toDouble()-user.user_weight!!.toDouble()).toString() + "kg"
-            binding.postGoalDistance.visibility = View.INVISIBLE
-            binding.goalDistance.visibility = View.VISIBLE
-            binding.goalDistance.text = userGoalWeightRemain
-        }
-        //목표 몸무게 있을시 목표몸무게 - 유저몸무게 출력
-
-
-
+        GetSummaryDataCall(this, requireContext()).getSummaryData()
 
 
         binding.goalButton.setOnClickListener() {
             mainActivity!!.changeGoalSettingFragment()
         }
 
-        binding.plusButtonWeight.setOnClickListener(){
+        binding.plusButtonWeight.setOnClickListener() {
             mainActivity!!.showMessageDialog()
         }
 
-        binding.userWeight.setOnClickListener(){
+        binding.userWeight.setOnClickListener() {
             mainActivity!!.showMessageDialog()
         }
 
-
-        binding.plusButtonBreakfast.setOnClickListener(){
-            val intent = Intent(context,DietPageActivity::class.java)
-            intent.putExtra("diet_type","Breakfast")
+        binding.plusButtonBreakfast.setOnClickListener() {
+            val intent = Intent(context, DietPageActivity::class.java)
+            intent.putExtra("diet_type", "Breakfast")
             startActivity(intent)
         }
 
-        binding.plusButtonLunch.setOnClickListener(){
-            val intent = Intent(context,DietPageActivity::class.java)
-            intent.putExtra("diet_type","Lunch")
+        binding.plusButtonLunch.setOnClickListener() {
+            val intent = Intent(context, DietPageActivity::class.java)
+            intent.putExtra("diet_type", "Lunch")
             startActivity(intent)
         }
 
-        binding.plusButtonDinner.setOnClickListener(){
-            val intent = Intent(context,DietPageActivity::class.java)
-            intent.putExtra("diet_type","Dinner")
+        binding.plusButtonDinner.setOnClickListener() {
+            val intent = Intent(context, DietPageActivity::class.java)
+            intent.putExtra("diet_type", "Dinner")
             startActivity(intent)
         }
 
-        binding.plusButtonSnack.setOnClickListener(){
-            val intent = Intent(context,DietPageActivity::class.java)
-            intent.putExtra("diet_type","Snack")
+        binding.plusButtonSnack.setOnClickListener() {
+            val intent = Intent(context, DietPageActivity::class.java)
+            intent.putExtra("diet_type", "Snack")
             startActivity(intent)
         }
-
         return binding.root
     }
 
     override fun getSummaryDataList(summaryData: SummaryData) {
+        if (summaryData.breakfastKcal != 0.0) {
+            val sum: String = summaryData.breakfastKcal.toString() + " kcal"
+            binding.plusButtonLunch.visibility = View.INVISIBLE
+            binding.lunchKcalText.visibility = View.VISIBLE
+            binding.lunchKcalText.text = sum
+        }
+        if (summaryData.lunchKcal != 0.0) {
+            val sum: String = summaryData.lunchKcal.toString() + " kcal"
+            binding.plusButtonLunch.visibility = View.INVISIBLE
+            binding.lunchKcalText.visibility = View.VISIBLE
+            binding.lunchKcalText.text = sum
+        }
+        if (summaryData.dinnerKcal != 0.0) {
+            val sum: String = summaryData.dinnerKcal.toString() + " kcal"
+            binding.plusButtonLunch.visibility = View.INVISIBLE
+            binding.lunchKcalText.visibility = View.VISIBLE
+            binding.lunchKcalText.text = sum
+        }
+        if (summaryData.snackKcal != 0.0) {
+            val sum: String = summaryData.snackKcal.toString() + " kcal"
+            binding.plusButtonLunch.visibility = View.INVISIBLE
+            binding.lunchKcalText.visibility = View.VISIBLE
+            binding.lunchKcalText.text = sum
+        }
+        //식단 Kcal있을 시 Kcal 출력
+
+        if (summaryData.weight != 0.0) {
+            val userWeight = summaryData.weight.toString() + "Kg"
+            binding.plusButtonWeight.visibility = View.INVISIBLE
+            binding.userWeight.visibility = View.VISIBLE
+            binding.userWeight.text = userWeight
+        }
+        //유저 weight있을 시 weight 출력
+
+        if (summaryData.weight != 0.0 && summaryData.goalweight != 0.0){
+            val userGoalWeightRemain = (summaryData.weight - summaryData.goalweight).toInt().toString()
+            binding.goalDistance.text = userGoalWeightRemain
+            binding.goalDistance.visibility = View.VISIBLE
+            binding.postGoalDistance.visibility = View.INVISIBLE
+
+
+        }
+
+        val sumKcal : String = (summaryData.snackKcal + summaryData.breakfastKcal + summaryData.lunchKcal + summaryData.dinnerKcal).toInt().toString()
+        binding.eatKcal.text = sumKcal
+        //총합 Kcal 출력
+
+        binding.arcProgress.progress = summaryData.goaldietkcal.toInt() - sumKcal.toInt()
+        //잔여 kcal 출력
+
+        binding.moveKcal.text = summaryData.exerciseKcal.toInt().toString()
+        //활동 칼로리 출력
 
     }
 }

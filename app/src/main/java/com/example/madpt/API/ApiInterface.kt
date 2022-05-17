@@ -14,7 +14,7 @@ interface GetTrainRecordList{
 }
 
 interface GetMonthDataList{
-    fun getMonthDataList(monthData: ArrayList<MonthDataDateBy>)
+    fun getMonthDataList(monthDataList: ArrayList<MonthDataDateBy>)
 }
 
 interface GetSummaryData{

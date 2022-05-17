@@ -50,9 +50,6 @@ class StatisticsFragment : Fragment() {
             dailyDate = dailyDate.plusDays(1)
             if(dailyDate.dayOfMonth>dailyDate.lengthOfMonth()){
                 dailyDate.plusMonths(1)
-                if (dailyDate.monthValue>dailyDate.lengthOfYear()){
-                    dailyDate.withDayOfMonth(1)
-                }
                 dailyDate.withDayOfMonth(1)
             }
             date = ("%02d월 %02d일").format(dailyDate.monthValue,dailyDate.dayOfMonth)
@@ -64,9 +61,6 @@ class StatisticsFragment : Fragment() {
             dailyDate = dailyDate.minusDays(1)
             if(dailyDate.dayOfMonth == 0){
                 dailyDate.minusMonths(1)
-                if (dailyDate.monthValue == 0) {
-                    dailyDate.withDayOfMonth(12)
-                }
                 dailyDate.withDayOfMonth(dailyDate.monthValue)
             }
             date = ("%02d월 %02d일").format(dailyDate.monthValue,dailyDate.dayOfMonth)

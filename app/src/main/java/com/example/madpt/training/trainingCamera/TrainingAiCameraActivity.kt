@@ -21,8 +21,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
+import android.speech.tts.TextToSpeech
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
@@ -35,11 +37,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
 import com.example.madpt.R
+import com.example.madpt.loading.LoadingDialog
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.camera.CameraSource
 import com.example.madpt.training.trainingCamera.data.Device
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import com.example.madpt.training.trainingCamera.ml.*
+import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -81,15 +85,17 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private lateinit var spnModel: Spinner
     private lateinit var spnTracker: Spinner
     private lateinit var vTrackerOption: View
+    private lateinit var framechecker: TextView
     private lateinit var tvClassificationValue1: TextView
     private lateinit var tvClassificationValue2: TextView
     private lateinit var tvClassificationValue3: TextView
     private lateinit var swClassification: SwitchCompat
     private lateinit var vClassificationOption: View
+    private var tts: TextToSpeech? = null
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
-    private lateinit var breakTimer: Timer
-    private var time = 0
+    private var breakTimeInt = 0
+    private lateinit var dialog: LoadingDialog
     private val requestPermissionLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -168,6 +174,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         tvFPS = findViewById(R.id.tvFps)
         spnModel = findViewById(R.id.spnModel)
         spnDevice = findViewById(R.id.spnDevice)
+        framechecker = findViewById(R.id.checkFrame)
         spnTracker = findViewById(R.id.spnTracker)
         vTrackerOption = findViewById(R.id.vTrackerOption)
         surfaceView = findViewById(R.id.surfaceView)
@@ -177,13 +184,14 @@ class TrainingAiCameraActivity : AppCompatActivity() {
         swClassification = findViewById(R.id.swPoseClassification)
         vClassificationOption = findViewById(R.id.vClassificationOption)
         initSpinner()
+        breakTimeInt = intent.getIntExtra("breakTimeInt", 15)
         spnModel.setSelection(modelPos)
         swClassification.setOnCheckedChangeListener(setClassificationListener)
+        TextToSpeechManager.getInstance().initializeLibrary(getApplicationContext());
         if (!isCameraPermissionGranted()) {
             requestPermission()
         }
     }
-
     override fun onStart() {
         super.onStart()
         openCamera()
@@ -221,7 +229,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onTimerListener(min: Int, sec: Int){
                             Timer.text = getString(R.string.tfe_pe_timer, min, sec)
-                            Timer.setTextSize(Dimension.SP, 30.0F)
+                            //Timer.setTextSize(Dimension.SP, 30.0F)
                         }
 
                         override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){
@@ -239,6 +247,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onExcrciseFeedbackListener(currentFeedback: String){
                             Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                            ttsSpeak(Feedback.text.toString())
                         }
 
                         override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
@@ -254,6 +263,17 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
+                        override fun onFrameCheckListener(flag: Boolean) {
+                            runOnUiThread{
+                                if(flag){
+                                    framechecker.visibility = View.VISIBLE
+                                }
+                                else{
+                                    framechecker.visibility = View.INVISIBLE
+                                }
+                            }
+                        }
+
                         override fun onExcrciseFinishListener(
                             trainingDataList: ArrayList<TrainingData>,
                             excrciseTimeList: ArrayList<Long>
@@ -261,7 +281,12 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             println("finish listener in")
                             this@TrainingAiCameraActivity.trainingDataList = trainingDataList
                             this@TrainingAiCameraActivity.excrciseTimeList = excrciseTimeList
+                            runOnUiThread{
+                                dialog = LoadingDialog(this@TrainingAiCameraActivity)
+                                dialog.showDialog()
+                            }
                             cameraSource?.close()
+                            dialog.loadingDismiss()
                             openResultPage()
                         }
 
@@ -288,7 +313,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                     }, trainingList).apply {
                         prepareCamera()
-                        prepareTrainer()
+                        prepareTrainer(breakTimeInt)
                     }
                 isPoseClassifier()
                 lifecycleScope.launch(Dispatchers.Main) {
@@ -296,7 +321,25 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 }
             }
             createPoseEstimator()
+            startGoogleTTS()
         }
+    }
+
+    private fun startGoogleTTS() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+            Toast.makeText(this, "SDK version is low", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        tts = TextToSpeech(this){
+            if(it == TextToSpeech.SUCCESS){
+                val result = tts?.setLanguage(Locale.KOREAN)
+            }
+        }
+    }
+
+    private fun ttsSpeak(strTTS: String){
+        tts?.speak(strTTS, TextToSpeech.QUEUE_ADD, null, null)
     }
 
     private fun openResultPage(){

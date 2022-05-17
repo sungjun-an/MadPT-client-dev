@@ -1,21 +1,12 @@
 package com.example.madpt.API.food
 
 import com.example.madpt.API.diet.daily_diet
-import com.example.madpt.API.statistic.MonthDataDateBy
-import com.example.madpt.API.statistic.SummaryData
-import com.example.madpt.API.statistic.TrainRecordList
+import com.example.madpt.API.routine.GetTrainRoutine
+import com.example.madpt.API.statistic.*
 import com.example.madpt.API.trainresult.Train_result
 
 interface GetFoodList{
     fun getFoodList(testing: ArrayList<food_list>)
-}
-
-interface PostDietList{
-    fun postDietList(dietList: daily_diet)
-}
-
-interface PostTrainResultList{
-    fun postTrainResult(trainList: Train_result)
 }
 
 interface GetTrainRecordList{
@@ -28,4 +19,12 @@ interface GetMonthDataList{
 
 interface GetSummaryData{
     fun getSummaryDataList(summaryData: SummaryData)
+}
+
+interface GetDailyDietList{
+    fun getDailyDiet(dailyDiet: DailyDietStatistic)
+}
+
+interface GetExerciseRoutineList{
+    fun getExerciseRoutineList(exerciseRoutineList: GetTrainRoutine)
 }

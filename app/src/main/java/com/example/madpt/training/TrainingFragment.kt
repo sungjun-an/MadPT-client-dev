@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.madpt.API.routine.PostTrainRoutine
+import com.example.madpt.R
 import com.example.madpt.databinding.FragmentExcerciseBinding
 import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
@@ -20,16 +22,13 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, StoreTraining, OnItemClickListener{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, OnItemClickListener{
 
     private var trainList = arrayListOf<testmodel>()
     private var breakTime = 0
     private var storeTrainList= arrayListOf<storeTraining>()
-
-    override fun storeTrain(breakTime: Int, trainTitle: String, trainset: ArrayList<testmodel>) {
-        storeTrainList.add(storeTraining(trainTitle, breakTime, trainset))
-        Log.d("YMC","$storeTrainList")
-    }
+    private val exerciseTitle = mapOf<Long, String>(1.toLong() to "PUSH UP", 2.toLong() to "SQUAT", 3.toLong() to "LUNGE", 4.toLong() to "DUMBBELL")
+    private val exerciseImage = mapOf<Long, Int>(1.toLong() to R.drawable.pushup, 2.toLong() to R.drawable.standing, 3.toLong() to R.drawable.lunge, 4.toLong() to R.drawable.dumbell)
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))
@@ -68,7 +67,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             dialog.showDialog()
         }
         binding.btnRoutineStore.setOnClickListener {
-            val dialog = StoreTrain(requireContext(), breakTime, this)
+            val dialog = StoreTrain(requireContext(), breakTime)
             dialog.showDialog(trainList)
         }
 
@@ -80,6 +79,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
             }
             else{
                 intent.putParcelableArrayListExtra("trainList", trainList)
+                intent.putExtra("breakTimeInt", breakTime)
                 startActivity(intent)
             }
         }
@@ -126,11 +126,13 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         binding.trainListRecyclerView.adapter?.notifyItemMoved(fromPos, toPos)
     }
 
-    override fun onClick(loadItem: storeTraining) {
-        breakTime = loadItem.breakTime
+    override fun onClick(loadItem: PostTrainRoutine) {
+        breakTime = loadItem.breaktime
         trainList.clear()
-        trainList.addAll(loadItem.trainset)
+        for(i in loadItem.exercise_list){
+            trainList.add(testmodel(exerciseTitle[i.exercise_id]!!, exerciseImage[i.exercise_id]!!, i.sets, i.reps))
+        }
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
-        Log.d("YMC", "${loadItem.trainset}")
+        Log.d("YMC", "${loadItem.exercise_list}")
     }
 }

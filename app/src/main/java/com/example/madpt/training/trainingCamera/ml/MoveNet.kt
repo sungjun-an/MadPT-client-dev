@@ -419,11 +419,13 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         return saveTimeStamp
     }
 
+
     fun cal2doNotExcrcise(): Long {
         return 0L
     }
 
     override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>, ArrayList<Int>> {
+
         //initExcrcise(person)
 //        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
         var p: Pair<ArrayList<Int>, ArrayList<Int>> = madpt.excrcise_finder(trainingList[0], person)

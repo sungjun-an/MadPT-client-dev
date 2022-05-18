@@ -1,6 +1,8 @@
 package com.example.madpt.API.food
 
 import com.example.madpt.API.diet.daily_diet
+import com.example.madpt.API.social.Friends
+import com.example.madpt.API.social.SocialRank
 import com.example.madpt.API.statistic.DailyDietList
 import com.example.madpt.API.statistic.MonthDataDateBy
 import com.example.madpt.API.statistic.SummaryData
@@ -25,4 +27,8 @@ interface GetSummaryData{
 
 interface GetDailyDietList{
     fun getDailyDiet(dailyDietList: DailyDietList)
+}
+
+interface GetSocialRank{
+    fun getSocialRank(Rank: ArrayList<Friends>)
 }

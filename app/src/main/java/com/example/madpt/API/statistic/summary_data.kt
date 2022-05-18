@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName
 
 data class SummaryData(
     @SerializedName("burned_kcal")
-    val exerciseKcal: Double,
+    val exerciseKcal: Double = 0.0,
     @SerializedName("breakfast_kcal")
-    val breakfastKcal: Double,
+    val breakfastKcal: Double = 0.0,
     @SerializedName("lunch_kcal")
-    val lunchKcal: Double,
+    val lunchKcal: Double = 0.0,
     @SerializedName("dinner_kcal")
-    val dinnerKcal: Double,
+    val dinnerKcal: Double = 0.0,
     @SerializedName("snack_kcal")
-    val snackKcal: Double,
+    val snackKcal: Double = 0.0,
     @SerializedName("goal_diet_kcal")
-    val goaldietkcal: Double,
+    val goaldietkcal: Double = 0.0,
     @SerializedName("goal_exercise_kcal")
-    val goalexercisekcal : Double,
+    val goalexercisekcal : Double = 0.0,
     @SerializedName("goal_weight")
-    val goalweight : Double,
+    val goalweight : Double = 0.0,
     @SerializedName("weight")
-    val weight : Double
+    val weight : Double = 0.0
 
 )

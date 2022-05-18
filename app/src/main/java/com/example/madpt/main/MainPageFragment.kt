@@ -74,6 +74,8 @@ class MainPageFragment : Fragment(), GetSummaryData {
             intent.putExtra("diet_type", "Snack")
             startActivity(intent)
         }
+
+
         return binding.root
     }
 
@@ -81,8 +83,8 @@ class MainPageFragment : Fragment(), GetSummaryData {
         if (summaryData.breakfastKcal != 0.0) {
             val sum: String = summaryData.breakfastKcal.toString() + " kcal"
             binding.plusButtonLunch.visibility = View.INVISIBLE
-            binding.lunchKcalText.visibility = View.VISIBLE
-            binding.lunchKcalText.text = sum
+            binding.breakfastKcalText.visibility = View.VISIBLE
+            binding.breakfastKcalText.text = sum
         }
         if (summaryData.lunchKcal != 0.0) {
             val sum: String = summaryData.lunchKcal.toString() + " kcal"
@@ -92,15 +94,15 @@ class MainPageFragment : Fragment(), GetSummaryData {
         }
         if (summaryData.dinnerKcal != 0.0) {
             val sum: String = summaryData.dinnerKcal.toString() + " kcal"
-            binding.plusButtonLunch.visibility = View.INVISIBLE
-            binding.lunchKcalText.visibility = View.VISIBLE
-            binding.lunchKcalText.text = sum
+            binding.plusButtonDinner.visibility = View.INVISIBLE
+            binding.dinnerKcalText.visibility = View.VISIBLE
+            binding.dinnerKcalText.text = sum
         }
         if (summaryData.snackKcal != 0.0) {
             val sum: String = summaryData.snackKcal.toString() + " kcal"
-            binding.plusButtonLunch.visibility = View.INVISIBLE
-            binding.lunchKcalText.visibility = View.VISIBLE
-            binding.lunchKcalText.text = sum
+            binding.plusButtonSnack.visibility = View.INVISIBLE
+            binding.snackKcalText.visibility = View.VISIBLE
+            binding.snackKcalText.text = sum
         }
         //식단 Kcal있을 시 Kcal 출력
 

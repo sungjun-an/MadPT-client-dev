@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.madpt.API.social.Friends
+import com.example.madpt.API.social.FriendsDataList
 import com.example.madpt.FriendsData
-import com.example.madpt.FriendsDataList
 import com.example.madpt.R
 import com.example.madpt.databinding.FriendsListWithMedalBinding
 import com.example.madpt.databinding.FriendsListWithoutMedalBinding
@@ -18,9 +19,9 @@ class FriendsListAdapter(private val context: Context) :
 
     inner class FriendsListWithMedalViewHolder(private val FriendsListwithMedal: FriendsListWithMedalBinding) :
         RecyclerView.ViewHolder(FriendsListwithMedal.root) {
-        fun bind(friendsData: FriendsData) {
-            FriendsListwithMedal.friendName.text = friendsData.name
-            FriendsListwithMedal.kcalScore.text = friendsData.useKcal.toString()
+        fun bind(friends: Friends) {
+            FriendsListwithMedal.friendName.text = friends.name
+            FriendsListwithMedal.kcalScore.text = friends.somo_kcal.toString()
             when (adapterPosition) {
                 0 -> FriendsListwithMedal.medal.setImageResource(R.drawable.gold_medal)
                 1 -> FriendsListwithMedal.medal.setImageResource(R.drawable.silver_medal)
@@ -31,9 +32,9 @@ class FriendsListAdapter(private val context: Context) :
 
     inner class FriendsListWithoutMedalViewHolder(private val FriendsListwithoutMedal: FriendsListWithoutMedalBinding) :
         RecyclerView.ViewHolder(FriendsListwithoutMedal.root) {
-        fun bind(friendsData: FriendsData) {
-            FriendsListwithoutMedal.friendName.text = friendsData.name
-            FriendsListwithoutMedal.kcalScore.text = friendsData.useKcal.toString()
+        fun bind(friends: Friends) {
+            FriendsListwithoutMedal.friendName.text = friends.name
+            FriendsListwithoutMedal.kcalScore.text = friends.somo_kcal.toString()
             FriendsListwithoutMedal.rank.text = adapterPosition.toString()
         }
     }

@@ -6,6 +6,7 @@ import com.example.madpt.API.goal.Goal
 import com.example.madpt.API.member.MemberInfo
 import com.example.madpt.API.member.MemberWeight
 import com.example.madpt.API.routine.PostTrainRoutine
+import com.example.madpt.API.social.SocialRank
 import com.example.madpt.API.statistic.DailyDietList
 import com.example.madpt.API.statistic.MonthData
 import com.example.madpt.API.statistic.SummaryData
@@ -28,8 +29,8 @@ interface RetrofitService {
     @GET("member/login")
     fun postLogin(@Header("member_id")id: Long): Call<String>//완성
 
-    @POST("meber/update-weight")
-    fun postWeight(@Header("member_id")id: Long, @Body params: MemberWeight): Call<PostResponse>
+    @POST("member/update-weight")
+    fun postWeight(@Header("member_id")id: Long, @Body params: MemberWeight): Call<String>
 
     @POST("goal")
     fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료
@@ -47,10 +48,13 @@ interface RetrofitService {
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("month") month: Int): Call<MonthData>//명세 완료
 
     @GET("statistic/day-summary")
-    fun getSummaryData(@Header("member_id") id: Long, @Query("timestamp") timestamp: Long): Call<SummaryData>//명세 완료
+    fun getSummaryData(@Header("member_id") id: Long, @Query("date") date: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")
     fun getDailyDietList(@Header("member_id") id: Long, @Query("timestamp") timestamp: Long): Call<DailyDietList>//명세 완료
+
+    @GET("social/rank")
+    fun getSocialRank(@Query("date") timestamp: Long):Call<SocialRank>
 
 
 }

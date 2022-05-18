@@ -13,8 +13,8 @@ class PostMemberWeightCall(context: Context) {
 
     fun PostMemberWeight(memberWeight: MemberWeight) {
         RetrofitClass.service.postWeight(SplashActivity.userId, memberWeight).enqueue(object :
-            Callback<PostResponse> {
-            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+            Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     Log.d("YMC", "onResponse 성공: ${response.body()}");
                 } else {
@@ -22,7 +22,7 @@ class PostMemberWeightCall(context: Context) {
                     Log.d("YMC", "PostMember 실패 ${response}")
                 }
             }
-            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }
         })

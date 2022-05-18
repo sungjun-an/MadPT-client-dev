@@ -37,17 +37,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="72dp"
         android:text="."
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/DecimalWeight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/DecimalStature"
+        app:layout_constraintEnd_toStartOf="@+id/DecimalStature"
+        app:layout_constraintStart_toEndOf="@+id/IntegerStature" />
 
     <NumberPicker
-        android:id="@+id/DecimalWeight"
+        android:id="@+id/DecimalStature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="128dp"
@@ -92,12 +92,12 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/DecimalStature"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/DecimalWeight"
+        app:layout_constraintEnd_toStartOf="@+id/DecimalWeight"
+        app:layout_constraintStart_toEndOf="@+id/IntegerWeight" />
 
     <NumberPicker
-        android:id="@+id/DecimalStature"
+        android:id="@+id/DecimalWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="128dp"

@@ -87,9 +87,10 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    private fun showMessageDialog(){
+    fun showMessageDialog(){
         val customDialog = PutWeightDialog(finishApp = {finish()})
         customDialog.show(supportFragmentManager, "PutWeightDialog")
     }
+
 
 }

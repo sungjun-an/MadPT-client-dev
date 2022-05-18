@@ -1,20 +1,30 @@
 package com.example.madpt.training
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
 import com.example.madpt.testmodel
+import java.util.*
+import kotlin.collections.ArrayList
 
-class TrainingList(private val context: Context, private val dataList:ArrayList<testmodel>): RecyclerView.Adapter<TrainingList.ViewHolder>() {
+class TrainingList(private val dataList:ArrayList<testmodel>, listen:OnRemove):
+    RecyclerView.Adapter<TrainingList.ViewHolder>(), Swaping {
+
+    private var onRemoveClickListen = listen
+
+
+
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val train_image = itemView.findViewById<ImageView>(R.id.list_image)
+
+        private val trainImage = itemView.findViewById<ImageView>(R.id.list_image)
+        val cancelTrain = itemView.findViewById(R.id.removeTrain) as Button
 
         fun bind(data: testmodel){
-            train_image.setImageResource(data.images)
+            trainImage.setImageResource(data.images)
         }
     }
 
@@ -28,10 +38,19 @@ class TrainingList(private val context: Context, private val dataList:ArrayList<
     }
 
     override fun onBindViewHolder(viewholder: ViewHolder, i: Int) {
+        viewholder.cancelTrain.setOnClickListener {
+            onRemoveClickListen.OnRemoveClick(i)
+            notifyDataSetChanged()
+        }
         viewholder.bind(dataList[i])
     }
-
     override fun getItemCount(): Int {
         return dataList.size
+    }
+
+    override fun swapData(fromPos: Int, toPos: Int) {
+        Collections.swap(dataList,fromPos, toPos)
+
+        notifyItemMoved(fromPos, toPos)
     }
 }

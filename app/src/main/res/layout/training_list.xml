@@ -29,7 +29,7 @@
             android:layout_width="150dp"
             android:layout_height="35dp"
             android:layout_marginStart="15dp"
-            android:textSize="30dp"
+            android:textSize="25dp"
             app:layout_constraintLeft_toRightOf="@+id/trainingImage"
             app:layout_constraintStart_toEndOf="@id/trainingImage"
             app:layout_constraintTop_toTopOf="parent" />

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" 
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trainList"
     android:layout_height="50dp"
     android:layout_width="wrap_content">
     
@@ -9,5 +10,11 @@
         android:layout_width="50dp"
         android:layout_height="match_parent"
         android:id="@+id/list_image" />
+
+    <Button
+        android:id="@+id/removeTrain"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right|top"/>
     
-</LinearLayout>
+</FrameLayout>

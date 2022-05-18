@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendarDayLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:background="@color/calendar_item_view_bg_color"
+        tools:layout_edior_absoluteX="76dp"
+        tools:layout_editor_absoluteY="-14dp">
+
+        <TextView
+            android:id="@+id/calendarDayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:textColor="@color/calendar_text_grey"
+            android:textSize="12dp"
+            tools:text="24"/>
+
+        <View
+            android:id="@+id/calendarDietKcal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="38dp"
+            android:background="@color/diet_kcal_purple" />
+
+        <View
+            android:id="@+id/calendarExerciseKcal"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="14dp"
+            android:background="@color/exKcal_purple" />
+
+        <TextView
+            android:id="@+id/calendarDietText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="right"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="38dp"
+            android:textColor="@color/calendar_text_grey"
+            android:textSize="10dp"
+            tools:text="20" />
+
+        <TextView
+            android:id="@+id/calendarExerciseText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="right"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="14dp"
+            android:textColor="@color/calendar_text_grey"
+            android:textSize="10dp"
+            tools:text="20" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

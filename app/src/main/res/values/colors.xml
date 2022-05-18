@@ -7,8 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="brown_700">#5D4037</color>
+    <color name="exKcal_purple">#FF6D4AE8</color>
+    <color name="diet_kcal_purple">#FFA84EF2</color>
+    <color name="calendar_text_grey">#bdbdbd</color>
+    <color name="calendar_page_bg_color">#0E0E0E</color>
+    <color name="calendar_item_view_bg_color">#1B1B1B</color>
+    <color name="calendar_text_grey_light">#616161</color>
+    <color name="calendar_toolbar_color">#282828</color>
     <color name="backgroungblack">#000</color>
     <color name="maincolor">#B667F1</color>
     <color name="meal_input">#5e5e5e</color>
-
+    <color name="point_color">#70E8E5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
 </resources>

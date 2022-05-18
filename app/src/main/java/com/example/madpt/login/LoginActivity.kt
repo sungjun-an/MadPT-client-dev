@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.kakao.sdk.auth.model.OAuthToken
+import com.example.madpt.API.login.PostLoginCall
+import com.example.madpt.API.member.MemberInfo
+import com.example.madpt.MainActivity
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.example.madpt.databinding.ActivityLoginBinding
-import com.example.madpt.profile.StartProfile
+import com.example.madpt.splash.SplashActivity
 
 class LoginActivity: AppCompatActivity() {
 
@@ -20,14 +22,9 @@ class LoginActivity: AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
-            if (error != null) {
-                Log.d(TAG, "카카오계정으로 로그인 실패", error)
-            } else if (token != null) {
-                Log.d(TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
-                startMainActivity()
-            }
-        }
+        val weight = intent.getDoubleExtra("weight",0.0)
+        val height = intent.getDoubleExtra("height", 0.0)
+        var memberInfo: MemberInfo? = null
 
         binding.kakaoLoginBtn.setOnClickListener{
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
@@ -42,34 +39,40 @@ class LoginActivity: AppCompatActivity() {
                         }
 
                         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
-                        UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                     } else if (token != null) {
                         Log.d(TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
-                        UserApiClient.instance.me { user, error ->
-                            if (error != null) {
-                                Log.e(TAG, "사용자 정보 요청 실패", error)
-                            }
-                            else if (user != null) {
-                                Log.i(TAG, "사용자 정보 요청 성공" +
-                                        "\n회원번호: ${user.id}" +
-                                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}" +
-                                        "\n성별: ${user.kakaoAccount?.gender}"
-                                )
-                            }
+                                UserApiClient.instance.me { user, error ->
+                                    if (error != null) {
+                                        Log.e(TAG, "사용자 정보 요청 실패", error)
+                                    } else if (user != null) {
+                                        Log.d(
+                                            "YMC", "사용자 정보 요청 성공" +
+                                                    "\n회원번호: ${user.id}" +
+                                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                                    "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}" +
+                                                    "\n성별: ${user.kakaoAccount?.gender}"
+                                        )
+                                        SplashActivity.userId = user.id!!
+
+                                        memberInfo = MemberInfo(
+                                            user.kakaoAccount?.profile?.nickname!!,
+                                            weight,
+                                            height,
+                                            user.kakaoAccount?.gender!!.toString()
+                                        )
+                                        //TRUE/FALSE 확인 FALSE 일때만 정보 저장 POST 때리기
+                                        PostLoginCall().Postlogin(this, memberInfo!!)
+                                        startMainActivity()
+                                    }
+                                }
                         }
-                        startMainActivity()
-                    }
                 }
-            } else {
-                UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
-
     }
 
     private fun startMainActivity() {
-        val intent = Intent(this, StartProfile::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)

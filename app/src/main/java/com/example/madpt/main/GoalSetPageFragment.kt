@@ -11,6 +11,8 @@ import com.example.madpt.databinding.FragmentGoalSetPageBinding
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.madpt.API.goal.Goal
+import com.example.madpt.API.goal.PostGoalCall
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentMainPageBinding
 import com.example.madpt.user
@@ -23,10 +25,11 @@ class GoalSetPageFragment : Fragment() {
     private var _binding: FragmentGoalSetPageBinding? = null
     private val binding get() = _binding!!
 
-    var mainActivity: MainActivity? = null
+
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainActivity = context as MainActivity
+
     }
 
     override fun onCreateView(
@@ -40,12 +43,10 @@ class GoalSetPageFragment : Fragment() {
 
         binding.goalSaveButton.setOnClickListener {
             try {
-
-
-                user.eat_kcal = binding.goalEatkcal.text.toString().toInt()
-                user.move_kcal = binding.goalMovekcal.text.toString().toInt()
-                user.user_Goal_weight = binding.goalWeight.text.toString().toInt()
-                mainActivity!!.setFragment()
+                val goal = Goal(binding.goalEatkcal.text.toString().toDouble(),
+                    binding.goalMovekcal.text.toString().toDouble(),
+                    binding.goalWeight.text.toString().toDouble())
+                    PostGoalCall(requireContext()).postGoalCall(goal)
 
             } catch (e: NumberFormatException) {
                 Toast.makeText(requireActivity(), "정수만 입력해주시기 바랍니다.", Toast.LENGTH_LONG).show()

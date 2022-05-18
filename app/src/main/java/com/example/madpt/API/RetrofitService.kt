@@ -4,6 +4,7 @@ import com.example.madpt.API.diet.daily_diet
 import com.example.madpt.API.food.Get_Food
 import com.example.madpt.API.goal.Goal
 import com.example.madpt.API.member.MemberInfo
+import com.example.madpt.API.member.MemberWeight
 import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.statistic.DailyDietList
 import com.example.madpt.API.statistic.MonthData
@@ -21,12 +22,14 @@ interface RetrofitService {
     @POST("diet")
     fun postDailyDiet(@Header("member_id") id: Long, @Body params: daily_diet): Call<PostResponse>//완성
 
-
     @POST("member/sign-up")
     fun postMember(@Header("member_id") id:Long, @Body params: MemberInfo): Call<PostResponse>//완성
 
     @GET("member/login")
     fun postLogin(@Header("member_id")id: Long): Call<String>//완성
+
+    @POST("meber/update-weight")
+    fun postWeight(@Header("member_id")id: Long, @Body params: MemberWeight): Call<PostResponse>
 
     @POST("goal")
     fun postGoal(@Header("member_id")id: Long, @Body params: Goal): Call<PostResponse> //명세 완료

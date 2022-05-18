@@ -140,13 +140,13 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
 
         for(i in 0 until scoreData.size){
             when {
-                scoreData[i] < 20 -> {
+                scoreData[i] < 70 -> {
                     finalGradeList.add(i, "D")
                 }
-                scoreData[i] < 30 -> {
+                scoreData[i] < 80 -> {
                     finalGradeList.add(i, "C")
                 }
-                scoreData[i] < 35 -> {
+                scoreData[i] < 90 -> {
                     finalGradeList.add(i, "B")
                 }
                 else -> {

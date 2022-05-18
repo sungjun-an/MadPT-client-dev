@@ -21,16 +21,13 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.os.Build
-import android.os.Bundle
-import android.os.Process
+import android.os.*
 import android.speech.tts.TextToSpeech
 import android.view.SurfaceView
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.Dimension
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
@@ -49,8 +46,6 @@ import com.example.madpt.training.trainingCamera.ml.*
 import com.kakao.sdk.newtoneapi.TextToSpeechManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.http.POST
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -292,10 +287,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                                 dialog.showDialog()
                             }
                             cameraSource?.close()
-                            dialog.loadingDismiss()
-                            println("final testmodel: $staticTrainingList")
-                            println("final training: $trainingDataList")
-                            println("final TimeData: $excrciseTimeList")
                             var train_results: Train_result = setTrainResult(staticTrainingList,
                                                            trainingDataList,
                                                            excrciseTimeList)
@@ -303,7 +294,11 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                                 PostTrainResultCall(
                                     this@TrainingAiCameraActivity).PostTrainResult(train_results)
                             }
-                            openResultPage()
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                openResultPage()
+                                dialog.loadingDismiss()
+                                finish()
+                            }, 3000)
                         }
 
                         override fun onDetectedInfo(
@@ -365,7 +360,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             scoreForIndex += staticTrainingList[i].reps * staticTrainingList[i].sets
 
             for(j in 0 until scoreForIndex){
-               val avg = trainingDataList[j].exerciseScoreList.average()
+               val avg = trainingDataList[j].excrciseScore
                score_sum += avg
                avg_score = score_sum / totalReps
             }
@@ -492,13 +487,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
-                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
-                val date = Date()
-                val tz = TimeZone.getTimeZone("Asia/Seoul")
-                excrciseStartTime.timeZone = tz
-                val time = excrciseStartTime.format(date)
-                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
-                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
+                trainingList[0].excrciseStartTime = System.currentTimeMillis()
                 MoveNet.create(this, device, ModelType.Lightning, trainingList)
             }
             1 -> {
@@ -506,13 +495,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                 showPoseClassifier(true)
                 showDetectionScore(true)
                 showTracker(false)
-                val excrciseStartTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
-                val date = Date()
-                val tz = TimeZone.getTimeZone("Asia/Seoul")
-                excrciseStartTime.timeZone = tz
-                val time = excrciseStartTime.format(date)
-                val excrciseStartTimeStamp = excrciseStartTime.parse(time).time
-                trainingList[0].excrciseStartTime = excrciseStartTimeStamp
+                trainingList[0].excrciseStartTime = System.currentTimeMillis()
                 MoveNet.create(this, device, ModelType.Thunder, trainingList)
             }
             2 -> {

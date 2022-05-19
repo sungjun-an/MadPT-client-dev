@@ -29,3 +29,7 @@ interface StoreTraining{
 interface OnItemClickListener {
     fun onClick(loadItem: PostTrainRoutine)
 }
+
+interface FixExercise{
+    fun fixEx(sets: Int, reps: Int, images: Int, itemTitles: String, position: Int)
+}

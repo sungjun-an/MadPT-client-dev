@@ -30,7 +30,10 @@ class DailyDietStatisticsFragment : Fragment(),GetDailyDietList {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDailyDietStatisticsBinding.inflate(inflater, container, false)
-        GetDailyDietListCall(this, requireContext()).getDailyDietListCall(System.currentTimeMillis())
+        val dailyDate = arguments?.getLong("getTime")
+        if (dailyDate != null) {
+            GetDailyDietListCall(this, requireContext()).getDailyDietListCall(dailyDate)
+        }
         return binding.root
     }
 
@@ -55,17 +58,17 @@ class DailyDietStatisticsFragment : Fragment(),GetDailyDietList {
         }
         val totalFoodDataSum = totalFoodData[0] + totalFoodData[1] + totalFoodData[2]
 
-        binding.textDailyDietProtein.text = round((totalFoodData[1]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietProtein.text = round((totalFoodData[1]/totalFoodDataSum*10.0)).toInt().toString()
         binding.textDailyDietProtein.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[1]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[1]/totalFoodDataSum*10.0)).toFloat())
 
-        binding.textDailyDietCarbohydrate.text = round((totalFoodData[0]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietCarbohydrate.text = round((totalFoodData[0]/totalFoodDataSum*10.0)).toInt().toString()
         binding.textDailyDietCarbohydrate.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[0]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[0]/totalFoodDataSum*10.0)).toFloat())
 
-        binding.textDailyDietFat.text = round((totalFoodData[2]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietFat.text = round((totalFoodData[2]/totalFoodDataSum*10.0)).toInt().toString()
         binding.textDailyDietFat.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[2]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[2]/totalFoodDataSum*10.0)).toFloat())
 
         binding.textDailyDietKcal.text = totalDietKcal.toString()
     }
@@ -90,7 +93,7 @@ class DailyDietStatisticsFragment : Fragment(),GetDailyDietList {
         if(dietType == "Breakfast") {
             binding.breakfastTotalList.addView(newFoodText)
         } else if(dietType == "Lunch"){
-            binding.breakfastTotalList.addView(newFoodText)
+            binding.lunchTotalList.addView(newFoodText)
         }else if(dietType == "Dinner"){
             binding.dinnerTotalList.addView(newFoodText)
         }else{

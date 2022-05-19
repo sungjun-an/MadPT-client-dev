@@ -22,7 +22,7 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, OnItemClickListener{
+class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, OnItemClickListener, FixExercise{
 
     private var trainList = arrayListOf<testmodel>()
     private var breakTime = 0
@@ -33,6 +33,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
+        Log.d("YMC", "$trainList")
     }
 
     override fun OnRemoveClick(position: Int) {
@@ -63,7 +64,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         _binding = FragmentExcerciseBinding.inflate(inflater, container, false)
 
         binding.btnBreakTime.setOnClickListener {
-            val dialog = BreakTimeSetDialog(requireContext(), this)
+            val dialog = BreakTimeSetDialog(requireContext(), this, breakTime)
             dialog.showDialog()
         }
         binding.btnRoutineStore.setOnClickListener {
@@ -99,9 +100,9 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         binding.recyclerView.adapter = TrainingAdapter(requireContext(), this)
 
         binding.trainListRecyclerView.layoutManager = LinearLayoutManager(requireContext()).also { it.orientation = LinearLayoutManager.HORIZONTAL }
-        binding.trainListRecyclerView.adapter = TrainingList(trainList, this)
+        binding.trainListRecyclerView.adapter = TrainingList(trainList, this, requireContext(), this)
 
-        val recyclerViewAdapter = TrainingList(trainList, this)
+        val recyclerViewAdapter = TrainingList(trainList, this, requireContext(), this)
         binding.trainListRecyclerView.adapter = recyclerViewAdapter
 
         val swipeHelperCallback = SwipeHelperCallback(recyclerViewAdapter)
@@ -134,5 +135,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         }
         binding.trainListRecyclerView.adapter?.notifyDataSetChanged()
         Log.d("YMC", "${loadItem.exercise_list}")
+    }
+
+    override fun fixEx(sets: Int, reps: Int, images: Int, itemTitles: String, position: Int) {
+        trainList[position].sets = sets
+        trainList[position].reps = reps
+        Log.d("YMC", "$trainList")
     }
 }

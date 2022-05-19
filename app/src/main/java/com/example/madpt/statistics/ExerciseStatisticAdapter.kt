@@ -11,9 +11,8 @@ import com.example.madpt.R
 
 class ExerciseStatisticAdapter(private val dailyExerciseList: ArrayList<TrainRecordList>)
     : RecyclerView.Adapter<ExerciseStatisticAdapter.ViewHolder>() {
-
-    private val idToName= mapOf(1 to "PUSH UP", 2 to "SQUAT", 3 to "LUNGE", 4 to "DUMBBELL")
-    private val idToImage= mapOf(1 to R.drawable.pushup, 2 to R.drawable.standing, 3 to R.drawable.lunge, 4 to R.drawable.dumbell)
+    
+    private val idToImage= mapOf("PUSH UP" to R.drawable.pushup, "SQUAT" to R.drawable.standing, "LUNGE" to R.drawable.lunge, "DUMBBELL" to R.drawable.dumbell)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val exerciseTitle: TextView = itemView.findViewById(R.id.exercise_title_text)
@@ -24,7 +23,7 @@ class ExerciseStatisticAdapter(private val dailyExerciseList: ArrayList<TrainRec
 
         fun bind(data: TrainRecordList){
             exerciseImage.setImageResource(idToImage[data.exercise_id]!!)
-            exerciseTitle.text = idToName[data.exercise_id] + " "
+            exerciseTitle.text = data.exercise_id + " "
             exerciseReps.text = data.reps.toString()
             exerciseSets.text = data.sets.toString()
             exerciseKcal.text = data.kcal.toString()

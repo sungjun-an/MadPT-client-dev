@@ -7,17 +7,14 @@ import com.example.madpt.API.member.MemberInfo
 import com.example.madpt.API.member.MemberWeight
 import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.social.SocialRank
-import com.example.madpt.API.statistic.DailyDietList
 import com.example.madpt.API.statistic.MonthData
 import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.API.statistic.TrainRecord
 import com.example.madpt.API.routine.GetTrainRoutine
-import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.statistic.*
 import com.example.madpt.API.trainresult.Train_result
 import retrofit2.Call
 import retrofit2.http.*
-import java.sql.Timestamp
 
 interface RetrofitService {
     @GET("food/food-list")

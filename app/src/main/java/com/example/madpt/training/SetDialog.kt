@@ -15,7 +15,7 @@ class SetDialog(context: Context, s: String, i: Int) {
     private val dialog = Dialog(context)
     private lateinit var onClickListener: OnDialogClickListener
 
-    fun showDialog(){
+    fun showDialog(sets: Int, reps: Int){
         dialog.setContentView(R.layout.set_dialog)
         dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
@@ -23,9 +23,9 @@ class SetDialog(context: Context, s: String, i: Int) {
         dialog.show()
 
         val set = dialog.findViewById<EditText>(R.id.editTextSets)
-        set.setText("0")
+        set.setText(sets.toString())
         val rep = dialog.findViewById<EditText>(R.id.editTextReps)
-        rep.setText("0")
+        rep.setText(reps.toString())
 
         dialog.findViewById<TextView>(R.id.trainingTitle).text = titles
         dialog.findViewById<ImageView>(R.id.image1).setImageResource(image)
@@ -59,7 +59,7 @@ class SetDialog(context: Context, s: String, i: Int) {
         }
 
         dialog.findViewById<Button>(R.id.btn_ok).setOnClickListener {
-            onClickListener.onClicked(set.text.toString().toInt(),rep.text.toString().toInt(), image, titles)
+            onClickListener.onClicked(set.text.toString().toInt(), rep.text.toString().toInt(), image, titles)
             dialog.dismiss()
         }
 

@@ -29,8 +29,8 @@ class CalendarStartActivity : AppCompatActivity(), GetMonthDataList {
 
 
     override fun getMonthDataList(monthDataList: ArrayList<MonthDataDateBy>) {
-        var calendarFragment = CalendarFragment()
-        var bundle = Bundle()
+        val calendarFragment = CalendarFragment()
+        val bundle = Bundle()
         bundle.putParcelableArrayList("monthDataList", monthDataList)
         calendarFragment.arguments = bundle
         supportFragmentManager.beginTransaction()

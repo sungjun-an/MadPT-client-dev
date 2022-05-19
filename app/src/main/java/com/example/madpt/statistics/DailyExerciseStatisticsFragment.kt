@@ -28,7 +28,11 @@ class DailyExerciseStatisticsFragment : Fragment(), GetTrainRecordList {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentDailyExerciseStatisticsBinding.inflate(inflater, container, false)
-        GetTrainRecordCall(this,requireContext()).trainRecord()
+        val dailyDate = arguments?.getLong("getTime")
+        Log.d("YMC","$dailyDate")
+        if (dailyDate !=null){
+            GetTrainRecordCall(this,requireContext()).trainRecord(dailyDate)
+        }
         return binding.root
     }
 

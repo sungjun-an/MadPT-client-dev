@@ -41,12 +41,12 @@ interface RetrofitService {
     @GET("statistic/record")
     fun getTrainRecord(@Header("member_id") id: Long, @Query("date") start: Long): Call<TrainRecord>//명세 완료
 
-    @GET("statistic/calendar-ㅇㄷ")
+    @GET("statistic/calendar")
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("date") month: Long): Call<MonthData>//명세 완료
 
     @GET("statistic/day")
     fun getSummaryData(@Header("member_id") id: Long, @Query("timestamp") timestamp: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")
-    fun getDailyDietList(@Header("member_id") id: Long, @Query("timestamp") timestamp: Long): Call<DailyDietStatistic>//명세 완료
+    fun getDailyDietList(@Header("member_id") id: Long, @Query("date") timestamp: Long): Call<DailyDietStatistic>//명세 완료
 }

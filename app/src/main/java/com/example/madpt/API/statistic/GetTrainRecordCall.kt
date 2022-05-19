@@ -18,12 +18,12 @@ class GetTrainRecordCall(listen: GetTrainRecordList, context: Context) {
     private var trainRecord: TrainRecord? = null
     private val context = context
 
-    fun trainRecord(){
+    fun trainRecord(date: Long){
 
         val dialog = LoadingDialog(context)
         dialog.showDialog()
 
-        RetrofitClass.service.getTrainRecord(userId, System.currentTimeMillis()).enqueue(object : Callback<TrainRecord> {
+        RetrofitClass.service.getTrainRecord(userId, date).enqueue(object : Callback<TrainRecord> {
             override fun onResponse(call: Call<TrainRecord>, response: Response<TrainRecord>) {
                 if (response.isSuccessful) {
                     // 정상적으로 통신이 성고된 경우

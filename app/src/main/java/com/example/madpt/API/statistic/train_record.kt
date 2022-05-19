@@ -1,5 +1,6 @@
 package com.example.madpt.API.statistic
 
+import com.example.madpt.R
 import com.google.gson.annotations.SerializedName
 import java.sql.Timestamp
 
@@ -10,7 +11,7 @@ data class TrainRecord(
 
 data class TrainRecordList(
     @SerializedName("exercise_name")
-    val exercise_name: String,
+    val exercise_id: Int,
     @SerializedName("start_time")
     val start_time: Long,
     @SerializedName("sets")

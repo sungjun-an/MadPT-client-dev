@@ -44,6 +44,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.timer
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import com.example.madpt.training.trainingCamera.algorithm.FeedBack
 
 class CameraSource(
     private val surfaceView: SurfaceView,
@@ -72,7 +73,7 @@ class CameraSource(
     private var excrciseTimer: Timer? = null
     private var currentReps: Int = 0
     private var currentSets: Int = 0
-    private var currentFeedback: Int = 0
+    private var currentFeedback: Double = 0.0
     private var currentExcrcise: String = ""
     private var nextExcrcise: String = ""
     private var excrciseTimeList: ArrayList<Long> = ArrayList()
@@ -85,6 +86,7 @@ class CameraSource(
     private var currentExcrciseDataList: ArrayList<Int> = ArrayList()
     private var frameProcessedInOneSecondInterval = 0
     private var framesPerSecond = 0
+    private var feedBackCalculator: FeedBack = FeedBack()
 
     /** Detects, characterizes, and connects to a CameraDevice (used for all camera operations) */
     private val cameraManager: CameraManager by lazy {
@@ -140,7 +142,7 @@ class CameraSource(
         imageReader?.surface?.let { surface ->
             session = createSession(listOf(surface))
             val cameraRequest = camera?.createCaptureRequest(
-                CameraDevice.TEMPLATE_PREVIEW
+                CameraDevice.TEMPLATE_PREVIEW   
             )?.apply {
                 addTarget(surface)
             }
@@ -191,7 +193,7 @@ class CameraSource(
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
             if (cameraDirection != null &&
-                cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
+                cameraDirection == CameraCharacteristics.LENS_FACING_BACK
             ) {
                 continue
             }
@@ -290,6 +292,8 @@ class CameraSource(
         var classificationResult: List<Pair<String, Float>>? = null
         var dataList: ArrayList<Int>
         var flag = true
+        var feedback: ArrayList<Int>
+        var p1: Pair<ArrayList<Int>, ArrayList<Int>>
 
         synchronized(lock) {
             if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && breakTimeFlag){
@@ -306,15 +310,16 @@ class CameraSource(
                     persons.addAll(it)
 
                     for(i in 0 until persons[0].keyPoints.size){
-                        flag = persons[0].keyPoints[i].score > 0.6
+                        flag = persons[0].keyPoints[i].score > 0.01
                     }
-
                     if(!flag){
                         listener?.onFrameCheckListener(!flag)
                     }
                     else{
-                        listener?.onFrameCheckListener(flag)
-                        dataList = detector?.doExcrcise(persons)!!
+                        listener?.onFrameCheckListener(!flag)
+                        p1 = detector?.doExcrcise(persons)!!
+                        dataList = p1.component1()
+                        feedback = p1.component2()
                         if (dataList.isEmpty()){
                             println("운동 종료")
                             excrciseTimeList = detector?.getExcrciseTimeList()!!
@@ -327,9 +332,8 @@ class CameraSource(
                             finishExcrcise(trainingDataList, excrciseTimeList)
                         }
                         else{
-                            showExcrciseView(dataList)
+                            showExcrciseView(dataList, feedback)
                         }
-
                         // if the model only returns one item, allow running the Pose classifier.
                     }
                     if (persons.isNotEmpty()) {
@@ -377,9 +381,10 @@ class CameraSource(
         }
     }
 
-    private fun showExcrciseView(dataList: ArrayList<Int>) {
+    private fun showExcrciseView(dataList: ArrayList<Int>, feedBack: ArrayList<Int>) {
         currentExcrcise = trainingList[0].titles
-        nextExcrcise = if(trainingList.size != 1){
+        var exerciseId: Int = -1
+            nextExcrcise = if(trainingList.size != 1){
             trainingList[1].titles
         } else{
             "Empty"
@@ -387,19 +392,13 @@ class CameraSource(
 
         currentReps = dataList[0]
         currentSets = dataList[1]
-        currentFeedback = dataList[2]
-
-        if(currentFeedback == 0){
-            listener?.onExcrciseFeedbackListener("Bad")
+        if (feedBack.size > 0){
+            exerciseId = feedBack.get(0)
+            currentFeedback = ArrayList(feedBack.subList(1, feedBack.size)).average()
         }
-        else if(currentFeedback == 1){
-            listener?.onExcrciseFeedbackListener("Good")
-        }
-        else if(currentFeedback == 2){
-            listener?.onExcrciseFeedbackListener("Great")
-        }
-        else if(currentFeedback == 3){
-            listener?.onExcrciseFeedbackListener("Excellent")
+        if (feedBack.size > 0){
+            var feedBackMsg = feedBackCalculator.calculateFeedBack(exerciseId, ArrayList(feedBack.subList(1, feedBack.size)))
+            listener?.onExcrciseFeedbackListener(feedBackMsg + currentFeedback)
         }
 
         listener?.onExcrciseCountListener(currentReps, currentSets)
@@ -412,8 +411,6 @@ class CameraSource(
             println("in -> $currentReps")
             timeFlag = true
         }
-
-
     }
 
     private fun visualize(persons: List<Person>, bitmap: Bitmap) {

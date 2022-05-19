@@ -7,10 +7,11 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.madpt.R
 
-class BreakTimeSetDialog(context: Context, listen: SetBreakTime) {
+class BreakTimeSetDialog(context: Context, listen: SetBreakTime, breaktime: Int) {
 
     private val dialog = Dialog(context)
     private val OnSetBreakTime = listen
+    private val breaktime = breaktime
 
     fun showDialog(){
         dialog.setContentView(R.layout.break_time_set_dialog)
@@ -20,7 +21,7 @@ class BreakTimeSetDialog(context: Context, listen: SetBreakTime) {
         dialog.show()
 
         val breakTime = dialog.findViewById<EditText>(R.id.breakTime)
-        breakTime.setText("0")
+        breakTime.setText(breaktime.toString())
 
         dialog.findViewById<Button>(R.id.btn_plus).setOnClickListener{
             breakTime.setText((breakTime.text.toString().toInt()+1).toString())

@@ -14,14 +14,15 @@ class GetDailyDietListCall(listen: GetDailyDietList,context: Context) {
 
     private val context = context
     private val listen = listen
-    private var dailyDietList: DailyDietList? = null
+    private var dailyDietList: DailyDietStatistic? = null
+
     fun getDailyDietListCall(timestamp: Long){
         val dialog = LoadingDialog(context)
         dialog.showDialog()
 
         RetrofitClass.service.getDailyDietList(SplashActivity.userId, timestamp).enqueue(object :
-            Callback<DailyDietList> {
-            override fun onResponse(call: Call<DailyDietList>, response: Response<DailyDietList>) {
+            Callback<DailyDietStatistic> {
+            override fun onResponse(call: Call<DailyDietStatistic>, response: Response<DailyDietStatistic>) {
                 if (response.isSuccessful) {
                     // 정상적으로 통신이 성고된 경우
                     dailyDietList = response.body()
@@ -32,10 +33,10 @@ class GetDailyDietListCall(listen: GetDailyDietList,context: Context) {
                 } else {
                     dialog.loadingDismiss()
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
-                    Log.d("YMC", "onResponse 실패")
+                    Log.d("YMC", "onResponse 실패 ${response.body()}, $response")
                 }
             }
-            override fun onFailure(call: Call<DailyDietList>, t: Throwable) {
+            override fun onFailure(call: Call<DailyDietStatistic>, t: Throwable) {
                 dialog.loadingDismiss()
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }

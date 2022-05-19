@@ -7,6 +7,8 @@ import com.example.madpt.API.statistic.DailyDietList
 import com.example.madpt.API.statistic.MonthDataDateBy
 import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.API.statistic.TrainRecordList
+import com.example.madpt.API.routine.GetTrainRoutine
+import com.example.madpt.API.statistic.*
 import com.example.madpt.API.trainresult.Train_result
 
 interface GetFoodList{
@@ -18,7 +20,7 @@ interface GetTrainRecordList{
 }
 
 interface GetMonthDataList{
-    fun getMonthDataList(monthData: ArrayList<MonthDataDateBy>)
+    fun getMonthDataList(monthDataList: ArrayList<MonthDataDateBy>)
 }
 
 interface GetSummaryData{
@@ -26,9 +28,13 @@ interface GetSummaryData{
 }
 
 interface GetDailyDietList{
-    fun getDailyDiet(dailyDietList: DailyDietList)
+    fun getDailyDiet(dailyDiet: DailyDietStatistic)
 }
 
 interface GetSocialRank{
     fun getSocialRank(Rank: ArrayList<Friends>)
+}
+
+interface GetExerciseRoutineList{
+    fun getExerciseRoutineList(exerciseRoutineList: GetTrainRoutine)
 }

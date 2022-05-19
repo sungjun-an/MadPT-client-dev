@@ -287,7 +287,7 @@ class MoveNetMultiPose(
         return processedPerson
     }
 
-    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+    override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>,ArrayList<Int>> {
         TODO("Not yet implemented")
     }
 

@@ -406,7 +406,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentSets = 0
     private var repsFlag = false
     private var setsFlag = false
-    private val breakTime = 10000L
 
     fun cal_timeStamp(): Long{
         val saveTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
@@ -419,11 +418,18 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         return saveTimeStamp
     }
 
-    override fun doExcrcise(person: List<Person>): ArrayList<Int> {
+
+    override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>, ArrayList<Int>> {
+
         //initExcrcise(person)
-        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
+//        var dataList: ArrayList<Int> = madpt.excrcise_finder(trainingList[0], person)
+        var p: Pair<ArrayList<Int>, ArrayList<Int>> = madpt.excrcise_finder(trainingList[0], person)
+
+        var dataList: ArrayList<Int> = p.component1()
+        var feedbackList: ArrayList<Int> = p.component2()
+
         var currentDataList: ArrayList<Int> = ArrayList()
-        val currentFeedback = dataList[2]
+//        val currentFeedback = dataList[2]
         currentReps = dataList[0]
 
         val totalReps = trainingList[0].reps * trainingList[0].sets
@@ -462,27 +468,27 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
             print("set end")
             madpt.init_excrcise_count(trainingList[0])
-            excrciseEndTime = cal_timeStamp()
+            excrciseEndTime = System.currentTimeMillis()
             excrciseTimeList.add(excrciseEndTime)
             if(trainingList.size != 1){
-                val excrciseStartTime = cal_timeStamp()
+                val excrciseStartTime = System.currentTimeMillis()
                 excrciseTimeList.add(excrciseStartTime)
             }
             trainingList.removeAt(0)
             currentSets = 0
             setsFlag = false
             //currentReps = 0
+        }
 
-            if(trainingList.isEmpty()){
-                return currentDataList
-            }
+        if(trainingList.isEmpty()){
+            return Pair(currentDataList, currentDataList)
         }
 
         currentDataList.add(0, currentReps)
         currentDataList.add(1, currentSets)
-        currentDataList.add(2, currentFeedback)
+//        currentDataList.add(2, currentFeedback)
 
-        return currentDataList
+        return Pair(currentDataList,feedbackList)
     }
 
     override fun getExcrciseTimeList(): ArrayList<Long> {

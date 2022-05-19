@@ -5,18 +5,20 @@ import java.sql.Timestamp
 
 data class Train_result(
     @SerializedName("breaktime")
-    val breaktime: Int,
+    var breaktime: Int,
     @SerializedName("records")
     val result: ArrayList<Records>
 )
 
 data class Records(
-    @SerializedName("excercise_id")
-    val excercise: Long,
+    @SerializedName("exercise_id")
+    val exercise: Long,
     @SerializedName("start_time")
-    val startTime:Timestamp,
+    val startTime:Long,
     @SerializedName("end_time")
-    val endTime:Timestamp,
+    val endTime:Long,
+    @SerializedName("real_time")
+    val realTime: Int,
     @SerializedName("reps")
     val reps: Int,
     @SerializedName("sets")

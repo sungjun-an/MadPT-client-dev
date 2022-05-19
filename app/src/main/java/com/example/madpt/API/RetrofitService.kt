@@ -47,7 +47,7 @@ interface RetrofitService {
     @GET("statistic/calender")
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("month") month: Int): Call<MonthData>//명세 완료
 
-    @GET("statistic/day-summary")
+    @GET("statistic/day-summary-dev")
     fun getSummaryData(@Header("member_id") id: Long, @Query("date") date: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")
@@ -55,6 +55,8 @@ interface RetrofitService {
 
     @GET("social/rank")
     fun getSocialRank(@Query("date") timestamp: Long):Call<SocialRank>
+
+
 
 
 }

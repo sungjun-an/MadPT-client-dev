@@ -81,25 +81,25 @@ class MainPageFragment : Fragment(), GetSummaryData {
 
     override fun getSummaryDataList(summaryData: SummaryData) {
         if (summaryData.breakfastKcal != 0.0) {
-            val sum: String = summaryData.breakfastKcal.toString() + " kcal"
-            binding.plusButtonLunch.visibility = View.INVISIBLE
+            val sum: String = summaryData.breakfastKcal.toInt().toString() + " kcal"
+            binding.plusButtonBreakfast.visibility = View.INVISIBLE
             binding.breakfastKcalText.visibility = View.VISIBLE
             binding.breakfastKcalText.text = sum
         }
         if (summaryData.lunchKcal != 0.0) {
-            val sum: String = summaryData.lunchKcal.toString() + " kcal"
+            val sum: String = summaryData.lunchKcal.toInt().toString() + " kcal"
             binding.plusButtonLunch.visibility = View.INVISIBLE
             binding.lunchKcalText.visibility = View.VISIBLE
             binding.lunchKcalText.text = sum
         }
         if (summaryData.dinnerKcal != 0.0) {
-            val sum: String = summaryData.dinnerKcal.toString() + " kcal"
+            val sum: String = summaryData.dinnerKcal.toInt().toString() + " kcal"
             binding.plusButtonDinner.visibility = View.INVISIBLE
             binding.dinnerKcalText.visibility = View.VISIBLE
             binding.dinnerKcalText.text = sum
         }
         if (summaryData.snackKcal != 0.0) {
-            val sum: String = summaryData.snackKcal.toString() + " kcal"
+            val sum: String = summaryData.snackKcal.toInt().toString() + " kcal"
             binding.plusButtonSnack.visibility = View.INVISIBLE
             binding.snackKcalText.visibility = View.VISIBLE
             binding.snackKcalText.text = sum
@@ -107,7 +107,7 @@ class MainPageFragment : Fragment(), GetSummaryData {
         //식단 Kcal있을 시 Kcal 출력
 
         if (summaryData.weight != 0.0) {
-            val userWeight = summaryData.weight.toString() + "Kg"
+            val userWeight = summaryData.weight.toInt().toString() + "Kg"
             binding.plusButtonWeight.visibility = View.INVISIBLE
             binding.userWeight.visibility = View.VISIBLE
             binding.userWeight.text = userWeight
@@ -127,7 +127,11 @@ class MainPageFragment : Fragment(), GetSummaryData {
         binding.eatKcal.text = sumKcal
         //총합 Kcal 출력
 
-        binding.arcProgress.progress = summaryData.goaldietkcal.toInt() - sumKcal.toInt()
+
+        var lessKcal : Int = summaryData.goaldietkcal.toInt() - sumKcal.toInt()
+        if (lessKcal<0) lessKcal = 0
+        binding.arcProgress.progress = lessKcal
+        binding.arcProgress.max = summaryData.goaldietkcal.toInt()
         //잔여 kcal 출력
 
         binding.moveKcal.text = summaryData.exerciseKcal.toInt().toString()

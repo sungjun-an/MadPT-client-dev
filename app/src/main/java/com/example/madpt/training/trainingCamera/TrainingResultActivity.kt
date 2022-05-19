@@ -56,24 +56,7 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
             binding.AverageListRecyclerView.layoutManager = LinearLayoutManager(this).also {
                 it.orientation = LinearLayoutManager.VERTICAL }
         }
-        processsExcrciseTimeData()
         showMainChart()
-    }
-
-    private fun processsExcrciseTimeData(){
-        for(i in 0 until trainingList.size){
-            trainingList[i].excrciseStartTime = excrciseTimeList[i*2]
-            trainingList[i].excrciseEndTime = excrciseTimeList[i*2 + 1]
-
-            val startTime = excrciseTimeList[i*2]
-            val endTime = excrciseTimeList[i*2 + 1]
-            val set = trainingList[i].sets
-            var calculatedBreakTime = set * 5000
-
-            trainingList[i].realExcrciseTime = (endTime - startTime - calculatedBreakTime).toInt()
-        }
-
-        println("final training list: $trainingList")
     }
 
     private fun showMainChart(){
@@ -157,13 +140,13 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
 
         for(i in 0 until scoreData.size){
             when {
-                scoreData[i] < 20 -> {
+                scoreData[i] < 70 -> {
                     finalGradeList.add(i, "D")
                 }
-                scoreData[i] < 30 -> {
+                scoreData[i] < 80 -> {
                     finalGradeList.add(i, "C")
                 }
-                scoreData[i] < 35 -> {
+                scoreData[i] < 90 -> {
                     finalGradeList.add(i, "B")
                 }
                 else -> {
@@ -179,17 +162,20 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         var sum = 0.0
         for(i in 0 until finalGradeList.size){
             when {
+                finalGradeList[i] == "F" -> {
+                    sum += 50
+                }
                 finalGradeList[i] == "D" -> {
-                    sum += 0
+                    sum += 60
                 }
                 finalGradeList[i] == "C" -> {
-                    sum += 1
+                    sum += 75
                 }
                 finalGradeList[i] == "B" -> {
-                    sum += 2
+                    sum += 85
                 }
                 else -> {
-                    sum += 3
+                    sum += 90
                 }
             }
         }
@@ -198,16 +184,19 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         println(average)
 
         when{
-            average in 0.0..0.999 -> {
+            average in 0.0..50.0 -> {
+                binding.resultScore.setImageResource(R.drawable.f_score)
+            }
+            average in 50.0..60.0 -> {
                 binding.resultScore.setImageResource(R.drawable.d_score)
             }
-            average in 1.0..1.999 -> {
+            average in 60.0..75.0 -> {
                 binding.resultScore.setImageResource(R.drawable.c_score)
             }
-            average in 2.0..2.999 -> {
+            average in 75.0..85.0 -> {
                 binding.resultScore.setImageResource(R.drawable.b_score)
             }
-            average >= 3.0 -> {
+            average >= 85.0 -> {
                 binding.resultScore.setImageResource(R.drawable.a_score)
             }
         }

@@ -406,7 +406,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
     private var currentSets = 0
     private var repsFlag = false
     private var setsFlag = false
-    private val breakTime = 10000L
 
     fun cal_timeStamp(): Long{
         val saveTime = SimpleDateFormat("yy-mm-dd hh.mm.ss", Locale.KOREA)
@@ -419,10 +418,6 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         return saveTimeStamp
     }
 
-
-    fun cal2doNotExcrcise(): Long {
-        return 0L
-    }
 
     override fun doExcrcise(person: List<Person>): Pair<ArrayList<Int>, ArrayList<Int>> {
 
@@ -473,20 +468,20 @@ class MoveNet(private val interpreter: Interpreter, private var gpuDelegate: Gpu
         if(trainingList.isNotEmpty() && currentSets == trainingList[0].sets){
             print("set end")
             madpt.init_excrcise_count(trainingList[0])
-            excrciseEndTime = cal_timeStamp()
+            excrciseEndTime = System.currentTimeMillis()
             excrciseTimeList.add(excrciseEndTime)
             if(trainingList.size != 1){
-                val excrciseStartTime = cal_timeStamp()
+                val excrciseStartTime = System.currentTimeMillis()
                 excrciseTimeList.add(excrciseStartTime)
             }
             trainingList.removeAt(0)
             currentSets = 0
             setsFlag = false
             //currentReps = 0
+        }
 
-            if(trainingList.isEmpty()){
-                return Pair(currentDataList, currentDataList)
-            }
+        if(trainingList.isEmpty()){
+            return Pair(currentDataList, currentDataList)
         }
 
         currentDataList.add(0, currentReps)

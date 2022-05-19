@@ -28,4 +28,7 @@ app/src/main/res/values/kakao_app_key.xml
 .cxx
 local.properties
 .idea/
+<<<<<<< HEAD
+=======
 app/build/
+>>>>>>> 3cfef47f1782607a77c498ed10995a47e6c774b0

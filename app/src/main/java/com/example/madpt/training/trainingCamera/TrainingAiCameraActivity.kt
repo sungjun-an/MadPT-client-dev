@@ -254,9 +254,14 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
-                        override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
+                        override fun onExcrciseBreakTimeListner(flag: Boolean,
+                                                                sec: Int,
+                                                                btFlag: Boolean) {
                             runOnUiThread{
                                 if(flag){
+                                    if(btFlag){
+                                        ttsSpeak("쉬는 시간입니다.")
+                                    }
                                     breakTime.visibility = View.VISIBLE
                                     breakTime.text = getString(R.string.break_time_timer,
                                             sec.toString())

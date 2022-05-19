@@ -87,6 +87,7 @@ class CameraSource(
     private var frameProcessedInOneSecondInterval = 0
     private var framesPerSecond = 0
     private var feedBackCalculator: FeedBack = FeedBack()
+    private var btFlag = true
 
     /** Detects, characterizes, and connects to a CameraDevice (used for all camera operations) */
     private val cameraManager: CameraManager by lazy {
@@ -193,7 +194,7 @@ class CameraSource(
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
             if (cameraDirection != null &&
-                cameraDirection == CameraCharacteristics.LENS_FACING_BACK
+                cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
             ) {
                 continue
             }
@@ -373,10 +374,12 @@ class CameraSource(
                 time_break = tick
                 breakTimeFlag = false
                 println("breakTimeFlag: $breakTimeFlag")
-                listener?.onExcrciseBreakTimeListner(false, time_break % 60)
+                listener?.onExcrciseBreakTimeListner(false, time_break % 60, btFlag)
+                btFlag = true
             }
             else{
-                listener?.onExcrciseBreakTimeListner(true, time_break % 60)
+                listener?.onExcrciseBreakTimeListner(true, time_break % 60, btFlag)
+                btFlag = false
             }
         }
     }
@@ -398,7 +401,7 @@ class CameraSource(
         }
         if (feedBack.size > 0){
             var feedBackMsg = feedBackCalculator.calculateFeedBack(exerciseId, ArrayList(feedBack.subList(1, feedBack.size)))
-            listener?.onExcrciseFeedbackListener(feedBackMsg + currentFeedback)
+            listener?.onExcrciseFeedbackListener(feedBackMsg)
         }
 
         listener?.onExcrciseCountListener(currentReps, currentSets)
@@ -474,7 +477,7 @@ class CameraSource(
             excrciseTimeList: ArrayList<Long>
         )
         fun onFrameCheckListener(flag: Boolean)
-        fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int)
+        fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int, btFlag: Boolean)
         fun onDetectedInfo(personScore: Float?, poseLabels: List<Pair<String, Float>>?)
     }
 }

@@ -6,12 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".main.MainPageFragment">
 
-    <ScrollView
 
-        android:id="@+id/ScrollView1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroungblack">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,15 +110,17 @@
                                             android:id="@+id/arc_progress"
                                             android:layout_width="100dp"
                                             android:layout_height="100dp"
-                                            android:layout_marginTop="20dp"
                                             android:background="@color/maincolor"
-                                            app:arc_progress="55"
+                                            app:arc_max="1000"
+                                            app:arc_progress="0"
                                             app:arc_suffix_text="Kcal"
-                                            app:arc_suffix_text_padding="12sp"
-                                            app:arc_suffix_text_size="10sp"
+                                            app:arc_suffix_text_padding="1dp"
+                                            app:arc_suffix_text_size="10dp"
                                             app:arc_text_color="@color/white"
+                                            app:arc_text_size="20dp"
 
                                             app:arc_unfinished_color="@color/black"
+                                            app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintHorizontal_bias="0.494"
                                             app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +132,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="1"
-                                        android:fontFamily="@font/bold"
                                         android:gravity="center"
                                         android:text="잔여량"
                                         android:textColor="@color/white" />
@@ -190,7 +186,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="1"
-                                        android:fontFamily="@font/bold"
                                         android:gravity="center"
                                         android:text="활동량"
                                         android:textColor="@color/white" />
@@ -208,12 +203,12 @@
                                 <Space
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="3" />
+                                    android:layout_weight="1.5" />
 
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="5"
+                                    android:layout_weight="7"
                                     android:orientation="vertical"
                                     android:weightSum="10">
 
@@ -250,7 +245,6 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="0dp"
                                         android:layout_weight="3"
-                                        android:fontFamily="@font/bold"
                                         android:gravity="center"
                                         android:text="몸무게"
                                         android:textColor="@color/white" />
@@ -259,12 +253,12 @@
                                 <Space
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="4" />
+                                    android:layout_weight="3" />
 
                                 <FrameLayout
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="5">
+                                    android:layout_weight="7">
 
                                     <TextView
                                         android:id="@+id/goal_distance"
@@ -285,13 +279,14 @@
                                         android:fontFamily="@font/bold"
                                         android:gravity="center"
                                         android:text="목표를 입력해주세요"
-                                        android:textColor="@color/white" />
+                                        android:textColor="@color/white"
+                                        android:visibility="visible"/>
                                 </FrameLayout>
 
                                 <Space
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="3" />
+                                    android:layout_weight="1.5" />
 
                             </LinearLayout>
 
@@ -344,9 +339,9 @@
                             android:id="@+id/breakfast"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="13"
-                            android:fontFamily="@font/bold"
+                            android:layout_weight="12"
                             android:gravity="center|left"
+                            android:fontFamily="@font/bold"
                             android:text="Breakfast"
                             android:textColor="@color/white"
                             android:textSize="24sp"></TextView>
@@ -355,7 +350,7 @@
                             android:id="@+id/breakfast_frame"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5">
+                            android:layout_weight="7">
 
                             <ImageButton
                                 android:id="@+id/plus_button_breakfast"
@@ -423,7 +418,7 @@
                             android:id="@+id/Lunch"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="13"
+                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
                             android:text="Lunch"
@@ -435,7 +430,7 @@
                             android:id="@+id/lunch_frame"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5">
+                            android:layout_weight="7">
 
                             <ImageButton
                                 android:id="@+id/plus_button_lunch"
@@ -500,7 +495,7 @@
                             android:id="@+id/Dinner"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="13"
+                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
                             android:text="Dinner"
@@ -511,7 +506,7 @@
                             android:id="@+id/dinner_frame"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5">
+                            android:layout_weight="7">
 
                             <ImageButton
                                 android:id="@+id/plus_button_dinner"
@@ -576,7 +571,7 @@
                             android:id="@+id/Snack"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="13"
+                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
                             android:text="Snack"
@@ -587,7 +582,7 @@
                             android:id="@+id/snack_frame"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5">
+                            android:layout_weight="7">
 
                             <ImageButton
                                 android:id="@+id/plus_button_snack"
@@ -620,5 +615,4 @@
             </LinearLayout>
         </LinearLayout>
 
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

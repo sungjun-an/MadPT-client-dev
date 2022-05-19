@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.madpt.API.member.MemberWeight
+import com.example.madpt.API.member.PostMemberWeightCall
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.PutWeightDialogBinding
 import com.example.madpt.user
@@ -30,11 +32,11 @@ class PutWeightDialog(val finishApp: () -> Unit): DialogFragment() {
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         binding.saveGetWeightButton.setOnClickListener {
             try {
-                user.user_weight = binding.getWeight.text.toString().toDouble()
+                val user_weight = MemberWeight(binding.getWeight.text.toString().toDouble())
+                PostMemberWeightCall(requireContext()).PostMemberWeight(user_weight)
             } catch (e: NumberFormatException) {
                 Toast.makeText(requireActivity(), "소수 첫째 자리까지만 입력해주시기 바랍니다.", Toast.LENGTH_LONG).show()
             }
-            user.user_weight = binding.getWeight.text.toString().toDouble()
             mainActivity!!.setFragment()
             dismiss()
         }

@@ -16,12 +16,4 @@ data class FriendsData(
     var useKcal : Int
 )
 
-var FriendsDataList = ArrayList<FriendsData>()
 
-fun inputTestFriendsData(){
-    FriendsDataList.add(FriendsData("김성환",1000))
-    FriendsDataList.add(FriendsData("김정락",500))
-    FriendsDataList.add(FriendsData("김재현",100))
-    FriendsDataList.add(FriendsData("안성준",50))
-    FriendsDataList.add(FriendsData("문기렴",10))
-}

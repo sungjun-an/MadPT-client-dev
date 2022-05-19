@@ -41,6 +41,7 @@
                     android:textAlignment="center"
                     android:textSize="20sp"
                     android:textColor="@color/white"
+                    app:layout_anchor="@+id/surfaceView"
                     app:layout_anchorGravity="left" />
 
                 <TextView
@@ -62,6 +63,7 @@
                     android:gravity="center"
                     android:textColor="@color/white"
                     android:textAlignment="center"
+                    app:layout_anchor="@+id/surfaceView"
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -134,6 +136,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|top"
                     android:textAlignment="center"
+                    app:layout_anchor="@+id/surfaceView"
                     android:textSize="20sp" />
 
                 <TextView
@@ -143,6 +146,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center|top"
                     android:textAlignment="center"
+                    app:layout_anchor="@+id/surfaceView"
                     android:textSize="20sp" />
 
             </LinearLayout>

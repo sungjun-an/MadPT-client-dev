@@ -62,13 +62,16 @@ class singleReviewAdapter(private val trainingList: ArrayList<testmodel>,
         }
 
         finalGrade = when {
-            scoreData < 20 -> {
+            scoreData < 50 ->{
+                "F"
+            }
+            scoreData < 60 -> {
                 "D"
             }
-            scoreData < 30 -> {
+            scoreData < 75 -> {
                 "C"
             }
-            scoreData < 35 -> {
+            scoreData < 85 -> {
                 "B"
             }
             else -> {
@@ -78,29 +81,6 @@ class singleReviewAdapter(private val trainingList: ArrayList<testmodel>,
 
         return finalGrade
     }
-
-    fun getGradeIcon(finalGradeList: ArrayList<String>): ArrayList<Int>{
-        val iconList = ArrayList<Int>()
-        for(i in 0 until finalGradeList.size){
-            when {
-                finalGradeList[i] == "D" -> {
-                    iconList.add(i, R.drawable.d_score)
-                }
-                finalGradeList[i] == "C" -> {
-                    iconList.add(i, R.drawable.c_score)
-                }
-                finalGradeList[i] == "B" -> {
-                    iconList.add(i, R.drawable.b_score)
-                }
-                else -> {
-                    iconList.add(i, R.drawable.a_score)
-                }
-            }
-        }
-
-        return iconList
-    }
-
 
     override fun onCreateViewHolder(
         viewGroup: ViewGroup,

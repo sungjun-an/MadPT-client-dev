@@ -64,13 +64,16 @@ class reviewAdapter(private val trainingList:ArrayList<testmodel>,
 
         for(i in 0 until scoreData.size){
             when {
-                scoreData[i] < 70 -> {
+                scoreData[i] < 50 -> {
+                    finalGradeList.add(i, "F")
+                }
+                scoreData[i] < 60 -> {
                     finalGradeList.add(i, "D")
                 }
-                scoreData[i] < 80 -> {
+                scoreData[i] < 75 -> {
                     finalGradeList.add(i, "C")
                 }
-                scoreData[i] < 90 -> {
+                scoreData[i] < 85 -> {
                     finalGradeList.add(i, "B")
                 }
                 else -> {

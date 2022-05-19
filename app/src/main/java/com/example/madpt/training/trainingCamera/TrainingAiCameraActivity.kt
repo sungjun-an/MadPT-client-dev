@@ -48,6 +48,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.round
 
 class TrainingAiCameraActivity : AppCompatActivity() {
     companion object {
@@ -247,8 +248,10 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                         }
 
                         override fun onExcrciseFeedbackListener(currentFeedback: String){
-                            Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
-                            ttsSpeak(Feedback.text.toString())
+                            runOnUiThread {
+                                Feedback.text = getString(R.string.tfe_pe_Feedback, currentFeedback)
+                                ttsSpeak(Feedback.text.toString())
+                            }
                         }
 
                         override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
@@ -350,7 +353,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             val excrcise = exerciseId[staticTrainingList[i].titles]
             val startTime = excrciseTimeList[2*i]
             val endTime = excrciseTimeList[2*i+1]
-            val realTime = (endTime - startTime - breakTimeInt * staticTrainingList[i].sets) / 1000
+            val realTime = (endTime - startTime - breakTimeInt * staticTrainingList[i].sets)
             val reps = staticTrainingList[i].reps
             val sets = staticTrainingList[i].sets
             var avg_score: Double = 0.0
@@ -366,7 +369,7 @@ class TrainingAiCameraActivity : AppCompatActivity() {
             }
 
             postResult.result.add(Records(excrcise!!.toLong(), startTime, endTime, realTime.toInt(),
-                                          reps, sets, avg_score))
+                                          reps, sets, round(avg_score*100) / 100))
         }
         postResult.breaktime = breakTimeInt
 

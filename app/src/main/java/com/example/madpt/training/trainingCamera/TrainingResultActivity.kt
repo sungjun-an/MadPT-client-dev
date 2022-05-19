@@ -162,17 +162,20 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         var sum = 0.0
         for(i in 0 until finalGradeList.size){
             when {
+                finalGradeList[i] == "F" -> {
+                    sum += 50
+                }
                 finalGradeList[i] == "D" -> {
-                    sum += 0
+                    sum += 60
                 }
                 finalGradeList[i] == "C" -> {
-                    sum += 1
+                    sum += 75
                 }
                 finalGradeList[i] == "B" -> {
-                    sum += 2
+                    sum += 85
                 }
                 else -> {
-                    sum += 3
+                    sum += 90
                 }
             }
         }
@@ -181,16 +184,19 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         println(average)
 
         when{
-            average in 0.0..0.999 -> {
+            average in 0.0..50.0 -> {
+                binding.resultScore.setImageResource(R.drawable.f_score)
+            }
+            average in 50.0..60.0 -> {
                 binding.resultScore.setImageResource(R.drawable.d_score)
             }
-            average in 1.0..1.999 -> {
+            average in 60.0..75.0 -> {
                 binding.resultScore.setImageResource(R.drawable.c_score)
             }
-            average in 2.0..2.999 -> {
+            average in 75.0..85.0 -> {
                 binding.resultScore.setImageResource(R.drawable.b_score)
             }
-            average >= 3.0 -> {
+            average >= 85.0 -> {
                 binding.resultScore.setImageResource(R.drawable.a_score)
             }
         }

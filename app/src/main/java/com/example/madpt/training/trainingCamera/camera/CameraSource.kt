@@ -193,7 +193,7 @@ class CameraSource(
             // We don't use a front facing camera in this sample.
             val cameraDirection = characteristics.get(CameraCharacteristics.LENS_FACING)
             if (cameraDirection != null &&
-                cameraDirection == CameraCharacteristics.LENS_FACING_FRONT
+                cameraDirection == CameraCharacteristics.LENS_FACING_BACK
             ) {
                 continue
             }
@@ -292,10 +292,8 @@ class CameraSource(
         var classificationResult: List<Pair<String, Float>>? = null
         var dataList: ArrayList<Int>
         var flag = true
-
         var feedback: ArrayList<Int>
         var p1: Pair<ArrayList<Int>, ArrayList<Int>>
-
 
         synchronized(lock) {
             if(currentReps % trainingList[0].reps == 0 && currentReps != 0 && breakTimeFlag){
@@ -314,7 +312,6 @@ class CameraSource(
                     for(i in 0 until persons[0].keyPoints.size){
                         flag = persons[0].keyPoints[i].score > 0.01
                     }
-
                     if(!flag){
                         listener?.onFrameCheckListener(!flag)
                     }
@@ -337,7 +334,6 @@ class CameraSource(
                         else{
                             showExcrciseView(dataList, feedback)
                         }
-
                         // if the model only returns one item, allow running the Pose classifier.
                     }
                     if (persons.isNotEmpty()) {

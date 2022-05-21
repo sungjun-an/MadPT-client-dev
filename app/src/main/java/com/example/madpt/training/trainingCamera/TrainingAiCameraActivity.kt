@@ -267,6 +267,9 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                                             sec.toString())
                                 }
                                 else{
+                                    if(sec == 0){
+                                        ttsSpeak("운동을 시작하세요.")
+                                    }
                                     breakTime.visibility = View.INVISIBLE
                                 }
                             }

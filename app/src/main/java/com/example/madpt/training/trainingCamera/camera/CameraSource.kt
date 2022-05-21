@@ -371,10 +371,9 @@ class CameraSource(
 
             if (time_break == 0){
                 breakTimer.cancel()
-                time_break = tick
                 breakTimeFlag = false
-                println("breakTimeFlag: $breakTimeFlag")
                 listener?.onExcrciseBreakTimeListner(false, time_break % 60, btFlag)
+                time_break = tick
                 btFlag = true
             }
             else{

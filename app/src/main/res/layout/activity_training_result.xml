@@ -40,7 +40,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fixedTrainListRecyclerView"
-        android:layout_width="286dp"
+        android:layout_width="380dp"
         android:layout_height="70dp"
         android:layout_margin="10dp"
         android:layout_gravity="center"

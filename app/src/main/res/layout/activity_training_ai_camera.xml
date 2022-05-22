@@ -39,7 +39,8 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     app:layout_anchor="@+id/surfaceView"
                     app:layout_anchorGravity="left" />
@@ -52,7 +53,7 @@
                     android:textSize="30sp"
                     android:textColor="@color/white"
                     android:textAlignment="center"
-                    app:layout_anchor="@+id/linearLayout"
+                    app:layout_anchor="@+id/surfaceView"
                     app:layout_anchorGravity="center" />
 
                 <TextView
@@ -62,9 +63,10 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     app:layout_anchor="@+id/surfaceView"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,8 +83,11 @@
                     android:textAlignment="center"
                     android:text="운동 화이팅!"
                     android:textSize="40sp"
+                    android:textStyle="bold"
                     app:layout_anchor="@+id/surfaceView"
                     app:layout_anchorGravity="center" />
+
+                <include layout="@layout/bottom_sheet_layout" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -104,6 +109,7 @@
                         android:text="@string/break_time_timer"
                         android:visibility="invisible"
                         android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_anchor="@+id/surfaceView"
                         app:layout_anchorGravity="center" />
 
@@ -112,10 +118,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textAlignment="center"
                         android:text="카메라 frame안으로 들어와 주세요!!"
-                        android:visibility="invisible"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
                         android:textSize="25sp"
+                        android:visibility="invisible"
                         app:layout_anchor="@+id/surfaceView"
                         app:layout_anchorGravity="center" />
 
@@ -135,9 +142,10 @@
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:gravity="center|top"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     app:layout_anchor="@+id/surfaceView"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/sets"
@@ -145,16 +153,15 @@
                     android:layout_weight="0.5"
                     android:layout_height="match_parent"
                     android:gravity="center|top"
+                    android:textStyle="bold"
                     android:textAlignment="center"
                     app:layout_anchor="@+id/surfaceView"
-                    android:textSize="20sp" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
 
         </LinearLayout>
-
-        <include layout="@layout/bottom_sheet_layout"/>
 
     </FrameLayout>
 

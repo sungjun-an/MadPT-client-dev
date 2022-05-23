@@ -12,7 +12,6 @@ import com.example.madpt.API.statistic.MonthData
 import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.API.statistic.TrainRecord
 import com.example.madpt.API.routine.GetTrainRoutine
-import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.statistic.*
 import com.example.madpt.API.trainresult.Train_result
 import retrofit2.Call
@@ -53,7 +52,7 @@ interface RetrofitService {
     @GET("statistic/calendar")
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("date") month: Long): Call<MonthData>//명세 완료
 
-    @GET("statistic/day-summary-dev")
+    @GET("statistic/day-summary")
     fun getSummaryData(@Header("member_id") id: Long, @Query("date") date: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")

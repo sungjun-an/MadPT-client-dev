@@ -7,314 +7,382 @@
     tools:context=".main.MainPageFragment">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroungblack"
+        android:orientation="vertical"
+        android:weightSum="100">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroungblack"
+            android:layout_height="0dp"
+            android:layout_weight="40"
             android:orientation="vertical"
-            android:weightSum="100">
+            android:weightSum="40">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="40">
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:weightSum="20">
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/mainPageToday"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="19"
                     android:fontFamily="@font/bold"
+                    android:gravity="center|left"
                     android:text="Today"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="204dp"
-                    android:orientation="horizontal"
-                    android:weightSum="20">
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:background="@drawable/round_layout_background"
-                        android:orientation="horizontal">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical"
-                            android:weightSum="10">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="7"
-                                android:orientation="horizontal"
-                                android:weightSum="10">
-
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:orientation="vertical"
-                                    android:weightSum="5">
-
-                                    <TextView
-                                        android:id="@+id/eat_kcal"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="3.7"
-                                        android:fontFamily="@font/bold"
-                                        android:gravity="center|bottom"
-                                        android:text="1024"
-                                        android:textColor="@color/white" />
-
-                                    <TextView
-                                        android:id="@+id/eat_kcal_int"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-
-                                        android:gravity="center"
-                                        android:text="섭취량"
-                                        android:textColor="@color/white" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="4"
-                                    android:orientation="vertical"
-                                    android:weightSum="5">
-
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="4">
-
-                                        <com.github.lzyzsd.circleprogress.ArcProgress
-                                            android:id="@+id/arc_progress"
-                                            android:layout_width="100dp"
-                                            android:layout_height="100dp"
-                                            android:background="@color/maincolor"
-                                            app:arc_max="1000"
-                                            app:arc_progress="0"
-                                            app:arc_suffix_text="Kcal"
-                                            app:arc_suffix_text_padding="1dp"
-                                            app:arc_suffix_text_size="10dp"
-                                            app:arc_text_color="@color/white"
-                                            app:arc_text_size="20dp"
-
-                                            app:arc_unfinished_color="@color/black"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintHorizontal_bias="0.494"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                    <TextView
-                                        android:id="@+id/textView2"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:text="잔여량"
-                                        android:textColor="@color/white" />
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3"
-                                    android:orientation="vertical"
-                                    android:weightSum="5">
-
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1.3"
-                                        android:orientation="horizontal"
-                                        android:weightSum="10">
-
-                                        <Space
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"></Space>
-
-                                        <Button
-                                            android:id="@+id/goal_button"
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="8"
-                                            android:text="목표"
-                                            android:textStyle="bold"></Button>
-
-                                        <Space
-                                            android:layout_width="0dp"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="1"></Space>
-                                    </LinearLayout>
-
-
-                                    <TextView
-                                        android:id="@+id/move_kcal"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="2.4"
-                                        android:fontFamily="@font/bold"
-                                        android:gravity="center|bottom"
-                                        android:text="500"
-                                        android:textColor="@color/white" />
-
-                                    <TextView
-                                        android:id="@+id/move_kcal_int"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="1"
-                                        android:gravity="center"
-                                        android:text="활동량"
-                                        android:textColor="@color/white" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="0dp"
-                                android:layout_weight="3"
-                                android:orientation="horizontal"
-                                android:weightSum="20">
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1.5" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="7"
-                                    android:orientation="vertical"
-                                    android:weightSum="10">
-
-                                    <FrameLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="7">
-
-                                        <ImageButton
-                                            android:id="@+id/plus_button_weight"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:layout_weight="7"
-                                            android:background="@android:color/transparent"
-                                            android:padding="0dp"
-                                            android:src="@drawable/plus_button"
-                                            android:visibility="visible" />
-
-                                        <Button
-                                            android:id="@+id/user_weight"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:background="#00ff0000"
-                                            android:fontFamily="@font/bold"
-                                            android:gravity="center"
-                                            android:text="12kg"
-                                            android:textColor="@color/white"
-                                            android:textSize="12sp"
-                                            android:visibility="invisible" />
-
-                                    </FrameLayout>
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="0dp"
-                                        android:layout_weight="3"
-                                        android:gravity="center"
-                                        android:text="몸무게"
-                                        android:textColor="@color/white" />
-                                </LinearLayout>
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="3" />
-
-                                <FrameLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="7">
-
-                                    <TextView
-                                        android:id="@+id/goal_distance"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="4"
-                                        android:fontFamily="@font/bold"
-                                        android:gravity="center"
-                                        android:text="-14KG"
-                                        android:textColor="@color/white"
-                                        android:visibility="invisible" />
-
-                                    <TextView
-                                        android:id="@+id/post_goal_distance"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_weight="4"
-                                        android:fontFamily="@font/bold"
-                                        android:gravity="center"
-                                        android:text="목표를 입력해주세요"
-                                        android:textColor="@color/white"
-                                        android:visibility="visible"/>
-                                </FrameLayout>
-
-                                <Space
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1.5" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-                </LinearLayout>
+                    android:textSize="30dp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="vertical"
-                android:layout_weight="60"
-                android:weightSum="60">
+                android:layout_weight="30"
+                android:orientation="horizontal"
+                android:weightSum="20">
 
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+                    android:background="@drawable/round_layout_summary"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:weightSum="10">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="7"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:orientation="vertical"
+                                android:weightSum="5">
+
+                                <TextView
+                                    android:id="@+id/eat_kcal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="3.7"
+                                    android:fontFamily="@font/bold"
+                                    android:gravity="center|bottom"
+                                    android:textSize="17dp"
+                                    android:text="1024"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/eat_kcal_int"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center|top"
+                                    android:text="섭취량"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4"
+                                android:orientation="vertical"
+                                android:weightSum="5">
+
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="4">
+
+                                    <com.github.lzyzsd.circleprogress.ArcProgress
+                                        android:id="@+id/arc_progress"
+                                        android:layout_width="110dp"
+                                        android:layout_height="110dp"
+                                        android:background="@color/puple"
+                                        app:arc_max="1000"
+                                        app:arc_progress="0"
+                                        app:arc_suffix_text="Kcal"
+                                        app:arc_suffix_text_padding="1dp"
+                                        app:arc_suffix_text_size="10dp"
+                                        app:arc_text_color="@color/white"
+                                        app:arc_text_size="20dp"
+                                        app:arc_finished_color="@color/black"
+                                        app:arc_unfinished_color="@color/maincolor"
+
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintHorizontal_bias="0.494"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                         />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center|top"
+                                    android:text="잔여량"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:orientation="vertical"
+                                android:weightSum="5">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1.3"
+                                    android:orientation="horizontal"
+                                    android:weightSum="10">
+
+                                    <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"></Space>
+
+                                    <Button
+                                        android:layout_marginTop="10dp"
+                                        android:id="@+id/goal_button"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6"
+                                        android:gravity="center"
+                                        android:background="@drawable/round_layout_button"
+                                        android:text="목표"
+                                        android:textColor="@color/white"
+                                        android:textStyle="bold"></Button>
+
+                                    <Space
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"></Space>
+                                </LinearLayout>
+
+
+                                <TextView
+                                    android:id="@+id/move_kcal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="2.4"
+                                    android:fontFamily="@font/bold"
+                                    android:gravity="center|bottom"
+                                    android:textSize="17dp"
+                                    android:text="500"
+                                    android:textColor="@color/white" />
+
+                                <TextView
+                                    android:id="@+id/move_kcal_int"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center|top"
+                                    android:text="활동량"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="3"
+                            android:orientation="horizontal"
+                            android:weightSum="20">
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:orientation="vertical"
+                                android:weightSum="10">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="6">
+
+                                    <ImageButton
+                                        android:id="@+id/plus_button_weight"
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="7"
+                                        android:background="@android:color/transparent"
+                                        android:padding="0dp"
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/plus_button"
+                                        android:visibility="invisible" />
+
+                                    <Button
+                                        android:id="@+id/user_weight"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="#00ff0000"
+                                        android:fontFamily="@font/bold"
+                                        android:gravity="center"
+                                        android:text="12kg"
+                                        android:textColor="@color/white"
+                                        android:textSize="17dp"
+                                        android:visibility="visible" />
+
+                                </FrameLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="4"
+                                    android:gravity="center"
+                                    android:text="몸무게"
+                                    android:layout_gravity="top"
+                                    android:textColor="@color/white" />
+                            </LinearLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3" />
+
+                            <FrameLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7">
+
+                                <TextView
+                                    android:id="@+id/goal_distance"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    android:fontFamily="@font/bold"
+                                    android:gravity="center"
+                                    android:text="-14KG"
+                                    android:textSize="17dp"
+                                    android:textColor="@color/white"
+                                    android:visibility="invisible" />
+
+                                <TextView
+                                    android:id="@+id/post_goal_distance"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="4"
+                                    android:fontFamily="@font/bold"
+                                    android:gravity="center"
+                                    android:text="목표를 입력해주세요"
+                                    android:textColor="@color/white"
+                                    android:visibility="visible" />
+                            </FrameLayout>
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:orientation="horizontal"
+            android:weightSum="20">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="18"
+                android:text="Diet"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:fontFamily="@font/bold"
+                android:gravity="center|left"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:orientation="vertical"
+            android:weightSum="60">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+                    android:background="@drawable/round_layout_meal"
                     android:orientation="horizontal"
                     android:weightSum="20">
 
@@ -323,78 +391,78 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <LinearLayout
-
-
+                    <TextView
+                        android:id="@+id/breakfast"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:background="@drawable/round_layout_meal"
-                        android:orientation="horizontal"
-                        android:weightSum="20">
+                        android:layout_weight="12"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center|left"
+                        android:text="Breakfast"
+                        android:textColor="@color/white"
+                        android:textSize="24dp"></TextView>
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                    <FrameLayout
+                        android:id="@+id/breakfast_frame"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7">
+
+                        <ImageButton
+                            android:id="@+id/plus_button_breakfast"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@android:color/transparent"
+                            android:padding="0dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/plus_button" />
 
                         <TextView
-                            android:id="@+id/breakfast"
-                            android:layout_width="0dp"
+                            android:id="@+id/breakfast_kcal_text"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="12"
-                            android:gravity="center|left"
                             android:fontFamily="@font/bold"
-                            android:text="Breakfast"
+                            android:gravity="center|left"
+                            android:text="512 Kcal"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="17sp"
+                            android:visibility="invisible"></TextView>
 
-                        <FrameLayout
-                            android:id="@+id/breakfast_frame"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="7">
+                    </FrameLayout>
 
-                            <ImageButton
-                                android:id="@+id/plus_button_breakfast"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:padding="0dp"
-                                android:src="@drawable/plus_button"></ImageButton>
-
-                            <TextView
-                                android:id="@+id/breakfast_kcal_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/bold"
-                                android:gravity="center|left"
-                                android:text="512 Kcal"
-                                android:textColor="@color/white"
-                                android:textSize="17sp"
-                                android:visibility="invisible"></TextView>
-
-                        </FrameLayout>
-
-
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
 
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+                    android:background="@drawable/round_layout_meal"
                     android:orientation="horizontal"
                     android:weightSum="20">
 
@@ -403,76 +471,77 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <LinearLayout
+
+                    <TextView
+                        android:id="@+id/Lunch"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:background="@drawable/round_layout_meal"
-                        android:orientation="horizontal"
-                        android:weightSum="20">
+                        android:layout_weight="12"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center|left"
+                        android:text="Lunch"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"></TextView>
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                    <FrameLayout
+                        android:id="@+id/lunch_frame"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7">
 
+                        <ImageButton
+                            android:id="@+id/plus_button_lunch"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@android:color/transparent"
+                            android:padding="0dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/plus_button"></ImageButton>
 
                         <TextView
-                            android:id="@+id/Lunch"
-                            android:layout_width="0dp"
+                            android:id="@+id/lunch_kcal_text"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
-                            android:text="Lunch"
+                            android:text="512 Kcal"
                             android:textColor="@color/white"
-                            android:textSize="24sp"
-                           ></TextView>
+                            android:textSize="17sp"
+                            android:visibility="invisible"></TextView>
 
-                        <FrameLayout
-                            android:id="@+id/lunch_frame"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="7">
-
-                            <ImageButton
-                                android:id="@+id/plus_button_lunch"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:padding="0dp"
-                                android:src="@drawable/plus_button"></ImageButton>
-
-                            <TextView
-                                android:id="@+id/lunch_kcal_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/bold"
-                                android:gravity="center|left"
-                                android:text="512 Kcal"
-                                android:textColor="@color/white"
-                                android:textSize="17sp"
-                                android:visibility="invisible"></TextView>
-
-                        </FrameLayout>
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
+                    </FrameLayout>
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+                    android:background="@drawable/round_layout_meal"
                     android:orientation="horizontal"
                     android:weightSum="20">
 
@@ -481,74 +550,76 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/Dinner"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:background="@drawable/round_layout_meal"
-                        android:orientation="horizontal"
-                        android:weightSum="20">
+                        android:layout_weight="12"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center|left"
+                        android:text="Dinner"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"></TextView>
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                    <FrameLayout
+                        android:id="@+id/dinner_frame"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7">
+
+                        <ImageButton
+                            android:id="@+id/plus_button_dinner"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@android:color/transparent"
+                            android:padding="0dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/plus_button"></ImageButton>
 
                         <TextView
-                            android:id="@+id/Dinner"
-                            android:layout_width="0dp"
+                            android:id="@+id/dinner_kcal_text"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
-                            android:text="Dinner"
+                            android:text="512 Kcal"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="17sp"
+                            android:visibility="invisible"></TextView>
 
-                        <FrameLayout
-                            android:id="@+id/dinner_frame"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="7">
-
-                            <ImageButton
-                                android:id="@+id/plus_button_dinner"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:padding="0dp"
-                                android:src="@drawable/plus_button"></ImageButton>
-
-                            <TextView
-                                android:id="@+id/dinner_kcal_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/bold"
-                                android:gravity="center|left"
-                                android:text="512 Kcal"
-                                android:textColor="@color/white"
-                                android:textSize="17sp"
-                                android:visibility="invisible"></TextView>
-
-                        </FrameLayout>
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
+                    </FrameLayout>
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:orientation="horizontal"
+                android:weightSum="20">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="12"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="18"
+                    android:background="@drawable/round_layout_meal"
                     android:orientation="horizontal"
                     android:weightSum="20">
 
@@ -557,65 +628,54 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/Snack"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="18"
-                        android:background="@drawable/round_layout_meal"
-                        android:orientation="horizontal"
-                        android:weightSum="20">
+                        android:layout_weight="12"
+                        android:fontFamily="@font/bold"
+                        android:gravity="center|left"
+                        android:text="Snack"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"></TextView>
 
-                        <Space
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
+                    <FrameLayout
+                        android:id="@+id/snack_frame"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7">
+
+                        <ImageButton
+                            android:id="@+id/plus_button_snack"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:background="@android:color/transparent"
+                            android:padding="0dp"
+                            android:layout_gravity="center"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/plus_button"></ImageButton>
 
                         <TextView
-                            android:id="@+id/Snack"
-                            android:layout_width="0dp"
+                            android:id="@+id/snack_kcal_text"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="12"
                             android:fontFamily="@font/bold"
                             android:gravity="center|left"
-                            android:text="Snack"
+                            android:text="512 Kcal"
                             android:textColor="@color/white"
-                            android:textSize="24sp"></TextView>
+                            android:textSize="17sp"
+                            android:visibility="invisible"></TextView>
 
-                        <FrameLayout
-                            android:id="@+id/snack_frame"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="7">
-
-                            <ImageButton
-                                android:id="@+id/plus_button_snack"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@android:color/transparent"
-                                android:padding="0dp"
-                                android:src="@drawable/plus_button"></ImageButton>
-
-                            <TextView
-                                android:id="@+id/snack_kcal_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:fontFamily="@font/bold"
-                                android:gravity="center|left"
-                                android:text="512 Kcal"
-                                android:textColor="@color/white"
-                                android:textSize="17sp"
-                                android:visibility="invisible"></TextView>
-
-                        </FrameLayout>
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
+                    </FrameLayout>
                 </LinearLayout>
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

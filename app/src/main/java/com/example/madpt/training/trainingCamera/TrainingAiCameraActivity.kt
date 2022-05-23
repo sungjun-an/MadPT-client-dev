@@ -231,7 +231,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onTimerListener(min: Int, sec: Int){
                             Timer.text = getString(R.string.tfe_pe_timer, min, sec)
-                            //Timer.setTextSize(Dimension.SP, 30.0F)
                         }
 
                         override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){

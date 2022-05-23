@@ -50,7 +50,7 @@ interface RetrofitService {
     @GET("statistic/calendar")
     fun getCalenderRecord(@Header("member_id") id: Long, @Query("date") month: Long): Call<MonthData>//명세 완료
 
-    @GET("statistic/day-summary-dev")
+    @GET("statistic/day-summary")
     fun getSummaryData(@Header("member_id") id: Long, @Query("date") date: Long): Call<SummaryData>//명세 완료
 
     @GET("statistic/diet")

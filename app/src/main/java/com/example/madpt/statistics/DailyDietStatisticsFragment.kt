@@ -58,15 +58,15 @@ class DailyDietStatisticsFragment : Fragment(),GetDailyDietList {
         }
         val totalFoodDataSum = totalFoodData[0] + totalFoodData[1] + totalFoodData[2]
 
-        binding.textDailyDietProtein.text = round((totalFoodData[1]/totalFoodDataSum*10.0)).toInt().toString()
+        binding.textDailyDietProtein.text = round((totalFoodData[1]/totalFoodDataSum*100.0)).toInt().toString()
         binding.textDailyDietProtein.layoutParams =
             LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[1]/totalFoodDataSum*10.0)).toFloat())
 
-        binding.textDailyDietCarbohydrate.text = round((totalFoodData[0]/totalFoodDataSum*10.0)).toInt().toString()
+        binding.textDailyDietCarbohydrate.text = round((totalFoodData[0]/totalFoodDataSum*100.0)).toInt().toString()
         binding.textDailyDietCarbohydrate.layoutParams =
             LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[0]/totalFoodDataSum*10.0)).toFloat())
 
-        binding.textDailyDietFat.text = round((totalFoodData[2]/totalFoodDataSum*10.0)).toInt().toString()
+        binding.textDailyDietFat.text = round((totalFoodData[2]/totalFoodDataSum*100.0)).toInt().toString()
         binding.textDailyDietFat.layoutParams =
             LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[2]/totalFoodDataSum*10.0)).toFloat())
 

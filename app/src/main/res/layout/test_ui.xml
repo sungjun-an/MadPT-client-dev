@@ -67,7 +67,6 @@
             android:layout_height="match_parent"
             android:layout_weight="18"
             android:orientation="horizontal"
-            android:background="@drawable/round_layout_meal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <Space
@@ -121,7 +120,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="18"
-            android:background="@color/backgroungblack"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <Space

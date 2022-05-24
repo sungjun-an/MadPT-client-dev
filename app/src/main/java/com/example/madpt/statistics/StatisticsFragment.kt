@@ -45,7 +45,6 @@ class StatisticsFragment : Fragment() {
     ): View? {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
         binding.textDate.text = date
-        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
 
         binding.btnDailyDiet.setOnClickListener {
             setDietView()
@@ -84,8 +83,6 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun setDietView(){
-        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
-        binding.btnDailyExercise.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.meal_input))
         val dailyDietStatisticsFragment = DailyDietStatisticsFragment()
         val bundle = Bundle()
         bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
@@ -97,8 +94,6 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun setExerciseView(){
-        binding.btnDailyExercise.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
-        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.meal_input))
         val dailyExerciseStatisticsFragment = DailyExerciseStatisticsFragment()
         val bundle = Bundle()
         bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())

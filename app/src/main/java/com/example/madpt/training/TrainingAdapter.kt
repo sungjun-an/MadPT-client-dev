@@ -5,10 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
 
@@ -22,7 +19,7 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
         var trainingImage: ImageView
         var itemTitle: TextView
-        val btn_add = itemView.findViewById(R.id.btn_add) as Button
+        val btn_add = itemView.findViewById(R.id.btn_add) as ImageButton
 
         init {
             trainingImage = itemView.findViewById(R.id.trainingImage)

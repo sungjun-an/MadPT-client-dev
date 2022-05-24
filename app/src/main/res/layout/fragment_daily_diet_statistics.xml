@@ -1,137 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/daily_diet_statistics"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroungblack"
     tools:context=".statistics.DailyDietStatisticsFragment"
-    android:weightSum="4"
+    android:weightSum="100"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-        android:weightSum="1"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:layout_weight="5"
+        android:weightSum="12">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:text="탄수화물"
+            android:textColor="@color/white" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.4"
-            android:weightSum="12">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="2"
-                android:textColor="@color/white"
-                android:text="탄수화물"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/purple_200" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/purple_200"
-                android:layout_weight="2"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:layout_marginLeft="5dp"
+            android:text="단백질"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="2"
-                android:textColor="@color/white"
-                android:text="단백질"/>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/teal_700" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/teal_700"
-                android:layout_weight="2"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center|left"
+            android:layout_marginLeft="5dp"
+            android:text="지방"
+            android:textColor="@color/white" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="2"
-                android:textColor="@color/white"
-                android:text="지방"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@color/teal_200"
-                android:layout_weight="2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.6"
-            android:weightSum="100">
-
-            <TextView
-                android:id="@+id/text_daily_diet_carbohydrate"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="5"
-                android:textColor="@color/white"
-                android:background="@color/purple_200"
-                android:text="5%"/>
-
-            <TextView
-                android:id="@+id/text_daily_diet_protein"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="60"
-                android:background="@color/teal_700"
-                android:textColor="@color/white"
-                android:text="60%"/>
-
-            <TextView
-                android:id="@+id/text_daily_diet_fat"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_weight="35"
-                android:background="@color/teal_200"
-                android:textColor="@color/white"
-                android:text=" 30%"/>
-        </LinearLayout>
-
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
+            android:background="@color/teal_200" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_height="0dp"
-        android:layout_weight="0.4"
-        android:weightSum="1"
-        android:orientation="horizontal">
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="100">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/text_daily_diet_carbohydrate"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:text="총 섭취량: "/>
+            android:layout_weight="5"
+            android:background="@color/purple_200"
+            android:gravity="center"
+            android:text="5%"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/text_daily_diet_protein"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:background="@color/teal_700"
+            android:gravity="center"
+            android:text="60%"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/text_daily_diet_fat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="35"
+            android:background="@color/teal_200"
+            android:gravity="center"
+            android:text=" 30%"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:weightSum="1"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/text_daily_diet_kcal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textColor="@color/white"
             android:text="0" />
 
@@ -139,17 +122,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textColor="@color/white"
             android:text=" Kcal"/>
     </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="3.1">
+        android:layout_weight="85">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -164,45 +144,57 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
                     android:orientation="vertical">
                     <LinearLayout
-                    android:layout_marginTop="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:weightSum="20"
+                        android:orientation="horizontal">
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="4"
                             android:textSize="25dp"
                             android:textColor="@color/white"
                             android:fontFamily="@font/bold"
                             android:text="아침"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="15"
                             android:layout_height="match_parent"
-                            android:text="총 "
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                    <TextView
-                        android:id="@+id/breakfast_total_kcal"
-                        android:layout_width="wrap_content"
-                        android:gravity="center_vertical"
-                        android:layout_height="match_parent"
-                        android:text="0"
-                        android:textSize="25dp"
-                        android:textColor="@color/white"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text=" Kcal"
-                        android:textSize="25dp"
-                        android:textColor="@color/white"/>
-                </LinearLayout>
+                            android:weightSum="10">
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="총 "
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:id="@+id/breakfast_total_kcal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="0"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=" Kcal"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
+                    </LinearLayout>
                     <LinearLayout
                         android:id="@+id/breakfast_total_list"
                         android:layout_width="match_parent"
@@ -223,41 +215,54 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
+                        android:weightSum="20"
                         android:orientation="horizontal">
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="4"
                             android:textSize="25dp"
                             android:textColor="@color/white"
                             android:fontFamily="@font/bold"
                             android:text="점심"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="15"
                             android:layout_height="match_parent"
-                            android:text="총 "
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:id="@+id/lunch_total_kcal"
-                            android:layout_width="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_height="match_parent"
-                            android:text="0"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text=" Kcal"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
+                            android:weightSum="10">
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="총 "
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:id="@+id/lunch_total_kcal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="0"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=" Kcal"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/lunch_total_list"
@@ -279,41 +284,54 @@
                     android:layout_marginTop="5dp"
                     android:orientation="vertical">
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
+                        android:weightSum="20"
                         android:orientation="horizontal">
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
                             android:textSize="25dp"
                             android:textColor="@color/white"
                             android:fontFamily="@font/bold"
                             android:text="저녁"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="15"
                             android:layout_height="match_parent"
-                            android:text="총 "
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:id="@+id/dinner_total_kcal"
-                            android:layout_width="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_height="match_parent"
-                            android:text="0"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text=" Kcal"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
+                            android:weightSum="10">
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="총 "
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:id="@+id/dinner_total_kcal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="0"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=" Kcal"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/dinner_total_list"
@@ -335,42 +353,56 @@
                     android:layout_marginTop="5dp"
                     android:orientation="vertical">
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
+                        android:weightSum="20"
                         android:orientation="horizontal">
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
                             android:textSize="25dp"
                             android:textColor="@color/white"
                             android:fontFamily="@font/bold"
                             android:text="간식"/>
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="15"
                             android:layout_height="match_parent"
-                            android:text="총 "
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:id="@+id/snack_total_kcal"
-                            android:layout_width="wrap_content"
-                            android:gravity="center_vertical"
-                            android:layout_height="match_parent"
-                            android:text="0"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text=" Kcal"
-                            android:textSize="25dp"
-                            android:textColor="@color/white"/>
+                            android:weightSum="10">
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="10"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="총 "
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:id="@+id/snack_total_kcal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="0"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text=" Kcal"
+                                android:textSize="25dp"
+                                android:textColor="@color/white"/>
+                        </LinearLayout>
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/snack_total_list"
                         android:layout_width="match_parent"
@@ -380,9 +412,6 @@
 
                 </LinearLayout>
             </ScrollView>
-
         </LinearLayout>
-
     </ScrollView>
-
 </LinearLayout>

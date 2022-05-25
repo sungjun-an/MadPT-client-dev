@@ -16,9 +16,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="23"
+            android:layout_weight="21"
             android:orientation="vertical"
-            android:weightSum="31">
+            android:weightSum="30">
 
             <Space
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.2" />
+                    android:layout_weight="1" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="5"
-                        android:background="@color/puple"
+                        android:background="@drawable/round_layout_button"
                         android:text="저장"
                         android:textColor="@color/white" />
 
@@ -111,15 +111,16 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1.5" />
 
+
                 <ImageButton
                     android:id="@+id/food_search_intent_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="37"
                     android:text="검색하기"
+                    android:scaleType="fitCenter"
                     android:background="@android:color/transparent"
                     android:src="@drawable/search_button"
-                    android:scaleType="fitXY"
                     android:textColor="@color/white"
                     android:textSize="20dp" />
 
@@ -127,6 +128,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5" />
+
 
 
             </LinearLayout>
@@ -138,7 +140,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="40"
+            android:layout_weight="46"
             android:orientation="horizontal"
             android:weightSum="40">
 
@@ -156,9 +158,7 @@
                     android:id="@+id/listview1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white">
-
-
+                    android:background="@drawable/round_layout_listview">
                 </ListView>
 
 
@@ -345,12 +345,17 @@
 
 
         </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5" />
+
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_weight="8"
             android:orientation="horizontal"
             android:weightSum="40">
 
@@ -365,6 +370,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="37"
                 android:text="직접 입력"
+                android:background="@drawable/round_layout_button"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 

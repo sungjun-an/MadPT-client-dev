@@ -10,8 +10,10 @@
         android:gravity="center"
         android:id="@+id/food_name"
         android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_marginLeft="5dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="7dp"
+        android:textColor="@color/white"
+
         android:text="제육 볶음" />
 
     <View
@@ -24,15 +26,17 @@
         android:id="@+id/default_kcal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@color/white"
         android:text="120" />
 
     <TextView
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@color/white"
         android:text="Kcal" />
     <Space
-        android:layout_width="4dp"
+        android:layout_width="8dp"
         android:layout_height="match_parent"/>
 
     <ImageButton
@@ -43,4 +47,8 @@
         android:padding="0dp"
         android:src="@drawable/minus"
         android:visibility="visible" />
+
+    <Space
+        android:layout_width="8dp"
+        android:layout_height="match_parent"/>
 </LinearLayout>

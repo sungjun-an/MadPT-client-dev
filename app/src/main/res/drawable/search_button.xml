@@ -2,25 +2,28 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:shape="http://schemas.android.com/aapt">
 
-
-    <item android:height="20dp" android:width="100dp">
+    <item android:height="15.5dp" android:width="100dp">
         <shape android:shape="rectangle">
 
-        </shape>
-        <stroke android:width = "10dp" android:color="@color/meal_input">
-
+        <stroke android:width = "1dp" android:color="@color/meal_input">
         </stroke>
 
         <solid android:color="@color/white"></solid>
 
+            <corners
+                android:bottomLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp"></corners>
+        </shape>
+
     </item>
 
     <item
-        android:width="30dp"
-        android:height="30dp"
+        android:width="10dp"
+        android:height="10dp"
         android:gravity="center|right"
-
-
+        android:right="5dp"
         android:drawable="@drawable/search">
         <stroke>
 

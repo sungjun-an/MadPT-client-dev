@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.madpt.R
 import com.example.madpt.databinding.FragmentStatisticsBinding
 import com.example.madpt.statistics.calendar.CalendarStartActivity
+import com.example.madpt.statistics.calendar.setTextColorRes
 import java.time.LocalDate
 import java.time.ZoneId
 
@@ -44,6 +45,8 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
+        binding.btnDailyDiet.setBackgroundResource(R.drawable.bottom_stroke_select)
+        binding.btnDailyDiet.setTextColorRes(R.color.puple)
         binding.textDate.text = date
 
         binding.btnDailyDiet.setOnClickListener {
@@ -85,6 +88,10 @@ class StatisticsFragment : Fragment() {
     private fun setDietView(){
         val dailyDietStatisticsFragment = DailyDietStatisticsFragment()
         val bundle = Bundle()
+        binding.btnDailyDiet.setBackgroundResource(R.drawable.bottom_stroke_select)
+        binding.btnDailyDiet.setTextColorRes(R.color.puple)
+        binding.btnDailyExercise.setBackgroundResource(R.drawable.bottom_stroke)
+        binding.btnDailyExercise.setTextColorRes(R.color.white)
         bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
         dailyDietStatisticsFragment.arguments = bundle
         childFragmentManager.beginTransaction()
@@ -96,6 +103,10 @@ class StatisticsFragment : Fragment() {
     private fun setExerciseView(){
         val dailyExerciseStatisticsFragment = DailyExerciseStatisticsFragment()
         val bundle = Bundle()
+        binding.btnDailyExercise.setBackgroundResource(R.drawable.bottom_stroke_select)
+        binding.btnDailyExercise.setTextColorRes(R.color.puple)
+        binding.btnDailyDiet.setBackgroundResource(R.drawable.bottom_stroke)
+        binding.btnDailyDiet.setTextColorRes(R.color.white)
         bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
         dailyExerciseStatisticsFragment.arguments = bundle
         childFragmentManager.beginTransaction()

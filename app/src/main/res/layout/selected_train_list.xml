@@ -20,6 +20,6 @@
         android:layout_gravity="right|top"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:src="@drawable/img"/>
+        android:src="@drawable/minus"/>
     
 </FrameLayout>

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:weightSum="4"
+    android:weightSum="4.5"
+    android:background="@color/backgroungblack"
     android:layout_height="wrap_content">
 
     <TextView
@@ -11,72 +12,100 @@
         android:layout_height="50dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:textColor="@color/white"
         android:text="쉬는시간 설정" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:weightSum="20"
         android:layout_weight="2">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
         <Button
             android:id="@+id/btn_minus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="0.5"
+            android:layout_weight="4"
+            android:textColor="@color/white"
             android:text="-"
+            android:background="@drawable/round_layout_button"
             android:gravity="center"/>
+
         <EditText
             android:id="@+id/breakTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:inputType="numberSigned"
-            android:layout_weight="1"/>
+            android:layout_weight="4"/>
         <Button
             android:id="@+id/btn_plus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
+            android:layout_weight="4"
+            android:background="@drawable/round_layout_button"
+            android:textColor="@color/white"
             android:text="+"
             android:gravity="center"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:gravity="center"
+            android:textColor="@color/white"
             android:text="초"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_weight="1"
-        android:layout_marginTop="10dp">
+        android:weightSum="20"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
             android:text="취소"
+            android:textColor="@color/white"
+            android:background="@drawable/round_layout_button"
             android:gravity="center"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/confirm"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="0.5"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
             android:text="확인"
+            android:textColor="@color/white"
+            android:background="@drawable/round_layout_button"
             android:gravity="center"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
     </LinearLayout>
 
 </LinearLayout>

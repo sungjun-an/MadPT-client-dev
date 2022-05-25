@@ -5,6 +5,7 @@
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/backgroungblack"
     android:padding="10dp" >
 
     <LinearLayout
@@ -23,6 +24,7 @@
         <TextView
             android:id="@+id/trainingTitle"
             android:layout_marginStart="20dp"
+            android:textColor="@color/white"
             android:gravity="center"
             android:textSize="30dp"
             android:layout_width="0dp"
@@ -43,12 +45,15 @@
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="5dp"
+            android:textColor="@color/white"
             android:layout_weight="1" />
 
         <Button
             android:text="-"
             android:id="@+id/btn_set_minus"
             android:layout_gravity="center"
+            android:background="@drawable/round_layout_button"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"/>
@@ -61,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/white"
             android:ems="10"
             android:enabled="true"
             android:inputType="numberSigned" />
@@ -69,6 +75,8 @@
             android:text="+"
             android:id="@+id/btn_set_plus"
             android:layout_gravity="center"
+            android:background="@drawable/round_layout_button"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5" />
@@ -83,6 +91,7 @@
 
         <TextView
             android:text="REPS"
+            android:textColor="@color/white"
             android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -94,6 +103,8 @@
             android:id="@+id/btn_rep_minus"
             android:layout_gravity="center"
             android:layout_width="0dp"
+            android:background="@drawable/round_layout_button"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"/>
 
@@ -104,6 +115,7 @@
             android:layout_width="0dp"
             android:enabled="true"
             android:gravity="center"
+            android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -112,7 +124,9 @@
         <Button
             android:text="+"
             android:id="@+id/btn_rep_plus"
+            android:background="@drawable/round_layout_button"
             android:layout_gravity="center"
+            android:textColor="@color/white"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5" />
@@ -129,9 +143,10 @@
             android:text="취소"
             android:id="@+id/btn_no"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_layout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
@@ -139,9 +154,10 @@
         <Button
             android:text="확인"
             android:id="@+id/btn_ok"
+            android:textColor="@color/white"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
+            android:background="@drawable/round_layout_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />

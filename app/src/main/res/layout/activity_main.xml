@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:id="@+id/bnv_main"
-        android:background="#FFFFFF"
+        android:background="@color/meal_input"
         app:menu="@menu/navi_menu"
         app:itemIconTint="@color/menu_selector_color"
         app:itemTextColor="@color/menu_selector_color"

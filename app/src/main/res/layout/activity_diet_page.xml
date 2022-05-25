@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="25"
+            android:layout_weight="23"
             android:orientation="vertical"
             android:weightSum="31">
 
@@ -40,18 +40,18 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="6"
+                    android:layout_weight="5"
                     android:gravity="center|left"
                     android:text="Total"
                     android:textColor="@color/white"
-                    android:textSize="40sp" />
+                    android:textSize="40dp" />
 
                 <TextView
                     android:id="@+id/sum_kcal"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:gravity="center|right"
+                    android:gravity="center"
                     android:text="500"
                     android:textColor="@color/white"
                     android:textSize="35sp" />
@@ -64,6 +64,11 @@
                     android:text="Kcal"
                     android:textColor="@color/white"
                     android:textSize="35sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -82,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="5"
-                        android:background="@color/maincolor"
+                        android:background="@color/puple"
                         android:text="저장"
                         android:textColor="@color/white" />
 
@@ -94,161 +99,39 @@
 
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="14"
-                android:orientation="vertical"
+                android:layout_weight="13"
+                android:orientation="horizontal"
                 android:weightSum="40">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="19"
-                    android:orientation="horizontal"
-                    android:weightSum="40">
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
 
+                <ImageButton
+                    android:id="@+id/food_search_intent_button"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="37"
+                    android:text="검색하기"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/search_button"
+                    android:scaleType="fitXY"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
 
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5" />
-
-
-                    <Button
-                        android:id="@+id/simple_plus_10Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="+10Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_plus_50Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="+50Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_plus_100Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="+100Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_plus_300Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="+300Kcal"
-                        android:textAlignment="center"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="19"
-                    android:orientation="horizontal"
-                    android:weightSum="40">
-
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5" />
-
-
-                    <Button
-                        android:id="@+id/simple_minus_10Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="-10Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_minus_50Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="-50Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_minus_100Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="-100Kcal"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" />
-
-                    <Button
-                        android:id="@+id/simple_minus_300Kcal"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="8.5"
-                        android:singleLine="true"
-                        android:text="-300Kcal"
-                        android:textAlignment="center"
-                        android:textSize="10dp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1.5" />
-                </LinearLayout>
-
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
 
 
             </LinearLayout>
+
+
         </LinearLayout>
 
 
@@ -296,31 +179,174 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="horizontal"
+            android:layout_weight="14"
+            android:orientation="vertical"
             android:weightSum="40">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="19"
+                android:orientation="horizontal"
+                android:weightSum="40">
 
-            <Button
-                android:id="@+id/food_search_intent_button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="37"
-                android:text="검색하기"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
+
+
+                <Button
+                    android:id="@+id/simple_plus_10Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_top_simple_button"
+                    android:singleLine="true"
+                    android:text="+ 10"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_plus_50Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_top_simple_button"
+                    android:singleLine="true"
+                    android:text="+ 50"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_plus_100Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_top_simple_button"
+                    android:singleLine="true"
+                    android:text="+ 100"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_plus_300Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_top_simple_button"
+                    android:singleLine="true"
+                    android:text="+ 300"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="19"
+                android:orientation="horizontal"
+                android:weightSum="40">
+
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
+
+
+                <Button
+                    android:id="@+id/simple_minus_10Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_bottom_simple_button"
+                    android:singleLine="true"
+                    android:text="- 10"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_minus_50Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_bottom_simple_button"
+                    android:singleLine="true"
+                    android:text="- 50"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_minus_100Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_bottom_simple_button"
+                    android:singleLine="true"
+                    android:text="- 100"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/simple_minus_300Kcal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8.5"
+                    android:background="@drawable/rounded_edge_bottom_simple_button"
+                    android:singleLine="true"
+                    android:text="- 300"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
+            </LinearLayout>
 
 
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"

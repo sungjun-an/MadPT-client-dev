@@ -23,7 +23,16 @@ class StoreTrain(context: Context, breakTime: Int){
     private val context = context
     private val dialog = Dialog(context)
     private val breakTime = breakTime
-    private val exerciseId = mapOf<String, Long>("PUSH UP" to 1, "SQUAT" to 2, "LUNGE" to 3, "DUMBBELL" to 4)
+    private val exerciseId = mapOf<String, Long>(
+        "PUSH UP" to 1,
+        "SQUAT" to 2,
+        "LUNGE" to 3,
+        "DUMBBELL" to 4,
+        "MOUNTAIN CLIMBING" to 5,
+        "SIDE LATERAL RAISE" to 6,
+        "SIDE LUNGE" to 7,
+        "DUMBEL CURL" to 8
+    )
 
     @SuppressLint("SetTextI18n")
     fun showDialog(dataList:ArrayList<testmodel>){

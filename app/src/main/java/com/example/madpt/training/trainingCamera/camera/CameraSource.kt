@@ -128,7 +128,7 @@ class CameraSource(
                 yuvConverter.yuvToRgb(image, imageBitmap)
                 // Create rotated version for portrait display
                 val rotateMatrix = Matrix()
-                rotateMatrix.postRotate(90.0f)
+                rotateMatrix.postRotate(270.0f)
 
                 val rotatedBitmap = Bitmap.createBitmap(
                     imageBitmap, 0, 0, PREVIEW_WIDTH, PREVIEW_HEIGHT,
@@ -398,7 +398,7 @@ class CameraSource(
         }
         if (feedBack.size > 0){
             var feedBackMsg = feedBackCalculator.calculateFeedBack(exerciseId, ArrayList(feedBack.subList(1, feedBack.size)))
-            listener?.onExcrciseFeedbackListener(feedBackMsg + currentFeedback)
+            listener?.onExcrciseFeedbackListener(feedBackMsg)
         }
 
         listener?.onExcrciseCountListener(currentReps, currentSets)

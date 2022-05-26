@@ -27,8 +27,27 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
     private var trainList = arrayListOf<testmodel>()
     private var breakTime = 0
     private var storeTrainList= arrayListOf<storeTraining>()
-    private val exerciseTitle = mapOf<Long, String>(1.toLong() to "PUSH UP", 2.toLong() to "SQUAT", 3.toLong() to "LUNGE", 4.toLong() to "DUMBBELL")
-    private val exerciseImage = mapOf<Long, Int>(1.toLong() to R.drawable.pushup, 2.toLong() to R.drawable.standing, 3.toLong() to R.drawable.lunge, 4.toLong() to R.drawable.dumbell)
+    private val exerciseTitle = mapOf<Long, String>(
+        1.toLong() to "PUSH UP",
+        2.toLong() to "SQUAT",
+        3.toLong() to "LUNGE",
+        4.toLong() to "DUMBBELL",
+        5.toLong() to "MOUNTAIN CLIMBING",
+        6.toLong() to "SIDE LATERAL RAISE",
+        7.toLong() to "SIDE LUNGE",
+        8.toLong() to "DUMBEL CURL"
+
+    )
+    private val exerciseImage = mapOf<Long, Int>(
+        1.toLong() to R.drawable.pushup,
+        2.toLong() to R.drawable.standing,
+        3.toLong() to R.drawable.lunge,
+        4.toLong() to R.drawable.dumbell,
+        5.toLong() to R.drawable.dumbell,
+        6.toLong() to R.drawable.dumbell,
+        7.toLong() to R.drawable.dumbell,
+        8.toLong() to R.drawable.dumbell
+    )
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {
         trainList.add(testmodel(itemTitle,image,set,rep))

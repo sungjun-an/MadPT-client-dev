@@ -13,12 +13,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import com.example.madpt.*
+import com.example.madpt.API.food.PostDietList
 import com.example.madpt.diet.DietPageActivity
 
 
 
-class PostDietListCall(context: Context)  {
+class PostDietListCall(context: Context, listener: PostDietList)  {
 
+    val listener = listener
 
     private val context = context
 
@@ -26,7 +28,6 @@ class PostDietListCall(context: Context)  {
 
         val dialog = LoadingDialog(context)
         dialog.showDialog()
-        val dietPageActivity = (context as DietPageActivity)
 
         RetrofitClass.service.postDailyDiet(userId,dailyDiet).enqueue(object : Callback<PostResponse> {
             override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
@@ -34,11 +35,8 @@ class PostDietListCall(context: Context)  {
                     // 정상적으로 통신이 성고된 경우
 
                     Log.d("YMC1", "onResponse 성공: $response");
-
-                    dietPageActivity!!.transMainFragment()
+                    listener.postDietList()
                     dialog.loadingDismiss()
-
-
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     dialog.loadingDismiss()

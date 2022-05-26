@@ -38,3 +38,7 @@ interface GetSocialRank{
 interface GetExerciseRoutineList{
     fun getExerciseRoutineList(exerciseRoutineList: GetTrainRoutine)
 }
+
+interface PostDietList{
+    fun postDietList()
+}

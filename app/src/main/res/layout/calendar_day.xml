@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="1dp"
-        android:background="@color/calendar_item_view_bg_color"
+        android:background="@color/meal_input"
         tools:layout_edior_absoluteX="76dp"
         tools:layout_editor_absoluteY="-14dp">
 
@@ -21,7 +21,7 @@
             android:layout_marginTop="2dp"
             android:layout_marginEnd="4dp"
             android:gravity="center"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/white"
             android:textSize="12dp"
             tools:text="24"/>
 
@@ -50,7 +50,7 @@
             android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="38dp"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/white"
             android:textSize="10dp"
             tools:text="20" />
 
@@ -63,7 +63,7 @@
             android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="14dp"
-            android:textColor="@color/calendar_text_grey"
+            android:textColor="@color/white"
             android:textSize="10dp"
             tools:text="20" />
 

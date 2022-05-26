@@ -30,6 +30,7 @@ class GetSummaryDataCall(listen: GetSummaryData, context: Context) {
                     summary = response.body()
 
                     summary?.let { summaryDataListen.getSummaryDataList(it) }
+                    Log.d("YMC","${SplashActivity.userId}")
                     dialog.loadingDismiss()
                     Log.d("YMC", "onResponse 성공: " + summary?.toString());
                 } else {

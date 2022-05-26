@@ -5,22 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".training.StoreTrain"
     android:orientation="vertical"
-    android:weightSum="10">
+    android:background="@color/backgroungblack"
+    android:weightSum="100">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_weight="0.3"
+        android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="30dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bold"
         android:text="운동 루틴 저장" />
 
     <LinearLayout
-        android:layout_weight="0.3"
+        android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="2">
         <TextView
@@ -30,6 +33,7 @@
             android:gravity="center"
             android:layout_weight="0.7"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:text="제목: "/>
 
         <EditText
@@ -38,13 +42,14 @@
             android:layout_height="match_parent"
             android:singleLine="true"
             android:layout_weight="1.3"
+            android:textColorHint="@color/white"
             android:hint="제목을 입력해주세요."/>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_weight="0.3"
+        android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="2">
         <TextView
@@ -54,42 +59,75 @@
             android:gravity="center"
             android:layout_weight="0.7"
             android:textAlignment="center"
+            android:textColor="@color/white"
             android:text="쉬는시간: "/>
         <TextView
             android:id="@+id/breakTimeSet"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="left"
+            android:gravity="left|center"
             android:text="0"
             android:textSize="30dp"
+            android:textColor="@color/white"
             android:layout_weight="1.3" />
     </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/trainListRecycle"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="8.8">
+        android:layout_height="0dp"
+        android:layout_weight="60"
+        android:orientation="horizontal"
+        android:weightSum="20">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trainListRecycle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="18">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/storeTrainList"
-        android:layout_weight="0.3"
+        android:layout_weight="10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="20">
 
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
         <Button
             android:id="@+id/storeNo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textSize="20dp"
             android:gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="8.5"
+            android:textColor="@color/white"
+            android:background="@drawable/round_layout_button"
             android:textAlignment="center"
             android:text="취소"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/storeOk"
@@ -97,9 +135,17 @@
             android:layout_height="match_parent"
             android:textSize="20dp"
             android:gravity="center"
-            android:layout_weight="1"
+            android:layout_weight="8.5"
+            android:background="@drawable/round_layout_button"
+            android:textColor="@color/white"
             android:textAlignment="center"
-            android:hint="저장"/>
+            android:text="저장"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
     </LinearLayout>
 
 </LinearLayout>

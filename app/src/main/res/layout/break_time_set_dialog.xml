@@ -9,15 +9,17 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center"
+        android:textSize="25dp"
         android:textColor="@color/white"
+        android:layout_marginBottom="15dp"
         android:text="쉬는시간 설정" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="20"
         android:layout_weight="2">
@@ -28,35 +30,42 @@
         <Button
             android:id="@+id/btn_minus"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="4"
             android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textAlignment="center"
             android:text="-"
-            android:background="@drawable/round_layout_button"
+            android:background="#00ff0000"
             android:gravity="center"/>
 
         <EditText
             android:id="@+id/breakTime"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
+            android:textColor="@color/white"
+            android:background="@drawable/bottom_stroke"
             android:inputType="numberSigned"
             android:layout_weight="4"/>
         <Button
             android:id="@+id/btn_plus"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="4"
-            android:background="@drawable/round_layout_button"
+            android:background="#00ff0000"
             android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textAlignment="center"
             android:text="+"
             android:gravity="center"/>
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="4"
             android:gravity="center"
             android:textColor="@color/white"
+            android:textSize="25dp"
             android:text="초"/>
         <Space
             android:layout_width="0dp"
@@ -66,9 +75,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="20"
+        android:layout_weight="1.2"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp">
 
@@ -84,8 +94,7 @@
             android:layout_weight="7"
             android:text="취소"
             android:textColor="@color/white"
-            android:background="@drawable/round_layout_button"
-            android:gravity="center"/>
+            android:background="@drawable/round_layout_button" />
 
         <Space
             android:layout_width="0dp"

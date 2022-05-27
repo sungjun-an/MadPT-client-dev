@@ -1,91 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/backgroungblack"
-    android:weightSum="2">
+    android:weightSum="100"
+    android:background="@color/backgroungblack">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:weightSum="5"
-        android:layout_weight="0.1"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/beforeDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:backgroundTint="@color/meal_input"
-            android:layout_weight="1"
-            android:text="이전"/>
+        android:layout_weight="27"
+        android:orientation="vertical"
+        android:weightSum="27">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:fontFamily="@font/bold"
+                android:gravity="center|left"
+                android:text="Statistic"
+                android:textColor="@color/white"
+                android:textSize="30dp" />
 
-        <TextView
-            android:id="@+id/textDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:text="05월 09일"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
-        <Button
-            android:id="@+id/nextDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:backgroundTint="@color/meal_input"
-            android:text="다음"/>
-        <Button
-            android:id="@+id/set_calendar_view"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:backgroundTint="@color/meal_input"
-            android:text="캘린더"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2" />
+
+            <ImageButton
+                android:id="@+id/set_calendar_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|right"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="2"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/calendar" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:weightSum="20">
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/beforeDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/backgroungblack"
+                android:layout_weight="3"
+                app:tint="@color/white"
+                app:srcCompat="@drawable/ic_chevron_left"/>
+
+            <TextView
+                android:id="@+id/textDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="12"
+                android:gravity="center"
+                android:text="05월 09일"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/nextDate"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="3"
+                app:tint="@color/white"
+                android:background="@color/backgroungblack"
+                app:srcCompat="@drawable/ic_chevron_right" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:weightSum="20">
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btn_daily_diet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="식단"
+                android:background ="@drawable/bottom_stroke"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_weight="9"/>
+            <Button
+                android:id="@+id/btn_daily_exercise"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background ="@drawable/bottom_stroke"
+                android:text="운동"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_weight="9"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:weightSum="2"
-        android:layout_weight="0.1">
-
-        <Button
-            android:id="@+id/btn_daily_diet"
-            android:layout_width="wrap_content"
+        android:layout_weight="73"
+        android:orientation="horizontal"
+        android:weightSum="20">
+        <Space
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="식단"
-            android:backgroundTint="@color/meal_input"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btn_daily_exercise"
-            android:layout_width="wrap_content"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frag_container"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:backgroundTint="@color/meal_input"
-            android:text="운동"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_weight="1"/>
+            android:layout_weight="18"/>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frag_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.8">
-
-    </androidx.fragment.app.FragmentContainerView>
-
 </LinearLayout>

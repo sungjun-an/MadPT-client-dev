@@ -2,8 +2,9 @@
 <resources>
 
     <style name="numberPickerCustom">
-        <item name="android:textSize">30sp</item>
-        <item name="android:editTextColor">@color/black</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:editTextColor">@color/white</item>
         <item name="android:selectionDividerHeight">2sp</item>
+        <item name="android:colorControlNormal">@color/white</item>
     </style>
 </resources>

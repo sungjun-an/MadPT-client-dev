@@ -1,5 +1,6 @@
 package com.example.madpt.statistics.calendar
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.core.view.children
 import com.example.madpt.API.food.GetMonthDataList
 import com.example.madpt.API.statistic.GetMonthDataCall
@@ -38,8 +40,10 @@ class CalendarFragment : Fragment(), GetMonthDataList{
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
     private lateinit var binding: FragmentCalendarBinding
     private var dailyDate = LocalDate.now()
+    @RequiresApi(Build.VERSION_CODES.O)
     private var monthData = arrayListOf<MonthDataDateBy>().groupBy { LocalDateTime.ofInstant(Instant.ofEpochMilli(it.date), TimeZone.getDefault().toZoneId()).toLocalDate() }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,7 +75,7 @@ class CalendarFragment : Fragment(), GetMonthDataList{
                     container.legendLayout.tag = month.yearMonth
                     container.legendLayout.children.map { it as TextView }.forEachIndexed { index, textView ->
                         textView.text = daysOfWeek[index].getDisplayName(TextStyle.SHORT, Locale.KOREA)
-                        textView.setTextColorRes(R.color.calendar_text_grey)
+                        textView.setTextColorRes(R.color.white)
                         textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 10F)
                     }
                     month.yearMonth
@@ -124,6 +128,7 @@ class CalendarFragment : Fragment(), GetMonthDataList{
 
         binding.calendar.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
                 val textView = container.binding.calendarDayText
@@ -143,7 +148,7 @@ class CalendarFragment : Fragment(), GetMonthDataList{
                 layout.layoutParams = LinearLayout.LayoutParams(binding.calendar.daySize.width, binding.calendar.daySize.width*2)
 
                 if (day.owner == DayOwner.THIS_MONTH) {
-                    textView.setTextColorRes(R.color.calendar_text_grey)
+                    textView.setTextColorRes(R.color.white)
                     layout.setBackgroundResource(if (selectedDate == day.date) R.drawable.calendar_selected_bg else 0)
 
                     if (monthData[day.date] != null) {
@@ -159,13 +164,14 @@ class CalendarFragment : Fragment(), GetMonthDataList{
                         }
                     }
                 }else {
-                    textView.setTextColorRes(R.color.calendar_text_grey)
+                    textView.setTextColorRes(R.color.white)
                     layout.background = null
                 }
             }
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun getMonthDataList(monthDataList: ArrayList<MonthDataDateBy>) {
         monthData= monthDataList.groupBy { LocalDateTime.ofInstant(Instant.ofEpochMilli(it.date), TimeZone.getDefault().toZoneId()).toLocalDate() }
         updateData()

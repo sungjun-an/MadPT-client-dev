@@ -58,7 +58,7 @@ class LoginActivity: AppCompatActivity() {
                                             user.kakaoAccount?.profile?.nickname!!,
                                             weight,
                                             height,
-                                            "FEMALE"
+                                            user.kakaoAccount?.gender.toString()
                                         )
                                         //TRUE/FALSE 확인 FALSE 일때만 정보 저장 POST 때리기
                                         PostLoginCall().Postlogin(this, memberInfo!!)

@@ -398,7 +398,7 @@ class CameraSource(
         }
         if (feedBack.size > 0){
             var feedBackMsg = feedBackCalculator.calculateFeedBack(exerciseId, ArrayList(feedBack.subList(1, feedBack.size)))
-            listener?.onExcrciseFeedbackListener(feedBackMsg + currentFeedback)
+            listener?.onExcrciseFeedbackListener(feedBackMsg)
         }
 
         listener?.onExcrciseCountListener(currentReps, currentSets)

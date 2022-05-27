@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
@@ -22,7 +23,7 @@ class TrainingList(private val dataList:ArrayList<testmodel>, listen:OnRemove, p
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         private val trainImage = itemView.findViewById<ImageView>(R.id.list_image)
-        val cancelTrain = itemView.findViewById(R.id.removeTrain) as Button
+        val cancelTrain = itemView.findViewById(R.id.removeTrain) as ImageButton
 
         fun bind(data: testmodel){
             trainImage.setImageResource(data.images)

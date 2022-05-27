@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/main" android:enabled="true" android:checked="true"
-        android:icon="@drawable/ic_launcher_foreground" android:title="main" />
+        android:icon="@drawable/home" android:title="홈" />
     <item android:id="@+id/statistics" android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground" android:title="통계" />
+        android:icon="@drawable/statistic" android:title="통계" />
     <item android:id="@+id/training" android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground" android:title="운동" />
+        android:icon="@drawable/exercise" android:title="운동" />
     <item android:id="@+id/social" android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground" android:title="소셜" />
+        android:icon="@drawable/social" android:title="소셜" />
     <item android:id="@+id/more" android:enabled="true"
-        android:icon="@drawable/ic_launcher_foreground" android:title="더보기" />
+        android:icon="@drawable/more" android:title="더보기" />
 </menu>

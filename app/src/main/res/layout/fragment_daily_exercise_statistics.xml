@@ -18,19 +18,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:text="총 소모량: "/>
-
-        <TextView
             android:id="@+id/text_daily_exercise_kcal"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textColor="@color/white"
             android:text="0" />
 
@@ -38,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="20dp"
+            android:textSize="25dp"
             android:textColor="@color/white"
             android:text=" Kcal"/>
     </LinearLayout>

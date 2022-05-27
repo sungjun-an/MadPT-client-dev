@@ -68,6 +68,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
+                        android:layout_marginRight="10dp"
                         android:text="2022년 5월 1주차"
                         android:textColor="@color/white"
                         android:textSize="20dp" />

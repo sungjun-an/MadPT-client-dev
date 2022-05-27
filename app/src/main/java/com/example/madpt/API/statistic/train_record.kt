@@ -11,7 +11,7 @@ data class TrainRecord(
 
 data class TrainRecordList(
     @SerializedName("exercise_name")
-    val exercise_id: Int,
+    val exercise_id: String,
     @SerializedName("start_time")
     val start_time: Long,
     @SerializedName("sets")

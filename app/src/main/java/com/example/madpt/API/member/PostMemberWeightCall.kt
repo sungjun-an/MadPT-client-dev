@@ -9,12 +9,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PostMemberInfoCall(context: Context) {
+class PostMemberWeightCall(context: Context) {
 
-    fun PostMember(memberInfo: MemberInfo) {
-        RetrofitClass.service.postMember(SplashActivity.userId, memberInfo).enqueue(object :
-            Callback<PostResponse> {
-            override fun onResponse(call: Call<PostResponse>, response: Response<PostResponse>) {
+    fun PostMemberWeight(memberWeight: MemberWeight) {
+        RetrofitClass.service.postWeight(SplashActivity.userId, memberWeight).enqueue(object :
+            Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     Log.d("YMC", "onResponse 성공: ${response.body()}");
                 } else {
@@ -22,7 +22,7 @@ class PostMemberInfoCall(context: Context) {
                     Log.d("YMC", "PostMember 실패 ${response}")
                 }
             }
-            override fun onFailure(call: Call<PostResponse>, t: Throwable) {
+            override fun onFailure(call: Call<String>, t: Throwable) {
                 Log.d("YMC", "onFailure 에러: " + t.message.toString());
             }
         })

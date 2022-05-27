@@ -1,16 +1,20 @@
 package com.example.madpt.statistics
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentTransaction
 import com.example.madpt.R
 import com.example.madpt.databinding.FragmentStatisticsBinding
 import com.example.madpt.statistics.calendar.CalendarStartActivity
 import java.time.LocalDate
+import java.time.ZoneId
 
 class StatisticsFragment : Fragment() {
 
@@ -23,8 +27,12 @@ class StatisticsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         if(savedInstanceState == null) {
+            val dailyDietStatisticsFragment = DailyDietStatisticsFragment()
+            val bundle = Bundle()
+            bundle.putLong("getTime",dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+            dailyDietStatisticsFragment.arguments = bundle
             childFragmentManager.beginTransaction()
-                .add(R.id.frag_container,DailyDietStatisticsFragment())
+                .add(R.id.frag_container,dailyDietStatisticsFragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit()
         }
@@ -37,7 +45,7 @@ class StatisticsFragment : Fragment() {
     ): View? {
         _binding = FragmentStatisticsBinding.inflate(inflater, container, false)
         binding.textDate.text = date
-        binding.btnDailyDiet.setBackgroundColor(resources.getColor(R.color.material_dynamic_neutral_variant30))
+        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
 
         binding.btnDailyDiet.setOnClickListener {
             setDietView()
@@ -50,9 +58,6 @@ class StatisticsFragment : Fragment() {
             dailyDate = dailyDate.plusDays(1)
             if(dailyDate.dayOfMonth>dailyDate.lengthOfMonth()){
                 dailyDate.plusMonths(1)
-                if (dailyDate.monthValue>dailyDate.lengthOfYear()){
-                    dailyDate.withDayOfMonth(1)
-                }
                 dailyDate.withDayOfMonth(1)
             }
             date = ("%02d월 %02d일").format(dailyDate.monthValue,dailyDate.dayOfMonth)
@@ -64,9 +69,6 @@ class StatisticsFragment : Fragment() {
             dailyDate = dailyDate.minusDays(1)
             if(dailyDate.dayOfMonth == 0){
                 dailyDate.minusMonths(1)
-                if (dailyDate.monthValue == 0) {
-                    dailyDate.withDayOfMonth(12)
-                }
                 dailyDate.withDayOfMonth(dailyDate.monthValue)
             }
             date = ("%02d월 %02d일").format(dailyDate.monthValue,dailyDate.dayOfMonth)
@@ -82,19 +84,27 @@ class StatisticsFragment : Fragment() {
     }
 
     private fun setDietView(){
-        binding.btnDailyDiet.setBackgroundColor(resources.getColor(R.color.material_dynamic_neutral_variant30))
-        binding.btnDailyExercise.setBackgroundColor(resources.getColor(R.color.meal_input))
+        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
+        binding.btnDailyExercise.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.meal_input))
+        val dailyDietStatisticsFragment = DailyDietStatisticsFragment()
+        val bundle = Bundle()
+        bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+        dailyDietStatisticsFragment.arguments = bundle
         childFragmentManager.beginTransaction()
-            .replace(R.id.frag_container,DailyDietStatisticsFragment())
+            .replace(R.id.frag_container,dailyDietStatisticsFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
     }
 
     private fun setExerciseView(){
-        binding.btnDailyExercise.setBackgroundColor(resources.getColor(R.color.material_dynamic_neutral_variant30))
-        binding.btnDailyDiet.setBackgroundColor(resources.getColor(R.color.meal_input))
+        binding.btnDailyExercise.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.material_dynamic_neutral_variant30))
+        binding.btnDailyDiet.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.meal_input))
+        val dailyExerciseStatisticsFragment = DailyExerciseStatisticsFragment()
+        val bundle = Bundle()
+        bundle.putLong("getTime", dailyDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+        dailyExerciseStatisticsFragment.arguments = bundle
         childFragmentManager.beginTransaction()
-            .replace(R.id.frag_container,DailyExerciseStatisticsFragment())
+            .replace(R.id.frag_container, dailyExerciseStatisticsFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
     }

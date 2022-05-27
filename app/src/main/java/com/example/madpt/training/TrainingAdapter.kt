@@ -43,7 +43,7 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
     override fun onBindViewHolder(viewHolder: ViewHolder, @SuppressLint("RecyclerView") i: Int) {
        viewHolder.btn_add.setOnClickListener {
            val dialog = SetDialog(context, titles[i], images[i])
-           dialog.showDialog()
+           dialog.showDialog(0, 0)
            dialog.setOnClickListener(object : SetDialog.OnDialogClickListener {
                override fun onClicked(sets: Int, reps: Int, images: Int, itemTitles: String) {
                    onClickListen.onClick(sets, reps, images, itemTitles)

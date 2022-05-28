@@ -1,0 +1,30 @@
+package com.example.madpt.API.member
+
+import android.content.Context
+import android.util.Log
+import com.example.madpt.API.PostResponse
+import com.example.madpt.API.RetrofitClass
+import com.example.madpt.splash.SplashActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+class PostMemberWeightCall(context: Context) {
+
+    fun PostMemberWeight(memberWeight: MemberWeight) {
+        RetrofitClass.service.postWeight(SplashActivity.userId, memberWeight).enqueue(object :
+            Callback<String> {
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                if (response.isSuccessful) {
+                    Log.d("YMC", "onResponse 성공: ${response.body()}");
+                } else {
+                    // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
+                    Log.d("YMC", "PostMember 실패 ${response}")
+                }
+            }
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.d("YMC", "onFailure 에러: " + t.message.toString());
+            }
+        })
+    }
+}

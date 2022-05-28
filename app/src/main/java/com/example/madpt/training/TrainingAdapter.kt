@@ -5,24 +5,38 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madpt.R
 
 class TrainingAdapter(private val context: Context, listener: OnRecyclerClickListener) : RecyclerView.Adapter<TrainingAdapter.ViewHolder> (){
 
-    private val titles = arrayOf("SQUAT", "PUSH UP")
-    private val images = intArrayOf(R.drawable.pushup,
-    R.drawable.standing)
+    private val titles = arrayOf(
+        "PUSH UP",
+        "SQUAT",
+        "LUNGE",
+        "DUMBBELL",
+        "MOUNTAIN CLIMBING",
+        "SIDE LATERAL RAISE",
+        "SIDE LUNGE",
+        "DUMBEL CURL"
+    )
+    private val images = intArrayOf(
+        R.drawable.pushup,
+        R.drawable.standing,
+        R.drawable.lunge,
+        R.drawable.dumbell,
+        R.drawable.dumbell,
+        R.drawable.dumbell,
+        R.drawable.dumbell,
+        R.drawable.dumbell
+    )
     private var onClickListen = listener
 
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
         var trainingImage: ImageView
         var itemTitle: TextView
-        val btn_add = itemView.findViewById(R.id.btn_add) as Button
+        val btn_add = itemView.findViewById(R.id.btn_add) as ImageButton
 
         init {
             trainingImage = itemView.findViewById(R.id.trainingImage)
@@ -43,7 +57,7 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
     override fun onBindViewHolder(viewHolder: ViewHolder, @SuppressLint("RecyclerView") i: Int) {
        viewHolder.btn_add.setOnClickListener {
            val dialog = SetDialog(context, titles[i], images[i])
-           dialog.showDialog()
+           dialog.showDialog(0, 0)
            dialog.setOnClickListener(object : SetDialog.OnDialogClickListener {
                override fun onClicked(sets: Int, reps: Int, images: Int, itemTitles: String) {
                    onClickListen.onClick(sets, reps, images, itemTitles)

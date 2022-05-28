@@ -231,7 +231,6 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onTimerListener(min: Int, sec: Int){
                             Timer.text = getString(R.string.tfe_pe_timer, min, sec)
-                            //Timer.setTextSize(Dimension.SP, 30.0F)
                         }
 
                         override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){
@@ -254,14 +253,22 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
-                        override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
+                        override fun onExcrciseBreakTimeListner(flag: Boolean,
+                                                                sec: Int,
+                                                                btFlag: Boolean) {
                             runOnUiThread{
                                 if(flag){
+                                    if(btFlag){
+                                        ttsSpeak("쉬는 시간입니다.")
+                                    }
                                     breakTime.visibility = View.VISIBLE
                                     breakTime.text = getString(R.string.break_time_timer,
                                             sec.toString())
                                 }
                                 else{
+                                    if(sec == 0){
+                                        ttsSpeak("운동을 시작하세요.")
+                                    }
                                     breakTime.visibility = View.INVISIBLE
                                 }
                             }

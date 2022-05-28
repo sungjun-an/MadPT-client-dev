@@ -121,7 +121,7 @@
             android:layout_weight="18"
             android:fontFamily="@font/bold"
             android:gravity="center|left"
-            android:text = "운동 리스트"
+            android:text="운동 리스트"
             android:textColor="@color/white"
             android:textSize="30dp" />
 

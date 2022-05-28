@@ -203,6 +203,7 @@ class CameraSource(
     }
 
     fun prepareTrainer(breakTimeInt: Int){
+        println("trainingList: $trainingList")
         startTimer()
         getBreakTimeInt(breakTimeInt)
     }

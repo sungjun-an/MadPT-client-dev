@@ -33,12 +33,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/currentExcrcise"
+                    android:id="@+id/MadPT"
                     android:layout_width="0dp"
                     android:layout_weight="0.35"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textAlignment="center"
+                    android:text="MadPT"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="@color/white"
@@ -74,6 +75,18 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.12"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/currentExcrcise"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:layout_anchor="@+id/surfaceView" />
+
             </LinearLayout>
 
             <LinearLayout

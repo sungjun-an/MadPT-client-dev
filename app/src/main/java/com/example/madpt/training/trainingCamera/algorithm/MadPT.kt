@@ -41,7 +41,7 @@ class MadPT {
         this.state = 0
         this.side = ""
         this.count = mutableListOf(0, 0, 0, 0, 0, 0, 0, 0) // 0: pushup, 1: squat, 2: lunge, 3: shoulder_press
-        this.max_score = mutableListOf(0.0, 0.0, 0.0, 0.0) // 0: pushup, 1: squat, 2: lunge, 3: shoulder_press
+        this.max_score = mutableListOf(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0) // 0: pushup, 1: squat, 2: lunge, 3: shoulder_press
         this.init_size = mutableListOf(210, 210) // 0: right_leg, 1: left_leg
         this.feedbacks = listOf(0, 1, 2, 3) // 0: bad, 1: good, 2: great, 3: excellent
         this.tmp = 0.0
@@ -77,7 +77,6 @@ class MadPT {
     }
 
 
-
     fun init_excrcise_count(excrcise: testmodel){
         when(excrcise.titles){
             "PUSH UP" -> {
@@ -92,16 +91,16 @@ class MadPT {
             "SHOULDER PRESS" -> {
                 count[3] = 0
             }
-            "MOUNTAIN_CLIMBING" -> {
+            "MOUNTAIN CLIMBING" -> {
                 count[4] = 0
             }
-            "SIDE_LATERAL_RAISE" -> {
+            "SIDE LATERAL RAISE" -> {
                 count[5] = 0
             }
-            "SIDE_LUNGE" -> {
+            "SIDE LUNGE" -> {
                 count[6] = 0
             }
-            "DUMBEL_CURL" -> {
+            "DUMBEL CURL" -> {
                 count[7] = 0
             }
         }
@@ -122,16 +121,16 @@ class MadPT {
             "SHOULDER PRESS" -> {
                 p = shoulder_press(person)
             }
-            "MOUNTAIN_CLIMBING" -> {
+            "MOUNTAIN CLIMBING" -> {
                 p = mountain_climbing(person)
             }
-            "SIDE_LATERAL_RAISE" -> {
+            "SIDE LATERAL RAISE" -> {
                 p = side_lateral_raise(person)
             }
-            "SIDE_LUNGE" -> {
+            "SIDE LUNGE" -> {
                 p = side_lunge(person)
             }
-            "DUMBEL_CURL" -> {
+            "DUMBEL CURL" -> {
                 p = side_lunge(person)
             }
         }
@@ -726,7 +725,7 @@ class MadPT {
             }
         }
         dataList.add(0, count[4])
-        dataList.add(4, (max_score[4].toInt()))
+        dataList.add(1, (max_score[4].toInt()))
 
         return Pair(dataList, return_val)
     }

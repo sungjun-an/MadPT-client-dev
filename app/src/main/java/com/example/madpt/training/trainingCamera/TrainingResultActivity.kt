@@ -140,13 +140,16 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
 
         for(i in 0 until scoreData.size){
             when {
-                scoreData[i] < 70 -> {
+                scoreData[i] <= 50 -> {
+                    finalGradeList.add(i, "F")
+                }
+                scoreData[i] in 50.0..60.0 -> {
                     finalGradeList.add(i, "D")
                 }
-                scoreData[i] < 80 -> {
+                scoreData[i] in 60.0..75.0 -> {
                     finalGradeList.add(i, "C")
                 }
-                scoreData[i] < 90 -> {
+                scoreData[i] in 75.0..85.0 -> {
                     finalGradeList.add(i, "B")
                 }
                 else -> {
@@ -181,7 +184,6 @@ class TrainingResultActivity : AppCompatActivity(), onTrainingResultClickLisner,
         }
 
         val average = sum / finalGradeList.size
-        println(average)
 
         when{
             average in 0.0..50.0 -> {

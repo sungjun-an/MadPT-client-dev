@@ -11,11 +11,12 @@ import com.example.madpt.*
 import com.example.madpt.API.diet.AddFoodList
 import com.example.madpt.API.diet.PostDietListCall
 import com.example.madpt.API.diet.daily_diet
+import com.example.madpt.API.food.PostDietList
 import com.example.madpt.databinding.ActivityDietPageBinding
 import com.example.madpt.main.MainPageFragment
 import java.time.LocalDateTime
 
-class DietPageActivity : AppCompatActivity() {
+class DietPageActivity : AppCompatActivity(), PostDietList {
 
     private lateinit var binding: ActivityDietPageBinding
 
@@ -35,6 +36,8 @@ class DietPageActivity : AppCompatActivity() {
 
         sampleFoodList()
         simpleButton()
+
+        Log.d("YMC","${dietType}")
 
         val MainPageFragment = MainPageFragment()
 
@@ -60,7 +63,7 @@ class DietPageActivity : AppCompatActivity() {
         binding.dietSaveButton.setOnClickListener(){
 
             val saveDiet = daily_diet(date = System.currentTimeMillis(), diet_type = dietType!!,simple_total_kcal = sumSimpleKcal.toDouble(), diet_list = AddFoodList)
-            PostDietListCall(this).PostDiet(saveDiet)
+            PostDietListCall(this, this).PostDiet(saveDiet)
 
         }
     }
@@ -128,4 +131,9 @@ class DietPageActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.fl_container,MainPageFragment())
         transaction.commit()}
+
+    override fun postDietList() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
 }

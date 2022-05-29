@@ -96,7 +96,16 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private var breakTimeInt = 0
-    private val exerciseId = mapOf<String, Long>("PUSH UP" to 1, "SQUAT" to 2, "LUNGE" to 3, "DUMBBELL" to 4)
+    private val exerciseId = mapOf<String, Long>(
+        "PUSH UP" to 1,
+        "SQUAT" to 2,
+        "LUNGE" to 3,
+        "DUMBBELL" to 4,
+        "MOUNTAIN CLIMBING" to 5,
+        "SIDE LATERAL RAISE" to 6,
+        "SIDE LUNGE" to 7,
+        "DUMBEL CURL" to 8
+    )
     private lateinit var dialog: LoadingDialog
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -231,14 +240,15 @@ class TrainingAiCameraActivity : AppCompatActivity() {
 
                         override fun onTimerListener(min: Int, sec: Int){
                             Timer.text = getString(R.string.tfe_pe_timer, min, sec)
-                            //Timer.setTextSize(Dimension.SP, 30.0F)
                         }
 
                         override fun onExcrciseListener(currentExcrcise: String, nextExcrcise: String){
-                            currentExcrcise_view.text = getString(
-                                R.string.tfe_pe_currentExcrcise, currentExcrcise)
-                            nextExcrcise_view.text = getString(
-                                R.string.tfe_pe_nextExcrcise, nextExcrcise)
+                            runOnUiThread{
+                                currentExcrcise_view.text = getString(
+                                    R.string.tfe_pe_currentExcrcise, currentExcrcise)
+                                nextExcrcise_view.text = getString(
+                                    R.string.tfe_pe_nextExcrcise, nextExcrcise)
+                            }
                         }
 
                         override fun onExcrciseCountListener(currentReps: Int, currentSets: Int) {
@@ -254,14 +264,22 @@ class TrainingAiCameraActivity : AppCompatActivity() {
                             }
                         }
 
-                        override fun onExcrciseBreakTimeListner(flag: Boolean, sec: Int) {
+                        override fun onExcrciseBreakTimeListner(flag: Boolean,
+                                                                sec: Int,
+                                                                btFlag: Boolean) {
                             runOnUiThread{
                                 if(flag){
+                                    if(btFlag){
+                                        ttsSpeak("쉬는 시간입니다.")
+                                    }
                                     breakTime.visibility = View.VISIBLE
                                     breakTime.text = getString(R.string.break_time_timer,
                                             sec.toString())
                                 }
                                 else{
+                                    if(sec == 0){
+                                        ttsSpeak("운동을 시작하세요.")
+                                    }
                                     breakTime.visibility = View.INVISIBLE
                                 }
                             }

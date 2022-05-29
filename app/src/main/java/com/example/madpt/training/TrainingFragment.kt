@@ -105,7 +105,7 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         }
 
         binding.btnRoutinLoading.setOnClickListener {
-            val dialog = LodingTrainList(requireContext(), storeTrainList, this)
+            val dialog = LodingTrainList(requireContext(), this)
             dialog.showDialog()
         }
 

@@ -134,6 +134,8 @@ class DietPageActivity : AppCompatActivity(), PostDietList {
 
     override fun postDietList() {
         val intent = Intent(this, MainActivity::class.java)
+        AddFoodList.clear()
         startActivity(intent)
+        finish()
     }
 }

@@ -32,4 +32,12 @@
         <item name="android:editTextColor">@color/white</item>
         <item name="android:colorControlNormal">@color/white</item>
     </style>
+    <style name="dialogTheme" parent="Theme.AppCompat.Dialog">
+        <item name="android:background">@color/backgroungblack</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:navigationBarColor">@color/backgroungblack</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/backgroungblack</item>
+    </style>
 </resources>

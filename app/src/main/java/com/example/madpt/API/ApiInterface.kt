@@ -1,6 +1,7 @@
 package com.example.madpt.API.food
 
 import com.example.madpt.API.diet.daily_diet
+import com.example.madpt.API.member.MemberProfile
 import com.example.madpt.API.social.Friends
 import com.example.madpt.API.social.SocialRank
 import com.example.madpt.API.statistic.DailyDietList
@@ -41,4 +42,8 @@ interface GetExerciseRoutineList{
 
 interface PostDietList{
     fun postDietList()
+}
+
+interface GetMemberProfile{
+    fun getMemberProfile(memberProfile: MemberProfile)
 }

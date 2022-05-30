@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="300dp"
     android:weightSum="4.5"
-    android:background="@color/backgroungblack"
+    android:background="@drawable/round_layout_dialog"
     android:layout_height="wrap_content">
 
     <TextView

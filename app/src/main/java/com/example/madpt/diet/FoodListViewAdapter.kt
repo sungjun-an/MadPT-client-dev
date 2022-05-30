@@ -17,7 +17,7 @@ class FoodListViewAdapter(
     private val context: Context,
     private val listViewAddFoodList: ArrayList<diet_list>
 ) : BaseAdapter() {
-
+    var dietPageActivity : DietPageActivity? = null
     override fun getCount(): Int {
         return listViewAddFoodList.size
     }
@@ -28,18 +28,19 @@ class FoodListViewAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val binding = AddFoodListviewBinding.inflate(LayoutInflater.from(context))
+        dietPageActivity = context as DietPageActivity
 
         val show = listViewAddFoodList[position]
 
-        /*var tempMakerName : String = ""
-        if(show.maker_name.equals("")){
-            tempMakerName = show.maker_name!!
-        }
-        else{tempMakerName = "["+show.maker_name!!+"]"}*/
-
-
         binding.foodName.text = show.food_name
         binding.defaultKcal.text = show.diet_kcal.toString()
+
+        binding.foodCancelButton.setOnClickListener {
+            listViewAddFoodList.removeAt(position)
+            this.notifyDataSetChanged()
+            dietPageActivity!!.setSumKcal()
+        }
+
 
         return binding.root
     }

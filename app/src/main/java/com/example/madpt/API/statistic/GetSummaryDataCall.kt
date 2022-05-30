@@ -7,6 +7,7 @@ import com.example.madpt.API.food.GetSummaryData
 import com.example.madpt.API.food.Get_Food
 import com.example.madpt.loading.LoadingDialog
 import com.example.madpt.splash.SplashActivity
+import com.example.madpt.splash.SplashActivity.Companion.userId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,25 +24,25 @@ class GetSummaryDataCall(listen: GetSummaryData, context: Context) {
         dialog.showDialog()
 
         val timestamp = System.currentTimeMillis()
-        RetrofitClass.service.getSummaryData(SplashActivity.userId, timestamp).enqueue(object : Callback<SummaryData> {
+        RetrofitClass.service.getSummaryData(userId, timestamp).enqueue(object : Callback<SummaryData> {
             override fun onResponse(call: Call<SummaryData>, response: Response<SummaryData>) {
                 if (response.isSuccessful) {
                     // 정상적으로 통신이 성고된 경우
                     summary = response.body()
 
                     summary?.let { summaryDataListen.getSummaryDataList(it) }
-                    Log.d("YMC","${SplashActivity.userId}")
+                    Log.d("YMC2","${userId}")
                     dialog.loadingDismiss()
-                    Log.d("YMC", "onResponse 성공: " + summary?.toString());
+                    Log.d("YMC2", "onResponse 성공: " + summary?.toString())
                 } else {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     dialog.loadingDismiss()
-                    Log.d("YMC", "onResponse 실패")
+                    Log.d("YMC2", "onResponse 실패" + summary?.toString()+ userId)
                 }
             }
             override fun onFailure(call: Call<SummaryData>, t: Throwable) {
                 dialog.loadingDismiss()
-                Log.d("YMC", "onFailure 에러: " + t.message.toString());
+                Log.d("YMC2", "onFailure 에러: " + t.message.toString())
             }
         })
     }

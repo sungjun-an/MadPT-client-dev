@@ -106,30 +106,41 @@ class MainPageFragment : Fragment(), GetSummaryData {
         }
         //식단 Kcal있을 시 Kcal 출력
 
-        if (summaryData.weight != 0.0) {
-            val userWeight = summaryData.weight.toInt().toString() + "Kg"
-            binding.plusButtonWeight.visibility = View.INVISIBLE
-            binding.userWeight.visibility = View.VISIBLE
-            binding.userWeight.text = userWeight
-        }
+
+        val userWeight = summaryData.weight.toInt().toString() + "Kg"
+        binding.plusButtonWeight.visibility = View.INVISIBLE
+        binding.userWeight.visibility = View.VISIBLE
+        binding.userWeight.text = userWeight
+
         //유저 weight있을 시 weight 출력
 
-        if (summaryData.weight != 0.0 && summaryData.goalweight != 0.0){
-            val userGoalWeightRemain = (summaryData.weight - summaryData.goalweight).toInt().toString()
-            binding.goalDistance.text = userGoalWeightRemain
-            binding.goalDistance.visibility = View.VISIBLE
-            binding.postGoalDistance.visibility = View.INVISIBLE
-
-
+        if (summaryData.weight != 0.0 && summaryData.goalweight != 0.0) {
+            val userGoalWeightRemain = (summaryData.goalweight - summaryData.weight).toInt()
+            if (userGoalWeightRemain >= 0) {
+                binding.postGoalDistance.text = "목표 몸무게를 달성했습니다!"
+                binding.weightGoalLayout.visibility = View.INVISIBLE
+                binding.postGoalDistance.visibility = View.VISIBLE
+            }
+            if (userGoalWeightRemain < 0) {
+                binding.goalDistance.text = userGoalWeightRemain.toString() + "kg 입니다."
+                binding.goalDistance.visibility = View.VISIBLE
+                binding.postGoalDistance.visibility = View.INVISIBLE
+            }
         }
 
-        val sumKcal : String = (summaryData.snackKcal + summaryData.breakfastKcal + summaryData.lunchKcal + summaryData.dinnerKcal).toInt().toString()
+        if (summaryData.goalweight == 0.0) {
+            binding.weightGoalLayout.visibility = View.INVISIBLE
+            binding.postGoalDistance.visibility = View.VISIBLE
+        }
+
+        val sumKcal: String =
+            (summaryData.snackKcal + summaryData.breakfastKcal + summaryData.lunchKcal + summaryData.dinnerKcal).toInt()
+                .toString()
         binding.eatKcal.text = sumKcal
         //총합 Kcal 출력
 
-
-        var lessKcal : Int = summaryData.goaldietkcal.toInt() - sumKcal.toInt()
-        if (lessKcal<0) lessKcal = 0
+        var lessKcal: Int = summaryData.goaldietkcal.toInt() - sumKcal.toInt()
+        if (lessKcal < 0 || summaryData.goaldietkcal == 0.0) lessKcal = 0
         binding.arcProgress.progress = lessKcal
         binding.arcProgress.max = summaryData.goaldietkcal.toInt()
         //잔여 kcal 출력

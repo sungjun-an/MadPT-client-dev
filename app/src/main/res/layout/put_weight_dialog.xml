@@ -1,135 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="230dp"
     android:layout_height="wrap_content"
-    tools:context=".main.PutWeightDialog"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_weight="6"
+    android:background="@drawable/round_layout_dialog"
+    tools:context=".main.PutWeightDialog">
+
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:background="@color/white"
-        android:weightSum="60"
-        android:orientation="vertical">
+        android:layout_width="230dp"
+        android:layout_height="130dp"
+        android:orientation="vertical"
+        android:weightSum="16">
 
-        <Space
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"/>
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="몸무게를 입력하세요"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:orientation="vertical"
+            android:layout_weight="6"
             android:weightSum="10">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="몸무게를 입력하세요"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="bottom"
-                    android:fontFamily="@font/bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="5"
-                android:weightSum="10">
+            <EditText
+                android:id="@+id/get_weight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:inputType="number"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:layout_weight="7"
+                android:gravity="right" />
 
-                <EditText
-                    android:id="@+id/get_weight"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="7"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="top|right"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:text="kg"
-                    android:gravity="bottom|left"
-                    android:textSize="30sp"
-                    android:fontFamily="@font/bold"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="bottom|left"
+                android:text="kg"
+                android:textColor="@color/white"
+                android:textSize="30sp" />
         </LinearLayout>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20"/>
+            android:layout_weight="1" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
-            android:weightSum="20"
-            android:orientation="vertical">
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"/>
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:weightSum="20">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_weight="18"
                 android:orientation="horizontal"
-                android:layout_weight="16"
                 android:weightSum="20">
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3" />
 
                 <Button
                     android:id="@+id/cancel_get_weihgt_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="6"
-                    android:text="취소"/>
+                    android:textColor="@color/white"
+                    android:background="@drawable/round_layout_button"
+                    android:text="취소" />
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"/>
+                    android:layout_weight="2" />
 
                 <Button
                     android:id="@+id/save_get_weight_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="6"
-                    android:text="저장"/>
+                    android:textColor="@color/white"
+                    android:background="@drawable/round_layout_button"
+                    android:text="저장" />
 
                 <Space
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"/>
+                    android:layout_weight="3" />
 
             </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
-
-
-
+                android:layout_weight="1" />
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

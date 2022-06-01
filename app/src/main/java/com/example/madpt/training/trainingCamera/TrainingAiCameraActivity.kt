@@ -96,7 +96,20 @@ class TrainingAiCameraActivity : AppCompatActivity() {
     private var cameraSource: CameraSource? = null
     private var isClassifyPose = false
     private var breakTimeInt = 0
+<<<<<<< Updated upstream
     private val exerciseId = mapOf<String, Long>("PUSH UP" to 1, "SQUAT" to 2, "LUNGE" to 3, "DUMBBELL" to 4)
+=======
+    private val exerciseId = mapOf<String, Long>(
+        "PUSH UP" to 1,
+        "SQUAT" to 2,
+        "LUNGE" to 3,
+        "SHOULDER PRESS" to 4,
+        "MOUNTAIN CLIMBING" to 5,
+        "SIDE LATERAL RAISE" to 6,
+        "SIDE LUNGE" to 7,
+        "DUMBEL CURL" to 8
+    )
+>>>>>>> Stashed changes
     private lateinit var dialog: LoadingDialog
     private val requestPermissionLauncher =
         registerForActivityResult(

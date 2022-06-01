@@ -9,5 +9,4 @@
         <item name="android:colorPrimaryDark">@color/backgroungblack</item>
         <item name="android:colorPrimary">@color/backgroungblack</item>
     </style>
-
 </resources>

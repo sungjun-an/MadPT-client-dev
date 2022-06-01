@@ -155,16 +155,16 @@ class CalendarFragment : Fragment(), GetMonthDataList{
                         var monthTotalData = arrayListOf<MonthDataDateBy>()
                         monthTotalData.addAll(monthData[day.date].orEmpty())
                         if (monthTotalData[0].dailyDietKcal != 0.0) {
-                            monthDietKcalView.setBackgroundColor(view!!.context.getColorCompat(R.color.diet_kcal_purple))
+                            monthDietKcalView.setBackgroundColor(view!!.context.getColorCompat(R.color.puple))
                             monthDietKcalText.text = "%.2f".format(monthTotalData[0].dailyDietKcal)
                         }
                         if (monthTotalData[0].dailyExerciseKcal != 0.0) {
-                            monthExerciseKcalView.setBackgroundColor(view!!.context.getColorCompat(R.color.exKcal_purple))
+                            monthExerciseKcalView.setBackgroundColor(view!!.context.getColorCompat(R.color.mint))
                             monthExerciseKcalText.text = "%.2f".format(monthTotalData[0].dailyExerciseKcal)
                         }
                     }
                 }else {
-                    textView.setTextColorRes(R.color.white)
+                    textView.setTextColorRes(R.color.calendar_text_grey)
                     layout.background = null
                 }
             }

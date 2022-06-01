@@ -38,8 +38,8 @@ class SetDialog(context: Context, s: String, i: Int) {
             set.setText((set.text.toString().toInt() + 1).toString())
         }
         dialog.findViewById<Button>(R.id.btn_set_minus).setOnClickListener {
-            if (set.text.toString().toInt()==0){
-                set.setText("0")
+            if (set.text.toString().toInt()==1){
+                set.setText("1")
             }
             else {
                 set.setText((set.text.toString().toInt() - 1).toString())
@@ -50,8 +50,8 @@ class SetDialog(context: Context, s: String, i: Int) {
             rep.setText((rep.text.toString().toInt() + 1).toString())
         }
         dialog.findViewById<Button>(R.id.btn_rep_minus).setOnClickListener {
-            if (rep.text.toString().toInt()==0){
-                rep.setText("0")
+            if (rep.text.toString().toInt()==1){
+                rep.setText("1")
             }
             else {
                 rep.setText((rep.text.toString().toInt() - 1).toString())

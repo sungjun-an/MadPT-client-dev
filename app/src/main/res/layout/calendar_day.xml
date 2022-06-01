@@ -31,7 +31,7 @@
             android:layout_height="12dp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="38dp"
-            android:background="@color/diet_kcal_purple" />
+            android:background="@color/puple" />
 
         <View
             android:id="@+id/calendarExerciseKcal"
@@ -39,7 +39,7 @@
             android:layout_height="12dp"
             android:layout_gravity="bottom"
             android:layout_marginBottom="14dp"
-            android:background="@color/exKcal_purple" />
+            android:background="@color/mint" />
 
         <TextView
             android:id="@+id/calendarDietText"
@@ -50,7 +50,7 @@
             android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="38dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="10dp"
             tools:text="20" />
 
@@ -63,7 +63,7 @@
             android:gravity="right"
             android:layout_gravity="bottom"
             android:layout_marginBottom="14dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="10dp"
             tools:text="20" />
 

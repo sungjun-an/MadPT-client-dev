@@ -45,7 +45,8 @@
             android:layout_weight="20"
             android:text="김성환"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
+            android:fontFamily="@font/bold"
             android:gravity="center|left" />
 
         <TextView
@@ -56,7 +57,8 @@
             android:text="100"
             android:textColor="@color/white"
             android:gravity="right|center"
-            android:textSize="30dp"/>
+            android:fontFamily="@font/bold"
+            android:textSize="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,7 +66,8 @@
             android:text="Kcal"
             android:textColor="@color/white"
             android:gravity="left|center"
-            android:textSize="30dp"/>
+            android:fontFamily="@font/bold"
+            android:textSize="20dp"/>
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"

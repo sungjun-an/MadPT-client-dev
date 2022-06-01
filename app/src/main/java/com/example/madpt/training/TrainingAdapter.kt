@@ -11,11 +11,6 @@ import com.example.madpt.R
 
 class TrainingAdapter(private val context: Context, listener: OnRecyclerClickListener) : RecyclerView.Adapter<TrainingAdapter.ViewHolder> (){
 
-<<<<<<< Updated upstream
-    private val titles = arrayOf("PUSH UP", "SQUAT", "LUNGE", "DUMBBELL")
-    private val images = intArrayOf(R.drawable.pushup,
-    R.drawable.standing, R.drawable.lunge, R.drawable.dumbell)
-=======
     private val titles = arrayOf(
         "PUSH UP",
         "SQUAT",
@@ -37,7 +32,7 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
         R.drawable.side_lunge,
         R.drawable.dumbbell_curl
     )
->>>>>>> Stashed changes
+
     private var onClickListen = listener
 
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {

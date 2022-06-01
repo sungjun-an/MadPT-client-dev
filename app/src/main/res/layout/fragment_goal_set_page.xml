@@ -10,42 +10,50 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="20">
+        android:weightSum="100">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="2"
-            android:weightSum="10">
+            android:layout_weight="10"
+            android:weightSum="20">
+
+            <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/mainPageToday"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
                 android:layout_weight="7"
                 android:fontFamily="@font/bold"
+                android:gravity="center|left"
                 android:text="My Goal"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="30dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8.5" />
+
             <Button
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2.5"
-                android:layout_marginTop="10dp"
+                android:layout_height="37dp"
+                android:layout_weight="3"
                 android:text="저장"
+                android:background="@drawable/round_layout_button"
                 android:textStyle="bold"
                 android:id="@+id/goal_save_button"></Button>
-
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="18"
+            android:layout_weight="80"
             android:orientation="horizontal"
             android:weightSum="20">
 
@@ -83,6 +91,7 @@
                             android:layout_width="250dp"
                             android:layout_height="50dp"
                             android:hint="목표 몸무게를 입력해주세요"
+                            android:inputType="number"
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/white"
                             android:textColorHint="@color/white"
@@ -118,13 +127,15 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp">
+                        android:layout_height="0dp"
+                        android:layout_weight="10">
 
                         <EditText
                             android:id="@+id/goal_eatkcal"
                             android:layout_width="250dp"
                             android:layout_height="50dp"
                             android:hint="목표 칼로리를 입력해주세요"
+                            android:inputType="number"
                             android:textColor="@color/white"
                             android:textColorHighlight="@color/white"
                             android:textColorHint="@color/white"
@@ -168,6 +179,7 @@
                             android:layout_height="50dp"
                             android:hint="목표 활동량을 입력해주세요"
                             android:textColor="@color/white"
+                            android:inputType="number"
                             android:textColorHighlight="@color/white"
                             android:textColorHint="@color/white"
                             android:textSize="20sp"

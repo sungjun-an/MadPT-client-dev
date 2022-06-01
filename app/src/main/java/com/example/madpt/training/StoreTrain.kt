@@ -22,9 +22,6 @@ class StoreTrain(context: Context, breakTime: Int){
     private val context = context
     private val dialog = Dialog(context)
     private val breakTime = breakTime
-<<<<<<< Updated upstream
-    private val exerciseId = mapOf<String, Long>("PUSH UP" to 1, "SQUAT" to 2, "LUNGE" to 3, "DUMBBELL" to 4)
-=======
     private val exerciseId = mapOf<String, Long>(
         "PUSH UP" to 1,
         "SQUAT" to 2,
@@ -35,7 +32,6 @@ class StoreTrain(context: Context, breakTime: Int){
         "SIDE LUNGE" to 7,
         "DUMBEL CURL" to 8
     )
->>>>>>> Stashed changes
 
     @SuppressLint("SetTextI18n")
     fun showDialog(dataList:ArrayList<testmodel>){

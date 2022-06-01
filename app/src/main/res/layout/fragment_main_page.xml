@@ -94,9 +94,9 @@
                                     android:layout_weight="3.7"
                                     android:fontFamily="@font/bold"
                                     android:gravity="center|bottom"
-                                    android:textSize="17dp"
                                     android:text="1024"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/white"
+                                    android:textSize="17dp" />
 
                                 <TextView
                                     android:id="@+id/eat_kcal_int"
@@ -127,21 +127,20 @@
                                         android:layout_width="110dp"
                                         android:layout_height="110dp"
                                         android:background="@color/puple"
-                                        app:arc_max="1000"
+                                        app:arc_finished_color="@color/exKcal_purple"
+                                        app:arc_max="100000"
                                         app:arc_progress="0"
                                         app:arc_suffix_text="Kcal"
                                         app:arc_suffix_text_padding="1dp"
                                         app:arc_suffix_text_size="10dp"
                                         app:arc_text_color="@color/white"
                                         app:arc_text_size="20dp"
-                                        app:arc_finished_color="@color/black"
-                                        app:arc_unfinished_color="@color/maincolor"
+                                        app:arc_unfinished_color="@color/black"
 
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintHorizontal_bias="0.494"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                         />
+                                        app:layout_constraintStart_toStartOf="parent" />
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 <TextView
@@ -174,15 +173,15 @@
                                         android:layout_weight="2"></Space>
 
                                     <Button
-                                        android:layout_marginTop="10dp"
                                         android:id="@+id/goal_button"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
+                                        android:layout_marginTop="10dp"
                                         android:layout_weight="6"
+                                        android:background="@drawable/round_layout_summary_button"
                                         android:gravity="center"
-                                        android:background="@drawable/round_layout_button"
                                         android:text="목표"
-                                        android:textColor="@color/white"
+                                        android:textColor="@color/puple"
                                         android:textStyle="bold"></Button>
 
                                     <Space
@@ -199,9 +198,9 @@
                                     android:layout_weight="2.4"
                                     android:fontFamily="@font/bold"
                                     android:gravity="center|bottom"
-                                    android:textSize="17dp"
                                     android:text="500"
-                                    android:textColor="@color/white" />
+                                    android:textColor="@color/white"
+                                    android:textSize="17dp" />
 
                                 <TextView
                                     android:id="@+id/move_kcal_int"
@@ -268,10 +267,10 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
+                                    android:layout_gravity="top"
                                     android:layout_weight="4"
                                     android:gravity="center"
                                     android:text="몸무게"
-                                    android:layout_gravity="top"
                                     android:textColor="@color/white" />
                             </LinearLayout>
 
@@ -285,17 +284,34 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="7">
 
-                                <TextView
-                                    android:id="@+id/goal_distance"
+                                <LinearLayout
+                                    android:id="@+id/weight_goal_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:layout_weight="4"
-                                    android:fontFamily="@font/bold"
-                                    android:gravity="center"
-                                    android:text="-14KG"
-                                    android:textSize="17dp"
-                                    android:textColor="@color/white"
-                                    android:visibility="invisible" />
+                                    android:orientation="vertical"
+                                    android:weightSum="10">
+
+                                    <TextView
+                                        android:id="@+id/goal_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="5"
+                                        android:gravity="center|bottom"
+                                        android:text="목표 몸무게까지"
+                                        android:textColor="@color/white"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:id="@+id/goal_distance"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="0dp"
+                                        android:layout_weight="5"
+                                        android:gravity="center|top"
+                                        android:text="-14KG"
+                                        android:textColor="@color/white"
+                                        android:textSize="14dp"
+                                        android:visibility="visible" />
+                                </LinearLayout>
 
                                 <TextView
                                     android:id="@+id/post_goal_distance"
@@ -306,7 +322,7 @@
                                     android:gravity="center"
                                     android:text="목표를 입력해주세요"
                                     android:textColor="@color/white"
-                                    android:visibility="visible" />
+                                    android:visibility="invisible" />
                             </FrameLayout>
 
                             <Space
@@ -315,7 +331,6 @@
                                 android:layout_weight="1.5" />
 
                         </LinearLayout>
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -326,6 +341,7 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -348,11 +364,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="18"
+                android:fontFamily="@font/bold"
+                android:gravity="center|left"
                 android:text="Diet"
                 android:textColor="@color/white"
-                android:textSize="30dp"
-                android:fontFamily="@font/bold"
-                android:gravity="center|left"/>
+                android:textSize="30dp" />
 
 
         </LinearLayout>
@@ -412,9 +428,9 @@
                             android:id="@+id/plus_button_breakfast"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:padding="0dp"
-                            android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/plus_button" />
 
@@ -493,9 +509,9 @@
                             android:id="@+id/plus_button_lunch"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:padding="0dp"
-                            android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/plus_button"></ImageButton>
 
@@ -571,9 +587,9 @@
                             android:id="@+id/plus_button_dinner"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:padding="0dp"
-                            android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/plus_button"></ImageButton>
 
@@ -649,9 +665,9 @@
                             android:id="@+id/plus_button_snack"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:layout_gravity="center"
                             android:background="@android:color/transparent"
                             android:padding="0dp"
-                            android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/plus_button"></ImageButton>
 

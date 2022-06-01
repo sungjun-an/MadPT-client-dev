@@ -11,8 +11,11 @@ import com.example.madpt.databinding.FragmentGoalSetPageBinding
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.madpt.API.food.GetSummaryData
 import com.example.madpt.API.goal.Goal
 import com.example.madpt.API.goal.PostGoalCall
+import com.example.madpt.API.statistic.GetSummaryDataCall
+import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.MainActivity
 import com.example.madpt.databinding.FragmentMainPageBinding
 import com.example.madpt.user
@@ -20,7 +23,7 @@ import java.lang.NullPointerException
 import java.lang.NumberFormatException
 
 
-class GoalSetPageFragment : Fragment() {
+class GoalSetPageFragment : Fragment(), GetSummaryData {
 
     private var _binding: FragmentGoalSetPageBinding? = null
     private val binding get() = _binding!!
@@ -36,10 +39,9 @@ class GoalSetPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+        GetSummaryDataCall(this, requireContext()).getSummaryData()
         _binding = FragmentGoalSetPageBinding.inflate(inflater, container, false)
-        binding.goalEatkcal.setText(user.eat_kcal.toString())
-        binding.goalMovekcal.setText(user.move_kcal.toString())
-        binding.goalWeight.setText(user.user_Goal_weight.toString())
 
         binding.goalSaveButton.setOnClickListener {
             try {
@@ -54,6 +56,12 @@ class GoalSetPageFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun getSummaryDataList(summaryData: SummaryData) {
+        if(summaryData.goaldietkcal!=0.0) binding.goalEatkcal.setText(summaryData.goaldietkcal.toInt().toString())
+        if(summaryData.goalexercisekcal!=0.0) binding.goalMovekcal.setText(summaryData.goalexercisekcal.toInt().toString())
+        binding.goalWeight.setText(summaryData.goalweight.toInt().toString())
     }
 
 

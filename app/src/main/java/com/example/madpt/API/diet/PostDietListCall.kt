@@ -5,7 +5,6 @@ import android.util.Log
 import com.example.madpt.API.PostResponse
 import com.example.madpt.API.RetrofitClass
 import com.example.madpt.API.food.Get_Food
-import com.example.madpt.FoodList
 import com.example.madpt.MainActivity
 import com.example.madpt.loading.LoadingDialog
 import com.example.madpt.splash.SplashActivity.Companion.userId

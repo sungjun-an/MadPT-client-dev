@@ -1,16 +1,18 @@
 package com.example.madpt.API
 
 import com.example.madpt.API.diet.daily_diet
+import com.example.madpt.API.food.GetMemberProfile
 import com.example.madpt.API.food.Get_Food
 import com.example.madpt.API.goal.Goal
 import com.example.madpt.API.member.MemberInfo
+import com.example.madpt.API.member.MemberProfile
 import com.example.madpt.API.member.MemberWeight
-import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.social.SocialRank
 import com.example.madpt.API.statistic.MonthData
 import com.example.madpt.API.statistic.SummaryData
 import com.example.madpt.API.statistic.TrainRecord
 import com.example.madpt.API.routine.GetTrainRoutine
+import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.statistic.*
 import com.example.madpt.API.trainresult.Train_result
 import retrofit2.Call
@@ -58,5 +60,8 @@ interface RetrofitService {
 
     @GET("get/social/rank")
     fun getSocialRank(@Query("date") timestamp: Long):Call<SocialRank>
+
+    @GET("get/member/info")
+    fun getMemberInfo(@Header("Member-Id")id: Long): Call<MemberProfile>
 
 }

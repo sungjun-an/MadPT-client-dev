@@ -3,6 +3,7 @@ package com.example.madpt.training
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.view.WindowManager
 import android.widget.Button
@@ -14,9 +15,7 @@ import com.example.madpt.API.routine.ExerciseList
 import com.example.madpt.API.routine.PostTrainRoutine
 import com.example.madpt.API.routine.PostTrainRoutineCall
 import com.example.madpt.R
-import com.example.madpt.storeTraining
 import com.example.madpt.testmodel
-import java.net.URL
 
 class StoreTrain(context: Context, breakTime: Int){
 
@@ -27,7 +26,7 @@ class StoreTrain(context: Context, breakTime: Int){
         "PUSH UP" to 1,
         "SQUAT" to 2,
         "LUNGE" to 3,
-        "DUMBBELL" to 4,
+        "SHOULDER PRESS" to 4,
         "MOUNTAIN CLIMBING" to 5,
         "SIDE LATERAL RAISE" to 6,
         "SIDE LUNGE" to 7,
@@ -42,7 +41,11 @@ class StoreTrain(context: Context, breakTime: Int){
         trainList.addAll(dataList)
 
         dialog.setContentView(R.layout.fragment_store_train)
+        dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         dialog.window!!.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dialog.window?.setDecorFitsSystemWindows(false)
+        }
         dialog.setCanceledOnTouchOutside(true)
         dialog.setCancelable(true)
         dialog.findViewById<RecyclerView>(R.id.trainListRecycle)

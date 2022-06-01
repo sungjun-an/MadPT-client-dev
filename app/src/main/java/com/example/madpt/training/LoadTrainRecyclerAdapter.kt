@@ -11,10 +11,15 @@ import com.example.madpt.testmodel
 
 class LoadTrainRecyclerAdapter( private val loadItem:ArrayList<ExerciseList>): RecyclerView.Adapter<LoadTrainRecyclerAdapter.ViewHolder>() {
 
-    private val exerciseImage = mapOf<Long, Int>(1.toLong() to R.drawable.pushup,
+    private val exerciseImage = mapOf<Long, Int>(
+        1.toLong() to R.drawable.pushup,
         2.toLong() to R.drawable.standing,
         3.toLong() to R.drawable.lunge,
-        4.toLong() to R.drawable.dumbell)
+        4.toLong() to R.drawable.shoulder_press,
+        5.toLong() to R.drawable.mountain_climbing,
+        6.toLong() to R.drawable.side_lateral_raise,
+        7.toLong() to R.drawable.side_lunge,
+        8.toLong() to R.drawable.dumbbell_curl)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 

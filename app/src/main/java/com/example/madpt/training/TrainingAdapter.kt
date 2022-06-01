@@ -15,22 +15,24 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
         "PUSH UP",
         "SQUAT",
         "LUNGE",
-        "DUMBBELL",
+        "SHOULDER PRESS",
         "MOUNTAIN CLIMBING",
         "SIDE LATERAL RAISE",
         "SIDE LUNGE",
         "DUMBEL CURL"
     )
+
     private val images = intArrayOf(
         R.drawable.pushup,
         R.drawable.standing,
         R.drawable.lunge,
-        R.drawable.dumbell,
-        R.drawable.dumbell,
-        R.drawable.dumbell,
-        R.drawable.dumbell,
-        R.drawable.dumbell
+        R.drawable.shoulder_press,
+        R.drawable.mountain_climbing,
+        R.drawable.side_lateral_raise,
+        R.drawable.side_lunge,
+        R.drawable.dumbbell_curl
     )
+
     private var onClickListen = listener
 
     inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView) {
@@ -57,7 +59,7 @@ class TrainingAdapter(private val context: Context, listener: OnRecyclerClickLis
     override fun onBindViewHolder(viewHolder: ViewHolder, @SuppressLint("RecyclerView") i: Int) {
        viewHolder.btn_add.setOnClickListener {
            val dialog = SetDialog(context, titles[i], images[i])
-           dialog.showDialog(0, 0)
+           dialog.showDialog(1, 1)
            dialog.setOnClickListener(object : SetDialog.OnDialogClickListener {
                override fun onClicked(sets: Int, reps: Int, images: Int, itemTitles: String) {
                    onClickListen.onClick(sets, reps, images, itemTitles)

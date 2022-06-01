@@ -49,7 +49,7 @@ class DailyExerciseStatisticsFragment : Fragment(), GetTrainRecordList {
             sum += i.kcal
         }
 
-        binding.textDailyExerciseKcal.text = sum.toString()
+        binding.textDailyExerciseKcal.text = "%.2f".format(sum)
     }
 
     override fun getTrainRecord(trainRecord: ArrayList<TrainRecordList>) {

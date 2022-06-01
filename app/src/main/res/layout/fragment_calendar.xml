@@ -90,18 +90,18 @@
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:background="@color/diet_kcal_purple"
+                android:textColor="@color/black"
+                android:background="@color/puple"
                 android:gravity="center"
-                android:text="총 섭취량" />
+                android:text="섭취량" />
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="0.5"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:background="@color/exKcal_purple"
-                android:text="총 섭취량" />
+                android:textColor="@color/black"
+                android:background="@color/mint"
+                android:text="소모량" />
         </LinearLayout>
     </FrameLayout>
 

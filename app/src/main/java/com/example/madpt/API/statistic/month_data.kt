@@ -18,6 +18,6 @@ data class MonthDataDateBy(
     val date: Long,
     @SerializedName("daily_diet_kcal")
     val dailyDietKcal: Double,
-    @SerializedName("daily_exercise_kcal")
+    @SerializedName("daily_burned_kcal")
     val dailyExerciseKcal: Double
 ): Parcelable

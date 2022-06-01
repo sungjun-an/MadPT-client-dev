@@ -1,6 +1,7 @@
 package com.example.madpt.training
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -25,13 +26,14 @@ private const val ARG_PARAM2 = "param2"
 class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreakTime, Swaping, OnItemClickListener, FixExercise{
 
     private var trainList = arrayListOf<testmodel>()
-    private var breakTime = 0
     private var storeTrainList= arrayListOf<storeTraining>()
+    private var breakTime = 15
+
     private val exerciseTitle = mapOf<Long, String>(
         1.toLong() to "PUSH UP",
         2.toLong() to "SQUAT",
         3.toLong() to "LUNGE",
-        4.toLong() to "DUMBBELL",
+        4.toLong() to "SHOULDER PRESS",
         5.toLong() to "MOUNTAIN CLIMBING",
         6.toLong() to "SIDE LATERAL RAISE",
         7.toLong() to "SIDE LUNGE",
@@ -42,11 +44,11 @@ class TrainingFragment : Fragment(), OnRecyclerClickListener, OnRemove, SetBreak
         1.toLong() to R.drawable.pushup,
         2.toLong() to R.drawable.standing,
         3.toLong() to R.drawable.lunge,
-        4.toLong() to R.drawable.dumbell,
-        5.toLong() to R.drawable.dumbell,
-        6.toLong() to R.drawable.dumbell,
-        7.toLong() to R.drawable.dumbell,
-        8.toLong() to R.drawable.dumbell
+        4.toLong() to R.drawable.shoulder_press,
+        5.toLong() to R.drawable.mountain_climbing,
+        6.toLong() to R.drawable.side_lateral_raise,
+        7.toLong() to R.drawable.side_lunge,
+        8.toLong() to R.drawable.dumbbell_curl
     )
 
     override fun onClick(set: Int, rep: Int, image: Int, itemTitle: String) {

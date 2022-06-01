@@ -38,6 +38,7 @@ class GetSummaryDataCall(listen: GetSummaryData, context: Context) {
                     // 통신이 실패한 경우(응답코드 3xx, 4xx 등)
                     dialog.loadingDismiss()
                     Log.d("YMC2", "onResponse 실패" + summary?.toString()+ userId)
+
                 }
             }
             override fun onFailure(call: Call<SummaryData>, t: Throwable) {

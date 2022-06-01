@@ -18,6 +18,6 @@ data class TrainRecordList(
     val sets: Int,
     @SerializedName("reps")
     val reps: Int,
-    @SerializedName("kcal")
+    @SerializedName("burned_kcal")
     val kcal: Double
 )

@@ -12,7 +12,14 @@ import com.example.madpt.R
 class ExerciseStatisticAdapter(private val dailyExerciseList: ArrayList<TrainRecordList>)
     : RecyclerView.Adapter<ExerciseStatisticAdapter.ViewHolder>() {
     
-    private val idToImage= mapOf("PUSH UP" to R.drawable.pushup, "SQUAT" to R.drawable.standing, "LUNGE" to R.drawable.lunge, "DUMBBELL" to R.drawable.dumbell)
+    private val idToImage= mapOf("PUSH UP" to R.drawable.pushup,
+        "SQUAT" to R.drawable.standing,
+        "LUNGE" to R.drawable.lunge,
+        "SHOULDER PRESS" to R.drawable.shoulder_press,
+        "MOUNTAIN CLIMBING" to R.drawable.mountain_climbing,
+        "SIDE LATERAL RAISE" to R.drawable.side_lateral_raise,
+        "SIDE LUNGE" to R.drawable.side_lunge,
+        "DUMBEL CURL" to R.drawable.dumbbell_curl)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val exerciseTitle: TextView = itemView.findViewById(R.id.exercise_title_text)

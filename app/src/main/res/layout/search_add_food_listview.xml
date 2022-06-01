@@ -16,6 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
         android:text="성환 식품"
         android:visibility="visible" />
 
@@ -25,6 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
         android:text="제육 볶음" />
     </LinearLayout>
 
@@ -38,12 +40,14 @@
         android:id="@+id/default_kcal"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@color/white"
         android:text="120" />
 
     <TextView
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:textColor="@color/white"
         android:text="Kcal" />
     <Space
         android:layout_width="4dp"

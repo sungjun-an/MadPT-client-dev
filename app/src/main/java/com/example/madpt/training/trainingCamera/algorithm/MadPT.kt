@@ -282,13 +282,13 @@ class MadPT {
         var return_val:ArrayList<Int> = ArrayList()
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var score = person[0].score
-        var min_thigh_angle = 75
-        var max_thigh_angle = 110
-        var min_calf_angle = 20
-        var max_calf_angle = 35
-        var min_waist_angle = 40
-        var max_waist_angle = 60
-        var score_th = 0.5
+        var min_thigh_angle = 70
+        var max_thigh_angle = 120
+        var min_calf_angle = 30
+        var max_calf_angle = 45
+        var min_waist_angle = 30
+        var max_waist_angle = 50
+        var score_th = 0.4
 
         if (score > score_th){
             var left_thigh_angle = this.calculate_angle(
@@ -358,13 +358,17 @@ class MadPT {
                 waist_score = 0
             }
 
+            println("log123 left waist : " + left_waist_angle)
+            println("log123 right waist : " + right_waist_angle)
+            println("log123 waist score : " + waist_score)
+
             if (this.score[1][0] < thigh_score)
                 this.score[1][0] = thigh_score
 
-            if (this.score[1][1] > calf_score)
+            if (this.score[1][1] > calf_score && this.score[1][1] - calf_score < 30)
                 this.score[1][1] = calf_score
 
-            if (this.score[1][2] > waist_score)
+            if (this.score[1][2] > waist_score && this.score[1][2] - waist_score < 30)
                 this.score[1][2] = waist_score
 
             if (left_thigh_angle < max_thigh_angle && this.state == 0){
@@ -386,6 +390,7 @@ class MadPT {
                 trainingData.exerciseScoreList = return_val
                 trainingDataList.add(trainingData)
                 this.score[1] = arrayOf(0,100,100)
+                print("log123 : " + return_val)
             }
         }
 

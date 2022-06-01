@@ -1,6 +1,7 @@
 package com.example.madpt.social
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,9 +27,10 @@ class SocialFragment : Fragment(), GetSocialRank {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val timestamp = System.currentTimeMillis()
+        var timestamp = System.currentTimeMillis()
         _binding = FragmentSocialBinding.inflate(inflater, container, false)
         GetSocialRankCall(this,requireContext()).getSocialRank(timestamp)
+        Log.d("time","${timestamp}")
         var calendar = Calendar.getInstance()
 
 

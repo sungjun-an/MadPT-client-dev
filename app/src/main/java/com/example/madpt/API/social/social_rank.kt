@@ -11,7 +11,7 @@ data class SocialRank(
 data class Friends(
     @SerializedName("name")
     val name:String,
-    @SerializedName("somo_kcal")
+    @SerializedName("burned_kcal")
     val somo_kcal:Double
 )
 

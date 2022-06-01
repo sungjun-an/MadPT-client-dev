@@ -21,7 +21,7 @@ class FriendsListAdapter(private val context: Context) :
         RecyclerView.ViewHolder(FriendsListwithMedal.root) {
         fun bind(friends: Friends) {
             FriendsListwithMedal.friendName.text = friends.name
-            FriendsListwithMedal.kcalScore.text = friends.somo_kcal.toString()
+            FriendsListwithMedal.kcalScore.text = friends.somo_kcal.toInt().toString()
             when (adapterPosition) {
                 0 -> FriendsListwithMedal.medal.setImageResource(R.drawable.gold_medal)
                 1 -> FriendsListwithMedal.medal.setImageResource(R.drawable.silver_medal)
@@ -34,7 +34,7 @@ class FriendsListAdapter(private val context: Context) :
         RecyclerView.ViewHolder(FriendsListwithoutMedal.root) {
         fun bind(friends: Friends) {
             FriendsListwithoutMedal.friendName.text = friends.name
-            FriendsListwithoutMedal.kcalScore.text = friends.somo_kcal.toString()
+            FriendsListwithoutMedal.kcalScore.text = friends.somo_kcal.toInt().toString()
             FriendsListwithoutMedal.rank.text = adapterPosition.toString()
         }
     }

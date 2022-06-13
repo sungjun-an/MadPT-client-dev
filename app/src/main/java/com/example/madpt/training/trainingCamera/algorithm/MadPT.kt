@@ -9,7 +9,25 @@ import com.example.madpt.training.trainingCamera.data.Person
 import com.example.madpt.training.trainingCamera.data.TrainingData
 import kotlin.math.*
 import java.util.Random
-
+/*
+KeyPoint(body_part=<BodyPart.NOSE: 0>, coordinate=Point(x=657, y=380), score=0.5295743)
+KeyPoint(body_part=<BodyPart.LEFT_EYE: 1>, coordinate=Point(x=717, y=306), score=0.71167743)
+KeyPoint(body_part=<BodyPart.RIGHT_EYE: 2>, coordinate=Point(x=590, y=308), score=0.60980856)
+KeyPoint(body_part=<BodyPart.LEFT_EAR: 3>, coordinate=Point(x=773, y=335), score=0.4879389)
+KeyPoint(body_part=<BodyPart.RIGHT_EAR: 4>, coordinate=Point(x=481, y=348), score=0.6443689)
+KeyPoint(body_part=<BodyPart.LEFT_SHOULDER: 5>, coordinate=Point(x=901, y=541), score=0.6466513)
+KeyPoint(body_part=<BodyPart.RIGHT_SHOULDER: 6>, coordinate=Point(x=374, y=555), score=0.61255854)
+KeyPoint(body_part=<BodyPart.LEFT_ELBOW: 7>, coordinate=Point(x=990, y=704), score=0.25749794)
+KeyPoint(body_part=<BodyPart.RIGHT_ELBOW: 8>, coordinate=Point(x=252, y=716), score=0.27520007)
+KeyPoint(body_part=<BodyPart.LEFT_WRIST: 9>, coordinate=Point(x=1001, y=670), score=0.14146397)
+KeyPoint(body_part=<BodyPart.RIGHT_WRIST: 10>, coordinate=Point(x=377, y=684), score=0.07703042)
+KeyPoint(body_part=<BodyPart.LEFT_HIP: 11>, coordinate=Point(x=732, y=772), score=0.32744354)
+KeyPoint(body_part=<BodyPart.RIGHT_HIP: 12>, coordinate=Point(x=428, y=731), score=0.36347598)
+KeyPoint(body_part=<BodyPart.LEFT_KNEE: 13>, coordinate=Point(x=973, y=701), score=0.16954657)
+KeyPoint(body_part=<BodyPart.RIGHT_KNEE: 14>, coordinate=Point(x=285, y=700), score=0.20464075)
+KeyPoint(body_part=<BodyPart.LEFT_ANKLE: 15>, coordinate=Point(x=579, y=701), score=0.018676013)
+KeyPoint(body_part=<BodyPart.RIGHT_ANKLE: 16>, coordinate=Point(x=562, y=690), score=0.035004675)
+*/
 
 class MadPT {
     var state: Int
@@ -24,7 +42,7 @@ class MadPT {
     var score: Array<Array<Int>> = arrayOf(
         arrayOf(0,0,100),
         arrayOf(0,100,100),
-        arrayOf(0, 100, 100),
+        arrayOf(100, 0, 100),
         arrayOf(100, 100, 0, 0),
 
         arrayOf(0,0,0),
@@ -302,22 +320,16 @@ class MadPT {
                 body_parts[15].coordinate,
             )
 
-            var left_calf_angle = this.calculate_angle(
-                PointF(body_parts[15].coordinate.x, 0f),
-                body_parts[15].coordinate,
-                body_parts[13].coordinate
-            )
-
-            var left_waist_angle = this.calculate_angle(
-                PointF(body_parts[11].coordinate.x, 0f),
-                body_parts[11].coordinate,
-                body_parts[5].coordinate
-            )
-
             var right_thigh_angle = this.calculate_angle(
                 body_parts[12].coordinate,
                 body_parts[14].coordinate,
                 body_parts[16].coordinate,
+            )
+
+            var left_calf_angle = this.calculate_angle(
+                PointF(body_parts[15].coordinate.x, 0f),
+                body_parts[15].coordinate,
+                body_parts[13].coordinate
             )
 
             var right_calf_angle = this.calculate_angle(
@@ -326,12 +338,18 @@ class MadPT {
                 body_parts[14].coordinate
             )
 
+            var left_waist_angle = this.calculate_angle(
+                PointF(body_parts[11].coordinate.x, 0f),
+                body_parts[11].coordinate,
+                body_parts[5].coordinate
+            )
+
             var right_waist_angle = this.calculate_angle(
                 PointF(body_parts[12].coordinate.x, 0f),
                 body_parts[12].coordinate,
                 body_parts[6].coordinate
             )
-
+            Log.d("lunge right, left waist", "${left_waist_angle}, ${right_waist_angle}")
             var thigh_angle = (left_thigh_angle + right_thigh_angle) / 2
             var calf_angle = (left_calf_angle + right_calf_angle) / 2
             var waist_angle = (left_waist_angle + right_waist_angle) / 2
@@ -410,114 +428,124 @@ class MadPT {
         var score = person[0].score
         var score_th = 0.5f
         var return_val:ArrayList<Int> = ArrayList()
-        var min_down_rate = 0.3
-        var max_down_rate = 0.9
-        var min_angle = 10
-        var max_angle = 30
-        var right_angle:Double = 0.0
-        var left_angle:Double = 0.0
-        var down_rate:Double = 0.0
+        var front_leg_angle = 0.0
+        var calf_angle = 0.0
+        var min_waist_angle = 10
+        var max_waist_angle = 40
+        var min_leg_angle = 90
+        var max_leg_angle = 120
+        var min_calf_angle = 20
+        var max_calf_angle = 40
 
+        var side = ""
         if (score > score_th){
-            var left_knee_point = body_parts[13].coordinate.y
-            var right_knee_point = body_parts[14].coordinate.y
-            var left_ankle_point = body_parts[15].coordinate.y
-            var right_ankle_point = body_parts[16].coordinate.y
+            var left_waist_angle = this.calculate_angle(
+                PointF(body_parts[11].coordinate.x, 0f),
+                body_parts[11].coordinate,
+                body_parts[5].coordinate
+            )
 
-            var left_down_rate = (right_knee_point - left_knee_point) / (left_ankle_point - left_knee_point + 1e-5)
-            var right_down_rate = (left_knee_point - right_knee_point) / (right_ankle_point - right_knee_point + 1e-5)
+            var right_waist_angle = this.calculate_angle(
+                PointF(body_parts[12].coordinate.x, 0f),
+                body_parts[12].coordinate,
+                body_parts[6].coordinate
+            )
+//            Log.d("lunge waist point", "${PointF(body_parts[12].coordinate.x, 0f)}, ${body_parts[12].coordinate}, ${body_parts[6].coordinate}")
+//            Log.d("lunge right, left waist", "${left_waist_angle}, ${right_waist_angle}")
 
-            if (left_down_rate > min_down_rate && this.state == 0){
-                this.state = 1
-                this.side = "left"
+            var waist_angle = (left_waist_angle + right_waist_angle) / 2
+
+            var right_leg_angle = this.calculate_angle(
+                PointF(body_parts[12].coordinate.x, 0f),
+                body_parts[12].coordinate,
+                body_parts[14].coordinate
+            )
+
+            var left_leg_angle = this.calculate_angle(
+                PointF(body_parts[11].coordinate.x, 0f),
+                body_parts[11].coordinate,
+                body_parts[13].coordinate
+            )
+
+            if (left_leg_angle > right_leg_angle){
+                side = "right"
+            } else {
+                side = "left"
             }
 
-
-            if (right_down_rate > min_down_rate && this.state == 0){
-                this.state = 1
-                this.side = "right"
-            }
-
-
-            if (this.side == "left")
-                down_rate = left_down_rate
-
-            if (this.side == "right")
-                down_rate = right_down_rate
-
-            if (this.side == "left"){
-                left_angle = this.calculate_angle(
-                    PointF(body_parts[15].coordinate.x, 0f),
-                    body_parts[15].coordinate,
-                    body_parts[13].coordinate
-                )
-                right_angle = this.calculate_angle(
-                    PointF(body_parts[14].coordinate.x, 0f),
+            if (side == "right"){
+                front_leg_angle = this.calculate_angle(
+                    body_parts[12].coordinate,
                     body_parts[14].coordinate,
-                    body_parts[12].coordinate
+                    body_parts[16].coordinate
                 )
-            }
-
-
-            if (this.side == "right"){
-                left_angle = this.calculate_angle(
-                    PointF(body_parts[13].coordinate.x, 0f),
-                    body_parts[13].coordinate,
-                    body_parts[11].coordinate
-                )
-                right_angle = this.calculate_angle(
+                calf_angle = this.calculate_angle(
                     PointF(body_parts[16].coordinate.x, 0f),
                     body_parts[16].coordinate,
                     body_parts[14].coordinate
                 )
-            }
-            Log.d("lunge down rate", down_rate.toString())
-            var down_score = 0
-            if (down_rate > max_down_rate){
-                down_score = 100
-            } else if (down_rate > min_down_rate){
-                down_score = ((max_down_rate - down_rate) / (max_down_rate - min_down_rate) * 100).toInt()
             } else {
-                down_score = 0
+                front_leg_angle = this.calculate_angle(
+                    body_parts[11].coordinate,
+                    body_parts[13].coordinate,
+                    body_parts[15].coordinate
+                )
+                calf_angle = this.calculate_angle(
+                    PointF(body_parts[15].coordinate.x, 0f),
+                    body_parts[15].coordinate,
+                    body_parts[13].coordinate
+                )
             }
-
-            var right_score = 0
-            Log.d("lunge right angle", right_angle.toString())
-            if (right_angle < min_angle){
-                right_score = 100
-            } else if (right_angle < max_angle){
-                right_score = ((max_angle - right_angle) / (max_angle - min_angle) * 100).toInt()
-            } else{
-                right_score = 0
-            }
-
-            var left_score = 0
-            Log.d("lunge left angle", left_angle.toString())
-            if (left_angle < min_angle){
-                left_score = 100
-            } else if (left_angle < max_angle){
-                left_score = ((max_angle - left_angle) / (max_angle - min_angle) * 100).toInt()
+//            Log.d("lunge calf angle", calf_angle.toString())
+            var front_leg_score = 0
+            if (front_leg_angle < min_leg_angle){
+                front_leg_score = 100
+            } else if (front_leg_angle < max_leg_angle){
+                front_leg_score = ((max_leg_angle - front_leg_angle) / (max_leg_angle - min_leg_angle) * 100).toInt()
             } else {
-                left_score = 0
+                front_leg_score = 0
             }
 
-            if (this.score[2][0] < down_score)
-                this.score[2][0] = down_score
+            var waist_score = 0
+//            Log.d("lunge waist", waist_angle.toString())
+            if (waist_angle < min_waist_angle){
+                waist_score = 100
+            } else if (waist_angle < max_waist_angle){
+                waist_score = ((max_waist_angle - waist_angle + 1e-5) / (max_waist_angle - min_waist_angle) * 100).toInt()
+            } else {
+                waist_score = 0
+            }
 
-            if (this.score[2][1] > right_score)
-                this.score[2][1] = right_score
+            var calf_score = 0
+            if (calf_angle < min_calf_angle){
+                calf_score = 100
+            } else if (calf_angle < max_calf_angle){
+                calf_score = ((max_calf_angle - calf_angle) / (max_calf_angle - min_calf_angle) * 100).toInt()
+            } else {
+                calf_score = 0
+            }
+//            Log.d("lunge score", "${waist_score}, ${front_leg_score}, ${calf_score}")
+            if (this.score[2][0] > waist_score && this.score[2][0] - waist_score < 30)
+                this.score[2][0] = waist_score
 
-            if (this.score[2][2] > left_score)
-                this.score[2][2] = left_score
+            if (this.score[2][1] < front_leg_score)
+                this.score[2][1] = front_leg_score
 
-            if (down_rate < 0.2 && this.state == 1){
+            if (this.score[2][2] > calf_score && this.score[2][2] - calf_score < 30)
+                this.score[2][2] = calf_score
+
+            if (front_leg_angle < 120 && this.state == 0)
+                this.state = 1
+
+            if (front_leg_angle > 160 && this.state == 1){
                 this.state = 0
                 this.count[2] += 1
                 return_val.add(2)
                 this.score[2].forEach{ i ->
                     return_val.add(i)
                 }
-                this.score[2] = arrayOf(0, 100, 100)
+                Log.d("lunge reutnval", return_val.toString())
+                this.score[2] = arrayOf(100, 100, 100)
                 this.side = ""
                 trainingData.excrciseName = 2
                 trainingData.excrciseCount = count[2]
@@ -877,7 +905,7 @@ class MadPT {
         var score_th = 0.4
         var max_arm_angle = 90
         var min_arm_angle = 40
-        var max_variance = 400
+        var max_variance = 20
         var min_variance = 100
         Log.d("score", "${score} ${body_parts[7].coordinate.x} ${body_parts[8].coordinate.x}")
 
@@ -909,6 +937,8 @@ class MadPT {
                 var left_variance = this.calculate_variance(this.left_elbow)
                 var right_variance = this.calculate_variance(this.right_elbow)
                 var variance = (left_variance + right_variance) / 2
+                this.left_elbow = ArrayList()
+                this.right_elbow = ArrayList()
                 Log.d("dumbelcurl 분산,", variance.toString())
 
                 return_val.add(7)

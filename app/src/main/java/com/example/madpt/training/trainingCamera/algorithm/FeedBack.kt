@@ -13,8 +13,8 @@ class FeedBack {
         this.scoreList = ArrayList()
         this.feedBackMatrix =  arrayOf(
             arrayOf("더 내려가", "더 내려가","엉덩이 내려"),
-            arrayOf("더 내려가", "무릎 좀 더 뒤로", "허리 펴", "잘했어요"),
-            arrayOf("더 내려가", "오른쪽 다리 세워", "왼쪽 다리 세워"),
+            arrayOf("더 내려가", "무릎 더 뒤로", "허리 펴", "잘했어요"),
+            arrayOf("허리 펴", "더 내려가", "무릎 더 뒤로"),
             arrayOf("왼쪽 팔", "오른쪽 팔", "왼쪽 팔 더 굽혀", "오른쪽 팔 더 굽혀"),
 
             arrayOf("엉덩이 더 들어", "엉덩이 더 숙여", "무릎 더 올려"),

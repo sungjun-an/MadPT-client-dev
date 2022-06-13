@@ -35,7 +35,7 @@ class FriendsListAdapter(private val context: Context) :
         fun bind(friends: Friends) {
             FriendsListwithoutMedal.friendName.text = friends.name
             FriendsListwithoutMedal.kcalScore.text = friends.somo_kcal.toInt().toString()
-            FriendsListwithoutMedal.rank.text = adapterPosition.toString()
+            FriendsListwithoutMedal.rank.text = (adapterPosition+1).toString()
         }
     }
 

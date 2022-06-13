@@ -36,9 +36,9 @@ class SocialFragment : Fragment(), GetSocialRank {
 
         var year = calendar.get(Calendar.YEAR).toString()
         val month = ((calendar.get(Calendar.MONTH))+1).toString()
-        var week = calendar.get(Calendar.WEEK_OF_MONTH).toString()
+        var date = calendar.get(Calendar.DATE).toString()
 
-        var thisWeek = year + "년 " + month + "월 " + week + "주차"
+        var thisWeek = year + "년 " + month + "월 " + date + "일"
 
         binding.dateThisWeek.text = thisWeek
 

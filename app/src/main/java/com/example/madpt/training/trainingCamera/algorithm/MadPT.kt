@@ -1,6 +1,7 @@
 package com.example.madpt.training.trainingCamera.algorithm
 
 import android.graphics.PointF
+import android.util.Log
 import androidx.core.graphics.minus
 import com.example.madpt.testmodel
 import com.example.madpt.training.trainingCamera.data.KeyPoint
@@ -21,10 +22,11 @@ class MadPT {
     var trainingDataList: ArrayList<TrainingData> = ArrayList()
     var random: Random = Random()
     var score: Array<Array<Int>> = arrayOf(
-        arrayOf(0,0,100,100),
+        arrayOf(0,0,100),
         arrayOf(0,100,100),
         arrayOf(0, 100, 100),
         arrayOf(100, 100, 0, 0),
+
         arrayOf(0,0,0),
         arrayOf(0,0),
         arrayOf(0),
@@ -32,10 +34,10 @@ class MadPT {
     )
     var tmp: Double
     var frame: Int
-    var left_shoulder: Array<Float> = arrayOf(0f)
-    var right_shoulder: Array<Float> = arrayOf(0f)
-    var left_elbow: Array<Float> = arrayOf(0f)
-    var right_elbow: Array<Float> = arrayOf(0f)
+    var left_shoulder: ArrayList<Float> = ArrayList()
+    var right_shoulder: ArrayList<Float> = ArrayList()
+    var left_elbow: ArrayList<Float> = ArrayList()
+    var right_elbow: ArrayList<Float> = ArrayList()
 
     init {
         this.state = 0
@@ -65,7 +67,7 @@ class MadPT {
         return sqrt((p1.x - p2.x).pow(2) + (p1.y - p2.y).pow(2))
     }
 
-    fun calculate_variance(vals: Array<Float>): Double{
+    fun calculate_variance(vals: ArrayList<Float>): Double{
         var variance: Double = 0.0
         var mean: Double = vals.average()
         var vsum: Double = 0.0
@@ -131,7 +133,7 @@ class MadPT {
                 p = side_lunge(person)
             }
             "DUMBEL CURL" -> {
-                p = side_lunge(person)
+                p = dumbel_curl(person)
             }
         }
         return p
@@ -147,7 +149,7 @@ class MadPT {
         var min_arm_angle = 90
         var max_arm_angle = 120
         var min_hip_angle = 130
-        var max_hip_angle = 160
+        var max_hip_angle = 145
         var min_depth = 0
         var max_depth = 100
         var return_val:ArrayList<Int> = ArrayList()
@@ -183,7 +185,6 @@ class MadPT {
                 body_parts[14].coordinate,
             )
 
-            var hip_angle = (left_hip_angle + right_hip_angle) / 2
             var left_head_angle = this.calculate_angle(
                 body_parts[3].coordinate,
                 body_parts[5].coordinate,
@@ -195,11 +196,11 @@ class MadPT {
                 body_parts[6].coordinate,
                 body_parts[12].coordinate
             )
+            var hip_angle = (left_hip_angle + right_hip_angle) / 2
             var head_angle = (left_head_angle + right_head_angle) / 2
-
-            var depth = body_parts[7].coordinate.y - body_parts[5].coordinate.y
             var arm_angle = (left_arm_angle + right_arm_angle) / 2
 
+            var depth = body_parts[7].coordinate.y - body_parts[5].coordinate.y
             var depth_score = 0
             if (depth < min_depth){
                 depth_score = 100
@@ -223,7 +224,7 @@ class MadPT {
             if (head_angle > max_head_angle){
                 head_score = 100
             } else if (head_angle > min_head_angle) {
-                head_score = ((max_head_angle - head_angle) / (max_head_angle - min_head_angle) * 100).toInt()
+                head_score = ((head_angle - min_head_angle) / (max_head_angle - min_head_angle) * 100).toInt()
             } else {
                 head_score = 0
             }
@@ -232,13 +233,16 @@ class MadPT {
             if (hip_angle > max_hip_angle){
                 hip_score = 100
             } else if (hip_angle > min_hip_angle){
-                hip_score = ((max_hip_angle - hip_angle) / (max_hip_angle - min_hip_angle) * 100).toInt()
+                hip_score = ((hip_angle - min_hip_angle) / (max_hip_angle - min_hip_angle) * 100).toInt()
             } else {
                 hip_score = 0
             }
+            Log.d("pushup_log hip_angle:hip_score" , "${hip_angle}:${hip_score}")
+
             println("checkpoint: "+ depth_score)
             println("checkpoint: " + arm_score)
             println("checkpoint : " + hip_score)
+
             if (this.score[0][0] < depth_score) {
                 this.score[0][0] = depth_score
                 println("checkpoint2")
@@ -247,8 +251,8 @@ class MadPT {
                 this.score[0][1] = arm_score
             if (this.score[0][2] > hip_score)
                 this.score[0][2] = hip_score
-            if (this.score[0][3] > head_score)
-                this.score[0][3] = head_score
+//            if (this.score[0][3] > head_score)
+//                this.score[0][3] = head_score
 
             if (arm_angle < 120 && this.state == 0){
                 this.state = 1
@@ -267,8 +271,9 @@ class MadPT {
 
                 trainingData.excrciseScore = ArrayList(return_val.subList(1, return_val.size)).average().toInt()
                 trainingData.exerciseScoreList = return_val
+                Log.d("pushup_log training result", return_val.toString())
                 trainingDataList.add(trainingData)
-                this.score[0] = arrayOf(0, 0, 100, 100)
+                this.score[0] = arrayOf(0, 0, 100)
             }
 
         }
@@ -284,8 +289,8 @@ class MadPT {
         var score = person[0].score
         var min_thigh_angle = 70
         var max_thigh_angle = 120
-        var min_calf_angle = 30
-        var max_calf_angle = 45
+        var min_calf_angle = 25
+        var max_calf_angle = 40
         var min_waist_angle = 30
         var max_waist_angle = 50
         var score_th = 0.4
@@ -358,18 +363,17 @@ class MadPT {
                 waist_score = 0
             }
 
-            println("log123 left waist : " + left_waist_angle)
-            println("log123 right waist : " + right_waist_angle)
-            println("log123 waist score : " + waist_score)
 
-            if (this.score[1][0] < thigh_score)
+            if (this.score[1][0] < thigh_score) {
                 this.score[1][0] = thigh_score
+            }
 
-            if (this.score[1][1] > calf_score && this.score[1][1] - calf_score < 30)
+            if (this.score[1][1] > calf_score && this.score[1][1] - calf_score < 90) {
                 this.score[1][1] = calf_score
-
-            if (this.score[1][2] > waist_score && this.score[1][2] - waist_score < 30)
+            }
+            if (this.score[1][2] > waist_score && this.score[1][2] - waist_score < 30) {
                 this.score[1][2] = waist_score
+            }
 
             if (left_thigh_angle < max_thigh_angle && this.state == 0){
                 this.state = 1
@@ -390,7 +394,6 @@ class MadPT {
                 trainingData.exerciseScoreList = return_val
                 trainingDataList.add(trainingData)
                 this.score[1] = arrayOf(0,100,100)
-                print("log123 : " + return_val)
             }
         }
 
@@ -408,9 +411,9 @@ class MadPT {
         var score_th = 0.5f
         var return_val:ArrayList<Int> = ArrayList()
         var min_down_rate = 0.3
-        var max_down_rate = 0.8
-        var min_angle = 5
-        var max_angle = 20
+        var max_down_rate = 0.9
+        var min_angle = 10
+        var max_angle = 30
         var right_angle:Double = 0.0
         var left_angle:Double = 0.0
         var down_rate:Double = 0.0
@@ -468,7 +471,7 @@ class MadPT {
                     body_parts[14].coordinate
                 )
             }
-
+            Log.d("lunge down rate", down_rate.toString())
             var down_score = 0
             if (down_rate > max_down_rate){
                 down_score = 100
@@ -479,6 +482,7 @@ class MadPT {
             }
 
             var right_score = 0
+            Log.d("lunge right angle", right_angle.toString())
             if (right_angle < min_angle){
                 right_score = 100
             } else if (right_angle < max_angle){
@@ -488,6 +492,7 @@ class MadPT {
             }
 
             var left_score = 0
+            Log.d("lunge left angle", left_angle.toString())
             if (left_angle < min_angle){
                 left_score = 100
             } else if (left_angle < max_angle){
@@ -537,10 +542,10 @@ class MadPT {
         var return_val:ArrayList<Int> = ArrayList()
         var score = person[0].score
         var score_th = 0.5f
-        var min_angle = 75
-        var max_angle = 100
-        var min_vertical_angle = 20
-        var max_vertical_angle = 40
+        var min_angle = 80
+        var max_angle = 120
+        var min_vertical_angle = 30
+        var max_vertical_angle = 50
 
         if (score > score_th){
             var left_arm_angle = this.calculate_angle(
@@ -597,7 +602,11 @@ class MadPT {
                 right_elbow_score = ((max_angle - right_elbow_angle) / (max_angle - min_angle) * 100).toInt()
             else
                 right_elbow_score = 0
-
+            Log.d("sp left_arm_score", left_arm_score.toString())
+            Log.d("sp left_arm_angle", left_arm_angle.toString())
+//            Log.d("sp right_arm_score", right_arm_score.toString())
+//            Log.d("sp left_elbow_score", left_elbow_score.toString())
+//            Log.d("sp right_elbow_score", right_elbow_score.toString())
             if (this.score[3][0] > left_arm_score)
                 this.score[3][0] = left_arm_score
 
@@ -620,7 +629,7 @@ class MadPT {
                 this.score[3].forEach{ i ->
                     return_val.add(i)
                 }
-
+                Log.d("sp score : ", return_val.toString())
                 this.score[3] = arrayOf(100, 100, 0, 0)
                 trainingData.excrciseName = 3
                 trainingData.excrciseCount = count[3]
@@ -721,7 +730,7 @@ class MadPT {
                 this.score[4].forEach{ i ->
                     return_val.add(i)
                 }
-                this.score[4] = arrayOf(100, 100, 0, 0)
+                this.score[4] = arrayOf(100, 100, 0)
                 trainingData.excrciseName = 4
                 trainingData.excrciseCount = count[4]
                 trainingData.excrciseScore = ArrayList(return_val.subList(1, return_val.size)).average().toInt()
@@ -743,14 +752,13 @@ class MadPT {
         var score_th = 0.5
         var min_arm_angle = 30
         var max_arm_angle = 70
-        var min_variance = 100
-        var max_variance = 400
+        var min_variance = 5
+        var max_variance = 50
 
         if (score > score_th){
             this.frame += 1
-            this.left_shoulder.plus(body_parts[5].coordinate.y)
-            this.right_shoulder.plus(body_parts[6].coordinate.y)
-
+            this.left_shoulder.add(body_parts[5].coordinate.y)
+            this.right_shoulder.add(body_parts[6].coordinate.y)
             var left_arm_angle = this.calculate_angle(
                 body_parts[9].coordinate,
                 body_parts[5].coordinate,
@@ -767,7 +775,7 @@ class MadPT {
             if (arm_angle > max_arm_angle && this.state == 0){
                 this.state = 1
             }
-
+//            Log.d("sll arm angle", arm_angle.toString())
             if (arm_angle < min_arm_angle && this.state == 1){
                 this.state = 0
                 this.frame = 0
@@ -776,14 +784,19 @@ class MadPT {
                 var right_variance = this.calculate_variance(this.right_shoulder)
                 var variance = (left_variance + right_variance) / 2
 
+                this.left_shoulder = ArrayList()
+                this.right_shoulder = ArrayList()
+                Log.d("sll variance", variance.toString())
+
                 return_val.add(5)
+
                 if (variance < min_variance)
                     return_val.add(100)
                 else if (variance < max_variance)
                     return_val.add((((max_variance - variance) / (max_variance - min_variance)) * 100).toInt())
                 else
                     return_val.add(0)
-
+                Log.d("sll variance", return_val.toString())
                 trainingData.excrciseName = 5
                 trainingData.excrciseCount = count[5]
 
@@ -861,16 +874,17 @@ class MadPT {
         var return_val:ArrayList<Int> = ArrayList()
         val body_parts: List<KeyPoint> = person[0].keyPoints
         var score = person[0].score
-        var score_th = 0.5
+        var score_th = 0.4
         var max_arm_angle = 90
-        var min_arm_angle = 30
+        var min_arm_angle = 40
         var max_variance = 400
         var min_variance = 100
+        Log.d("score", "${score} ${body_parts[7].coordinate.x} ${body_parts[8].coordinate.x}")
 
         if (score > score_th){
             this.frame += 1
-            this.left_elbow.plus(body_parts[7].coordinate.y)
-            this.right_elbow.plus(body_parts[8].coordinate.y)
+            this.left_elbow.add(body_parts[7].coordinate.x)
+            this.right_elbow.add(body_parts[8].coordinate.x)
 
             var left_arm_angle = this.calculate_angle(
                 body_parts[5].coordinate,
@@ -884,6 +898,7 @@ class MadPT {
             )
 
             var arm_angle = min(right_arm_angle, left_arm_angle)
+            Log.d("dumbelcurl 팔꿈치", arm_angle.toString())
 
             if (arm_angle < min_arm_angle && this.state == 0)
                 this.state = 1
@@ -894,6 +909,7 @@ class MadPT {
                 var left_variance = this.calculate_variance(this.left_elbow)
                 var right_variance = this.calculate_variance(this.right_elbow)
                 var variance = (left_variance + right_variance) / 2
+                Log.d("dumbelcurl 분산,", variance.toString())
 
                 return_val.add(7)
                 if (variance < min_variance)
@@ -902,6 +918,7 @@ class MadPT {
                     return_val.add((((max_variance - variance) / (max_variance - min_variance)) * 100).toInt())
                 else
                     return_val.add(0)
+                Log.d("dumbelcurl 점수", return_val.toString())
                 this.score[7] = arrayOf(0)
                 trainingData.excrciseName = 7
                 trainingData.excrciseCount = count[7]

@@ -26,6 +26,7 @@ var allSumKcal : Int = 0
 class DietPageActivity : AppCompatActivity(), PostDietList {
     private lateinit var binding: ActivityDietPageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+        sumSimpleKcal = 0
 
         super.onCreate(savedInstanceState)
         binding = ActivityDietPageBinding.inflate(layoutInflater)

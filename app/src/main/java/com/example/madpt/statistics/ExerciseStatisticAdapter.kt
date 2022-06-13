@@ -19,7 +19,7 @@ class ExerciseStatisticAdapter(private val dailyExerciseList: ArrayList<TrainRec
         "MOUNTAIN CLIMBING" to R.drawable.mountain_climbing,
         "SIDE LATERAL RAISE" to R.drawable.side_lateral_raise,
         "SIDE LUNGE" to R.drawable.side_lunge,
-        "DUMBEL CURL" to R.drawable.dumbbell_curl)
+        "DUMBBEL CURL" to R.drawable.dumbbell_curl)
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val exerciseTitle: TextView = itemView.findViewById(R.id.exercise_title_text)

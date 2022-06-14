@@ -2,6 +2,7 @@ package com.example.madpt.statistics
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import androidx.fragment.app.Fragment
@@ -58,17 +59,17 @@ class DailyDietStatisticsFragment : Fragment(),GetDailyDietList {
         }
         val totalFoodDataSum = totalFoodData[0] + totalFoodData[1] + totalFoodData[2]
 
-        binding.textDailyDietProtein.text = round((totalFoodData[1]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietProtein.text = (round(totalFoodData[1]/totalFoodDataSum*100.0*100)/100).toString() + "%"
         binding.textDailyDietProtein.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[1]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,(round(totalFoodData[1]/totalFoodDataSum*100.0*100)/100).toFloat())
 
-        binding.textDailyDietCarbohydrate.text = round((totalFoodData[0]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietCarbohydrate.text = (round((totalFoodData[0]/totalFoodDataSum*100.0*100))/100).toString() + "%"
         binding.textDailyDietCarbohydrate.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[0]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,(round((totalFoodData[0]/totalFoodDataSum*100.0*100))/100).toFloat())
 
-        binding.textDailyDietFat.text = round((totalFoodData[2]/totalFoodDataSum*100.0)).toInt().toString()
+        binding.textDailyDietFat.text = (round((totalFoodData[2]/totalFoodDataSum*100.0*100))/100).toString() + "%"
         binding.textDailyDietFat.layoutParams =
-            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,round((totalFoodData[2]/totalFoodDataSum*100.0)).toFloat())
+            LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.MATCH_PARENT,(round((totalFoodData[2]/totalFoodDataSum*100.0*100))/100).toFloat())
 
         binding.textDailyDietKcal.text = totalDietKcal.toString()
     }

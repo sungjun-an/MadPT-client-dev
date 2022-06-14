@@ -2,6 +2,8 @@ package com.example.madpt.training
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +18,7 @@ class BreakTimeSetDialog(context: Context, listen: SetBreakTime, breaktime: Int)
     fun showDialog(){
         dialog.setContentView(R.layout.break_time_set_dialog)
         dialog.window!!.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.setCanceledOnTouchOutside(true)
         dialog.setCancelable(true)
         dialog.show()
